@@ -41,7 +41,7 @@ final class DefaultsManager {
     class var notificationByLocation: Bool {
         get {
             let notificationByLocation = UserDefaults.standard.value(forKey: #function) as? Bool
-            return notificationByLocation ?? true
+            return notificationByLocation ?? false
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: #function)
@@ -51,7 +51,7 @@ final class DefaultsManager {
     class var timeNotification: Bool {
         get {
             let morningNotification = UserDefaults.standard.value(forKey: #function) as? Bool
-            return morningNotification ?? true
+            return morningNotification ?? false
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: #function)

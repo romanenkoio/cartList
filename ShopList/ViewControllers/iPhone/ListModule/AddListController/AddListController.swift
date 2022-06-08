@@ -31,7 +31,6 @@ final class AddListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         backButton.borderColor = UIColor.mainOrange.cgColor
         countInput.text = "\(count)"
         countInput.delegate = self
