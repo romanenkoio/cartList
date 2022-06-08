@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (5.5.0)
+  - EasyTipView (2.1.0)
+  - GoogleMaps (6.1.1):
+    - GoogleMaps/Maps (= 6.1.1)
+  - GoogleMaps/Base (6.1.1)
+  - GoogleMaps/Maps (6.1.1):
+    - GoogleMaps/Base
+  - lottie-ios (3.3.0)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - Realm (10.25.0):
+    - Realm/Headers (= 10.25.0)
+  - Realm/Headers (10.25.0)
+  - RealmSwift (10.25.0):
+    - Realm (= 10.25.0)
+
+DEPENDENCIES:
+  - EasyTipView
+  - GoogleMaps
+  - lottie-ios
+  - Moya
+  - RealmSwift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - EasyTipView
+    - GoogleMaps
+    - lottie-ios
+    - Moya
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
+  GoogleMaps: 94e6e0851beece6678af9f508f4918b7a7c61722
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  Realm: 22a82aaa0e73f3483e3a6df32549c4c5cd34aa63
+  RealmSwift: c2a635212400923edd3f828b8a37d55d3eb31863
+
+PODFILE CHECKSUM: ca5103740cc65e5fb8d197004c14122cc29caeef
+
+COCOAPODS: 1.11.2

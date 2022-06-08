@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainListController" customModule="ShopList" customModuleProvider="target">
+            <connections>
+                <outlet property="animationView" destination="RTf-fp-Y5d" id="LTJ-Py-Ea2"/>
+                <outlet property="emptyLabel" destination="nsf-fQ-oBk" id="mzy-JZ-Wz7"/>
+                <outlet property="tableView" destination="4DA-7q-cxa" id="m9D-Ke-3B1"/>
+                <outlet property="testButton" destination="9O5-20-tsS" id="k84-Aa-Ton"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4DA-7q-cxa">
+                    <rect key="frame" x="0.0" y="44" width="414" height="738"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="4KK-fj-jg1"/>
+                        <outlet property="delegate" destination="-1" id="iuG-IL-YbB"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9O5-20-tsS">
+                    <rect key="frame" x="16" y="802" width="382" height="50"/>
+                    <color key="backgroundColor" name="buttonColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="HN9-Cr-11h"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Создать новый список"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addListAction:" destination="-1" eventType="touchUpInside" id="8ii-we-DVf"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="RTf-fp-Y5d" customClass="AnimationView" customModule="Lottie">
+                    <rect key="frame" x="25" y="271" width="364" height="364"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="RTf-fp-Y5d" secondAttribute="height" multiplier="1:1" id="fpZ-aZ-yzx"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="У вас нет ни одного списка. Создайте первый список и не забывайте про важные покупки!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsf-fQ-oBk">
+                    <rect key="frame" x="16" y="187.5" width="382" height="68.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="4DA-7q-cxa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5ls-uR-m3I"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nsf-fQ-oBk" secondAttribute="trailing" constant="16" id="7k3-Fr-vbX"/>
+                <constraint firstItem="RTf-fp-Y5d" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="FPw-vO-Zzl"/>
+                <constraint firstItem="RTf-fp-Y5d" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Htt-ej-z33"/>
+                <constraint firstItem="nsf-fQ-oBk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="KMY-rX-7Yr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9O5-20-tsS" secondAttribute="trailing" constant="16" id="W35-dS-CVL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9O5-20-tsS" secondAttribute="bottom" constant="10" id="W8C-16-PMm"/>
+                <constraint firstItem="9O5-20-tsS" firstAttribute="top" secondItem="4DA-7q-cxa" secondAttribute="bottom" constant="20" id="blw-yN-XEn"/>
+                <constraint firstItem="4DA-7q-cxa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="djU-cf-FFl"/>
+                <constraint firstItem="RTf-fp-Y5d" firstAttribute="top" secondItem="nsf-fQ-oBk" secondAttribute="bottom" constant="15" id="iFL-vj-boT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RTf-fp-Y5d" secondAttribute="trailing" constant="25" id="kNT-g6-YJv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4DA-7q-cxa" secondAttribute="trailing" id="oaw-fP-igL"/>
+                <constraint firstItem="9O5-20-tsS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="pYE-3B-m9M"/>
+                <constraint firstItem="RTf-fp-Y5d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="r87-Qm-ILi"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="144"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="RTf-fp-Y5d"/>
+    </designables>
+    <resources>
+        <namedColor name="buttonColor">
+            <color red="0.99607843137254903" green="0.41176470588235292" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

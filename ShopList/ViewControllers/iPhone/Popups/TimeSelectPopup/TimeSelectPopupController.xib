@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimeSelectPopupController" customModule="ShopList" customModuleProvider="target">
+            <connections>
+                <outlet property="datePicker" destination="3Sp-aT-fQ9" id="nhp-cV-ZPI"/>
+                <outlet property="mainView" destination="qff-0m-3HL" id="p9x-Nx-0JD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qff-0m-3HL">
+                    <rect key="frame" x="16" y="260" width="382" height="376"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="3Sp-aT-fQ9">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="216"/>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNm-zZ-D2d">
+                            <rect key="frame" x="16" y="236" width="350" height="50"/>
+                            <color key="backgroundColor" name="buttonColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="NMB-UJ-qd7"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Сохранить"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="timeSelectedAction:" destination="-1" eventType="touchUpInside" id="lU5-wO-BPo"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlC-XQ-7iP">
+                            <rect key="frame" x="16" y="306" width="350" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="NAX-pI-dIl"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Отменить"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="O3b-7b-ui1"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="3Sp-aT-fQ9" firstAttribute="leading" secondItem="qff-0m-3HL" secondAttribute="leading" id="3IN-qc-TbE"/>
+                        <constraint firstAttribute="trailing" secondItem="NlC-XQ-7iP" secondAttribute="trailing" constant="16" id="Qbo-Ga-KQe"/>
+                        <constraint firstItem="JNm-zZ-D2d" firstAttribute="top" secondItem="3Sp-aT-fQ9" secondAttribute="bottom" constant="20" id="bvN-Or-aWG"/>
+                        <constraint firstAttribute="trailing" secondItem="JNm-zZ-D2d" secondAttribute="trailing" constant="16" id="fBn-PI-KQc"/>
+                        <constraint firstItem="JNm-zZ-D2d" firstAttribute="leading" secondItem="qff-0m-3HL" secondAttribute="leading" constant="16" id="fgs-E7-aY8"/>
+                        <constraint firstItem="NlC-XQ-7iP" firstAttribute="top" secondItem="JNm-zZ-D2d" secondAttribute="bottom" constant="20" id="gb7-oi-hqI"/>
+                        <constraint firstAttribute="trailing" secondItem="3Sp-aT-fQ9" secondAttribute="trailing" id="ugd-Nc-J2F"/>
+                        <constraint firstItem="NlC-XQ-7iP" firstAttribute="leading" secondItem="qff-0m-3HL" secondAttribute="leading" constant="16" id="v3q-RE-LdY"/>
+                        <constraint firstItem="3Sp-aT-fQ9" firstAttribute="top" secondItem="qff-0m-3HL" secondAttribute="top" id="vEA-Tv-uCf"/>
+                        <constraint firstAttribute="bottom" secondItem="NlC-XQ-7iP" secondAttribute="bottom" constant="20" id="vNb-oc-OfH"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="qff-0m-3HL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="KLK-cT-HLf"/>
+                <constraint firstItem="qff-0m-3HL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Kf8-h2-vle"/>
+                <constraint firstItem="qff-0m-3HL" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="W9j-YG-jQT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qff-0m-3HL" secondAttribute="trailing" constant="16" id="aAH-Cx-WuW"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="buttonColor">
+            <color red="0.99607843137254903" green="0.41176470588235292" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

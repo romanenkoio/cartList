@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="ShopList" customModuleProvider="target">
+            <connections>
+                <outlet property="mapButton" destination="5mv-1E-oqD" id="anf-UP-WyD"/>
+                <outlet property="mapView" destination="AhR-8L-1Rv" id="U49-Yf-AjM"/>
+                <outlet property="plusButton" destination="xXU-Ep-Bn6" id="M9p-xN-BN6"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhR-8L-1Rv" customClass="GMSMapView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mv-1E-oqD">
+                    <rect key="frame" x="354" y="802" width="40" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="F16-d0-q7h"/>
+                        <constraint firstAttribute="height" constant="40" id="xzy-b8-vor"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="mappin.and.ellipse" catalog="system"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="centerMapAction:" destination="-1" eventType="touchUpInside" id="qgA-GR-YOG"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="AhR-8L-1Rv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1DH-5t-CrO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="AhR-8L-1Rv" secondAttribute="bottom" id="MlY-b4-Qga"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AhR-8L-1Rv" secondAttribute="trailing" id="OX8-Il-jLm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5mv-1E-oqD" secondAttribute="bottom" constant="20" id="WDu-YR-tX3"/>
+                <constraint firstItem="AhR-8L-1Rv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pPQ-gj-2VY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5mv-1E-oqD" secondAttribute="trailing" constant="20" id="qfh-Xa-sb6"/>
+            </constraints>
+            <point key="canvasLocation" x="-39" y="-11"/>
+        </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXU-Ep-Bn6">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="40" id="REX-DP-Xbt"/>
+                <constraint firstAttribute="width" constant="40" id="tcq-ko-ZOq"/>
+            </constraints>
+            <color key="tintColor" name="buttonColor"/>
+            <state key="normal" title="Button"/>
+            <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title=""/>
+            <connections>
+                <action selector="addPlaceAction:" destination="-1" eventType="touchUpInside" id="zLq-Fw-sRV"/>
+            </connections>
+            <point key="canvasLocation" x="106" y="-363"/>
+        </button>
+    </objects>
+    <resources>
+        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="buttonColor">
+            <color red="0.99607843137254903" green="0.41176470588235292" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
