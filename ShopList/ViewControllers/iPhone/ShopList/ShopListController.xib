@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShopListController" customModule="ShopList" customModuleProvider="target">
             <connections>
+                <outlet property="addButton" destination="qbH-lx-54A" id="R26-UA-tcb"/>
                 <outlet property="tableView" destination="Scv-Se-pLI" id="ITD-iV-Z2D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

@@ -6,13 +6,24 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ShopListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
     
+    private var locationBlock: ((CLLocationCoordinate2D, String) -> ())?
+    private lazy var locationManager = CLLocationManager()
     var selectedShopBlock: ((SLRealmCoordinate) -> ())?
     var shops = [SLRealmCoordinate]()
     var selectedShop: SLRealmCoordinate?
+    var isAdding = false
+    
+    class func customInit(isAdding: Bool = false) -> ShopListController {
+        let vc = ShopListController.loadFromNib()
+        vc.isAdding = isAdding
+        return vc
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +31,7 @@ class ShopListController: UIViewController {
         tableView.register(UINib(nibName: ShopCell.cellID, bundle: nil), forCellReuseIdentifier: ShopCell.cellID)
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        addButton.setTitle(isAdding ? "Добавить" : "Выбрать", for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,12 +45,33 @@ class ShopListController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        guard let selectedShop = selectedShop else {
-            return
-        }
+        if isAdding {
+            let alert = Alerts.mapType.controller
+            
+            let mapAction = UIAlertAction(title: "Выбрать на карте", style: .default, handler: { [weak self] _ in
 
-        selectedShopBlock?(selectedShop)
-        dismiss(animated: true)
+            })
+            mapAction.setValue(UIColor.mainOrange, forKeyPath: "titleTextColor")
+            alert.addAction(mapAction)
+            
+            let locationAction = UIAlertAction(title: "Добавить текущую локацию", style: .default, handler: { _ in
+                self.locationManager.delegate = self
+                self.locationManager.startUpdatingLocation()
+            })
+            locationAction.setValue(UIColor.mainOrange, forKeyPath: "titleTextColor")
+            alert.addAction(locationAction)
+            
+            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+            self.present(alert, animated: true)
+        } else {
+            guard let selectedShop = selectedShop else {
+                return
+            }
+
+            selectedShopBlock?(selectedShop)
+            dismiss(animated: true)
+        }
+    
     }
 }
 
@@ -57,5 +90,37 @@ extension ShopListController: UITableViewDataSource {
 extension ShopListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedShop = shops[indexPath.row]
+    }
+}
+
+extension ShopListController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else {
+            return
+        }
+        locationManager.stopUpdatingLocation()
+        let alert = UIAlertController(title: "Имя сохранённой точки", message: "", preferredStyle: .alert)
+
+        alert.addTextField { (textField) in
+            textField.placeholder = "Название магазина"
+            textField.autocorrectionType = .yes
+            textField.autocapitalizationType = .sentences
+        }
+      
+        alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            guard let text = textField?.text else { return }
+            let coord = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            
+            RealmManager.write(object: SLRealmCoordinate(marketName: text, lat: "\(coord.latitude)", lon: "\(coord.longitude)"))
+            NotificationManager.scheduleLocationNotifications()
+            
+        }))
+
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
+       
     }
 }
