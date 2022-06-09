@@ -21,6 +21,7 @@
 		7F6C904F28188AB40048EA1A /* UIString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C904E28188AB40048EA1A /* UIString+Extensions.swift */; };
 		7F6C905428192A260048EA1A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C905228192A260048EA1A /* MapViewController.swift */; };
 		7F6C905528192A260048EA1A /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6C905328192A260048EA1A /* MapViewController.xib */; };
+		7F8C624A28520CA3000D3715 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C624928520CA3000D3715 /* Languages.swift */; };
 		7FA1F33328146054008ABEE1 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F33228146054008ABEE1 /* UIViewController+Extensions.swift */; };
 		7FA1F336281464C5008ABEE1 /* SLProductPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F335281464C5008ABEE1 /* SLProductPackage.swift */; };
 		7FA1F33928146BBE008ABEE1 /* NoActionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F33828146BBE008ABEE1 /* NoActionTextField.swift */; };
@@ -82,6 +83,7 @@
 		7F6C904E28188AB40048EA1A /* UIString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+Extensions.swift"; sourceTree = "<group>"; };
 		7F6C905228192A260048EA1A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		7F6C905328192A260048EA1A /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		7F8C624928520CA3000D3715 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		7FA1F33228146054008ABEE1 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7FA1F335281464C5008ABEE1 /* SLProductPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLProductPackage.swift; sourceTree = "<group>"; };
 		7FA1F33828146BBE008ABEE1 /* NoActionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoActionTextField.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				7FAFA89F28513D3F0089B123 /* Placeholders.swift */,
+				7F8C624928520CA3000D3715 /* Languages.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				7FF00067281E95610070CB0E /* ShopCell.swift in Sources */,
 				7FA1F34828148B32008ABEE1 /* SLSettingsPoint.swift in Sources */,
 				7FCB589C281358CD00D3E370 /* SLRealmProduct.swift in Sources */,
+				7F8C624A28520CA3000D3715 /* Languages.swift in Sources */,
 				7FD1D1102819A49800CA44FE /* NotificationName+Extension.swift in Sources */,
 				7FCB588328134D8500D3E370 /* BaseTabBarController.swift in Sources */,
 				7FCB588728134DD200D3E370 /* SettingsController.swift in Sources */,

@@ -102,7 +102,7 @@ extension SettingsController: UITableViewDataSource {
         case .listHeader, .notificationHeader, .infoHeader:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsHeaderCell.self), for: indexPath) as! SettingsHeaderCell
             (settingCell as! SettingsHeaderCell).setupWith(type: points[indexPath.row])
-        case .autoDelete, .useLocationPush, .mapPoint, .useTimePush, .morningTime, .version, .separateList, .raduis:
+        case .autoDelete, .useLocationPush, .mapPoint, .useTimePush, .morningTime, .version, .separateList, .raduis, .language:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingCell.self), for: indexPath) as! SettingCell
             
             (settingCell as! SettingCell).setupWith(points[indexPath.row])
@@ -155,6 +155,8 @@ extension SettingsController: UITableViewDelegate {
             navigationController?.pushViewController(mapVC, animated: true)
         case .raduis:
             showPicker()
+        case .language:
+            print("Выбор языка")
         default: break
         }
     }

@@ -19,6 +19,7 @@ enum SLSettingsPoint: CaseIterable {
     case useTimePush
     case morningTime
     case infoHeader
+    case language
     case version
     
     var text: String {
@@ -38,13 +39,15 @@ enum SLSettingsPoint: CaseIterable {
         case .notificationHeader:
             return "Настройки уведомлений"
         case .infoHeader:
-            return "О приложении"
+            return "Общие"
         case .version:
             return "Версия: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Неизвестно")"
         case .separateList:
             return "Разделять отмеченные продукты"
         case .raduis:
             return "Радиус уведомлений: \(DefaultsManager.baseRadius)м"
+        case .language:
+            return "Язык: \(Languages.getFullLanguageName(code: DefaultsManager.userLanguage))"
         }
     }
     
@@ -64,7 +67,7 @@ enum SLSettingsPoint: CaseIterable {
         switch self {
         case .useLocationPush, .useTimePush, .autoDelete, .separateList:
             return false
-        case .mapPoint, .morningTime, .listHeader, .notificationHeader, .infoHeader, .version, .raduis:
+        default:
             return true
         }
     }
@@ -84,7 +87,7 @@ enum SLSettingsPoint: CaseIterable {
             return DefaultsManager.autoDelete
         case .useLocationPush:
             return DefaultsManager.notificationByLocation
-        case .mapPoint, .morningTime, .listHeader, .notificationHeader, .infoHeader, .version, .raduis:
+        case .mapPoint, .morningTime, .listHeader, .notificationHeader, .infoHeader, .version, .raduis, .language:
             return false
         case .useTimePush:
             return DefaultsManager.timeNotification
@@ -98,19 +101,19 @@ enum SLSettingsPoint: CaseIterable {
         case .autoDelete, .useLocationPush, .useTimePush, .listHeader, .notificationHeader, .infoHeader, .version, .separateList:
             return .none
         
-        case .mapPoint, .morningTime, .raduis:
+        case .mapPoint, .morningTime, .raduis, .language:
             return .disclosureIndicator
         }
     }
     
     var isEnabled: Bool {
         switch self {
-        case .autoDelete, .useLocationPush, .useTimePush, .listHeader, .notificationHeader, .version, .infoHeader, .separateList:
-            return true
         case .mapPoint, .raduis:
             return DefaultsManager.notificationByLocation
         case .morningTime:
             return DefaultsManager.timeNotification
+        default:
+            return true
         }
     }
 }

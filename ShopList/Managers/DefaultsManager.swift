@@ -117,4 +117,15 @@ final class DefaultsManager {
             UserDefaults.standard.setValue(newValue, forKey: #function)
         }
     }
+    
+    class var userLanguage: String {
+        get {
+            let userLanguage = UserDefaults.standard.value(forKey: #function) as? String
+            return userLanguage ?? (Locale.current.languageCode ?? "en")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
+    
 }
