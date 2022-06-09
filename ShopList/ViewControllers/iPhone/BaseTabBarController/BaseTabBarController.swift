@@ -22,7 +22,7 @@ class BaseTabBarController: UITabBarController {
 
         list.tabBarItem = UITabBarItem(title: "Мои списки", image: UIImage(systemName: "checklist"), tag: 0)
         setting.tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gear"), tag: 2)
-        shopList.tabBarItem = UITabBarItem(title: "Магазины", image: UIImage(systemName: "gear"), tag: 1)
+        shopList.tabBarItem = UITabBarItem(title: "Магазины", image: UIImage(systemName: "building.2.fill"), tag: 1)
 
         self.tabBar.tintColor = .mainOrange
         self.viewControllers = [list, shopList, setting]
