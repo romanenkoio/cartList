@@ -1,0 +1,21 @@
+/* 
+  Localization.strings
+  ShopList
+
+  Created by Alina Karpovich on 13.06.22.
+  
+*/
+
+//Settings Point
+"settings.listHeader" = "List settings";
+"settings.separateList" = "Share marked products";
+"settings.autoDelete" = "Delete completed lists";
+"settings.notificationHeader" = "Notification settings";
+"settings.useLocationPush" = "Location notifications";
+"settings.raduis" = "Notification radius";
+"settings.mapPoint" = "Saved stores";
+"settings.useTimePush" = "Time notifications";
+"settings.morningTime" = "Notification time";
+"settings.infoHeader" = "General";
+"settings.language" = "Language";
+"settings.version" = "Version";

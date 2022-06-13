@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Languages: String {
+enum Languages: String, CaseIterable {
     case ru = "Русский"
     case en = "English"
     

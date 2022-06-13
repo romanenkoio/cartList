@@ -18,6 +18,7 @@ class SettingsController: UIViewController {
     var tipViews = [EasyTipView]()
     private let radiuses = [100, 200, 300, 500, 1000]
     private var selectedRadius = 100
+    private let languages = Languages.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,8 +157,18 @@ extension SettingsController: UITableViewDelegate {
         case .raduis:
             showPicker()
         case .language:
-            print("Выбор языка")
-        default: break
+            let alert = UIAlertController(title: "", message: "Выберите язык", preferredStyle: .actionSheet)
+            
+            for lang in languages {
+                let action = UIAlertAction(title: lang.rawValue, style: .default) { _ in
+                    print("Установлен язык : \(lang.rawValue)")
+                    Bundle.setLanguage(lang: lang.rawValue)
+                }
+                alert.addAction(action)
+            }
+            alert.addAction(UIAlertAction(title: "Назад", style: .cancel))
+            self.present(alert, animated: true)
+            default: break
         }
     }
 }

@@ -67,6 +67,10 @@
 		7FFE1846281359D700DE5DD1 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE1845281359D600DE5DD1 /* RealmManager.swift */; };
 		7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE184928135CE000DE5DD1 /* AddListController.swift */; };
 		7FFE184C28135CE000DE5DD1 /* AddListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFE184A28135CE000DE5DD1 /* AddListController.xib */; };
+		EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */; };
+		EB96139428572D70007897CA /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB96139628572D70007897CA /* Localization.strings */; };
+		EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96139828572E1E007897CA /* Bundle+Extension.swift */; };
+		EB96139B28572E59007897CA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96139A28572E59007897CA /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +138,12 @@
 		95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B192FEFFB24246E2010E80 /* Pods-ShopList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.debug.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.debug.xcconfig"; sourceTree = "<group>"; };
 		D6EB437F6C93DCB19E64A52B /* Pods-ShopList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.release.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.release.xcconfig"; sourceTree = "<group>"; };
+		EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalizationKeys.swift; sourceTree = "<group>"; };
+		EB96139128572D46007897CA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		EB96139528572D70007897CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
+		EB96139728572D71007897CA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localization.strings; sourceTree = "<group>"; };
+		EB96139828572E1E007897CA /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		EB96139A28572E59007897CA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +261,8 @@
 			children = (
 				7FAFA89F28513D3F0089B123 /* Placeholders.swift */,
 				7F8C624928520CA3000D3715 /* Languages.swift */,
+				EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */,
+				EB96139628572D70007897CA /* Localization.strings */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -312,6 +324,8 @@
 				7F6C903B281812830048EA1A /* UILabel+Extensions.swift */,
 				7F6C904E28188AB40048EA1A /* UIString+Extensions.swift */,
 				7FD1D10F2819A49800CA44FE /* NotificationName+Extension.swift */,
+				EB96139828572E1E007897CA /* Bundle+Extension.swift */,
+				EB96139A28572E59007897CA /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,6 +565,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 7FEB9A1628134B51005AA371;
 			productRefGroup = 7FEB9A2028134B51005AA371 /* Products */;
@@ -580,6 +595,7 @@
 				7FEB9A2F28134B54005AA371 /* LaunchScreen.storyboard in Resources */,
 				7FF0006D281E963E0070CB0E /* ShopListController.xib in Resources */,
 				7FA1F34D28148CC9008ABEE1 /* SettingCell.xib in Resources */,
+				EB96139428572D70007897CA /* Localization.strings in Resources */,
 				7FA1F34128148021008ABEE1 /* ProductList.xib in Resources */,
 				7FCB588828134DD200D3E370 /* SettingsController.xib in Resources */,
 				7FCB5892281350C300D3E370 /* MainListCell.xib in Resources */,
@@ -656,6 +672,7 @@
 				7FA1F33B28146EF8008ABEE1 /* SLAddType.swift in Sources */,
 				7FCB5897281353AE00D3E370 /* UITableView+Extensions.swift in Sources */,
 				7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */,
+				EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */,
 				7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */,
 				7FA1F34028148021008ABEE1 /* ProductList.swift in Sources */,
 				7FD1D11A2819C42400CA44FE /* ShopMarker.swift in Sources */,
@@ -676,9 +693,11 @@
 				7FCB588728134DD200D3E370 /* SettingsController.swift in Sources */,
 				7FA1F33928146BBE008ABEE1 /* NoActionTextField.swift in Sources */,
 				7FFE1846281359D700DE5DD1 /* RealmManager.swift in Sources */,
+				EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */,
 				7F6C905428192A260048EA1A /* MapViewController.swift in Sources */,
 				7FD1D1122819AC0800CA44FE /* ImportManager.swift in Sources */,
 				7F6C90382817FBF00048EA1A /* CustomUIAction.swift in Sources */,
+				EB96139B28572E59007897CA /* String+Extension.swift in Sources */,
 				7F6C9042281868490048EA1A /* Alerts.swift in Sources */,
 				7FA1F34C28148CC9008ABEE1 /* SettingCell.swift in Sources */,
 				7FCB588B2813508600D3E370 /* MainListController.swift in Sources */,
@@ -705,8 +724,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				7FEB9A2E28134B54005AA371 /* Base */,
+				EB96139128572D46007897CA /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EB96139628572D70007897CA /* Localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB96139528572D70007897CA /* en */,
+				EB96139728572D71007897CA /* ru */,
+			);
+			name = Localization.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -716,6 +745,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -777,6 +807,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

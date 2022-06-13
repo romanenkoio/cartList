@@ -1,0 +1,19 @@
+/* 
+  Localization.strings
+  ShopList
+
+  Created by Alina Karpovich on 13.06.22.
+  
+*/
+"settings.listHeader" = "Настройки списков";
+"settings.separateList" = "Разделять отмеченные продукты";
+"settings.autoDelete" = "Удалять заполненные списки";
+"settings.notificationHeader" = "Настройки уведомлений";
+"settings.useLocationPush" = "Уведомления по локации";
+"settings.raduis" = "Радиус уведомлений";
+"settings.mapPoint" = "Сохранённые магазины";
+"settings.useTimePush" = "Уведомления по времени";
+"settings.morningTime" = "Время уведомления";
+"settings.infoHeader" = "Общие";
+"settings.language" = "Язык";
+"settings.version" = "Версия";

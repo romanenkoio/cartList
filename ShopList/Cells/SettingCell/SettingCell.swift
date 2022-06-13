@@ -22,7 +22,7 @@ class SettingCell: UITableViewCell {
     func setupWith(_ type: SLSettingsPoint) {
         self.accessoryType = type.indicator
         imageLabel.image = type.image
-        settingLabel.text = type.text
+        settingLabel.text = type.text.localized()
         switcher.isHidden = type.switcherHidden
         imageLabel.isHidden = type.imageHidden
         switcher.isOn = type.state
