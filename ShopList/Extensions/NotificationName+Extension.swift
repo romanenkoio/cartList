@@ -9,4 +9,5 @@ import Foundation
 
 extension Notification.Name {
     static let listWasImported = Notification.Name(rawValue: "listWasImported")
+    static let languageChange = Notification.Name(rawValue: "LanguageChange")
 }

@@ -12,7 +12,7 @@ extension Bundle {
 
     static func localizedBundle() -> Bundle! {
         if bundle == nil {
-            let path = Bundle.main.path(forResource: UserDefaults.standard.value(forKey: "userLanguage") as? String ?? Languages.ru.rawValue, ofType: "lproj")
+            let path = Bundle.main.path(forResource: DefaultsManager.userLanguage, ofType: "lproj")
             bundle = Bundle(path: path!)
         }
 
@@ -22,7 +22,7 @@ extension Bundle {
     static func setLanguage(lang: String) {
         let path = Bundle.main.path(forResource: lang, ofType: "lproj")
         bundle = Bundle(path: path!)
-        UserDefaults.standard.set(lang, forKey: "userLanguage")
-        NotificationCenter.default.post(name: NSNotification.Name("LanguageChange"), object: nil)
+        DefaultsManager.userLanguage = lang
+        NotificationCenter.default.post(name: .languageChange, object: nil)
     }
 }
