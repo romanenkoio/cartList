@@ -19,4 +19,13 @@ enum Languages: String, CaseIterable {
             return en.rawValue
         }
     }
+    
+    var short: String {
+        switch self {
+        case .ru:
+            return "ru"
+        case .en:
+            return "en"
+        }
+    }
 }

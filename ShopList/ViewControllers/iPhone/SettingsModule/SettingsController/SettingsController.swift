@@ -161,8 +161,8 @@ extension SettingsController: UITableViewDelegate {
             
             for lang in languages {
                 let action = UIAlertAction(title: lang.rawValue, style: .default) { _ in
-                    print("Установлен язык : \(lang.rawValue)")
-                    Bundle.setLanguage(lang: lang.rawValue)
+                    print("Установлен язык: \(lang.rawValue)")
+                    Bundle.setLanguage(lang: lang.short)
                 }
                 alert.addAction(action)
             }

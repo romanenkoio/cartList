@@ -35,7 +35,7 @@ enum SLSettingsPoint: CaseIterable {
         case .morningTime:
             return "Время уведомления: \(DefaultsManager.hours):\(DefaultsManager.minutes < 10 ? "0\(DefaultsManager.minutes)" : "\(DefaultsManager.minutes)")"
         case .listHeader:
-            return "Настройки списков"
+            return AppLocalizationKeys.listHeader.localized()
         case .notificationHeader:
             return "Настройки уведомлений"
         case .infoHeader:

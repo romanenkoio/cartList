@@ -158,6 +158,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F333E51285775A900D31352 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		7F40B1A5281AD46A002DF78E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,8 +269,6 @@
 			children = (
 				7FAFA89F28513D3F0089B123 /* Placeholders.swift */,
 				7F8C624928520CA3000D3715 /* Languages.swift */,
-				EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */,
-				EB96139628572D70007897CA /* Localization.strings */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -408,6 +414,8 @@
 		7FEB9A2128134B51005AA371 /* ShopList */ = {
 			isa = PBXGroup;
 			children = (
+				EB96139628572D70007897CA /* Localization.strings */,
+				7F333E51285775A900D31352 /* Localization */,
 				7FAFA89E28513D2B0089B123 /* Global */,
 				7F6C9043281873170048EA1A /* Resources */,
 				7FA1F35028149C39008ABEE1 /* Utilites */,
