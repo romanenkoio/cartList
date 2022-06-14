@@ -55,6 +55,7 @@ class ProductList: UIViewController {
         if #available(iOS 15.0, *){
             self.tableView.sectionHeaderTopPadding = 0.0
         }
+        NotificationCenter.default.post(name: .languageChange, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +74,7 @@ class ProductList: UIViewController {
         if DefaultsManager.isFirstProductLaunch {
             _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
                 guard let self = self else { return }
-                let tipView = EasyTipView(text: "Используйте эту кнопку для быстрого добавления продуктов из буфера обмена",
+                let tipView = EasyTipView(text: AppLocalizationKeys.addProductsFromClipboards.localized(),
                                           preferences: EasyTipView.globalPreferences,
                                           delegate: nil)
                 tipView.show(forView: self.pasteButton)
@@ -103,7 +104,7 @@ class ProductList: UIViewController {
         
         if list.linkedShopID != 0 {
             guard let shop = RealmManager.read(type: SLRealmCoordinate.self).filter({ $0.id == list.linkedShopID}).first else { return }
-            shopLabel.text = "Вы указали, что данные покупки лучше делать в магазине \"\(shop.marketName.trimmingCharacters(in: .whitespaces))\""
+            shopLabel.text = "\(AppLocalizationKeys.preferredStore.localized() ) \"\(shop.marketName.trimmingCharacters(in: .whitespaces))\""
         }
     }
     
@@ -153,7 +154,7 @@ class ProductList: UIViewController {
         
         let alert = Alerts.refresh.controller
         
-        let refreshAction = UIAlertAction(title: "Очистить прогресс", style: .default, handler: { [weak self] _ in
+        let refreshAction = UIAlertAction(title: AppLocalizationKeys.clearProgress.localized(), style: .default, handler: { [weak self] _ in
             guard let self = self else { return }
             
             self.products = RealmManager.read(type: SLRealmProduct.self).filter({ $0.ownerListID == list.id })
@@ -166,7 +167,7 @@ class ProductList: UIViewController {
         })
         refreshAction.setValue(UIColor.mainOrange, forKeyPath: "titleTextColor")
         
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
         cancelAction.setValue(UIColor.black, forKeyPath: "titleTextColor")
 
         alert.addAction(cancelAction)
@@ -174,6 +175,13 @@ class ProductList: UIViewController {
 
         self.present(alert, animated: true)
     }
+    
+//    @objc  func updateLanguage() {
+//        self.title = AppLocalizationKeys.settings.localized()
+//        tableView.reloadData()
+//    }
+
+
 }
 
 extension ProductList: UITableViewDataSource {
@@ -181,9 +189,9 @@ extension ProductList: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if DefaultsManager.separateProducts {
             if section == 0 {
-                return "Нужно купить"
+                return AppLocalizationKeys.needToBuy.localized()
             }
-            return "Куплено"
+            return AppLocalizationKeys.bought.localized()
         }
         return ""
     }
@@ -226,13 +234,13 @@ extension ProductList: UITableViewDataSource {
             if self.products.count == self.products.filter({ $0.checked }).count, DefaultsManager.autoDelete {
                 guard let list = self.list else { return }
                     
-                let alert = Alerts.information(text: "Удалить список?").controller
-                let okAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+                let alert = Alerts.information(text: AppLocalizationKeys.deleteList.localized()).controller
+                let okAction = UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive) { _ in
                     RealmManager.removeList(list)
                     self.navigationController?.popViewController(animated: true)
                 }
                 
-                let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+                let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
                 alert.addAction(cancelAction)
                 alert.addAction(okAction)
                 self.present(alert, animated: true)
@@ -259,10 +267,10 @@ extension ProductList: UITableViewDelegate {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {  [weak self] _ in
             guard let self = self else { return nil }
             
-            let delete = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: UIMenuElement.Attributes.destructive) { _ in
-                let alert = UIAlertController(title: "Подтвердите", message: "Действительно удалить запись?", preferredStyle: .alert)
+            let delete = UIAction(title: AppLocalizationKeys.delete.localized(), image: UIImage(systemName: "trash"), attributes: UIMenuElement.Attributes.destructive) { _ in
+                let alert = UIAlertController(title: AppLocalizationKeys.confirm.localized(), message: AppLocalizationKeys.deleteEntry.localized(), preferredStyle: .alert)
                 
-                alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { _ in
+                alert.addAction(UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive, handler: { _ in
                     tableView.beginUpdates()
                                         
                     if indexPath.section == 0 {
@@ -277,7 +285,7 @@ extension ProductList: UITableViewDelegate {
                     
                 }))
                 
-                alert.addAction(UIAlertAction(title: "Отмена", style: .default))
+                alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .default))
                 self.present(alert, animated: true)
             }
             

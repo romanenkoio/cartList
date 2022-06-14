@@ -8,8 +8,17 @@
 import Foundation
 
 enum SLAddType: String {
-    case list = "Название списка"
-    case product = "Название продукта"
+    case list
+    case product
+    
+    var localizedValue: String {
+        switch self {
+        case .list:
+            return AppLocalizationKeys.list.localized()
+        case .product:
+            return AppLocalizationKeys.product.localized()
+        }
+    }
     
     var placeholder: String {
         switch self {

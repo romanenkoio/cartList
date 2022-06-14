@@ -27,8 +27,9 @@ class SettingsController: UIViewController {
         setupRadiusPicker()
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Настройки"
         showTips()
+        updateLanguage()
+        subscribeToNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +89,14 @@ class SettingsController: UIViewController {
         button.tintColor = .black
         toolBar.items = [button]
         self.view.addSubview(toolBar)
+    }
+    
+    @objc  func updateLanguage() {
+        self.title = AppLocalizationKeys.settings.localized()
+        tableView.reloadData()
+    }
+    func subscribeToNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }
 }
 

@@ -10,6 +10,8 @@ import UIKit
 class TimeSelectPopupController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var saveAction: UIButton!
+    @IBOutlet weak var cancelAction: UIButton!
     
     var voidBlock: VoidBlock?
     
@@ -17,6 +19,16 @@ class TimeSelectPopupController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.layer.borderColor = UIColor.mainOrange.cgColor
+        updateLanguage()
+        subscribeToNotification()
+    }
+    
+    @objc  func updateLanguage() {
+        self.saveAction.setTitle(AppLocalizationKeys.save.localized(), for: .normal)
+        self.cancelAction.setTitle(AppLocalizationKeys.cancel.localized(), for: .normal)
+    }
+    func subscribeToNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }
 
     @IBAction func timeSelectedAction(_ sender: Any) {

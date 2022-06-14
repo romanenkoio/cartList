@@ -17,3 +17,53 @@
 "settings.infoHeader" = "Общие";
 "settings.language" = "Язык";
 "settings.version" = "Версия";
+"settings.versionInfo" = "Неизвестно";
+"settings.radiusUnit" = "м";
+"settingVC.settings" = "Настройки";
+
+"addType.list" = "Название списка";
+"addType.product" = "Название продукта";
+
+"shopListVC.yourStores" = "Ваши магазины";
+"shopListVC.add" = "Добавить";
+"shopListVC.choose" = "Выбрать";
+"shopListVC.selectOnTheMap" = "Выбрать на карте";
+"shopListVC.addLocation" = "Добавить текущую локацию";
+"shopListVC.savedPoint" = "Имя сохраненной точки";
+"shopListVC.nameShop" = "Название магазина";
+
+"alerts.refreshTitle" = "Очистка списка";
+"alerts.shareTitle" = "Выберите метод";
+"alerts.refresh" = "Действительно очистить прогресс списка?";
+"alerts.mapType" = "Выберите метод добавления";
+"alerts.saveCoordinate" = "Сохранить выбранную точку?";
+"alerts.share" = "При отправке файла у пользователя должно быть установлено приложение";
+
+"package.pieces" = "Штуки";
+"package.kilograms" = "Килограммы";
+"package.litres" = "Литры";
+"package.package" = "Упаковки";
+"package.jar" = "Банки";
+"package.piecesAbb" = "шт.";
+"package.kilogramsAbb" = "кг.";
+"package.litresAbb" = "л.";
+"package.packageAbb" = "уп.";
+"package.jarAbb" = "банки";
+
+"mapVC.tipView" = "Воспользуйтесь этой кнопкой для сохранения локации магазина";
+"mapVC.mapActionTitle" = "Выбрать на карте";
+"mapVC.locationActionTitle" = "Добавить текущую локацию";
+
+"productList.addProductsFromClipboards" = "Используйте эту кнопку для быстрого добавления продуктов из буфера обмена";
+"productList.preferredStore" = "Вы указали, что данные покупки лучше делать в магазине";
+"productList.clearProgress" = "Очистить прогресс";
+"productList.needToBuy" = "Нужно купить";
+"productList.bought" = "Куплено";
+"productList.deleteList" = "Удалить список?";
+"productList.confirm" = "Подтвердите";
+"productList.deleteEntry" = "Действительно удалить запись?";
+
+"allVC.unit" = "Единица";
+"allVC.delete" = "Удалить";
+"allVC.cancel" = "Отмена";
+"allVC.save" = "Сохранить";

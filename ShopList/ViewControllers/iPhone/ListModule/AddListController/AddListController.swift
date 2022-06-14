@@ -12,10 +12,12 @@ final class AddListController: UIViewController {
     @IBOutlet private weak var countInput: NoActionTextField!
     @IBOutlet private weak var pkgView: UIView!
     @IBOutlet private weak var typeLabel: UILabel!
+    @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet private weak var pkgButton: UIButton!
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var verticalConstraint: NSLayoutConstraint!
     
     var saveAction: VoidBlock?
@@ -35,8 +37,8 @@ final class AddListController: UIViewController {
         countInput.text = "\(count)"
         countInput.delegate = self
         pkgView.isHidden = type == .list
-        typeLabel.text = type.rawValue
-        productInput.placeholder = type.placeholder
+        typeLabel.text = type.localizedValue.localized()
+        productInput.placeholder = type.placeholder.localized()
         mainView.layer.borderColor = UIColor.mainOrange.withAlphaComponent(0.8).cgColor
         
         pkgButton.menu = UIMenu(children: [
@@ -58,6 +60,8 @@ final class AddListController: UIViewController {
         
         pkgButton.showsMenuAsPrimaryAction = true
         pkgButton.changesSelectionAsPrimaryAction = true
+        updateLanguage()
+        subscribeToNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,6 +125,15 @@ final class AddListController: UIViewController {
         }
         NotificationCenter.default.post(name: .listWasImported, object: nil)
         saveAction?()
+    }
+    
+    @objc  func updateLanguage() {
+        self.backButton.setTitle(AppLocalizationKeys.cancel.localized(), for: .normal)
+        self.saveButton.setTitle(AppLocalizationKeys.save.localized(), for: .normal)
+        self.unitLabel.text = AppLocalizationKeys.unit.localized()
+    }
+    func subscribeToNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }
 }
 

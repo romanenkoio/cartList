@@ -19,3 +19,53 @@
 "settings.infoHeader" = "General";
 "settings.language" = "Language";
 "settings.version" = "Version";
+"settings.versionInfo" = "Unknown";
+"settings.radiusUnit" = "m";
+"settingVC.settings" = "Settings";
+
+"addType.list" = "List name";
+"addType.product" = "Product name";
+
+"shopListVC.yourStores" = "Your stores";
+"shopListVC.add" = "Add";
+"shopListVC.choose" = "Choose";
+"shopListVC.selectOnTheMap" = "Select on the map";
+"shopListVC.addLocation" = "Add current location";
+"shopListVC.savedPoint" = "Saved point name";
+"shopListVC.nameShop" = "Name of shop";
+
+"alerts.refreshTitle" = "List clearing";
+"alerts.shareTitle" = "Select method";
+"alerts.refresh" = "Really clear list progress?";
+"alerts.mapType" = "Select add method";
+"alerts.saveCoordinate" = "Save selected point?";
+"alerts.share" = "When sending a file, the user must have the application installed";
+
+"package.pieces" = "Pieces";
+"package.kilograms" = "Kilograms";
+"package.litres" = "Litres";
+"package.package" = "Package";
+"package.jar" = "Jar";
+"package.piecesAbb" = "pcs.";
+"package.kilogramsAbb" = "kg.";
+"package.litresAbb" = "l.";
+"package.packageAbb" = "pack.";
+"package.jarAbb" = "jar";
+
+"mapVC.tipView" = "Use this button to save the store location";
+"mapVC.mapActionTitle" = "Select on the map";
+"mapVC.locationActionTitle" = "Add current location";
+
+"productList.addProductsFromClipboards" = "Use this button to quickly add products from the clipboard";
+"productList.preferredStore" = "You indicated that these purchases are best made in the store";
+"productList.clearProgress" = "Clear Progress";
+"productList.needToBuy" = "Need to buy";
+"productList.bought" = "Bought";
+"productList.deleteList" = "Delete list?";
+"productList.confirm" = "Confirm";
+"productList.deleteEntry" = "Really delete the entry?";
+
+"allVC.unit" = "Unit";
+"allVC.delete" = "Delete";
+"allVC.cancel" = "Cancel";
+"allVC.save" = "Save";

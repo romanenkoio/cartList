@@ -16,11 +16,16 @@ enum SLProductPackage: CaseIterable {
     
     var pkg: String {
         switch self {
-        case .pieces:       return "Штуки"
-        case .kilograms:    return "Килограммы"
-        case .litres:       return "Литры"
-        case .package:      return "Упаковки"
-        case .jar:          return "Банки"
+        case .pieces:
+            return AppLocalizationKeys.pieces.localized()
+        case .kilograms:
+            return AppLocalizationKeys.kilograms.localized()
+        case .litres:
+            return AppLocalizationKeys.litres.localized()
+        case .package:
+            return AppLocalizationKeys.package.localized()
+        case .jar:
+            return AppLocalizationKeys.jar.localized()
         }
     }
     
@@ -33,11 +38,16 @@ enum SLProductPackage: CaseIterable {
     
     var pkgAbb: String {
         switch self {
-        case .pieces:           return "шт."
-        case .kilograms:        return "кг."
-        case .litres:           return "л."
-        case .package:          return "уп."
-        case .jar:              return "банки"
+        case .pieces:
+            return AppLocalizationKeys.piecesAbb.localized()
+        case .kilograms:
+            return AppLocalizationKeys.kilogramsAbb.localized()
+        case .litres:
+            return AppLocalizationKeys.litresAbb.localized()
+        case .package:
+            return AppLocalizationKeys.packageAbb.localized()
+        case .jar:
+            return AppLocalizationKeys.jarAbb.localized()
         }
     }
 }

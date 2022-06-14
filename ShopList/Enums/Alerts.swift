@@ -18,7 +18,7 @@ enum Alerts {
     private var title: String {
         switch self {
         case .refresh:
-            return "Очистка списка"
+            return AppLocalizationKeys.refreshTitle.localized()
         case .information:
             return ""
         case .mapType:
@@ -26,22 +26,22 @@ enum Alerts {
         case .saveCoordinate:
             return ""
         case .share:
-            return "Выберите метод"
+            return AppLocalizationKeys.shareTitle.localized()
         }
     }
     
     private var message: String {
         switch self {
         case .refresh:
-            return "Действительно очистить прогресс списка?"
+            return AppLocalizationKeys.refresh.localized()
         case .information(let text):
             return text
         case .mapType:
-            return "Выберите метод добавления"
+            return AppLocalizationKeys.mapType.localized()
         case .saveCoordinate:
-            return "Сохранить выбранную точку?"
+            return AppLocalizationKeys.saveCoordinate.localized()
         case .share:
-            return "При отправке файла у пользователя должно быть установлено приложение"
+            return AppLocalizationKeys.share.localized()
         }
     }
     

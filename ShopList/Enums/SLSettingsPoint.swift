@@ -25,29 +25,29 @@ enum SLSettingsPoint: CaseIterable {
     var text: String {
         switch self {
         case .useLocationPush:
-            return "Уведомления по локации"
+            return AppLocalizationKeys.useLocationPush.localized()
         case .useTimePush:
-            return "Уведомления по времени"
+            return AppLocalizationKeys.useTimePush.localized()
         case .autoDelete:
-            return "Удалять заполненные списки"
+            return AppLocalizationKeys.autoDelete.localized()
         case .mapPoint:
-            return "Сохранённые магазины: \(RealmManager.read(type: SLRealmCoordinate.self).count)"
+            return "\(AppLocalizationKeys.mapPoint.localized()): \(RealmManager.read(type: SLRealmCoordinate.self).count)"
         case .morningTime:
-            return "Время уведомления: \(DefaultsManager.hours):\(DefaultsManager.minutes < 10 ? "0\(DefaultsManager.minutes)" : "\(DefaultsManager.minutes)")"
+            return "\(AppLocalizationKeys.morningTime.localized()): \(DefaultsManager.hours):\(DefaultsManager.minutes < 10 ? "0\(DefaultsManager.minutes)" : "\(DefaultsManager.minutes)")"
         case .listHeader:
             return AppLocalizationKeys.listHeader.localized()
         case .notificationHeader:
-            return "Настройки уведомлений"
+            return AppLocalizationKeys.notificationHeader.localized()
         case .infoHeader:
-            return "Общие"
+            return AppLocalizationKeys.infoHeader.localized()
         case .version:
-            return "Версия: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Неизвестно")"
+            return "\(AppLocalizationKeys.version.localized()): \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? AppLocalizationKeys.versionInfo.localized())"
         case .separateList:
-            return "Разделять отмеченные продукты"
+            return AppLocalizationKeys.separateList.localized()
         case .raduis:
-            return "Радиус уведомлений: \(DefaultsManager.baseRadius)м"
+            return "\(AppLocalizationKeys.raduis.localized()): \(DefaultsManager.baseRadius)\(AppLocalizationKeys.radiusUnit.localized())"
         case .language:
-            return "Язык: \(Languages.getFullLanguageName(code: DefaultsManager.userLanguage))"
+            return "\(AppLocalizationKeys.language.localized()): \(Languages.getFullLanguageName(code: DefaultsManager.userLanguage))"
         }
     }
     

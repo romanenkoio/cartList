@@ -18,7 +18,9 @@
                 <outlet property="pkgButton" destination="0cZ-Ma-S66" id="L7Q-oF-hg5"/>
                 <outlet property="pkgView" destination="GRa-sm-woM" id="y9L-qL-8sR"/>
                 <outlet property="productInput" destination="kmN-SN-mpd" id="Fyd-HV-SJm"/>
+                <outlet property="saveButton" destination="Y9h-0O-L1x" id="mtY-WL-44R"/>
                 <outlet property="typeLabel" destination="6cS-vT-Lii" id="h06-Bj-gpp"/>
+                <outlet property="unitLabel" destination="gQD-ld-ilo" id="hRX-Mq-GJt"/>
                 <outlet property="verticalConstraint" destination="Mkl-Eu-pMw" id="KRT-VK-Aar"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

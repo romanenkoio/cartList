@@ -28,7 +28,6 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Ваши магазины"
         mapButton.layer.borderColor = UIColor.mainOrange.cgColor
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
@@ -43,6 +42,8 @@ class MapViewController: UIViewController {
         }
         savedPlaces = RealmManager.read(type: SLRealmCoordinate.self)
         showTips()
+        updateLanguage()
+        subscribeToNotification()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,7 +60,7 @@ class MapViewController: UIViewController {
 
                 var preferences = EasyTipView.globalPreferences
                 preferences.drawing.backgroundColor = .white
-                let tipView = EasyTipView(text: "Воспользуйтесь этой кнопкой для сохранения локации магазина",
+                let tipView = EasyTipView(text: AppLocalizationKeys.tipView.localized(),
                                           preferences: preferences,
                                           delegate: nil)
               
@@ -125,20 +126,27 @@ class MapViewController: UIViewController {
     @IBAction func addPlaceAction(_ sender: Any) {
         let alert = Alerts.mapType.controller
         
-        let mapAction = UIAlertAction(title: "Выбрать на карте", style: .default, handler: { [weak self] _ in
+        let mapAction = UIAlertAction(title: AppLocalizationKeys.mapActionTitle.localized(), style: .default, handler: { [weak self] _ in
             self?.isSelectingEnabled = true
         })
         mapAction.setValue(UIColor.mainOrange, forKeyPath: "titleTextColor")
         alert.addAction(mapAction)
         
-        let locationAction = UIAlertAction(title: "Добавить текущую локацию", style: .default, handler: { _ in
+        let locationAction = UIAlertAction(title: AppLocalizationKeys.locationActionTitle.localized(), style: .default, handler: { _ in
             self.locationManager.startUpdatingLocation()
         })
         locationAction.setValue(UIColor.mainOrange, forKeyPath: "titleTextColor")
         alert.addAction(locationAction)
         
-        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel))
         self.present(alert, animated: true)
+    }
+    
+    @objc  func updateLanguage() {
+        self.title = AppLocalizationKeys.settings.localized()
+    }
+    func subscribeToNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }
 }
 
@@ -148,22 +156,22 @@ extension MapViewController: CLLocationManagerDelegate {
             return
         }
         locationManager.stopUpdatingLocation()
-        let alert = UIAlertController(title: "Имя сохранённой точки", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: AppLocalizationKeys.savedPoint.localized(), message: "", preferredStyle: .alert)
 
         alert.addTextField { (textField) in
-            textField.placeholder = "Название магазина"
+            textField.placeholder = AppLocalizationKeys.nameShop.localized()
             textField.autocorrectionType = .yes
             textField.autocapitalizationType = .sentences
         }
       
-        alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: AppLocalizationKeys.save.localized(), style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
             guard let text = textField?.text else { return }
             let coord = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.locationBlock?(coord, text)
         }))
 
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
 
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
@@ -177,9 +185,9 @@ extension MapViewController: GMSMapViewDelegate {
               let shop = marker.shop
         else { return false }
         
-        let alert = Alerts.information(text: "Удалить \(shop.marketName)?").controller
-        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { _ in
+        let alert = Alerts.information(text: "\(AppLocalizationKeys.delete.localized()) \(shop.marketName)?").controller
+        alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel))
+        alert.addAction(UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive, handler: { _ in
             
             if let list = RealmManager.read(type: SLRealmList.self).filter({ $0.linkedShopID == shop.id }).first {
                 RealmManager.beginWrite()
@@ -197,22 +205,22 @@ extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         if isSelectingEnabled {
-            let alert = UIAlertController(title: "Имя сохранённой точки", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: AppLocalizationKeys.savedPoint.localized(), message: "", preferredStyle: .alert)
 
             alert.addTextField { (textField) in
-                textField.placeholder = "Название магазина"
+                textField.placeholder = AppLocalizationKeys.nameShop.localized()
                 textField.autocorrectionType = .yes
                 textField.autocapitalizationType = .sentences
             }
           
-            alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { [weak alert] (_) in
+            alert.addAction(UIAlertAction(title: AppLocalizationKeys.save.localized(), style: .default, handler: { [weak alert] (_) in
                 let textField = alert?.textFields![0]
                 guard let text = textField?.text else { return }
                 self.isSelectingEnabled = false
                 self.locationBlock?(coordinate, text)
             }))
 
-            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+            let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
     
             alert.addAction(cancelAction)
             self.present(alert, animated: true)

@@ -11,8 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimeSelectPopupController" customModule="ShopList" customModuleProvider="target">
             <connections>
+                <outlet property="cancelAction" destination="NlC-XQ-7iP" id="vWl-9s-sLY"/>
                 <outlet property="datePicker" destination="3Sp-aT-fQ9" id="nhp-cV-ZPI"/>
                 <outlet property="mainView" destination="qff-0m-3HL" id="p9x-Nx-0JD"/>
+                <outlet property="saveAction" destination="JNm-zZ-D2d" id="N11-2t-cEB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
