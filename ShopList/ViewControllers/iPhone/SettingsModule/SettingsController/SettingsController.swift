@@ -59,7 +59,7 @@ class SettingsController: UIViewController {
             _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
                 guard let self = self else { return }
 
-                let tipView = EasyTipView(text: "После заполнения списка Вам будет предложено его удалить",
+                let tipView = EasyTipView(text: AppLocalizationKeys.deleteCompletedList.localized(),
                                           preferences: EasyTipView.globalPreferences,
                                           delegate: nil)
                 guard let firstCell = self.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) else { return }
@@ -85,7 +85,7 @@ class SettingsController: UIViewController {
         self.view.addSubview(self.radiusPicker)
         toolBar = UIToolbar(frame: CGRect.init(x: 0.0, y: bottomPoint, width: UIScreen.main.bounds.size.width, height: 50))
         toolBar.backgroundColor = .mainOrange
-        let button = UIBarButtonItem(title: "Сохранить", style: .done, target: self, action: #selector(onDoneButtonTapped))
+        let button = UIBarButtonItem(title: AppLocalizationKeys.save.localized(), style: .done, target: self, action: #selector(onDoneButtonTapped))
         button.tintColor = .black
         toolBar.items = [button]
         self.view.addSubview(toolBar)
@@ -95,6 +95,7 @@ class SettingsController: UIViewController {
         self.title = AppLocalizationKeys.settings.localized()
         tableView.reloadData()
     }
+    
     func subscribeToNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }
@@ -166,16 +167,16 @@ extension SettingsController: UITableViewDelegate {
         case .raduis:
             showPicker()
         case .language:
-            let alert = UIAlertController(title: "", message: "Выберите язык", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "", message: AppLocalizationKeys.chooseLanguage.localized(), preferredStyle: .actionSheet)
             
             for lang in languages {
                 let action = UIAlertAction(title: lang.rawValue, style: .default) { _ in
-                    print("Установлен язык: \(lang.rawValue)")
+                    print("\(AppLocalizationKeys.setLanguage.localized()): \(lang.rawValue)")
                     Bundle.setLanguage(lang: lang.short)
                 }
                 alert.addAction(action)
             }
-            alert.addAction(UIAlertAction(title: "Назад", style: .cancel))
+            alert.addAction(UIAlertAction(title: AppLocalizationKeys.back.localized(), style: .cancel))
             self.present(alert, animated: true)
             default: break
         }

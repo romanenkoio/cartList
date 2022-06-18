@@ -30,7 +30,6 @@ class ShopListController: UIViewController {
         tableView.register(UINib(nibName: ShopCell.cellID, bundle: nil), forCellReuseIdentifier: ShopCell.cellID)
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        addButton.setTitle(isAdding ? AppLocalizationKeys.add.localized() : AppLocalizationKeys.choose.localized(), for: .normal)
         updateLanguage()
         subscribeToNotification()
     }
@@ -77,8 +76,8 @@ class ShopListController: UIViewController {
     }
     
     @objc  func updateLanguage() {
-        self.title = AppLocalizationKeys.yourStores.localized()
-        self.addButton.setTitle(isAdding ? AppLocalizationKeys.add.localized() : AppLocalizationKeys.choose.localized(), for: .normal)
+        self.title = AppLocalizationKeys.shops.localized()
+        addButton.setTitle(isAdding ? AppLocalizationKeys.add.localized() : AppLocalizationKeys.choose.localized(), for: .normal)
     }
     
     func subscribeToNotification() {

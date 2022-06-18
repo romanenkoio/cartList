@@ -22,6 +22,10 @@
 "settings.versionInfo" = "Unknown";
 "settings.radiusUnit" = "m";
 "settingVC.settings" = "Settings";
+"settingsVC.deleteCompletedList" = "After completing the list, you will be prompted to delete it";
+"settingsVC.chooseLanguage" = "Choose language";
+"settingsVC.setLanguage" = "Language set to";
+"settingsVC.back" = "Back";
 
 "addType.list" = "List name";
 "addType.product" = "Product name";
@@ -64,8 +68,56 @@
 "productList.deleteList" = "Delete list?";
 "productList.confirm" = "Confirm";
 "productList.deleteEntry" = "Really delete the entry?";
+"productList.emptyLabel" = "Your product list is empty, use the button below to add";
+"productList.addProduct" = "Add product";
 
 "allVC.unit" = "Unit";
 "allVC.delete" = "Delete";
 "allVC.cancel" = "Cancel";
 "allVC.save" = "Save";
+
+"tabBarVC.myLists" = "My lists";
+"tabBarVC.shops" = "Shops";
+
+"mainListVC.pinchList" = "Pinch your list for more action";
+"mainListVC.text" = "Text";
+"mainListVC.seeMyList" = "See my list";
+"mainListVC.file" = "File";
+"mainListVC.pin" = "Pin";
+"mainListVC.unpin" = "Unpin";
+"mainListVC.specifyStore" = "Specify store";
+"mainListVC.untieStore" = "Untie store";
+"mainListVC.emptyLists" = "You don't have any list.  Create your first list and don't forget important purchases!";
+"mainListVC.createList" = "Create a new list";
+
+"importManager.importLists" = "Import lists?";
+"importManager.yes" = "Yes";
+
+"notification.timeToCheck" = "Time to check your lists!";
+"notification.youBought" = "Have you bought everything you need?";
+"notification.youNear" = "Are you near the";
+"notification.checkTheLists" = "Want to check the lists?";
+
+"lasagna" = "Lasagna";
+"tortilla" = "Tortilla";
+"braisedCabbage" = "Braised Cabbage";
+"bakedBeans" = "Baked Beans";
+"pizza" = "Pizza";
+"ragout" = "Ragout";
+"vegetableSalad" = "Vegetable Salad";
+"greekSalad" = "Greek Salad";
+"caesarSalad" = "Caesar Salad";
+"mashedPotatoes" = "Mashed potatoes";
+
+"tomatoes" = "Tomatoes";
+"peppers" = "Peppers";
+"potatoes" = "Potatoes";
+"fishFillet" = "Fish fillet";
+"beans" = "Beans";
+"onion" = "Onion";
+"chickenFillet" = "Chicken fillet";
+"bread" = "Bread";
+"pork" = "Pork";
+"rice" = "Rice";
+"buckwheat" = "Buckwheat";
+"bulgur" = "Bulgur";

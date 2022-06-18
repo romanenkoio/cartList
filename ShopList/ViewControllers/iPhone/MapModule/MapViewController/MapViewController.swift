@@ -28,6 +28,7 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = AppLocalizationKeys.yourStores.localized()
         mapButton.layer.borderColor = UIColor.mainOrange.cgColor
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
@@ -42,8 +43,7 @@ class MapViewController: UIViewController {
         }
         savedPlaces = RealmManager.read(type: SLRealmCoordinate.self)
         showTips()
-        updateLanguage()
-        subscribeToNotification()
+        NotificationCenter.default.post(name: .languageChange, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -140,13 +140,6 @@ class MapViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel))
         self.present(alert, animated: true)
-    }
-    
-    @objc  func updateLanguage() {
-        self.title = AppLocalizationKeys.settings.localized()
-    }
-    func subscribeToNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }
 }
 

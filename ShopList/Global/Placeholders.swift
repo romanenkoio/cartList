@@ -7,13 +7,7 @@
 
 import Foundation
 
-let listPlaceholders = ["Лазанья", "Тортилья", "Тушеная капуста",
-                           "Запеченая фасоль", "Пицца", "Рагу",
-                           "Овошной салат",  "Греческий салат", "Салат цезарь",
-                           "Картофельное пюре"]
+let listPlaceholders = AppLocalizationKeys.listPlaceholders
 
-let productPlaceholders = ["Томаты", "Перец", "Картофель",
-                            "Рыбное филе", "Фасоль", "Лук",
-                            "Куриное филе", "Хлеб", "Свинина",
-                            "Рис", "Гречка", "Булгур"]
+let productPlaceholders = AppLocalizationKeys.productPlaceholders
 

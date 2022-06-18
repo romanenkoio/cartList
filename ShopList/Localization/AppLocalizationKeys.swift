@@ -24,6 +24,10 @@ class AppLocalizationKeys {
     static let versionInfo = "settings.versionInfo"
     static let radiusUnit = "settings.radiusUnit"
     static let settings = "settingVC.settings"
+    static let deleteCompletedList = "settingsVC.deleteCompletedList"
+    static let chooseLanguage = "settingsVC.chooseLanguage"
+    static let setLanguage = "settingsVC.setLanguage"
+    static let back = "settingsVC.back"
     
     static let list = "addType.list"
     static let product = "addType.product"
@@ -66,10 +70,58 @@ class AppLocalizationKeys {
     static let deleteList = "productList.deleteList"
     static let confirm = "productList.confirm"
     static let deleteEntry = "productList.deleteEntry"
+    static let emptyLabel = "productList.emptyLabel"
+    static let addProduct = "productList.addProduct"
 
     static let unit = "allVC.unit"
     static let delete = "allVC.delete"
     static let cancel = "allVC.cancel"
     static let save = "allVC.save"
+    
+    static let myLists = "tabBarVC.myLists"
+    static let shops = "tabBarVC.shops"
+    
+    static let pinchList = "mainListVC.pinchList"
+    static let text = "mainListVC.text"
+    static let seeMyList = "mainListVC.seeMyList"
+    static let file = "mainListVC.file"
+    static let pin = "mainListVC.pin"
+    static let unpin = "mainListVC.unpin"
+    static let specifyStore = "mainListVC.specifyStore"
+    static let untieStore = "mainListVC.untieStore"
+    static let emptyLists = "mainListVC.emptyLists"
+    static let createList = "mainListVC.createList"
+
+    static let importLists = "importManager.importLists"
+    static let yes = "importManager.yes"
+    
+    static let timeToCheck = "notification.timeToCheck"
+    static let youBought = "notification.youBought"
+    static let youNear = "notification.youNear"
+    static let checkTheLists = "notification.checkTheLists"
+
+    static let listPlaceholders = [NSLocalizedString("lasagna", comment: ""),
+                                   NSLocalizedString("tortilla", comment: ""),
+                                   NSLocalizedString("braisedCabbage", comment: ""),
+                                   NSLocalizedString("bakedBeans", comment: ""),
+                                   NSLocalizedString("pizza", comment: ""),
+                                   NSLocalizedString("ragout", comment: ""),
+                                   NSLocalizedString("vegetableSalad", comment: ""),
+                                   NSLocalizedString("greekSalad", comment: ""),
+                                   NSLocalizedString("caesarSalad", comment: ""),
+                                   NSLocalizedString("mashedPotatoes", comment: "")]
+    
+    static let productPlaceholders = [NSLocalizedString("tomatoes", comment: ""),
+                                      NSLocalizedString("peppers", comment: ""),
+                                      NSLocalizedString("potatoes", comment: ""),
+                                      NSLocalizedString("fishFillet", comment: ""),
+                                      NSLocalizedString("beans", comment: ""),
+                                      NSLocalizedString("onion", comment: ""),
+                                      NSLocalizedString("chickenFillet", comment: ""),
+                                      NSLocalizedString("bread", comment: ""),
+                                      NSLocalizedString("pork", comment: ""),
+                                      NSLocalizedString("rice", comment: ""),
+                                      NSLocalizedString("buckwheat", comment: ""),
+                                      NSLocalizedString("bulgur", comment: "")]
 }
 

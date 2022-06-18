@@ -20,6 +20,10 @@
 "settings.versionInfo" = "Неизвестно";
 "settings.radiusUnit" = "м";
 "settingVC.settings" = "Настройки";
+"settingsVC.deleteCompletedList" = "После заполнения списка Вам будет предложено его удалить";
+"settingsVC.chooseLanguage" = "Выберите язык";
+"settingsVC.setLanguage" = "Установлен язык";
+"settingsVC.back" = "Назад";
 
 "addType.list" = "Название списка";
 "addType.product" = "Название продукта";
@@ -62,8 +66,56 @@
 "productList.deleteList" = "Удалить список?";
 "productList.confirm" = "Подтвердите";
 "productList.deleteEntry" = "Действительно удалить запись?";
+"productList.emptyLabel" = "Ваш список товаров пуст, используйте кнопку ниже для добавления";
+"productList.addProduct" = "Добавить продукт";
 
 "allVC.unit" = "Единица";
 "allVC.delete" = "Удалить";
 "allVC.cancel" = "Отмена";
 "allVC.save" = "Сохранить";
+
+"tabBarVC.myLists" = "Мои списки";
+"tabBarVC.shops" = "Магазины";
+
+"mainListVC.pinchList" = "Зажмите ваш список для дополнительных действий";
+"mainListVC.text" = "Текст";
+"mainListVC.seeMyList" = "Посмотри мой список";
+"mainListVC.file" = "Файл";
+"mainListVC.pin" = "Закрепить";
+"mainListVC.unpin" = "Открепить";
+"mainListVC.specifyStore" = "Указать магазин";
+"mainListVC.untieStore" = "Отвязать магазин";
+"mainListVC.emptyLists" = "У вас нет ни одного списка. Создайте первый список и не забывайте про важные покупки!";
+"mainListVC.createList" = "Создать новый список";
+
+"importManager.importLists" = "Импортировать список?";
+"importManager.yes" = "Да";
+
+"notification.timeToCheck" = "Время проверить ваши списки!";
+"notification.youBought" = "Вы купили всё нужное?";
+"notification.youNear" = "Вы рядом с";
+"notification.checkTheLists" = "Не хотите проверить списки?";
+
+"lasagna" = "Лазанья";
+"tortilla" = "Тортилья";
+"braisedCabbage" = "Тушеная капуста";
+"bakedBeans" = "Запеченая фасоль";
+"pizza" = "Пицца";
+"ragout" = "Рагу";
+"vegetableSalad" = "Овошной салат";
+"greekSalad" = "Греческий салат";
+"caesarSalad" = "Салат цезарь";
+"mashedPotatoes" = "Картофельное пюре";
+
+"tomatoes" = "Томаты";
+"peppers" = "Перец";
+"potatoes" = "Картофель";
+"fishFillet" = "Рыбное филе";
+"beans" = "Фасоль";
+"onion" = "Лук";
+"chickenFillet" = "Куриное филе";
+"bread" = "Хлеб";
+"pork" = "Свинина";
+"rice" = "Рис";
+"buckwheat" = "Гречка";
+"bulgur" = "Булгур";

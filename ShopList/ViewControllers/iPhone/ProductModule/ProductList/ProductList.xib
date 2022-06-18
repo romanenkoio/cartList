@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductList" customModule="ShopList" customModuleProvider="target">
             <connections>
+                <outlet property="addProductButton" destination="bhm-NR-HkF" id="GE4-YN-UbQ"/>
                 <outlet property="animationView" destination="SaB-HT-HJO" id="3pc-mD-pSs"/>
                 <outlet property="emptyLabel" destination="haS-9O-yn8" id="bke-OK-1iY"/>
                 <outlet property="mainShopContainer" destination="Pik-SZ-eXt" id="QoX-oI-b1e"/>

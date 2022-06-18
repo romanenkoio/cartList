@@ -51,7 +51,7 @@ final class NotificationManager {
         removeNotifications(type: .byTime)
         let componetns = DateComponents(calendar: Calendar.current, timeZone: TimeZone.current, hour: DefaultsManager.hours, minute: DefaultsManager.minutes)
         let trigger = UNCalendarNotificationTrigger(dateMatching: componetns, repeats: true)
-        scheduleNotification(title: "Время проверить ваши списки!", subtitle: "Вы купили всё нужное?", trigger: trigger, type: .byTime)
+        scheduleNotification(title: AppLocalizationKeys.timeToCheck.localized(), subtitle: AppLocalizationKeys.youBought.localized(), trigger: trigger, type: .byTime)
         getNotifications()
     }
     
@@ -71,7 +71,7 @@ final class NotificationManager {
             region.notifyOnEntry = true
             let trigger = UNLocationNotificationTrigger(region: region,
                                                         repeats: true)
-            scheduleNotification(title: "Вы рядом с \(item.marketName)", subtitle: "Не хотите проверить списки?", trigger: trigger, type: .location)
+            scheduleNotification(title: "\(AppLocalizationKeys.youNear.localized()) \(item.marketName)", subtitle: AppLocalizationKeys.checkTheLists.localized(), trigger: trigger, type: .location)
         }
     }
     

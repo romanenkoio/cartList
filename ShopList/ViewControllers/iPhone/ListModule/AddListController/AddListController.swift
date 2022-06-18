@@ -132,6 +132,7 @@ final class AddListController: UIViewController {
         self.saveButton.setTitle(AppLocalizationKeys.save.localized(), for: .normal)
         self.unitLabel.text = AppLocalizationKeys.unit.localized()
     }
+    
     func subscribeToNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainListController" customModule="ShopList" customModuleProvider="target">
             <connections>
                 <outlet property="animationView" destination="RTf-fp-Y5d" id="LTJ-Py-Ea2"/>
+                <outlet property="createListButton" destination="9O5-20-tsS" id="AQl-Ce-LkZ"/>
                 <outlet property="emptyLabel" destination="nsf-fQ-oBk" id="mzy-JZ-Wz7"/>
                 <outlet property="tableView" destination="4DA-7q-cxa" id="m9D-Ke-3B1"/>
                 <outlet property="testButton" destination="9O5-20-tsS" id="k84-Aa-Ton"/>

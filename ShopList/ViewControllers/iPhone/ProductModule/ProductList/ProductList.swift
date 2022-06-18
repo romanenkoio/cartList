@@ -19,6 +19,7 @@ class ProductList: UIViewController {
     @IBOutlet weak var mainShopContainer: UIView!
     @IBOutlet weak var subContainer: UIView!
     @IBOutlet weak var shopLabel: UILabel!
+    @IBOutlet weak var addProductButton: UIButton!
     
     private let imagePicker = UIImagePickerController()
 
@@ -52,10 +53,11 @@ class ProductList: UIViewController {
         tableView.delegate = self
         tableView.registerCellsWith([ProductCell.self])
         showTips()
+        updateLanguage()
+        subscribeToNotification()
         if #available(iOS 15.0, *){
             self.tableView.sectionHeaderTopPadding = 0.0
         }
-        NotificationCenter.default.post(name: .languageChange, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -176,12 +178,14 @@ class ProductList: UIViewController {
         self.present(alert, animated: true)
     }
     
-//    @objc  func updateLanguage() {
-//        self.title = AppLocalizationKeys.settings.localized()
-//        tableView.reloadData()
-//    }
-
-
+    @objc  func updateLanguage() {
+        emptyLabel.text = AppLocalizationKeys.emptyLabel.localized()
+        addProductButton.setTitle(AppLocalizationKeys.addProduct.localized(), for: .normal)
+    }
+    
+    func subscribeToNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
+    }
 }
 
 extension ProductList: UITableViewDataSource {

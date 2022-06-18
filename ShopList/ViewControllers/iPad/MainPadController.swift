@@ -32,6 +32,7 @@ class MainPadController: UIViewController {
         listTableView.delegate = self
         listTableView.registerCellsWith([MainListCell.self])
         productsListTableView.registerCellsWith([ProductCell.self])
+        NotificationCenter.default.post(name: .languageChange, object: nil)
     }
     
     private func updateCellAt(_ indexPath: IndexPath) {
@@ -77,13 +78,13 @@ extension MainPadController: UITableViewDataSource {
                 self.updateCellAt(indexPath)
                 if self.products.count == self.products.filter({ $0.checked }).count, DefaultsManager.autoDelete {
                     
-                    let alert = Alerts.information(text: "Удалить список?").controller
-                    let okAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+                    let alert = Alerts.information(text: AppLocalizationKeys.deleteList.localized()).controller
+                    let okAction = UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive) { _ in
                         RealmManager.removeList(selectedList)
                         self.navigationController?.popViewController(animated: true)
                     }
                     
-                    let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+                    let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
                     alert.addAction(cancelAction)
                     alert.addAction(okAction)
                     self.present(alert, animated: true)

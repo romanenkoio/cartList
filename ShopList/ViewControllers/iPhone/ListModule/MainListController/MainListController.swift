@@ -14,6 +14,7 @@ class MainListController: UIViewController {
     @IBOutlet weak var testButton: UIButton!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var createListButton: UIButton!
     
     var tipViews = [EasyTipView]()
     private var lists = [SLRealmList]() {
@@ -24,11 +25,11 @@ class MainListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Мои списки"
         tableView.registerCellsWith([MainListCell.self])
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        updateLanguage()
+        subscribeToNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +64,7 @@ class MainListController: UIViewController {
             _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
                 guard let self = self else { return }
 
-                let tipView = EasyTipView(text: "Зажмите ваш список для дополнительных действий",
+                let tipView = EasyTipView(text: AppLocalizationKeys.pinchList.localized(),
                                           preferences: EasyTipView.globalPreferences,
                                           delegate: nil)
                 guard let firstCell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) else { return }
@@ -103,8 +104,8 @@ class MainListController: UIViewController {
     private func shareList(list: SLRealmList) {
         let alert = Alerts.share.controller
         
-        let asText = UIAlertAction(title: "Текст", style: .default) { [weak self] _ in
-            var text = "Посмотри мой список \(list.listName)\n\n"
+        let asText = UIAlertAction(title: AppLocalizationKeys.text.localized(), style: .default) { [weak self] _ in
+            var text = "\(AppLocalizationKeys.seeMyList.localized()) \(list.listName)\n\n"
             
             let products = RealmManager.read(type: SLRealmProduct.self).filter({ $0.ownerListID == list.id})
             for product in products {
@@ -118,17 +119,27 @@ class MainListController: UIViewController {
             self?.present(activityViewController, animated: true, completion: nil)
         }
         
-        let asFile = UIAlertAction(title: "Файл", style: .default) { [weak self] _ in
+        let asFile = UIAlertAction(title: AppLocalizationKeys.file.localized(), style: .default) { [weak self] _ in
             guard let self = self else { return }
             SLShareManager.shareList(list, from: self)
         }
         
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancel = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
         
         alert.addAction(asText)
         alert.addAction(asFile)
         alert.addAction(cancel)
         self.present(alert, animated: true)
+    }
+    
+    @objc  func updateLanguage() {
+        emptyLabel.text = AppLocalizationKeys.checkTheLists.localized()
+        createListButton.setTitle(AppLocalizationKeys.createList.localized(), for: .normal)
+        title = AppLocalizationKeys.myLists.localized()
+    }
+    
+    func subscribeToNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }
 }
 
@@ -155,7 +166,7 @@ extension MainListController: UITableViewDelegate {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {  [weak self] _ in
             guard let self = self else { return nil }
             
-            let pin = UIAction(title: "Закрепить", image: UIImage(systemName: "pin")) { [weak self] _ in
+            let pin = UIAction(title: AppLocalizationKeys.pin.localized(), image: UIImage(systemName: "pin")) { [weak self] _ in
                 guard let self = self else { return }
                 RealmManager.beginWrite()
                 self.lists[indexPath.row].isPinned = true
@@ -163,7 +174,7 @@ extension MainListController: UITableViewDelegate {
                 self.readData()
             }
             
-            let unPin = UIAction(title: "Открепить", image: UIImage(systemName: "pin.slash")) { [weak self] _ in
+            let unPin = UIAction(title: AppLocalizationKeys.unpin.localized(), image: UIImage(systemName: "pin.slash")) { [weak self] _ in
                 guard let self = self else { return }
                 RealmManager.beginWrite()
                 self.lists[indexPath.row].isPinned = false
@@ -171,25 +182,25 @@ extension MainListController: UITableViewDelegate {
                 self.readData()
             }
             
-            let share = UIAction(title: "Поделиться", image: UIImage(systemName: "arrowshape.turn.up.right")) { [weak self] _ in
+            let share = UIAction(title: AppLocalizationKeys.share.localized(), image: UIImage(systemName: "arrowshape.turn.up.right")) { [weak self] _ in
                 guard let self = self else { return }
                 self.shareList(list: self.lists[indexPath.row])
             }
             
-            let delete = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: UIMenuElement.Attributes.destructive) { _ in
-                let alert = UIAlertController(title: "Подтвердите", message: "Действительно удалить запись?", preferredStyle: .alert)
+            let delete = UIAction(title: AppLocalizationKeys.delete.localized(), image: UIImage(systemName: "trash"), attributes: UIMenuElement.Attributes.destructive) { _ in
+                let alert = UIAlertController(title: AppLocalizationKeys.confirm.localized(), message: AppLocalizationKeys.deleteEntry.localized(), preferredStyle: .alert)
                 
-                alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { _ in
+                alert.addAction(UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive, handler: { _ in
                     RealmManager.removeList(self.lists[indexPath.row])
                     self.readData()
                 }))
                 
-                alert.addAction(UIAlertAction(title: "Отмена", style: .default))
+                alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .default))
                 
                 self.present(alert, animated: true)
             }
             
-            let linkShop = UIAction(title: self.lists[indexPath.row].linkedShopID == 0 ? "Указать магазин" : "Отвязать магазин", image: UIImage(systemName: "mappin.circle")) { [weak self] _ in
+            let linkShop = UIAction(title: self.lists[indexPath.row].linkedShopID == 0 ? AppLocalizationKeys.specifyStore.localized() : AppLocalizationKeys.untieStore.localized(), image: UIImage(systemName: "mappin.circle")) { [weak self] _ in
                 
                 if self?.lists[indexPath.row].linkedShopID != 0 {
                     RealmManager.beginWrite()

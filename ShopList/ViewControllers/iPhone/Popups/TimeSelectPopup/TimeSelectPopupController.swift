@@ -27,6 +27,7 @@ class TimeSelectPopupController: UIViewController {
         self.saveAction.setTitle(AppLocalizationKeys.save.localized(), for: .normal)
         self.cancelAction.setTitle(AppLocalizationKeys.cancel.localized(), for: .normal)
     }
+    
     func subscribeToNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }

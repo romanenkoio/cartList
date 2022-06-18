@@ -10,9 +10,9 @@ import UIKit
 
 class ImportManager {
     class func importList(fileURL: URL) {
-        let alert = Alerts.information(text: "Импортировать список?").controller
+        let alert = Alerts.information(text: AppLocalizationKeys.importLists.localized()).controller
         
-        let okAction = UIAlertAction(title: "Да", style: .default) { _ in
+        let okAction = UIAlertAction(title: AppLocalizationKeys.yes.localized(), style: .default) { _ in
             guard let data = try? Data(contentsOf: fileURL) else { return }
             
             let textData = String(decoding: data, as: UTF8.self)
@@ -32,7 +32,7 @@ class ImportManager {
             NotificationCenter.default.post(name: .listWasImported, object: nil)
         }
         
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancel = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
         alert.addAction(cancel)
         alert.addAction(okAction)
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.currentViewController?.present(alert, animated: true)
