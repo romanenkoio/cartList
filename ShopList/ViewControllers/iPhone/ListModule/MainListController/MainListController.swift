@@ -35,7 +35,6 @@ class MainListController: UIViewController {
         bannerView.delegate = self
         bannerView.rootViewController = self
         bannerView.adUnitID = "ca-app-pub-4489210776569699/3621152755"
-        bannerView.load(GADRequest())
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -64,6 +63,7 @@ class MainListController: UIViewController {
         readData()
         playAnimation()
         showTips()
+        bannerView.load(GADRequest())
         
         NotificationCenter.default.addObserver(self, selector: #selector(readData), name: .listWasImported, object: nil)
     }
