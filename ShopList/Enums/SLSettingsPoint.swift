@@ -13,9 +13,9 @@ enum SLSettingsPoint: CaseIterable {
     case separateList
     case autoDelete
     case notificationHeader
-    case useLocationPush
-    case raduis
-    case mapPoint
+//    case useLocationPush
+//    case raduis
+//    case mapPoint
     case useTimePush
     case morningTime
     case infoHeader
@@ -24,14 +24,14 @@ enum SLSettingsPoint: CaseIterable {
     
     var text: String {
         switch self {
-        case .useLocationPush:
-            return AppLocalizationKeys.useLocationPush.localized()
+//        case .useLocationPush:
+//            return AppLocalizationKeys.useLocationPush.localized()
         case .useTimePush:
             return AppLocalizationKeys.useTimePush.localized()
         case .autoDelete:
             return AppLocalizationKeys.autoDelete.localized()
-        case .mapPoint:
-            return "\(AppLocalizationKeys.mapPoint.localized()): \(RealmManager.read(type: SLRealmCoordinate.self).count)"
+//        case .mapPoint:
+//            return "\(AppLocalizationKeys.mapPoint.localized()): \(RealmManager.read(type: SLRealmCoordinate.self).count)"
         case .morningTime:
             return "\(AppLocalizationKeys.morningTime.localized()): \(DefaultsManager.hours):\(DefaultsManager.minutes < 10 ? "0\(DefaultsManager.minutes)" : "\(DefaultsManager.minutes)")"
         case .listHeader:
@@ -44,8 +44,8 @@ enum SLSettingsPoint: CaseIterable {
             return "\(AppLocalizationKeys.version.localized()): \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? AppLocalizationKeys.versionInfo.localized())"
         case .separateList:
             return AppLocalizationKeys.separateList.localized()
-        case .raduis:
-            return "\(AppLocalizationKeys.raduis.localized()): \(DefaultsManager.baseRadius)\(AppLocalizationKeys.radiusUnit.localized())"
+//        case .raduis:
+//            return "\(AppLocalizationKeys.raduis.localized()): \(DefaultsManager.baseRadius)\(AppLocalizationKeys.radiusUnit.localized())"
         case .language:
             return "\(AppLocalizationKeys.language.localized()): \(Languages.getFullLanguageName(code: DefaultsManager.userLanguage))"
         }
@@ -65,7 +65,7 @@ enum SLSettingsPoint: CaseIterable {
     
     var switcherHidden: Bool {
         switch self {
-        case .useLocationPush, .useTimePush, .autoDelete, .separateList:
+        case .useTimePush, .autoDelete, .separateList:
             return false
         default:
             return true
@@ -85,9 +85,9 @@ enum SLSettingsPoint: CaseIterable {
         switch self {
         case .autoDelete:
             return DefaultsManager.autoDelete
-        case .useLocationPush:
-            return DefaultsManager.notificationByLocation
-        case .mapPoint, .morningTime, .listHeader, .notificationHeader, .infoHeader, .version, .raduis, .language:
+//        case .useLocationPush:
+//            return DefaultsManager.notificationByLocation
+        case .morningTime, .listHeader, .notificationHeader, .infoHeader, .version, .language:
             return false
         case .useTimePush:
             return DefaultsManager.timeNotification
@@ -98,18 +98,18 @@ enum SLSettingsPoint: CaseIterable {
     
     var indicator: UITableViewCell.AccessoryType {
         switch self {
-        case .autoDelete, .useLocationPush, .useTimePush, .listHeader, .notificationHeader, .infoHeader, .version, .separateList:
+        case .autoDelete, .useTimePush, .listHeader, .notificationHeader, .infoHeader, .version, .separateList:
             return .none
         
-        case .mapPoint, .morningTime, .raduis, .language:
+        case .morningTime, .language:
             return .disclosureIndicator
         }
     }
     
     var isEnabled: Bool {
         switch self {
-        case .mapPoint, .raduis:
-            return DefaultsManager.notificationByLocation
+//        case .mapPoint:
+//            return DefaultsManager.notificationByLocation
         case .morningTime:
             return DefaultsManager.timeNotification
         default:

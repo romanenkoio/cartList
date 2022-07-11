@@ -41,7 +41,8 @@ final class DefaultsManager {
     class var notificationByLocation: Bool {
         get {
             let notificationByLocation = UserDefaults.standard.value(forKey: #function) as? Bool
-            return notificationByLocation ?? false
+//            return notificationByLocation ?? false
+            return false
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: #function)

@@ -82,6 +82,7 @@
 "mainListVC.seeMyList" = "Посмотри мой список";
 "mainListVC.file" = "Файл";
 "mainListVC.pin" = "Закрепить";
+"mainListVC.share" = "Поделиться";
 "mainListVC.unpin" = "Открепить";
 "mainListVC.specifyStore" = "Указать магазин";
 "mainListVC.untieStore" = "Отвязать магазин";

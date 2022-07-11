@@ -21,6 +21,7 @@ class TimeSelectPopupController: UIViewController {
         mainView.layer.borderColor = UIColor.mainOrange.cgColor
         updateLanguage()
         subscribeToNotification()
+        datePicker.locale = Locale(identifier: "en_FR")
     }
     
     @objc  func updateLanguage() {

@@ -182,7 +182,7 @@ extension MainListController: UITableViewDelegate {
                 self.readData()
             }
             
-            let share = UIAction(title: AppLocalizationKeys.share.localized(), image: UIImage(systemName: "arrowshape.turn.up.right")) { [weak self] _ in
+            let share = UIAction(title: AppLocalizationKeys.alertShare.localized(), image: UIImage(systemName: "arrowshape.turn.up.right")) { [weak self] _ in
                 guard let self = self else { return }
                 self.shareList(list: self.lists[indexPath.row])
             }
@@ -200,38 +200,38 @@ extension MainListController: UITableViewDelegate {
                 self.present(alert, animated: true)
             }
             
-            let linkShop = UIAction(title: self.lists[indexPath.row].linkedShopID == 0 ? AppLocalizationKeys.specifyStore.localized() : AppLocalizationKeys.untieStore.localized(), image: UIImage(systemName: "mappin.circle")) { [weak self] _ in
-                
-                if self?.lists[indexPath.row].linkedShopID != 0 {
-                    RealmManager.beginWrite()
-                    self?.lists[indexPath.row].linkedShopID = 0
-                    RealmManager.commitWrite()
-                    self?.tableView.beginUpdates()
-                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-                    self?.tableView.endUpdates()
-                    return
-                }
-                
-                let vc = ShopListController.loadFromNib()
-                vc.selectedShopBlock = { [weak self] selectedShop in
-                    RealmManager.beginWrite()
-                    self?.lists[indexPath.row].linkedShopID = selectedShop.id
-                    RealmManager.commitWrite()
-
-                    self?.tableView.beginUpdates()
-                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-                    self?.tableView.endUpdates()
-                }
-                
-                self?.navigationController?.present(vc, animated: true)
-            }
+//            let linkShop = UIAction(title: self.lists[indexPath.row].linkedShopID == 0 ? AppLocalizationKeys.specifyStore.localized() : AppLocalizationKeys.untieStore.localized(), image: UIImage(systemName: "mappin.circle")) { [weak self] _ in
+//
+//                if self?.lists[indexPath.row].linkedShopID != 0 {
+//                    RealmManager.beginWrite()
+//                    self?.lists[indexPath.row].linkedShopID = 0
+//                    RealmManager.commitWrite()
+//                    self?.tableView.beginUpdates()
+//                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+//                    self?.tableView.endUpdates()
+//                    return
+//                }
+//
+//                let vc = ShopListController.loadFromNib()
+//                vc.selectedShopBlock = { [weak self] selectedShop in
+//                    RealmManager.beginWrite()
+//                    self?.lists[indexPath.row].linkedShopID = selectedShop.id
+//                    RealmManager.commitWrite()
+//
+//                    self?.tableView.beginUpdates()
+//                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+//                    self?.tableView.endUpdates()
+//                }
+//
+//                self?.navigationController?.present(vc, animated: true)
+//            }
             
             if self.lists[indexPath.row].isPinned {
-                return UIMenu(title: "", children: [unPin, share, linkShop, delete])
+                return UIMenu(title: "", children: [unPin, share, delete])
             } else if !self.lists[indexPath.row].isPinned, self.lists.filter({ $0.isPinned }).count < 3 {
-                return UIMenu(title: "", children: [pin, share, linkShop, delete])
+                return UIMenu(title: "", children: [pin, share, delete])
             }
-            return UIMenu(title: "", children: [share, linkShop, delete])
+            return UIMenu(title: "", children: [share, delete])
         }
         return configuration
     }

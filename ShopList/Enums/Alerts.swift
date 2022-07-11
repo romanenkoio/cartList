@@ -26,7 +26,7 @@ enum Alerts {
         case .saveCoordinate:
             return ""
         case .share:
-            return AppLocalizationKeys.shareTitle.localized()
+            return AppLocalizationKeys.alertShare.localized()
         }
     }
     

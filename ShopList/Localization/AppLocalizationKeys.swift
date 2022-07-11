@@ -87,6 +87,7 @@ class AppLocalizationKeys {
     static let file = "mainListVC.file"
     static let pin = "mainListVC.pin"
     static let unpin = "mainListVC.unpin"
+    static let alertShare = "mainListVC.share"
     static let specifyStore = "mainListVC.specifyStore"
     static let untieStore = "mainListVC.untieStore"
     static let emptyLists = "mainListVC.emptyLists"

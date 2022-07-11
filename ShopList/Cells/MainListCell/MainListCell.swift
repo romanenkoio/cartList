@@ -20,7 +20,7 @@ class MainListCell: UITableViewCell {
     }
     
     func setupWith(_ list: SLRealmList) {
-        linkedStoreIcon.isHidden = list.linkedShopID == 0
+//        linkedStoreIcon.isHidden = list.linkedShopID == 0
         pinImage.isHidden = !list.isPinned
         listNameLabel.text = list.listName
         cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .white

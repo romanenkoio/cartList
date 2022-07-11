@@ -8,7 +8,7 @@
 
 //Settings Point
 "settings.listHeader" = "List settings";
-"settings.separateList" = "Share marked products";
+"settings.separateList" = "Separate marked products";
 "settings.autoDelete" = "Delete completed lists";
 "settings.notificationHeader" = "Notification settings";
 "settings.useLocationPush" = "Location notifications";
@@ -84,6 +84,7 @@
 "mainListVC.seeMyList" = "See my list";
 "mainListVC.file" = "File";
 "mainListVC.pin" = "Pin";
+"mainListVC.share" = "Share";
 "mainListVC.unpin" = "Unpin";
 "mainListVC.specifyStore" = "Specify store";
 "mainListVC.untieStore" = "Untie store";

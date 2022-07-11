@@ -113,7 +113,7 @@ extension SettingsController: UITableViewDataSource {
         case .listHeader, .notificationHeader, .infoHeader:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsHeaderCell.self), for: indexPath) as! SettingsHeaderCell
             (settingCell as! SettingsHeaderCell).setupWith(type: points[indexPath.row])
-        case .autoDelete, .useLocationPush, .mapPoint, .useTimePush, .morningTime, .version, .separateList, .raduis, .language:
+        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingCell.self), for: indexPath) as! SettingCell
             
             (settingCell as! SettingCell).setupWith(points[indexPath.row])
@@ -125,9 +125,9 @@ extension SettingsController: UITableViewDataSource {
                     
                 case .autoDelete:
                     DefaultsManager.autoDelete = !DefaultsManager.autoDelete
-                case .useLocationPush:
-                    DefaultsManager.notificationByLocation = !DefaultsManager.notificationByLocation
-                    NotificationManager.scheduleLocationNotifications()
+//                case .useLocationPush:
+//                    DefaultsManager.notificationByLocation = !DefaultsManager.notificationByLocation
+//                    NotificationManager.scheduleLocationNotifications()
                 case .useTimePush:
                     DefaultsManager.timeNotification = !DefaultsManager.timeNotification
                     NotificationManager.scheduleTimeNotifications()
@@ -160,12 +160,12 @@ extension SettingsController: UITableViewDelegate {
                 self?.dismiss(animated: true)
             }
             self.present(timeVC, animated: true)
-        case .mapPoint:
-            guard DefaultsManager.notificationByLocation else { return }
-            let mapVC = MapViewController.loadFromNib()
-            navigationController?.pushViewController(mapVC, animated: true)
-        case .raduis:
-            showPicker()
+//        case .mapPoint:
+//            guard DefaultsManager.notificationByLocation else { return }
+//            let mapVC = MapViewController.loadFromNib()
+//            navigationController?.pushViewController(mapVC, animated: true)
+//        case .raduis:
+//            showPicker()
         case .language:
             let alert = UIAlertController(title: "", message: AppLocalizationKeys.chooseLanguage.localized(), preferredStyle: .actionSheet)
             
