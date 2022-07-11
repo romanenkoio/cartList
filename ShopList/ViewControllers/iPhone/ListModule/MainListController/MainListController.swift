@@ -8,13 +8,14 @@
 import UIKit
 import Lottie
 import EasyTipView
+import GoogleMobileAds
 
 class MainListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var testButton: UIButton!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var createListButton: UIButton!
+    var bannerView: GADBannerView!
     
     var tipViews = [EasyTipView]()
     private var lists = [SLRealmList]() {
@@ -30,7 +31,33 @@ class MainListController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         updateLanguage()
         subscribeToNotification()
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.delegate = self
+        bannerView.rootViewController = self
+        bannerView.adUnitID = "ca-app-pub-4489210776569699/3621152755"
+        bannerView.load(GADRequest())
     }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+       bannerView.translatesAutoresizingMaskIntoConstraints = false
+       view.addSubview(bannerView)
+       view.addConstraints(
+         [NSLayoutConstraint(item: bannerView,
+                             attribute: .bottom,
+                             relatedBy: .equal,
+                             toItem: createListButton,
+                             attribute: .top,
+                             multiplier: 1,
+                             constant: 0),
+          NSLayoutConstraint(item: bannerView,
+                             attribute: .centerX,
+                             relatedBy: .equal,
+                             toItem: view,
+                             attribute: .centerX,
+                             multiplier: 1,
+                             constant: 0)
+         ])
+      }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -234,5 +261,32 @@ extension MainListController: UITableViewDelegate {
             return UIMenu(title: "", children: [share, delete])
         }
         return configuration
+    }
+}
+
+extension MainListController: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+      print("bannerViewDidReceiveAd")
+        addBannerViewToView(bannerView)
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+      print("bannerViewDidRecordImpression")
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillPresentScreen")
+    }
+
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillDIsmissScreen")
+    }
+
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewDidDismissScreen")
     }
 }

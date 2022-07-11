@@ -23,9 +23,9 @@ enum SLAddType: String {
     var placeholder: String {
         switch self {
         case .list:
-            return listPlaceholders[Int.random(in: 0...listPlaceholders.count - 1)]
+            return listPlaceholders[Int.random(in: 0...listPlaceholders.count - 1)].localized()
         case .product:
-            return productPlaceholders[Int.random(in: 0...productPlaceholders.count - 1)]
+            return productPlaceholders[Int.random(in: 0...productPlaceholders.count - 1)].localized()
         }
     }
 }

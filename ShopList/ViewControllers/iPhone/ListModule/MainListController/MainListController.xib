@@ -15,7 +15,6 @@
                 <outlet property="createListButton" destination="9O5-20-tsS" id="AQl-Ce-LkZ"/>
                 <outlet property="emptyLabel" destination="nsf-fQ-oBk" id="mzy-JZ-Wz7"/>
                 <outlet property="tableView" destination="4DA-7q-cxa" id="m9D-Ke-3B1"/>
-                <outlet property="testButton" destination="9O5-20-tsS" id="k84-Aa-Ton"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

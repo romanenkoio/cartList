@@ -8,4 +8,5 @@ target 'ShopList' do
 	pod 'lottie-ios'
 	pod 'GoogleMaps'
 	pod 'Moya'
+	pod 'Google-Mobile-Ads-SDK'
 end
