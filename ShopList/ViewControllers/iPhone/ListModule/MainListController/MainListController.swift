@@ -9,6 +9,7 @@ import UIKit
 import Lottie
 import EasyTipView
 import GoogleMobileAds
+import CloudKit
 
 class MainListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -37,26 +38,26 @@ class MainListController: UIViewController {
         bannerView.adUnitID = "ca-app-pub-4489210776569699/3621152755"
     }
     
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-       bannerView.translatesAutoresizingMaskIntoConstraints = false
-       view.addSubview(bannerView)
-       view.addConstraints(
-         [NSLayoutConstraint(item: bannerView,
-                             attribute: .bottom,
-                             relatedBy: .equal,
-                             toItem: createListButton,
-                             attribute: .top,
-                             multiplier: 1,
-                             constant: 0),
-          NSLayoutConstraint(item: bannerView,
-                             attribute: .centerX,
-                             relatedBy: .equal,
-                             toItem: view,
-                             attribute: .centerX,
-                             multiplier: 1,
-                             constant: 0)
-         ])
-      }
+    private func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: createListButton,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: -10),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,7 +65,6 @@ class MainListController: UIViewController {
         playAnimation()
         showTips()
         bannerView.load(GADRequest())
-        
         NotificationCenter.default.addObserver(self, selector: #selector(readData), name: .listWasImported, object: nil)
     }
     
@@ -90,7 +90,7 @@ class MainListController: UIViewController {
         if DefaultsManager.isFirstListLaunch, lists.count > 0 {
             _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
                 guard let self = self else { return }
-
+                
                 let tipView = EasyTipView(text: AppLocalizationKeys.pinchList.localized(),
                                           preferences: EasyTipView.globalPreferences,
                                           delegate: nil)
@@ -227,31 +227,31 @@ extension MainListController: UITableViewDelegate {
                 self.present(alert, animated: true)
             }
             
-//            let linkShop = UIAction(title: self.lists[indexPath.row].linkedShopID == 0 ? AppLocalizationKeys.specifyStore.localized() : AppLocalizationKeys.untieStore.localized(), image: UIImage(systemName: "mappin.circle")) { [weak self] _ in
-//
-//                if self?.lists[indexPath.row].linkedShopID != 0 {
-//                    RealmManager.beginWrite()
-//                    self?.lists[indexPath.row].linkedShopID = 0
-//                    RealmManager.commitWrite()
-//                    self?.tableView.beginUpdates()
-//                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-//                    self?.tableView.endUpdates()
-//                    return
-//                }
-//
-//                let vc = ShopListController.loadFromNib()
-//                vc.selectedShopBlock = { [weak self] selectedShop in
-//                    RealmManager.beginWrite()
-//                    self?.lists[indexPath.row].linkedShopID = selectedShop.id
-//                    RealmManager.commitWrite()
-//
-//                    self?.tableView.beginUpdates()
-//                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-//                    self?.tableView.endUpdates()
-//                }
-//
-//                self?.navigationController?.present(vc, animated: true)
-//            }
+            //            let linkShop = UIAction(title: self.lists[indexPath.row].linkedShopID == 0 ? AppLocalizationKeys.specifyStore.localized() : AppLocalizationKeys.untieStore.localized(), image: UIImage(systemName: "mappin.circle")) { [weak self] _ in
+            //
+            //                if self?.lists[indexPath.row].linkedShopID != 0 {
+            //                    RealmManager.beginWrite()
+            //                    self?.lists[indexPath.row].linkedShopID = 0
+            //                    RealmManager.commitWrite()
+            //                    self?.tableView.beginUpdates()
+            //                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            //                    self?.tableView.endUpdates()
+            //                    return
+            //                }
+            //
+            //                let vc = ShopListController.loadFromNib()
+            //                vc.selectedShopBlock = { [weak self] selectedShop in
+            //                    RealmManager.beginWrite()
+            //                    self?.lists[indexPath.row].linkedShopID = selectedShop.id
+            //                    RealmManager.commitWrite()
+            //
+            //                    self?.tableView.beginUpdates()
+            //                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            //                    self?.tableView.endUpdates()
+            //                }
+            //
+            //                self?.navigationController?.present(vc, animated: true)
+            //            }
             
             if self.lists[indexPath.row].isPinned {
                 return UIMenu(title: "", children: [unPin, share, delete])
@@ -266,27 +266,27 @@ extension MainListController: UITableViewDelegate {
 
 extension MainListController: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-      print("bannerViewDidReceiveAd")
+        print("bannerViewDidReceiveAd")
         addBannerViewToView(bannerView)
     }
-
+    
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
-
+    
     func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
-      print("bannerViewDidRecordImpression")
+        print("bannerViewDidRecordImpression")
     }
-
+    
     func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-      print("bannerViewWillPresentScreen")
+        print("bannerViewWillPresentScreen")
     }
-
+    
     func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
-      print("bannerViewWillDIsmissScreen")
+        print("bannerViewWillDIsmissScreen")
     }
-
+    
     func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
-      print("bannerViewDidDismissScreen")
+        print("bannerViewDidDismissScreen")
     }
 }

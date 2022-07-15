@@ -129,4 +129,13 @@ final class DefaultsManager {
         }
     }
     
+    class var lainchCount: Int {
+        get {
+            let lainchCount = UserDefaults.standard.value(forKey: #function) as? Int
+            return lainchCount ?? 0
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
 }
