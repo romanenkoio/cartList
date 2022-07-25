@@ -110,13 +110,26 @@ extension SettingsController: UITableViewDataSource {
         var settingCell: UITableViewCell
         
         switch points[indexPath.row] {
-        case .listHeader, .notificationHeader, .infoHeader:
+        case .authHeader,.listHeader, .notificationHeader, .infoHeader:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsHeaderCell.self), for: indexPath) as! SettingsHeaderCell
             (settingCell as! SettingsHeaderCell).setupWith(type: points[indexPath.row])
-        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language:
+        case .signing, .registation, .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingCell.self), for: indexPath) as! SettingCell
             
             (settingCell as! SettingCell).setupWith(points[indexPath.row])
+            
+//            (settingCell as! SettingCell).registrationButtonAction = { [weak self] in
+//
+//                guard let self = self else { return }
+//                switch self.points[indexPath.row] {
+//                case .registation:
+//                    let authVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
+//                    authVC.modalTransitionStyle = .coverVertical
+//                    authVC.modalPresentationStyle = .overFullScreen
+//                    self.present(authVC, animated: true)
+//                default: break
+//                }
+//            }
             
             (settingCell as! SettingCell).switchAction = { [weak self] isOn in
                 guard let self = self else { return }
@@ -178,6 +191,23 @@ extension SettingsController: UITableViewDelegate {
             }
             alert.addAction(UIAlertAction(title: AppLocalizationKeys.back.localized(), style: .cancel))
             self.present(alert, animated: true)
+            
+        case .signing:
+            
+            let signInVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
+            signInVC.existUser = true
+            signInVC.modalTransitionStyle = .coverVertical
+            signInVC.modalPresentationStyle = .overFullScreen
+            self.present(signInVC, animated: true)
+            
+        case .registation:
+            
+            let authVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
+            authVC.existUser = false
+            authVC.modalTransitionStyle = .coverVertical
+            authVC.modalPresentationStyle = .overFullScreen
+            self.present(authVC, animated: true)
+            
             default: break
         }
     }

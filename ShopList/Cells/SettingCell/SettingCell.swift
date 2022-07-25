@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingCell: UITableViewCell {
     @IBOutlet private weak var imageLabel: UIImageView!
@@ -13,6 +14,7 @@ class SettingCell: UITableViewCell {
     @IBOutlet private weak var switcher: UISwitch!
     
     var switchAction: SwitchAction?
+    var registrationButtonAction: (() -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +31,26 @@ class SettingCell: UITableViewCell {
         self.contentView.alpha = type.isEnabled ? 1 : 0.5
     }
     
+    
+    func showAuthController(_ vc: UIViewController) {
+        let authVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
+//        present(vc, animated: true)
+//        self.window?.rootViewController?.present(authVC, animated: true)
+    }
+    
     @IBAction func switchAction(_ sender: UISwitch) {
         switchAction?(sender.isOn)
     }
+    
+//    @IBAction func registrationAction(_ sender: UIButton) {
+//
+//        Auth.auth().addStateDidChangeListener { (auth, user) in
+//
+//            if user == nil {
+//                self.showAuthController()
+//                self.registrationButtonAction?()
+//            }
+//        }
+//        print("tttttt")
+//    }
 }

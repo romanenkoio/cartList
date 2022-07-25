@@ -7,6 +7,9 @@
 */
 
 //Settings Point
+"settings.authHeader" = "Profile";
+"settings.signIn" = "Sign in";
+"settings.registration" = "Registration";
 "settings.listHeader" = "List settings";
 "settings.separateList" = "Separate marked products";
 "settings.autoDelete" = "Delete completed lists";

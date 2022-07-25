@@ -13,4 +13,5 @@ target 'ShopList' do
 	pod 'FirebaseInstallations'
 	pod 'FirebaseDatabase'
 	pod 'FirebaseAuth'
+        pod 'Firebase/Core'
 end

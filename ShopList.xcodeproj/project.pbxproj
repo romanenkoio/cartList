@@ -73,6 +73,9 @@
 		7FFE1846281359D700DE5DD1 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE1845281359D600DE5DD1 /* RealmManager.swift */; };
 		7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE184928135CE000DE5DD1 /* AddListController.swift */; };
 		7FFE184C28135CE000DE5DD1 /* AddListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFE184A28135CE000DE5DD1 /* AddListController.xib */; };
+		8E237F58288EF74700408404 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E237F56288EF74700408404 /* AuthViewController.swift */; };
+		8E237F59288EF74700408404 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F57288EF74700408404 /* AuthViewController.xib */; };
+		8E237F61288F4A2200408404 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F60288F4A2200408404 /* GoogleService-Info.plist */; };
 		EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */; };
 		EB96139428572D70007897CA /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB96139628572D70007897CA /* Localization.strings */; };
 		EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96139828572E1E007897CA /* Bundle+Extension.swift */; };
@@ -149,6 +152,9 @@
 		7FFE1845281359D600DE5DD1 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7FFE184928135CE000DE5DD1 /* AddListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListController.swift; sourceTree = "<group>"; };
 		7FFE184A28135CE000DE5DD1 /* AddListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListController.xib; sourceTree = "<group>"; };
+		8E237F56288EF74700408404 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		8E237F57288EF74700408404 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
+		8E237F60288F4A2200408404 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B192FEFFB24246E2010E80 /* Pods-ShopList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.debug.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.debug.xcconfig"; sourceTree = "<group>"; };
 		D6EB437F6C93DCB19E64A52B /* Pods-ShopList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.release.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 		7F40B1A5281AD46A002DF78E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				8E237F55288EF71600408404 /* AuthViewController */,
 				7FC298B1288173E500F4D082 /* PremiumModule */,
 				7FF00069281E96130070CB0E /* ShopList */,
 				7F6C9050281929FF0048EA1A /* MapModule */,
@@ -468,6 +475,7 @@
 				7FEB9A2B28134B54005AA371 /* Assets.xcassets */,
 				7FEB9A2D28134B54005AA371 /* LaunchScreen.storyboard */,
 				7FEB9A3028134B54005AA371 /* Info.plist */,
+				8E237F60288F4A2200408404 /* GoogleService-Info.plist */,
 				7F85A3312881A72900CE3386 /* premium.json */,
 				7F6C904C28187D7F0048EA1A /* emptyList.json */,
 				7F6C904828187A640048EA1A /* cartAnimation.json */,
@@ -547,6 +555,15 @@
 				7F6C903E28182D370048EA1A /* TimeSelectPopupController.xib */,
 			);
 			path = TimeSelectPopup;
+			sourceTree = "<group>";
+		};
+		8E237F55288EF71600408404 /* AuthViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8E237F56288EF74700408404 /* AuthViewController.swift */,
+				8E237F57288EF74700408404 /* AuthViewController.xib */,
+			);
+			path = AuthViewController;
 			sourceTree = "<group>";
 		};
 		A00A645EBDCA17F81B4EB3C8 /* Frameworks */ = {
@@ -645,6 +662,8 @@
 				7FEB9A2F28134B54005AA371 /* LaunchScreen.storyboard in Resources */,
 				7FF0006D281E963E0070CB0E /* ShopListController.xib in Resources */,
 				7FA1F34D28148CC9008ABEE1 /* SettingCell.xib in Resources */,
+				8E237F59288EF74700408404 /* AuthViewController.xib in Resources */,
+				8E237F61288F4A2200408404 /* GoogleService-Info.plist in Resources */,
 				EB96139428572D70007897CA /* Localization.strings in Resources */,
 				7F85A3322881A72900CE3386 /* premium.json in Resources */,
 				7FA1F34128148021008ABEE1 /* ProductList.xib in Resources */,
@@ -723,6 +742,7 @@
 				7FA1F33B28146EF8008ABEE1 /* SLAddType.swift in Sources */,
 				7FCB5897281353AE00D3E370 /* UITableView+Extensions.swift in Sources */,
 				7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */,
+				8E237F58288EF74700408404 /* AuthViewController.swift in Sources */,
 				EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */,
 				7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */,
 				7FA1F34028148021008ABEE1 /* ProductList.swift in Sources */,
@@ -918,9 +938,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ShopList/ShopList.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = 8HDA39CT36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShopList/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Simple Cart List";
@@ -939,8 +960,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = romanenko.shopList.com;
+				PRODUCT_BUNDLE_IDENTIFIER = romanenko.shopList.com1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -955,9 +977,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ShopList/ShopList.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = 8HDA39CT36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShopList/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Simple Cart List";
@@ -976,8 +999,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = romanenko.shopList.com;
+				PRODUCT_BUNDLE_IDENTIFIER = romanenko.shopList.com1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;

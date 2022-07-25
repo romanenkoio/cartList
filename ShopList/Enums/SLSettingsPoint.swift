@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 enum SLSettingsPoint: CaseIterable {
+    case authHeader
+    case signing
+    case registation
     case listHeader
     case separateList
     case autoDelete
@@ -24,6 +27,12 @@ enum SLSettingsPoint: CaseIterable {
     
     var text: String {
         switch self {
+        case .authHeader:
+            return AppLocalizationKeys.authHeader.localized()
+        case .signing:
+            return AppLocalizationKeys.signIn.localized()
+        case .registation:
+            return AppLocalizationKeys.registration.localized()
 //        case .useLocationPush:
 //            return AppLocalizationKeys.useLocationPush.localized()
         case .useTimePush:
@@ -53,6 +62,8 @@ enum SLSettingsPoint: CaseIterable {
     
     var image: UIImage? {
         switch self {
+        case .authHeader:
+            return UIImage(systemName: "person.crop.square.fill")
         case .listHeader:
             return UIImage(systemName: "square.text.square.fill")
         case .notificationHeader:
@@ -87,7 +98,7 @@ enum SLSettingsPoint: CaseIterable {
             return DefaultsManager.autoDelete
 //        case .useLocationPush:
 //            return DefaultsManager.notificationByLocation
-        case .morningTime, .listHeader, .notificationHeader, .infoHeader, .version, .language:
+        case .authHeader, .signing, .registation, .morningTime, .listHeader, .notificationHeader, .infoHeader, .version, .language:
             return false
         case .useTimePush:
             return DefaultsManager.timeNotification
@@ -98,10 +109,10 @@ enum SLSettingsPoint: CaseIterable {
     
     var indicator: UITableViewCell.AccessoryType {
         switch self {
-        case .autoDelete, .useTimePush, .listHeader, .notificationHeader, .infoHeader, .version, .separateList:
+        case .authHeader, .autoDelete, .useTimePush, .listHeader, .notificationHeader, .infoHeader, .version, .separateList:
             return .none
         
-        case .morningTime, .language:
+        case .signing, .registation, .morningTime, .language:
             return .disclosureIndicator
         }
     }
@@ -112,6 +123,15 @@ enum SLSettingsPoint: CaseIterable {
 //            return DefaultsManager.notificationByLocation
         case .morningTime:
             return DefaultsManager.timeNotification
+        default:
+            return true
+        }
+    }
+    
+    var buttonsAreHidden: Bool {
+        switch self {
+        case .signing, .registation:
+            return false
         default:
             return true
         }

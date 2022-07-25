@@ -9,6 +9,9 @@ import Foundation
 
 class AppLocalizationKeys {
     //Settings Point
+    static let authHeader = "settings.authHeader"
+    static let signIn = "settings.signIn"
+    static let registration = "settings.registration"
     static let listHeader = "settings.listHeader"
     static let separateList = "settings.separateList"
     static let autoDelete = "settings.autoDelete"
