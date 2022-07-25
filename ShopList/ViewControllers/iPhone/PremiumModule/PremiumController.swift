@@ -11,17 +11,16 @@ import Lottie
 class PremiumController: UIViewController {
     @IBOutlet weak var premiumView: AnimationView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        playAnimation()
     }
     
     private func playAnimation() {
-        premiumView.loopMode = .playOnce
+        premiumView.loopMode = .loop
         premiumView.animationSpeed = 0.5
-        premiumView.animation = Animation.named("premium")
-//        products.count > 0 ? animationView.stop() : animationView.play()
-       
+        premiumView.play()
+        premiumView.animation = Animation.named("cartAnimation")
     }
     
     private func changeIcon(to name: String?) {

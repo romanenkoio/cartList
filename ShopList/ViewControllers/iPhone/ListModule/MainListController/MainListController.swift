@@ -36,6 +36,11 @@ class MainListController: UIViewController {
         bannerView.delegate = self
         bannerView.rootViewController = self
         bannerView.adUnitID = "ca-app-pub-4489210776569699/3621152755"
+        
+        if DefaultsManager.lainchCount % 2 == 0 {
+            let vc = PremiumController.loadFromNib()
+            self.present(vc, animated: true)
+        }
     }
     
     private func addBannerViewToView(_ bannerView: GADBannerView) {

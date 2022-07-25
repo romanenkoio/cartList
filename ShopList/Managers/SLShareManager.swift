@@ -49,13 +49,14 @@ final class SLShareManager {
         
         if let listData = textForSharing.data(using: .utf8) {
             guard let url = getFileUrl(with: .data, content: listData) else { return }
-            CloudKitManager.update(with: url)
+//            CloudKitManager.upload(data: listData)
+            
         }
     }
     
-    private class func getFileUrl(with extension: FileExtension, content: Data) -> URL? {
+    private class func getFileUrl(with fileExtension: FileExtension, content: Data) -> URL? {
         guard let appSupportDir = try? fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else { return nil }
-        let filePath = appSupportDir.appendingPathComponent("list\(FileExtension.list.rawValue)").path
+        let filePath = appSupportDir.appendingPathComponent("\(fileExtension.rawValue)").path
         guard fileManager.createFile(atPath: filePath, contents: content, attributes: nil) else { return nil }
         return URL(fileURLWithPath: filePath)
     }

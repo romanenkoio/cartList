@@ -37,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        @unknown default: break
 //        }
         window?.rootViewController = BaseTabBarController()
+        DefaultsManager.lainchCount += 1
 
         window?.makeKeyAndVisible()
     }

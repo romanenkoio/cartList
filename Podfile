@@ -9,4 +9,8 @@ target 'ShopList' do
 	pod 'GoogleMaps'
 	pod 'Moya'
 	pod 'Google-Mobile-Ads-SDK'
+	pod 'Adapty'
+	pod 'FirebaseInstallations'
+	pod 'FirebaseDatabase'
+	pod 'FirebaseAuth'
 end
