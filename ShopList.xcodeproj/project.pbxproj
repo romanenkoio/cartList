@@ -78,9 +78,9 @@
 		7FFE1846281359D700DE5DD1 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE1845281359D600DE5DD1 /* RealmManager.swift */; };
 		7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE184928135CE000DE5DD1 /* AddListController.swift */; };
 		7FFE184C28135CE000DE5DD1 /* AddListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFE184A28135CE000DE5DD1 /* AddListController.xib */; };
+		8E0F669428905D9F00A5202C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F669328905D9F00A5202C /* GoogleService-Info.plist */; };
 		8E237F58288EF74700408404 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E237F56288EF74700408404 /* AuthViewController.swift */; };
 		8E237F59288EF74700408404 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F57288EF74700408404 /* AuthViewController.xib */; };
-		8E237F61288F4A2200408404 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F60288F4A2200408404 /* GoogleService-Info.plist */; };
 		EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */; };
 		EB96139428572D70007897CA /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB96139628572D70007897CA /* Localization.strings */; };
 		EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96139828572E1E007897CA /* Bundle+Extension.swift */; };
@@ -161,9 +161,9 @@
 		7FFE1845281359D600DE5DD1 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7FFE184928135CE000DE5DD1 /* AddListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListController.swift; sourceTree = "<group>"; };
 		7FFE184A28135CE000DE5DD1 /* AddListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListController.xib; sourceTree = "<group>"; };
+		8E0F669328905D9F00A5202C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ShopList/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8E237F56288EF74700408404 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8E237F57288EF74700408404 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
-		8E237F60288F4A2200408404 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B192FEFFB24246E2010E80 /* Pods-ShopList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.debug.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.debug.xcconfig"; sourceTree = "<group>"; };
 		D6EB437F6C93DCB19E64A52B /* Pods-ShopList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.release.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.release.xcconfig"; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 				7FEB9A2B28134B54005AA371 /* Assets.xcassets */,
 				7FEB9A2D28134B54005AA371 /* LaunchScreen.storyboard */,
 				7FEB9A3028134B54005AA371 /* Info.plist */,
-				8E237F60288F4A2200408404 /* GoogleService-Info.plist */,
+				8E0F669328905D9F00A5202C /* GoogleService-Info.plist */,
 				7F85A3312881A72900CE3386 /* premium.json */,
 				7F6C904C28187D7F0048EA1A /* emptyList.json */,
 				7F6C904828187A640048EA1A /* cartAnimation.json */,
@@ -677,7 +677,7 @@
 				7FF0006D281E963E0070CB0E /* ShopListController.xib in Resources */,
 				7FA1F34D28148CC9008ABEE1 /* SettingCell.xib in Resources */,
 				8E237F59288EF74700408404 /* AuthViewController.xib in Resources */,
-				8E237F61288F4A2200408404 /* GoogleService-Info.plist in Resources */,
+				8E0F669428905D9F00A5202C /* GoogleService-Info.plist in Resources */,
 				EB96139428572D70007897CA /* Localization.strings in Resources */,
 				7F85A3322881A72900CE3386 /* premium.json in Resources */,
 				7FA1F34128148021008ABEE1 /* ProductList.xib in Resources */,

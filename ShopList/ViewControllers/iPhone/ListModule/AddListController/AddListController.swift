@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 final class AddListController: UIViewController {
     @IBOutlet private weak var productInput: UITextField!

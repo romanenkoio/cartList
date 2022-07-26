@@ -20,6 +20,7 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var passwordField: ValidationTextField!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var showPasswordButton: UIButton!
     
     var type = AuthAction.login
         
@@ -36,7 +37,7 @@ class AuthViewController: UIViewController {
         case .login:
             confirmButton.setTitle(AppLocalizationKeys.signIn.localized(), for: .normal)
         case .registration:
-            confirmButton.setTitle(AppLocalizationKeys.signIn.localized(), for: .normal)
+            confirmButton.setTitle(AppLocalizationKeys.registration.localized(), for: .normal)
         case .changePassword:
             break
         }
@@ -60,23 +61,37 @@ class AuthViewController: UIViewController {
         
         switch type {
         case .login:
+            Auth.auth().signIn(withEmail: login, password: password) { result, error in
+                if error == nil {
+                    if let result = result {
+                        print("Successful login \(result.user.uid)")
+                        self.dismiss(animated: true)
+                    }
+                }
+            }
+        case .registration:
             Auth.auth().createUser(withEmail: login, password: password) { (result, error) in
                 if error == nil {
                     if let result = result {
                         print(result.user.uid)
                         KeychainManager.store(value: result.user.uid, for: .UID)
                         let reference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
-                        reference.child(result.user.uid).updateChildValues([SLAppEnvironment.ChildValues.login : login, SLAppEnvironment.ChildValues.password.rawValue : password])
+//                        reference.child(result.user.uid).updateChildValues([SLAppEnvironment.ChildValues.login : login, SLAppEnvironment.ChildValues.password.rawValue : password])
+                        reference.child(result.user.uid).updateChildValues(["email" : login, "password" : password])
+                        print("Successful registration \(result.user.uid)")
                         self.dismiss(animated: true)
                     }
                 }
             }
-        case .registration:
-            break
         case .changePassword:
             break
         }
    
+    }
+    
+    @IBAction func showPasswordAction(_ sender: UIButton) {
+        passwordField.isSecureTextEntry = !passwordField.isSecureTextEntry
+        sender.setImage( passwordField.isSecureTextEntry ? UIImage(systemName: "eye.slash") : UIImage(systemName: "eye"), for: .normal)
     }
 }
 

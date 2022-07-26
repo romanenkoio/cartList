@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 struct SLAppEnvironment {
-    static private let dbUrl = "https://simple-cart-list-default-rtdb.europe-west1.firebasedatabase.app"
+    static private let dbUrl = "https://cartlist-8adbe-default-rtdb.europe-west1.firebasedatabase.app/"
     static let reference = Database.database(url: SLAppEnvironment.dbUrl).reference()
     
     enum DataBaseChilds: String {

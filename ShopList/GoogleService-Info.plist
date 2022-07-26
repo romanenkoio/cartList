@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>97277829936-mu3nda2e1rhs5onvufhbcfjg64jjt0lf.apps.googleusercontent.com</string>
+	<string>857052858-t1b4tvv6e0llstbdat8f1gl8ef2emm71.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.97277829936-mu3nda2e1rhs5onvufhbcfjg64jjt0lf</string>
+	<string>com.googleusercontent.apps.857052858-t1b4tvv6e0llstbdat8f1gl8ef2emm71</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDz6XMlsIvKXm3Tek9q6OkspD2cVUWET2A</string>
+	<string>AIzaSyBHXqsQiV38O2jWpIMN96dpj4inqU2YMXs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>97277829936</string>
+	<string>857052858</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>romanenko.shopList.com1</string>
+	<string>romanenko.shopList.com</string>
 	<key>PROJECT_ID</key>
-	<string>simple-cart-list</string>
+	<string>cartlist-8adbe</string>
 	<key>STORAGE_BUCKET</key>
-	<string>simple-cart-list.appspot.com</string>
+	<string>cartlist-8adbe.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:97277829936:ios:40ff5ade9d14e751c69ef5</string>
+	<string>1:857052858:ios:bdff143daf6bf8c4159483</string>
+	<key>DATABASE_URL</key>
+	<string>https://cartlist-8adbe-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

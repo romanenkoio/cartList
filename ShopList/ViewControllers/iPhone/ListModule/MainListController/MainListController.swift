@@ -69,7 +69,7 @@ class MainListController: UIViewController {
         readData()
         playAnimation()
         showTips()
-        bannerView.load(GADRequest())
+//        bannerView.load(GADRequest())
         NotificationCenter.default.addObserver(self, selector: #selector(readData), name: .listWasImported, object: nil)
     }
     
