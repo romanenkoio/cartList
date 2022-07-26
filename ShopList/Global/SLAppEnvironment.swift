@@ -6,11 +6,18 @@
 //
 
 import Foundation
+import Firebase
 
-class SLAppEnvironment {
-    static let dbUrl = "https://simple-cart-list-default-rtdb.europe-west1.firebasedatabase.app"
+struct SLAppEnvironment {
+    static private let dbUrl = "https://simple-cart-list-default-rtdb.europe-west1.firebasedatabase.app"
+    static let reference = Database.database(url: SLAppEnvironment.dbUrl).reference()
     
     enum DataBaseChilds: String {
         case users = "users"
+    }
+    
+    enum ChildValues: String {
+        case login
+        case password
     }
 }

@@ -62,8 +62,6 @@ class AuthViewController: UIViewController {
     }
 
     @IBAction func confirmAction(_ sender: UIButton) {
-        
-        print("LOGIN:\(loginField.text)")
         guard let login = loginField.text,
               let password = passwordField.text
         else { return }
@@ -72,8 +70,8 @@ class AuthViewController: UIViewController {
                     if error == nil {
                         if let result = result {
                             print(result.user.uid)
-                            let reference = Database.database(url: SLAppEnvironment.dbUrl).reference().child(SLAppEnvironment.DataBaseChilds.users.rawValue)
-                            reference.child(result.user.uid).updateChildValues(["login" : login, "password" : password])
+                            let reference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
+                            reference.child(result.user.uid).updateChildValues([SLAppEnvironment.ChildValues.login : login, SLAppEnvironment.ChildValues.password.rawValue : password])
                             self.dismiss(animated: true)
                         }
                     }
