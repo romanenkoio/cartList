@@ -100,6 +100,7 @@ PODS:
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.7.1)
+  - KeychainAccess (4.2.2)
   - leveldb-library (1.22.1)
   - lottie-ios (3.3.0)
   - Moya (15.0.0):
@@ -127,6 +128,7 @@ DEPENDENCIES:
   - FirebaseInstallations
   - Google-Mobile-Ads-SDK
   - GoogleMaps
+  - KeychainAccess
   - lottie-ios
   - Moya
   - RealmSwift
@@ -150,6 +152,7 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - GTMSessionFetcher
+    - KeychainAccess
     - leveldb-library
     - lottie-ios
     - Moya
@@ -176,6 +179,7 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GTMSessionFetcher: 4577a4cc914a5a07c40a8a0ad0acc22080418c2d
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
@@ -184,6 +188,6 @@ SPEC CHECKSUMS:
   Realm: 22a82aaa0e73f3483e3a6df32549c4c5cd34aa63
   RealmSwift: c2a635212400923edd3f828b8a37d55d3eb31863
 
-PODFILE CHECKSUM: 27ac40325b7ee3b615f4d7fe2e419c77d9d1a76b
+PODFILE CHECKSUM: c027d3e59e364980137b895e548b2e848bdd4d85
 
 COCOAPODS: 1.11.2

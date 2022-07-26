@@ -63,6 +63,7 @@ class AuthViewController: UIViewController {
                 if error == nil {
                     if let result = result {
                         print(result.user.uid)
+                        KeychainManager.store(value: result.user.uid, for: .UID)
                         let reference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
                         reference.child(result.user.uid).updateChildValues([SLAppEnvironment.ChildValues.login : login, SLAppEnvironment.ChildValues.password.rawValue : password])
                         self.dismiss(animated: true)
