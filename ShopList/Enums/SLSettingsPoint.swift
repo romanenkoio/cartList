@@ -28,11 +28,11 @@ enum SLSettingsPoint: CaseIterable {
     var text: String {
         switch self {
         case .authHeader:
-            return AppLocalizationKeys.authHeader.localized()
+            return KeychainManager.UID != nil ? "zamok.tech@gmail.com" : AppLocalizationKeys.authHeader.localized()
         case .signing:
-            return AppLocalizationKeys.signIn.localized()
+            return KeychainManager.UID != nil ? "Выйти" : AppLocalizationKeys.signIn.localized()
         case .registation:
-            return AppLocalizationKeys.registration.localized()
+            return KeychainManager.UID != nil ? "Удалить аккаунт" : AppLocalizationKeys.registration.localized()
 //        case .useLocationPush:
 //            return AppLocalizationKeys.useLocationPush.localized()
         case .useTimePush:

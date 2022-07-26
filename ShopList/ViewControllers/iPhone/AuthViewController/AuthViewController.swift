@@ -23,6 +23,8 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var showPasswordButton: UIButton!
     
     var type = AuthAction.login
+    
+    var loginSuccess: VoidBlock?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,8 @@ class AuthViewController: UIViewController {
                 if error == nil {
                     if let result = result {
                         print("Successful login \(result.user.uid)")
+                        KeychainManager.store(value: result.user.uid, for: .UID)
+                        self.loginSuccess?()
                         self.dismiss(animated: true)
                     }
                 }
@@ -75,8 +79,8 @@ class AuthViewController: UIViewController {
                     if let result = result {
                         print(result.user.uid)
                         KeychainManager.store(value: result.user.uid, for: .UID)
+                        self.loginSuccess?()
                         let reference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
-//                        reference.child(result.user.uid).updateChildValues([SLAppEnvironment.ChildValues.login : login, SLAppEnvironment.ChildValues.password.rawValue : password])
                         reference.child(result.user.uid).updateChildValues(["email" : login, "password" : password])
                         print("Successful registration \(result.user.uid)")
                         self.dismiss(animated: true)

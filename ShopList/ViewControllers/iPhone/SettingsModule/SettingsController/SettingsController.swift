@@ -7,6 +7,7 @@
 
 import UIKit
 import EasyTipView
+import Alamofire
 
 class SettingsController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -118,19 +119,6 @@ extension SettingsController: UITableViewDataSource {
             
             (settingCell as! SettingCell).setupWith(points[indexPath.row])
             
-//            (settingCell as! SettingCell).registrationButtonAction = { [weak self] in
-//
-//                guard let self = self else { return }
-//                switch self.points[indexPath.row] {
-//                case .registation:
-//                    let authVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
-//                    authVC.modalTransitionStyle = .coverVertical
-//                    authVC.modalPresentationStyle = .overFullScreen
-//                    self.present(authVC, animated: true)
-//                default: break
-//                }
-//            }
-            
             (settingCell as! SettingCell).switchAction = { [weak self] isOn in
                 guard let self = self else { return }
                 
@@ -173,12 +161,6 @@ extension SettingsController: UITableViewDelegate {
                 self?.dismiss(animated: true)
             }
             self.present(timeVC, animated: true)
-//        case .mapPoint:
-//            guard DefaultsManager.notificationByLocation else { return }
-//            let mapVC = MapViewController.loadFromNib()
-//            navigationController?.pushViewController(mapVC, animated: true)
-//        case .raduis:
-//            showPicker()
         case .language:
             let alert = UIAlertController(title: "", message: AppLocalizationKeys.chooseLanguage.localized(), preferredStyle: .actionSheet)
             
@@ -193,17 +175,48 @@ extension SettingsController: UITableViewDelegate {
             self.present(alert, animated: true)
             
         case .signing:
+            if KeychainManager.UID != nil {
+                let logoutAlert = Alerts.confirmation.controller
+                let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+                let logoutAction = UIAlertAction(title: "Выйти", style: .destructive) { [weak self] _ in
+                    KeychainManager.clearAll()
+                    self?.tableView.reloadData()
+                }
+                logoutAlert.addAction(cancelAction)
+                logoutAlert.addAction(logoutAction)
+                present(logoutAlert, animated: true)
+            
+                return
+            }
             
             let signInVC = AuthViewController.loadFromNib()
             signInVC.type = .login
+            signInVC.loginSuccess = { [weak self] in
+                self?.tableView.reloadData()
+            }
             signInVC.modalTransitionStyle = .coverVertical
             signInVC.modalPresentationStyle = .overFullScreen
             self.present(signInVC, animated: true)
             
         case .registation:
+            if KeychainManager.UID != nil {
+                let deleteAlert = Alerts.deleteConfirmation.controller
+                let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+                let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+//                    удаление аккаунта тут
+                }
+                deleteAlert.addAction(cancelAction)
+                deleteAlert.addAction(deleteAction)
+                present(deleteAlert, animated: true)
+
+                return
+            }
             
             let authVC = AuthViewController.loadFromNib()
             authVC.type = .registration
+            authVC.loginSuccess = { [weak self] in
+                self?.tableView.reloadData()
+            }
             authVC.modalTransitionStyle = .coverVertical
             authVC.modalPresentationStyle = .overFullScreen
             self.present(authVC, animated: true)

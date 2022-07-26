@@ -14,6 +14,8 @@ enum Alerts {
     case mapType
     case saveCoordinate
     case share
+    case deleteConfirmation
+    case confirmation
     
     private var title: String {
         switch self {
@@ -27,6 +29,10 @@ enum Alerts {
             return ""
         case .share:
             return AppLocalizationKeys.alertShare.localized()
+        case .deleteConfirmation:
+            return "Удалить аккаунт?"
+        case .confirmation:
+            return ""
         }
     }
     
@@ -42,12 +48,16 @@ enum Alerts {
             return AppLocalizationKeys.saveCoordinate.localized()
         case .share:
             return AppLocalizationKeys.share.localized()
+        case .deleteConfirmation:
+            return "Действительно удалить аккаунт? Вы потяреяете все свои списки. Это действие необратимо. "
+        case .confirmation:
+            return "Действительно выйти?"
         }
     }
     
     private var style: UIAlertController.Style {
         switch self {
-        case .refresh, .information, .saveCoordinate:
+        case .refresh, .information, .saveCoordinate, .deleteConfirmation, .confirmation:
             return .alert
         case .mapType, .share:
             return .actionSheet
