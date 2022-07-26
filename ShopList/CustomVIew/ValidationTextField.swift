@@ -11,6 +11,7 @@ import UIKit
 class ValidationTextField: NoActionTextField {
     var validationType: Validator.Regexp = .email
     private let padding = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 5)
+    private var timer: Timer?
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -22,12 +23,12 @@ class ValidationTextField: NoActionTextField {
     }
     
     @objc func isValid() -> Bool {
-        let isValid = Validator.validate(string: self.text, pattern: self.validationType)
-        if isValid || self.text?.count == 0 {
-            validState()
-        } else {
-            invalidState()
-        }
+        let isValid = Validator.validate(string: self.text, pattern: self.validationType) || self.text?.count == 0
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] _ in
+            isValid ? self?.validState() : self?.invalidState()
+        })
         return isValid
     }
     
@@ -41,6 +42,7 @@ class ValidationTextField: NoActionTextField {
         UIView.animate(withDuration: 2) { [weak self] in
             self?.layer.borderColor = UIColor.red.cgColor
         }
+        self.shake()
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
