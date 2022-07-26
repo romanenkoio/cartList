@@ -66,6 +66,7 @@
 		7FD1D11A2819C42400CA44FE /* ShopMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D1192819C42400CA44FE /* ShopMarker.swift */; };
 		7FDA617528904257007D8628 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA617428904257007D8628 /* ValidationTextField.swift */; };
 		7FDA6178289042A8007D8628 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA6177289042A8007D8628 /* Validator.swift */; };
+		7FDA617A289050FA007D8628 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDA6179289050FA007D8628 /* StoreKit.framework */; };
 		7FEB9A2328134B51005AA371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2228134B51005AA371 /* AppDelegate.swift */; };
 		7FEB9A2528134B51005AA371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2428134B51005AA371 /* SceneDelegate.swift */; };
 		7FEB9A2C28134B54005AA371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2B28134B54005AA371 /* Assets.xcassets */; };
@@ -146,6 +147,7 @@
 		7FD1D1192819C42400CA44FE /* ShopMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMarker.swift; sourceTree = "<group>"; };
 		7FDA617428904257007D8628 /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		7FDA6177289042A8007D8628 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		7FDA6179289050FA007D8628 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7FEB9A1F28134B51005AA371 /* ShopList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEB9A2228134B51005AA371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FEB9A2428134B51005AA371 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FDA617A289050FA007D8628 /* StoreKit.framework in Frameworks */,
 				16DA4C4B89F8470D0392B50D /* Pods_ShopList.framework in Frameworks */,
 				7FC298BA28817B6100F4D082 /* CloudKit.framework in Frameworks */,
 			);
@@ -579,6 +582,7 @@
 		A00A645EBDCA17F81B4EB3C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FDA6179289050FA007D8628 /* StoreKit.framework */,
 				7FC298B928817B6100F4D082 /* CloudKit.framework */,
 				95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */,
 			);
