@@ -8,6 +8,12 @@
 import UIKit
 import Firebase
 
+enum AuthAction {
+    case login
+    case registration
+    case changePassword
+}
+
 class AuthViewController: UIViewController {
 
     @IBOutlet weak var loginField: UITextField!
@@ -15,18 +21,8 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
     
-//        var signUp: Bool = true {
-//        willSet {
-//            if newValue {
-//                confirmButton.setTitle("Вход", for: .normal)
-//            } else {
-//                confirmButton.setTitle("Регистрация", for: .normal)
-//            }
-//        }
-//    }
-    
-    var existUser: Bool = true
-    
+    var type = AuthAction.login
+        
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -35,18 +31,13 @@ class AuthViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        Auth.auth().addStateDidChangeListener { (auth, user) in
-//
-//            if user == nil {
-//
-//            }
-//        }
-        
-        if existUser {
+        switch type {
+        case .login:
             confirmButton.setTitle(AppLocalizationKeys.signIn.localized(), for: .normal)
-        } else {
-            confirmButton.setTitle(AppLocalizationKeys.registration.localized(), for: .normal)
+        case .registration:
+            confirmButton.setTitle(AppLocalizationKeys.signIn.localized(), for: .normal)
+        case .changePassword:
+            break
         }
     }
     
@@ -66,16 +57,24 @@ class AuthViewController: UIViewController {
               let password = passwordField.text
         else { return }
         
-                Auth.auth().createUser(withEmail: login, password: password) { (result, error) in
-                    if error == nil {
-                        if let result = result {
-                            print(result.user.uid)
-                            let reference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
-                            reference.child(result.user.uid).updateChildValues([SLAppEnvironment.ChildValues.login : login, SLAppEnvironment.ChildValues.password.rawValue : password])
-                            self.dismiss(animated: true)
-                        }
+        switch type {
+        case .login:
+            Auth.auth().createUser(withEmail: login, password: password) { (result, error) in
+                if error == nil {
+                    if let result = result {
+                        print(result.user.uid)
+                        let reference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
+                        reference.child(result.user.uid).updateChildValues([SLAppEnvironment.ChildValues.login : login, SLAppEnvironment.ChildValues.password.rawValue : password])
+                        self.dismiss(animated: true)
                     }
                 }
+            }
+        case .registration:
+            break
+        case .changePassword:
+            break
+        }
+   
     }
 }
 

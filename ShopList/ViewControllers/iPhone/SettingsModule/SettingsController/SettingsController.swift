@@ -194,8 +194,8 @@ extension SettingsController: UITableViewDelegate {
             
         case .signing:
             
-            let signInVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
-            signInVC.existUser = true
+            let signInVC = AuthViewController.loadFromNib()
+            signInVC.type = .login
             signInVC.modalTransitionStyle = .coverVertical
             signInVC.modalPresentationStyle = .overFullScreen
             self.present(signInVC, animated: true)
@@ -203,7 +203,7 @@ extension SettingsController: UITableViewDelegate {
         case .registation:
             
             let authVC = AuthViewController.loadFromNib()
-            authVC.existUser = false
+            authVC.type = .registration
             authVC.modalTransitionStyle = .coverVertical
             authVC.modalPresentationStyle = .overFullScreen
             self.present(authVC, animated: true)
