@@ -16,17 +16,18 @@ enum AuthAction {
 
 class AuthViewController: UIViewController {
 
-    @IBOutlet weak var loginField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loginField: ValidationTextField!
+    @IBOutlet weak var passwordField: ValidationTextField!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
     
     var type = AuthAction.login
         
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         dismissController()
+        loginField.validationType = .email
+        passwordField.validationType = .password
     }
     
     override func viewWillAppear(_ animated: Bool) {

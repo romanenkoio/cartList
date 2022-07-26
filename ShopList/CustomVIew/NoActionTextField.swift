@@ -14,10 +14,6 @@ class NoActionTextField: UITextField {
         super.init(coder: aDecoder)
     }
    
-//    override func caretRect(for position: UITextPosition) -> CGRect {
-//        return CGRect.zero
-//    }
-   
     override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         return []
     }

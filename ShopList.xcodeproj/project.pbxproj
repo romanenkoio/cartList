@@ -64,6 +64,8 @@
 		7FD1D1162819B4D600CA44FE /* SettingsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D1142819B4D600CA44FE /* SettingsHeaderCell.swift */; };
 		7FD1D1172819B4D600CA44FE /* SettingsHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD1D1152819B4D600CA44FE /* SettingsHeaderCell.xib */; };
 		7FD1D11A2819C42400CA44FE /* ShopMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D1192819C42400CA44FE /* ShopMarker.swift */; };
+		7FDA617528904257007D8628 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA617428904257007D8628 /* ValidationTextField.swift */; };
+		7FDA6178289042A8007D8628 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA6177289042A8007D8628 /* Validator.swift */; };
 		7FEB9A2328134B51005AA371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2228134B51005AA371 /* AppDelegate.swift */; };
 		7FEB9A2528134B51005AA371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2428134B51005AA371 /* SceneDelegate.swift */; };
 		7FEB9A2C28134B54005AA371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2B28134B54005AA371 /* Assets.xcassets */; };
@@ -142,6 +144,8 @@
 		7FD1D1142819B4D600CA44FE /* SettingsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderCell.swift; sourceTree = "<group>"; };
 		7FD1D1152819B4D600CA44FE /* SettingsHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderCell.xib; sourceTree = "<group>"; };
 		7FD1D1192819C42400CA44FE /* ShopMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMarker.swift; sourceTree = "<group>"; };
+		7FDA617428904257007D8628 /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
+		7FDA6177289042A8007D8628 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7FEB9A1F28134B51005AA371 /* ShopList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEB9A2228134B51005AA371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FEB9A2428134B51005AA371 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				7FA1F33828146BBE008ABEE1 /* NoActionTextField.swift */,
+				7FDA617428904257007D8628 /* ValidationTextField.swift */,
 			);
 			path = CustomVIew;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				7FA1F35128149C4C008ABEE1 /* Typealiases.swift */,
+				7FDA6177289042A8007D8628 /* Validator.swift */,
 			);
 			path = Utilites;
 			sourceTree = "<group>";
@@ -775,6 +781,7 @@
 				7F6C90382817FBF00048EA1A /* CustomUIAction.swift in Sources */,
 				7FBC0492288FF4C300583C4C /* KeychainManager.swift in Sources */,
 				EB96139B28572E59007897CA /* String+Extension.swift in Sources */,
+				7FDA617528904257007D8628 /* ValidationTextField.swift in Sources */,
 				7F6C9042281868490048EA1A /* Alerts.swift in Sources */,
 				7FA1F34C28148CC9008ABEE1 /* SettingCell.swift in Sources */,
 				7FCB588B2813508600D3E370 /* MainListController.swift in Sources */,
@@ -788,6 +795,7 @@
 				7FA1F34F28148ED4008ABEE1 /* SLRealmCoordinate.swift in Sources */,
 				7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */,
 				7FCB5894281351B100D3E370 /* UiView+Extensions.swift in Sources */,
+				7FDA6178289042A8007D8628 /* Validator.swift in Sources */,
 				7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */,
 				7FEB9A2528134B51005AA371 /* SceneDelegate.swift in Sources */,
 				7F6C904F28188AB40048EA1A /* UIString+Extensions.swift in Sources */,
