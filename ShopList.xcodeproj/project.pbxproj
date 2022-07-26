@@ -41,6 +41,7 @@
 		7FA1F35428149CBD008ABEE1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */; };
 		7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */; };
 		7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAFA89F28513D3F0089B123 /* Placeholders.swift */; };
+		7FBC048F288FEB9E00583C4C /* SLAppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */; };
 		7FC298B4288173FF00F4D082 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC298B2288173FF00F4D082 /* PremiumController.swift */; };
 		7FC298B5288173FF00F4D082 /* PremiumController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC298B3288173FF00F4D082 /* PremiumController.xib */; };
 		7FC298BA28817B6100F4D082 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC298B928817B6100F4D082 /* CloudKit.framework */; };
@@ -85,7 +86,6 @@
 /* Begin PBXFileReference section */
 		7F40B1A7281AD4B0002DF78E /* MainPadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPadController.swift; sourceTree = "<group>"; };
 		7F40B1A8281AD4B0002DF78E /* MainPadController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPadController.xib; sourceTree = "<group>"; };
-		7F4D963F2881F64D002BAA7F /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		7F6C90372817FBF00048EA1A /* CustomUIAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIAction.swift; sourceTree = "<group>"; };
 		7F6C9039281804450048EA1A /* SLAppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLAppImages.swift; sourceTree = "<group>"; };
 		7F6C903B281812830048EA1A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -117,6 +117,7 @@
 		7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		7FAFA89F28513D3F0089B123 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
+		7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLAppEnvironment.swift; sourceTree = "<group>"; };
 		7FC298B2288173FF00F4D082 /* PremiumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumController.swift; sourceTree = "<group>"; };
 		7FC298B3288173FF00F4D082 /* PremiumController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumController.xib; sourceTree = "<group>"; };
 		7FC298B828817B5C00F4D082 /* ShopList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShopList.entitlements; sourceTree = "<group>"; };
@@ -301,7 +302,7 @@
 			children = (
 				7FAFA89F28513D3F0089B123 /* Placeholders.swift */,
 				7F8C624928520CA3000D3715 /* Languages.swift */,
-				7F4D963F2881F64D002BAA7F /* Bridge.h */,
+				7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -744,6 +745,7 @@
 				7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */,
 				8E237F58288EF74700408404 /* AuthViewController.swift in Sources */,
 				EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */,
+				7FBC048F288FEB9E00583C4C /* SLAppEnvironment.swift in Sources */,
 				7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */,
 				7FA1F34028148021008ABEE1 /* ProductList.swift in Sources */,
 				7FD1D11A2819C42400CA44FE /* ShopMarker.swift in Sources */,

@@ -202,7 +202,7 @@ extension SettingsController: UITableViewDelegate {
             
         case .registation:
             
-            let authVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
+            let authVC = AuthViewController.loadFromNib()
             authVC.existUser = false
             authVC.modalTransitionStyle = .coverVertical
             authVC.modalPresentationStyle = .overFullScreen

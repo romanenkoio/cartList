@@ -68,71 +68,16 @@ class AuthViewController: UIViewController {
               let password = passwordField.text
         else { return }
         
-//        if existUser {
-            
-//            if (!login.isEmpty && !password.isEmpty) {
                 Auth.auth().createUser(withEmail: login, password: password) { (result, error) in
                     if error == nil {
                         if let result = result {
                             print(result.user.uid)
-                            let reference = Database.database(url: "https://simple-cart-list-default-rtdb.europe-west1.firebasedatabase.app").reference().child("users")
-                            reference.child(result.user.uid).updateChildValues(["login" : login, "password" : password, "lists" : ["ispinned" : false, "listName" : "", "products" : "", "sharedFor" : ""]])
+                            let reference = Database.database(url: SLAppEnvironment.dbUrl).reference().child(SLAppEnvironment.DataBaseChilds.users.rawValue)
+                            reference.child(result.user.uid).updateChildValues(["login" : login, "password" : password])
                             self.dismiss(animated: true)
                         }
                     }
                 }
-//            }
-//        } else {
-//            Auth.auth().signIn(withEmail: login, password: password)
-//            self.dismiss(animated: true)
-//        }
-        
-        
-//        if !login.isEmpty, !password.isEmpty {
-//            Auth.auth().signIn(withEmail: login, password: password) { result, error in
-//                if error == nil {
-//                    if let result = result {
-//                        self.dismiss(animated: true)
-//                    }
-//                }
-//            }
-//        }
     }
 }
 
-/*
- 
- {
-     
-     guard let login = loginField.text,
-           let password = passwordField.text
-     else { return }
-     
-     if signUp {
-         if !login.isEmpty, !password.isEmpty {
-             Auth.auth().createUser(withEmail: login, password: password) { result, error in
-                 if error == nil {
-                     if let result = result {
-                         print(result.user.uid)
-                         let reference = Database.database().reference().child("users")
-                         reference.child(result.user.uid).updateChildValues(["login" : login, "password" : password])
-                         self.dismiss(animated: true)
-                         
-                     }
-                 }
-             }
-         }
-     } else {
-         if !login.isEmpty, !password.isEmpty {
-             Auth.auth().signIn(withEmail: login, password: password) { result, error in
-                 if error == nil {
-                     if let result = result {
-                         self.dismiss(animated: true)
-                     }
-                 }
-             }
-         }
-     }
- }
- 
- */
