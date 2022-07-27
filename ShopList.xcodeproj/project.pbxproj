@@ -81,6 +81,7 @@
 		8E0F669428905D9F00A5202C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F669328905D9F00A5202C /* GoogleService-Info.plist */; };
 		8E237F58288EF74700408404 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E237F56288EF74700408404 /* AuthViewController.swift */; };
 		8E237F59288EF74700408404 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F57288EF74700408404 /* AuthViewController.xib */; };
+		8E6A4B37289165D600638F25 /* SLFirebaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A4B36289165D600638F25 /* SLFirebaseList.swift */; };
 		EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */; };
 		EB96139428572D70007897CA /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB96139628572D70007897CA /* Localization.strings */; };
 		EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96139828572E1E007897CA /* Bundle+Extension.swift */; };
@@ -164,6 +165,7 @@
 		8E0F669328905D9F00A5202C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ShopList/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8E237F56288EF74700408404 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8E237F57288EF74700408404 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
+		8E6A4B36289165D600638F25 /* SLFirebaseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirebaseList.swift; sourceTree = "<group>"; };
 		95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B192FEFFB24246E2010E80 /* Pods-ShopList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.debug.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.debug.xcconfig"; sourceTree = "<group>"; };
 		D6EB437F6C93DCB19E64A52B /* Pods-ShopList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.release.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.release.xcconfig"; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		7FEB9A2128134B51005AA371 /* ShopList */ = {
 			isa = PBXGroup;
 			children = (
+				8E6A4B312891655800638F25 /* Firebase */,
 				7F85A32E2881A1A100CE3386 /* AppIcons */,
 				7FC298B828817B5C00F4D082 /* ShopList.entitlements */,
 				EB96139628572D70007897CA /* Localization.strings */,
@@ -577,6 +580,14 @@
 				8E237F57288EF74700408404 /* AuthViewController.xib */,
 			);
 			path = AuthViewController;
+			sourceTree = "<group>";
+		};
+		8E6A4B312891655800638F25 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				8E6A4B36289165D600638F25 /* SLFirebaseList.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		A00A645EBDCA17F81B4EB3C8 /* Frameworks */ = {
@@ -776,6 +787,7 @@
 				7F8C624A28520CA3000D3715 /* Languages.swift in Sources */,
 				7FD1D1102819A49800CA44FE /* NotificationName+Extension.swift in Sources */,
 				7FCB588328134D8500D3E370 /* BaseTabBarController.swift in Sources */,
+				8E6A4B37289165D600638F25 /* SLFirebaseList.swift in Sources */,
 				7FCB588728134DD200D3E370 /* SettingsController.swift in Sources */,
 				7FA1F33928146BBE008ABEE1 /* NoActionTextField.swift in Sources */,
 				7FFE1846281359D700DE5DD1 /* RealmManager.swift in Sources */,

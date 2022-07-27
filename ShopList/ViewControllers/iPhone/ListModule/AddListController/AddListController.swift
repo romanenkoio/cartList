@@ -25,6 +25,8 @@ final class AddListController: UIViewController {
     private var seletedPkg = SLProductPackage.pieces
     var type: SLAddType = .list
     var list: SLRealmList?
+    var database: DatabaseReference!
+    var lists = [SLFirebaseList]()
     
     private var count: Float = 1.0 {
         didSet {
@@ -68,6 +70,26 @@ final class AddListController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        loadLists()
+    }
+    
+    private func loadLists() {
+        
+        database = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let query = self.database.child("users/\(uid)/lists").queryOrderedByKey()
+        query.observeSingleEvent(of: .value) { snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                let value = child.value as? NSDictionary
+                let listName = value?["listName"] as? String ?? ""
+                let isPinned = value?["isPinned"] as? Bool ?? false
+//                let id = child.key as String
+//                let id = Int(child.key) ?? 0
+                let item = SLFirebaseList(listName: listName, isPinned: isPinned)
+                self.lists.append(item)
+            }
+        }
     }
 
     @objc func keyboardWillAppear(notification: NSNotification) {
@@ -117,6 +139,19 @@ final class AddListController: UIViewController {
                   !listName.isEmpty
             else { return }
             RealmManager.write(object: SLRealmList(listName: listName))
+            
+            let newList = SLFirebaseList(listName: listName, isPinned: false)
+            self.lists.append(newList)
+            
+            for (ind, va) in lists.enumerated() {
+                database = Database.database().reference()
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                database.child("users/\(uid)/lists/\(ind)").setValue(["listName" : va.listName, "isPinned" : va.isPinned])
+            }
+//            database = Database.database().reference()
+//            guard let uid = Auth.auth().currentUser?.uid else { return }
+//            database.child("users/\(uid)/lists").setValue(lists)
+            
         case .product:
             guard let productName = productInput.text,
                   !productName.isEmpty,

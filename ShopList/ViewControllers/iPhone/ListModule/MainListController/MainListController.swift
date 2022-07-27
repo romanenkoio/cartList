@@ -10,6 +10,7 @@ import Lottie
 import EasyTipView
 import GoogleMobileAds
 import CloudKit
+import Firebase
 
 class MainListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +18,8 @@ class MainListController: UIViewController {
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var createListButton: UIButton!
     var bannerView: GADBannerView!
+    var database: DatabaseReference!
+    var listsFB = [SLFirebaseList]()
     
     var tipViews = [EasyTipView]()
     private var lists = [SLRealmList]() {
@@ -40,6 +43,26 @@ class MainListController: UIViewController {
         if DefaultsManager.lainchCount % 2 == 0 {
             let vc = PremiumController.loadFromNib()
             self.present(vc, animated: true)
+        }
+    }
+    
+    private func loadLists() {
+        
+        database = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let query = self.database.child("users/\(uid)/lists").queryOrderedByKey()
+        query.observeSingleEvent(of: .value) { snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                let value = child.value as? NSDictionary
+                let listName = value?["listName"] as? String ?? ""
+                let isPinned = value?["isPinned"] as? Bool ?? false
+                let item = SLFirebaseList(listName: listName, isPinned: isPinned)
+                self.listsFB.append(item)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
@@ -71,6 +94,8 @@ class MainListController: UIViewController {
         showTips()
 //        bannerView.load(GADRequest())
         NotificationCenter.default.addObserver(self, selector: #selector(readData), name: .listWasImported, object: nil)
+        
+        loadLists()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -177,12 +202,17 @@ class MainListController: UIViewController {
 
 extension MainListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lists.count
+        return listsFB.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listCell = tableView.dequeueReusableCell(withIdentifier: String(describing: MainListCell.self), for: indexPath) as! MainListCell
-        listCell.setupWith(lists[indexPath.row])
+        let list = listsFB[indexPath.row]
+//        listCell.setupWith(list)
+        listCell.pinImage.isHidden = !list.isPinned
+        listCell.listNameLabel.text = list.listName
+        listCell.cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .white
+        listCell.cellView.layer.borderColor = UIColor.mainOrange.cgColor
         return listCell
     }
 }
