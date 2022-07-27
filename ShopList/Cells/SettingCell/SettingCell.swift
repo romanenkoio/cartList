@@ -12,6 +12,7 @@ class SettingCell: UITableViewCell {
     @IBOutlet private weak var imageLabel: UIImageView!
     @IBOutlet private weak var settingLabel: UILabel!
     @IBOutlet private weak var switcher: UISwitch!
+    @IBOutlet weak var indicator: UIImageView!
     
     var switchAction: SwitchAction?
     var registrationButtonAction: (() -> ())?
@@ -22,7 +23,7 @@ class SettingCell: UITableViewCell {
     }
     
     func setupWith(_ type: SLSettingsPoint) {
-        self.accessoryType = type.indicator
+        self.indicator.isHidden = type.indicator == .none
         imageLabel.image = type.image
         settingLabel.text = type.text
         switcher.isHidden = type.switcherHidden
@@ -31,26 +32,7 @@ class SettingCell: UITableViewCell {
         self.contentView.alpha = type.isEnabled ? 1 : 0.5
     }
     
-    
-    func showAuthController(_ vc: UIViewController) {
-        let authVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
-//        present(vc, animated: true)
-//        self.window?.rootViewController?.present(authVC, animated: true)
-    }
-    
     @IBAction func switchAction(_ sender: UISwitch) {
         switchAction?(sender.isOn)
     }
-    
-//    @IBAction func registrationAction(_ sender: UIButton) {
-//
-//        Auth.auth().addStateDidChangeListener { (auth, user) in
-//
-//            if user == nil {
-//                self.showAuthController()
-//                self.registrationButtonAction?()
-//            }
-//        }
-//        print("tttttt")
-//    }
 }

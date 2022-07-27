@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         migrateRealm()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 //        FirebaseApp.configure()
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.mainOrange
         return true
     }
 

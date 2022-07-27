@@ -9,4 +9,6 @@ import Foundation
 
 typealias SwitchAction = (_ isOn: Bool) -> ()
 typealias VoidBlock = () -> ()
+typealias BoolResultBlock = (_ success: Bool) -> ()
+
 

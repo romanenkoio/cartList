@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="94" id="KGk-i7-Jjw" customClass="ProfileCell" customModule="ShopList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lh3-jb-bVg">
+                        <rect key="frame" x="8" y="10.5" width="70" height="65"/>
+                        <color key="tintColor" red="0.13583287860000001" green="0.78039215689999997" blue="0.74138285039999996" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="MZW-Vd-VRC"/>
+                            <constraint firstAttribute="height" constant="70" id="nIx-1c-PKe"/>
+                        </constraints>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="thin"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zamok.tech@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAh-h6-MLI">
+                        <rect key="frame" x="94" y="36" width="165" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pa5-mI-UGw">
+                        <rect key="frame" x="269" y="37" width="35" height="12.5"/>
+                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="Jx5-49-b43"/>
+                            <constraint firstAttribute="width" constant="35" id="Wsg-Tc-9AS"/>
+                        </constraints>
+                        <imageReference key="image" image="chevron.forward" catalog="system" symbolScale="small"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="60"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="GAh-h6-MLI" firstAttribute="leading" secondItem="lh3-jb-bVg" secondAttribute="trailing" constant="16" id="GIg-V7-jkg"/>
+                    <constraint firstItem="Pa5-mI-UGw" firstAttribute="leading" secondItem="GAh-h6-MLI" secondAttribute="trailing" constant="10" id="Oc6-6I-uvP"/>
+                    <constraint firstItem="lh3-jb-bVg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="aqL-p1-Yq6"/>
+                    <constraint firstItem="Pa5-mI-UGw" firstAttribute="centerY" secondItem="lh3-jb-bVg" secondAttribute="centerY" id="b0Q-UB-QjM"/>
+                    <constraint firstItem="lh3-jb-bVg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="bL5-Rh-uLv"/>
+                    <constraint firstItem="GAh-h6-MLI" firstAttribute="centerY" secondItem="lh3-jb-bVg" secondAttribute="centerY" id="ejG-p0-yKX"/>
+                    <constraint firstAttribute="trailing" secondItem="Pa5-mI-UGw" secondAttribute="trailing" constant="16" id="flc-ID-KuM"/>
+                    <constraint firstAttribute="bottom" secondItem="lh3-jb-bVg" secondAttribute="bottom" constant="8" id="uBN-iW-ggF"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <real key="value" value="16"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mailLabel" destination="GAh-h6-MLI" id="anb-CW-1Lv"/>
+            </connections>
+            <point key="canvasLocation" x="-39.130434782608695" y="5.3571428571428568"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.forward" catalog="system" width="96" height="128"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

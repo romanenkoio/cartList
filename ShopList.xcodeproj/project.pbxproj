@@ -41,6 +41,7 @@
 		7FA1F35428149CBD008ABEE1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */; };
 		7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */; };
 		7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAFA89F28513D3F0089B123 /* Placeholders.swift */; };
+		7FB6F11E2891838600A048F0 /* SLFirManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F11D2891838600A048F0 /* SLFirManager.swift */; };
 		7FBC048F288FEB9E00583C4C /* SLAppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */; };
 		7FBC0492288FF4C300583C4C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC0491288FF4C300583C4C /* KeychainManager.swift */; };
 		7FC298B4288173FF00F4D082 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC298B2288173FF00F4D082 /* PremiumController.swift */; };
@@ -67,6 +68,8 @@
 		7FDA617528904257007D8628 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA617428904257007D8628 /* ValidationTextField.swift */; };
 		7FDA6178289042A8007D8628 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA6177289042A8007D8628 /* Validator.swift */; };
 		7FDA617A289050FA007D8628 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDA6179289050FA007D8628 /* StoreKit.framework */; };
+		7FDA617E289126EF007D8628 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA617C289126EF007D8628 /* ProfileCell.swift */; };
+		7FDA617F289126EF007D8628 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FDA617D289126EF007D8628 /* ProfileCell.xib */; };
 		7FEB9A2328134B51005AA371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2228134B51005AA371 /* AppDelegate.swift */; };
 		7FEB9A2528134B51005AA371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2428134B51005AA371 /* SceneDelegate.swift */; };
 		7FEB9A2C28134B54005AA371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2B28134B54005AA371 /* Assets.xcassets */; };
@@ -121,6 +124,7 @@
 		7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		7FAFA89F28513D3F0089B123 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
+		7FB6F11D2891838600A048F0 /* SLFirManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirManager.swift; sourceTree = "<group>"; };
 		7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLAppEnvironment.swift; sourceTree = "<group>"; };
 		7FBC0491288FF4C300583C4C /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		7FC298B2288173FF00F4D082 /* PremiumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 		7FDA617428904257007D8628 /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		7FDA6177289042A8007D8628 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7FDA6179289050FA007D8628 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7FDA617C289126EF007D8628 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		7FDA617D289126EF007D8628 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		7FEB9A1F28134B51005AA371 /* ShopList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEB9A2228134B51005AA371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FEB9A2428134B51005AA371 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -402,6 +408,7 @@
 		7FCB588D281350A300D3E370 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7FDA617B289126C5007D8628 /* AccountCell */,
 				7FF00064281E95460070CB0E /* ShopCell */,
 				7FA1F34928148CB6008ABEE1 /* SettingCell */,
 				7FA1F342281480FF008ABEE1 /* ProductCell */,
@@ -445,6 +452,15 @@
 				7FD1D1192819C42400CA44FE /* ShopMarker.swift */,
 			);
 			path = Override;
+			sourceTree = "<group>";
+		};
+		7FDA617B289126C5007D8628 /* AccountCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA617C289126EF007D8628 /* ProfileCell.swift */,
+				7FDA617D289126EF007D8628 /* ProfileCell.xib */,
+			);
+			path = AccountCell;
 			sourceTree = "<group>";
 		};
 		7FEB9A1628134B51005AA371 = {
@@ -531,6 +547,7 @@
 				7FD1D10D28197A7900CA44FE /* SLShareManager.swift */,
 				7FD1D1112819AC0800CA44FE /* ImportManager.swift */,
 				7FBC0491288FF4C300583C4C /* KeychainManager.swift */,
+				7FB6F11D2891838600A048F0 /* SLFirManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -684,6 +701,7 @@
 				7FCB588828134DD200D3E370 /* SettingsController.xib in Resources */,
 				7FCB5892281350C300D3E370 /* MainListCell.xib in Resources */,
 				7FEB9A2C28134B54005AA371 /* Assets.xcassets in Resources */,
+				7FDA617F289126EF007D8628 /* ProfileCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,11 +784,13 @@
 				7F6C903A281804450048EA1A /* SLAppImages.swift in Sources */,
 				7F6C903F28182D370048EA1A /* TimeSelectPopupController.swift in Sources */,
 				7FCB589A281355E500D3E370 /* SLRealmListItem.swift in Sources */,
+				7FDA617E289126EF007D8628 /* ProfileCell.swift in Sources */,
 				7F40B1A9281AD4B0002DF78E /* MainPadController.swift in Sources */,
 				7FD1D10E28197A7900CA44FE /* SLShareManager.swift in Sources */,
 				7FA1F35428149CBD008ABEE1 /* NotificationManager.swift in Sources */,
 				7FF0006C281E963E0070CB0E /* ShopListController.swift in Sources */,
 				7FF00067281E95610070CB0E /* ShopCell.swift in Sources */,
+				7FB6F11E2891838600A048F0 /* SLFirManager.swift in Sources */,
 				7FA1F34828148B32008ABEE1 /* SLSettingsPoint.swift in Sources */,
 				7FCB589C281358CD00D3E370 /* SLRealmProduct.swift in Sources */,
 				7F8C624A28520CA3000D3715 /* Languages.swift in Sources */,

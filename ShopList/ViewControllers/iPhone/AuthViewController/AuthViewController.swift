@@ -21,6 +21,7 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var showPasswordButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var type = AuthAction.login
     
@@ -60,31 +61,15 @@ class AuthViewController: UIViewController {
         guard let login = loginField.text,
               let password = passwordField.text
         else { return }
+        spinner.startAnimating()
         
         switch type {
-        case .login:
-            Auth.auth().signIn(withEmail: login, password: password) { result, error in
-                if error == nil {
-                    if let result = result {
-                        print("Successful login \(result.user.uid)")
-                        KeychainManager.store(value: result.user.uid, for: .UID)
-                        self.loginSuccess?()
-                        self.dismiss(animated: true)
-                    }
-                }
-            }
-        case .registration:
-            Auth.auth().createUser(withEmail: login, password: password) { (result, error) in
-                if error == nil {
-                    if let result = result {
-                        print(result.user.uid)
-                        KeychainManager.store(value: result.user.uid, for: .UID)
-                        self.loginSuccess?()
-                        let reference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
-                        reference.child(result.user.uid).updateChildValues(["email" : login, "password" : password])
-                        print("Successful registration \(result.user.uid)")
-                        self.dismiss(animated: true)
-                    }
+        case .login, .registration:
+            SLFirManager.auth(type: type, email: login, password: password) { [weak self] success in
+                self?.spinner.stopAnimating()
+                if success {
+                    self?.loginSuccess?()
+                    self?.dismiss(animated: true)
                 }
             }
         case .changePassword:
@@ -96,6 +81,7 @@ class AuthViewController: UIViewController {
     @IBAction func showPasswordAction(_ sender: UIButton) {
         passwordField.isSecureTextEntry = !passwordField.isSecureTextEntry
         sender.setImage( passwordField.isSecureTextEntry ? UIImage(systemName: "eye.slash") : UIImage(systemName: "eye"), for: .normal)
+        
     }
 }
 

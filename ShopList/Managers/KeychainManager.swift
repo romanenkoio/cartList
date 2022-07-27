@@ -14,6 +14,7 @@ class KeychainManager {
     
     enum Keys: String, CaseIterable {
         case UID
+        case email
     }
     
     
@@ -39,7 +40,13 @@ class KeychainManager {
     
     static var UID: String? {
         get {
-            return value(for: .UID) as? String ?? nil
+            return value(for: .UID) as? String
+        }
+    }
+    
+    static var email: String? {
+        get {
+            return value(for: .email) as? String
         }
     }
     

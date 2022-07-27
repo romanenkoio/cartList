@@ -16,27 +16,18 @@ enum Alerts {
     case share
     case deleteConfirmation
     case confirmation
+    case auth
     
-    private var title: String {
+    private var title: String? {
         switch self {
-        case .refresh:
-            return AppLocalizationKeys.refreshTitle.localized()
-        case .information:
-            return ""
-        case .mapType:
-            return ""
-        case .saveCoordinate:
-            return ""
-        case .share:
-            return AppLocalizationKeys.alertShare.localized()
-        case .deleteConfirmation:
-            return "Удалить аккаунт?"
-        case .confirmation:
-            return ""
+        case .refresh:              return AppLocalizationKeys.refreshTitle.localized()
+        case .share:                return AppLocalizationKeys.alertShare.localized()
+        case .deleteConfirmation:   return "Удалить аккаунт?"
+        default:                    return nil
         }
     }
     
-    private var message: String {
+    private var message: String? {
         switch self {
         case .refresh:
             return AppLocalizationKeys.refresh.localized()
@@ -52,6 +43,8 @@ enum Alerts {
             return "Действительно удалить аккаунт? Вы потяреяете все свои списки. Это действие необратимо. "
         case .confirmation:
             return "Действительно выйти?"
+        case .auth:
+            return nil
         }
     }
     
@@ -59,7 +52,7 @@ enum Alerts {
         switch self {
         case .refresh, .information, .saveCoordinate, .deleteConfirmation, .confirmation:
             return .alert
-        case .mapType, .share:
+        case .mapType, .share, .auth:
             return .actionSheet
         }
     }
