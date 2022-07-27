@@ -19,14 +19,24 @@ class MainListController: UIViewController {
     @IBOutlet weak var createListButton: UIButton!
     var bannerView: GADBannerView!
     var database: DatabaseReference!
-    var listsFB = [SLFirebaseList]()
+//    var listsFB = [SLFirebaseList]()
+    var produstFB = [SLFirebaseProduct]()
     
     var tipViews = [EasyTipView]()
+    
     private var lists = [SLRealmList]() {
         didSet {
             tableView.reloadData()
         }
     }
+    
+    var listsFB = [SLFirebaseList]() {
+        
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +58,28 @@ class MainListController: UIViewController {
     
     private func loadLists() {
         
-        database = Database.database().reference()
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        database = Database.database().reference()
+        print("TUT BYL 0")
         let query = self.database.child("users/\(uid)/lists").queryOrderedByKey()
+
         query.observeSingleEvent(of: .value) { snapshot in
-            for child in snapshot.children.allObjects as! [DataSnapshot] {
-                let value = child.value as? NSDictionary
-                let listName = value?["listName"] as? String ?? ""
-                let isPinned = value?["isPinned"] as? Bool ?? false
-                let item = SLFirebaseList(listName: listName, isPinned: isPinned)
-                self.listsFB.append(item)
+            self.listsFB = []
+
+            for child in snapshot.children.allObjects {
                 
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                if let object = child as? DataSnapshot, let value = object.value as? [String : Any] {
+                    let item = SLFirebaseList(listName: value["listName"] as! String, isPinned: value["isPinned"] as! Bool, id: object.key)
+                    if let productsDict = value["products"] as? [String : Any] {
+                        let product = SLFirebaseProduct(productName: productsDict["productName"] as? String ?? "", produckPkg: productsDict["produckPkg"] as? String ?? "", productCount: productsDict["productCount"] as? Float ?? 0.0, checked: productsDict["checked"] as? Bool ?? false)
+                        item.products.append(product)
+                    }
+                    self.listsFB.append(item)
                 }
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
@@ -221,6 +239,8 @@ extension MainListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ProductList.loadFromNib()
         vc.list = lists[indexPath.row]
+        vc.currentList = listsFB[indexPath.row]
+        print(listsFB[indexPath.row].listName)
         navigationController?.pushViewController(vc, animated: true)
     }
     

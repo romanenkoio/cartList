@@ -9,14 +9,16 @@ import Foundation
 
 class SLFirebaseList {
     
-    var listName: String = ""
-    var isPinned: Bool = false
-//    var id: Int = 0
+    var listName: String
+    var isPinned: Bool
+    var products = [SLFirebaseProduct]()
+    var id: String?
     
-    init(listName: String, isPinned: Bool) {
+    init(listName: String, isPinned: Bool, id: String? = nil) {
         
         self.listName = listName
         self.isPinned = isPinned
-//        self.id = id
+        self.id = id
+
     }
 }

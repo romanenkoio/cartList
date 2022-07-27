@@ -9,6 +9,7 @@ import UIKit
 import Lottie
 import EasyTipView
 import Vision
+import Firebase
 
 class ProductList: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -44,6 +45,9 @@ class ProductList: UIViewController {
     }
     var list: SLRealmList?
     
+    var currentList: SLFirebaseList?
+    private var currentProductList = [SLFirebaseProduct]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var frame = CGRect.zero
@@ -72,6 +76,30 @@ class ProductList: UIViewController {
         }
     }
     
+//    private func loadLists() {
+//        
+//        self.currentProductList = []
+//        self.tableView.reloadData()
+//        database = Database.database().reference()
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        let query = self.database.child("users/\(uid)/lists").queryOrderedByKey()
+//        query.observeSingleEvent(of: .value) { snapshot in
+//            for child in snapshot.children.allObjects as! [DataSnapshot] {
+//                let value = child.value as? NSDictionary
+//                let listName = value?["listName"] as? String ?? ""
+//                let isPinned = value?["isPinned"] as? Bool ?? false
+//                let products = value?["products"] as? [SLFirebaseProduct]
+//                let item = SLFirebaseList(listName: listName, isPinned: isPinned)
+//                item.products = products
+//                self.listsFB.append(item)
+//                
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
+//    }
+    
     private func showTips() {
         if DefaultsManager.isFirstProductLaunch {
             _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
@@ -96,18 +124,7 @@ class ProductList: UIViewController {
     }
     
     private func readData() {
-        guard let list = list else {
-            return
-        }
-        self.products = RealmManager.read(type: SLRealmProduct.self).filter({ $0.ownerListID == list.id})
-        self.title = list.listName
-        subContainer.layer.borderColor = UIColor.mainOrange.cgColor
-        mainShopContainer.isHidden = list.linkedShopID == 0
         
-        if list.linkedShopID != 0 {
-            guard let shop = RealmManager.read(type: SLRealmCoordinate.self).filter({ $0.id == list.linkedShopID}).first else { return }
-            shopLabel.text = "\(AppLocalizationKeys.preferredStore.localized() ) \"\(shop.marketName.trimmingCharacters(in: .whitespaces))\""
-        }
     }
     
     private func updateCellAt(_ indexPath: IndexPath) {
@@ -126,6 +143,7 @@ class ProductList: UIViewController {
         let vc = AddListController.loadFromNib()
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
+        vc.currentList = currentList
         vc.type = .product
         vc.list = list
         vc.saveAction = { [weak self] in
@@ -201,11 +219,19 @@ extension ProductList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if DefaultsManager.separateProducts {
+//            if section == 0 {
+//                return products.filter({ !$0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
+//            }
+//            return products.filter({ $0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
+//        }
+//        return 30
+        
         if DefaultsManager.separateProducts {
             if section == 0 {
-                return products.filter({ !$0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
+                return currentProductList.filter({ !$0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
             }
-            return products.filter({ $0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
+            return currentProductList.filter({ $0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
         }
         return 30
     }
@@ -218,29 +244,54 @@ extension ProductList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if DefaultsManager.separateProducts {
+//            if section == 0 {
+//                return products.filter({ !$0.checked}).count
+//            }
+//            return products.filter({ $0.checked}).count
+//        }
+//        return products.count
+        
         if DefaultsManager.separateProducts {
             if section == 0 {
-                return products.filter({ !$0.checked}).count
+                return currentProductList.filter({ !$0.checked}).count
             }
-            return products.filter({ $0.checked}).count
+            return currentProductList.filter({ $0.checked}).count
         }
-        return products.count
+        return currentProductList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let productCell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductCell.self), for: indexPath) as! ProductCell
+        
+        let item = currentProductList[indexPath.row]
         
         productCell.updateBlock = { [weak self] indexPath in
             guard let self = self else { return }
             
             self.updateCellAt(indexPath)
             
-            if self.products.count == self.products.filter({ $0.checked }).count, DefaultsManager.autoDelete {
-                guard let list = self.list else { return }
+//            if self.products.count == self.products.filter({ $0.checked }).count, DefaultsManager.autoDelete {
+//                guard let list = self.list else { return }
+//
+//                let alert = Alerts.information(text: AppLocalizationKeys.deleteList.localized()).controller
+//                let okAction = UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive) { _ in
+//                    RealmManager.removeList(list)
+//                    self.navigationController?.popViewController(animated: true)
+//                }
+//
+//                let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
+//                alert.addAction(cancelAction)
+//                alert.addAction(okAction)
+//                self.present(alert, animated: true)
+//            }
+            
+            if self.currentProductList.count == self.currentProductList.filter({ $0.checked }).count, DefaultsManager.autoDelete {
+                guard let list = self.currentList else { return }
                     
                 let alert = Alerts.information(text: AppLocalizationKeys.deleteList.localized()).controller
                 let okAction = UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive) { _ in
-                    RealmManager.removeList(list)
+                    // delete product action
                     self.navigationController?.popViewController(animated: true)
                 }
                 
@@ -252,14 +303,24 @@ extension ProductList: UITableViewDataSource {
             
         }
         
+//        if DefaultsManager.separateProducts {
+//            if indexPath.section == 0 {
+//                productCell.setupWith(products.filter({ !$0.checked})[indexPath.row], indexPath)
+//            } else if indexPath.section == 1 {
+//                productCell.setupWith(products.filter({ $0.checked})[indexPath.row], indexPath)
+//            }
+//        } else {
+//            productCell.setupWith(products[indexPath.row], indexPath)
+//        }
+
         if DefaultsManager.separateProducts {
             if indexPath.section == 0 {
-                productCell.setupWith(products.filter({ !$0.checked})[indexPath.row], indexPath)
+                productCell.setupWithFB(currentProductList.filter({ !$0.checked})[indexPath.row], indexPath)
             } else if indexPath.section == 1 {
-                productCell.setupWith(products.filter({ $0.checked})[indexPath.row], indexPath)
+                productCell.setupWithFB(currentProductList.filter({ $0.checked})[indexPath.row], indexPath)
             }
         } else {
-            productCell.setupWith(products[indexPath.row], indexPath)
+            productCell.setupWithFB(currentProductList[indexPath.row], indexPath)
         }
         
         return productCell

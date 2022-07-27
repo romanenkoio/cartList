@@ -25,14 +25,15 @@ final class AddListController: UIViewController {
     private var seletedPkg = SLProductPackage.pieces
     var type: SLAddType = .list
     var list: SLRealmList?
-    var database: DatabaseReference!
-    var lists = [SLFirebaseList]()
+    var currentList: SLFirebaseList?
     
     private var count: Float = 1.0 {
         didSet {
             countInput.text = "\(count)"
         }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,25 +72,6 @@ final class AddListController: UIViewController {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        loadLists()
-    }
-    
-    private func loadLists() {
-        
-        database = Database.database().reference()
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let query = self.database.child("users/\(uid)/lists").queryOrderedByKey()
-        query.observeSingleEvent(of: .value) { snapshot in
-            for child in snapshot.children.allObjects as! [DataSnapshot] {
-                let value = child.value as? NSDictionary
-                let listName = value?["listName"] as? String ?? ""
-                let isPinned = value?["isPinned"] as? Bool ?? false
-//                let id = child.key as String
-//                let id = Int(child.key) ?? 0
-                let item = SLFirebaseList(listName: listName, isPinned: isPinned)
-                self.lists.append(item)
-            }
-        }
     }
 
     @objc func keyboardWillAppear(notification: NSNotification) {
@@ -133,31 +115,25 @@ final class AddListController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         switch type {
         case .list:
             guard let listName = productInput.text,
                   !listName.isEmpty
             else { return }
-            RealmManager.write(object: SLRealmList(listName: listName))
-            
-            let newList = SLFirebaseList(listName: listName, isPinned: false)
-            self.lists.append(newList)
-            
-            for (ind, va) in lists.enumerated() {
-                database = Database.database().reference()
-                guard let uid = Auth.auth().currentUser?.uid else { return }
-                database.child("users/\(uid)/lists/\(ind)").setValue(["listName" : va.listName, "isPinned" : va.isPinned])
-            }
-//            database = Database.database().reference()
-//            guard let uid = Auth.auth().currentUser?.uid else { return }
-//            database.child("users/\(uid)/lists").setValue(lists)
+            let listsRef = Database.database().reference().child("users/\(uid)/lists").childByAutoId()
+            listsRef.setValue(["listName" : listName, "isPinned" : false])
+//            saveAction?()
             
         case .product:
             guard let productName = productInput.text,
-                  !productName.isEmpty,
-                  let list = list
+                  !productName.isEmpty
             else { return }
-            RealmManager.write(object: SLRealmProduct(productName: productName, produckPkg: seletedPkg.pkgAbb, productCount: Double(count), listID: list.id))
+            
+            guard let id = currentList?.id else { return }
+            let listsRef = Database.database().reference().child("users/\(uid)/lists/\(id)/products").childByAutoId()
+            listsRef.setValue(["productName" : productName, "produckPkg" : seletedPkg.pkgAbb, "productCount" : Double(count), "checked" : false])
+            saveAction?()
         }
         NotificationCenter.default.post(name: .listWasImported, object: nil)
         saveAction?()

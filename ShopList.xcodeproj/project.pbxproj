@@ -82,6 +82,7 @@
 		8E237F58288EF74700408404 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E237F56288EF74700408404 /* AuthViewController.swift */; };
 		8E237F59288EF74700408404 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F57288EF74700408404 /* AuthViewController.xib */; };
 		8E6A4B37289165D600638F25 /* SLFirebaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A4B36289165D600638F25 /* SLFirebaseList.swift */; };
+		8E6A4B392891944400638F25 /* SLFirebaseProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A4B382891944400638F25 /* SLFirebaseProduct.swift */; };
 		EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */; };
 		EB96139428572D70007897CA /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB96139628572D70007897CA /* Localization.strings */; };
 		EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96139828572E1E007897CA /* Bundle+Extension.swift */; };
@@ -166,6 +167,7 @@
 		8E237F56288EF74700408404 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8E237F57288EF74700408404 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		8E6A4B36289165D600638F25 /* SLFirebaseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirebaseList.swift; sourceTree = "<group>"; };
+		8E6A4B382891944400638F25 /* SLFirebaseProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirebaseProduct.swift; sourceTree = "<group>"; };
 		95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B192FEFFB24246E2010E80 /* Pods-ShopList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.debug.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.debug.xcconfig"; sourceTree = "<group>"; };
 		D6EB437F6C93DCB19E64A52B /* Pods-ShopList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.release.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.release.xcconfig"; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				8E6A4B36289165D600638F25 /* SLFirebaseList.swift */,
+				8E6A4B382891944400638F25 /* SLFirebaseProduct.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				7FCB588B2813508600D3E370 /* MainListController.swift in Sources */,
 				7FEB9A2328134B51005AA371 /* AppDelegate.swift in Sources */,
 				7FCB5891281350C300D3E370 /* MainListCell.swift in Sources */,
+				8E6A4B392891944400638F25 /* SLFirebaseProduct.swift in Sources */,
 				7FA1F33328146054008ABEE1 /* UIViewController+Extensions.swift in Sources */,
 				7FC298B4288173FF00F4D082 /* PremiumController.swift in Sources */,
 				7F6C903C281812830048EA1A /* UILabel+Extensions.swift in Sources */,

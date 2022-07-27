@@ -15,6 +15,7 @@ class ProductCell: UITableViewCell {
     
     private var product: SLRealmProduct?
     private var indexPath: IndexPath?
+    private var currentProduct: SLFirebaseProduct?
     
     var updateBlock: ((IndexPath) -> ())?
     
@@ -38,6 +39,19 @@ class ProductCell: UITableViewCell {
     
     func setupWith(_ product: SLRealmProduct, _ indexPath: IndexPath) {
         self.product = product
+        self.indexPath = indexPath
+        mainView.borderColor = UIColor.mainOrange.cgColor
+        checkImage.image = product.checked ? SLAppImages.radioCheck.image : SLAppImages.radioUnchek.image
+        
+        productName.strikeThrough(product.checked)
+     
+        pkgInfo.isHidden = product.productCount == 0
+        productName.text = product.productName
+        pkgInfo.text = "\(product.productCount) \(product.produckPkg)"
+    }
+    
+    func setupWithFB(_ product: SLFirebaseProduct, _ indexPath: IndexPath) {
+        self.currentProduct = product
         self.indexPath = indexPath
         mainView.borderColor = UIColor.mainOrange.cgColor
         checkImage.image = product.checked ? SLAppImages.radioCheck.image : SLAppImages.radioUnchek.image
