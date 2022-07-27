@@ -19,8 +19,6 @@
 		7F6C904928187A640048EA1A /* cartAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F6C904828187A640048EA1A /* cartAnimation.json */; };
 		7F6C904D28187D7F0048EA1A /* emptyList.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F6C904C28187D7F0048EA1A /* emptyList.json */; };
 		7F6C904F28188AB40048EA1A /* UIString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C904E28188AB40048EA1A /* UIString+Extensions.swift */; };
-		7F6C905428192A260048EA1A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C905228192A260048EA1A /* MapViewController.swift */; };
-		7F6C905528192A260048EA1A /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6C905328192A260048EA1A /* MapViewController.xib */; };
 		7F85A32A2881937800CE3386 /* premium@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F85A3292881937800CE3386 /* premium@3x.png */; };
 		7F85A32C2881937D00CE3386 /* premium@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F85A32B2881937D00CE3386 /* premium@2x.png */; };
 		7F85A3322881A72900CE3386 /* premium.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F85A3312881A72900CE3386 /* premium.json */; };
@@ -42,6 +40,8 @@
 		7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */; };
 		7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAFA89F28513D3F0089B123 /* Placeholders.swift */; };
 		7FB6F11E2891838600A048F0 /* SLFirManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F11D2891838600A048F0 /* SLFirManager.swift */; };
+		7FB6F12228919FCC00A048F0 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F12028919FCC00A048F0 /* ProfileController.swift */; };
+		7FB6F12328919FCC00A048F0 /* ProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB6F12128919FCC00A048F0 /* ProfileController.xib */; };
 		7FBC048F288FEB9E00583C4C /* SLAppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */; };
 		7FBC0492288FF4C300583C4C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC0491288FF4C300583C4C /* KeychainManager.swift */; };
 		7FC298B4288173FF00F4D082 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC298B2288173FF00F4D082 /* PremiumController.swift */; };
@@ -64,7 +64,6 @@
 		7FD1D1122819AC0800CA44FE /* ImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D1112819AC0800CA44FE /* ImportManager.swift */; };
 		7FD1D1162819B4D600CA44FE /* SettingsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D1142819B4D600CA44FE /* SettingsHeaderCell.swift */; };
 		7FD1D1172819B4D600CA44FE /* SettingsHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD1D1152819B4D600CA44FE /* SettingsHeaderCell.xib */; };
-		7FD1D11A2819C42400CA44FE /* ShopMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D1192819C42400CA44FE /* ShopMarker.swift */; };
 		7FDA617528904257007D8628 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA617428904257007D8628 /* ValidationTextField.swift */; };
 		7FDA6178289042A8007D8628 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA6177289042A8007D8628 /* Validator.swift */; };
 		7FDA617A289050FA007D8628 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDA6179289050FA007D8628 /* StoreKit.framework */; };
@@ -102,8 +101,6 @@
 		7F6C904828187A640048EA1A /* cartAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cartAnimation.json; sourceTree = "<group>"; };
 		7F6C904C28187D7F0048EA1A /* emptyList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyList.json; sourceTree = "<group>"; };
 		7F6C904E28188AB40048EA1A /* UIString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+Extensions.swift"; sourceTree = "<group>"; };
-		7F6C905228192A260048EA1A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		7F6C905328192A260048EA1A /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		7F85A3292881937800CE3386 /* premium@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "premium@3x.png"; sourceTree = "<group>"; };
 		7F85A32B2881937D00CE3386 /* premium@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "premium@2x.png"; sourceTree = "<group>"; };
 		7F85A3312881A72900CE3386 /* premium.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = premium.json; sourceTree = "<group>"; };
@@ -125,6 +122,8 @@
 		7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		7FAFA89F28513D3F0089B123 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
 		7FB6F11D2891838600A048F0 /* SLFirManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirManager.swift; sourceTree = "<group>"; };
+		7FB6F12028919FCC00A048F0 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		7FB6F12128919FCC00A048F0 /* ProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileController.xib; sourceTree = "<group>"; };
 		7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLAppEnvironment.swift; sourceTree = "<group>"; };
 		7FBC0491288FF4C300583C4C /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		7FC298B2288173FF00F4D082 /* PremiumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumController.swift; sourceTree = "<group>"; };
@@ -148,7 +147,6 @@
 		7FD1D1112819AC0800CA44FE /* ImportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportManager.swift; sourceTree = "<group>"; };
 		7FD1D1142819B4D600CA44FE /* SettingsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderCell.swift; sourceTree = "<group>"; };
 		7FD1D1152819B4D600CA44FE /* SettingsHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderCell.xib; sourceTree = "<group>"; };
-		7FD1D1192819C42400CA44FE /* ShopMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMarker.swift; sourceTree = "<group>"; };
 		7FDA617428904257007D8628 /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		7FDA6177289042A8007D8628 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		7FDA6179289050FA007D8628 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -206,10 +204,10 @@
 		7F40B1A5281AD46A002DF78E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				7FB6F11F28919FA900A048F0 /* ProfileModule */,
 				8E237F55288EF71600408404 /* AuthViewController */,
 				7FC298B1288173E500F4D082 /* PremiumModule */,
 				7FF00069281E96130070CB0E /* ShopList */,
-				7F6C9050281929FF0048EA1A /* MapModule */,
 				7FA1F33C28147FE8008ABEE1 /* ProductModule */,
 				7FFE184D28135E5100DE5DD1 /* Popups */,
 				7FCB587C28134CEC00D3E370 /* ListModule */,
@@ -233,23 +231,6 @@
 			children = (
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		7F6C9050281929FF0048EA1A /* MapModule */ = {
-			isa = PBXGroup;
-			children = (
-				7F6C905128192A0A0048EA1A /* MapViewController */,
-			);
-			path = MapModule;
-			sourceTree = "<group>";
-		};
-		7F6C905128192A0A0048EA1A /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				7F6C905228192A260048EA1A /* MapViewController.swift */,
-				7F6C905328192A260048EA1A /* MapViewController.xib */,
-			);
-			path = MapViewController;
 			sourceTree = "<group>";
 		};
 		7F85A32E2881A1A100CE3386 /* AppIcons */ = {
@@ -322,6 +303,15 @@
 				7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		7FB6F11F28919FA900A048F0 /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				7FB6F12028919FCC00A048F0 /* ProfileController.swift */,
+				7FB6F12128919FCC00A048F0 /* ProfileController.xib */,
+			);
+			path = ProfileModule;
 			sourceTree = "<group>";
 		};
 		7FC298B1288173E500F4D082 /* PremiumModule */ = {
@@ -430,7 +420,6 @@
 		7FCB5898281355C200D3E370 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7FD1D1182819C40300CA44FE /* Override */,
 				7FCB589D2813595C00D3E370 /* RealmModels */,
 			);
 			path = Models;
@@ -444,14 +433,6 @@
 				7FA1F34E28148ED4008ABEE1 /* SLRealmCoordinate.swift */,
 			);
 			path = RealmModels;
-			sourceTree = "<group>";
-		};
-		7FD1D1182819C40300CA44FE /* Override */ = {
-			isa = PBXGroup;
-			children = (
-				7FD1D1192819C42400CA44FE /* ShopMarker.swift */,
-			);
-			path = Override;
 			sourceTree = "<group>";
 		};
 		7FDA617B289126C5007D8628 /* AccountCell */ = {
@@ -678,9 +659,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FCB588C2813508600D3E370 /* MainListController.xib in Resources */,
+				7FB6F12328919FCC00A048F0 /* ProfileController.xib in Resources */,
 				7FC298B5288173FF00F4D082 /* PremiumController.xib in Resources */,
 				7F85A32C2881937D00CE3386 /* premium@2x.png in Resources */,
-				7F6C905528192A260048EA1A /* MapViewController.xib in Resources */,
 				7F6C904D28187D7F0048EA1A /* emptyList.json in Resources */,
 				7F85A32A2881937800CE3386 /* premium@3x.png in Resources */,
 				7FD1D1172819B4D600CA44FE /* SettingsHeaderCell.xib in Resources */,
@@ -779,7 +760,6 @@
 				7FBC048F288FEB9E00583C4C /* SLAppEnvironment.swift in Sources */,
 				7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */,
 				7FA1F34028148021008ABEE1 /* ProductList.swift in Sources */,
-				7FD1D11A2819C42400CA44FE /* ShopMarker.swift in Sources */,
 				7FD1D1162819B4D600CA44FE /* SettingsHeaderCell.swift in Sources */,
 				7F6C903A281804450048EA1A /* SLAppImages.swift in Sources */,
 				7F6C903F28182D370048EA1A /* TimeSelectPopupController.swift in Sources */,
@@ -800,7 +780,6 @@
 				7FA1F33928146BBE008ABEE1 /* NoActionTextField.swift in Sources */,
 				7FFE1846281359D700DE5DD1 /* RealmManager.swift in Sources */,
 				EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */,
-				7F6C905428192A260048EA1A /* MapViewController.swift in Sources */,
 				7FD1D1122819AC0800CA44FE /* ImportManager.swift in Sources */,
 				7F6C90382817FBF00048EA1A /* CustomUIAction.swift in Sources */,
 				7FBC0492288FF4C300583C4C /* KeychainManager.swift in Sources */,
@@ -812,6 +791,7 @@
 				7FEB9A2328134B51005AA371 /* AppDelegate.swift in Sources */,
 				7FCB5891281350C300D3E370 /* MainListCell.swift in Sources */,
 				7FA1F33328146054008ABEE1 /* UIViewController+Extensions.swift in Sources */,
+				7FB6F12228919FCC00A048F0 /* ProfileController.swift in Sources */,
 				7FC298B4288173FF00F4D082 /* PremiumController.swift in Sources */,
 				7F6C903C281812830048EA1A /* UILabel+Extensions.swift in Sources */,
 				7FCB588128134D4900D3E370 /* UIColor+Extensions.swift in Sources */,

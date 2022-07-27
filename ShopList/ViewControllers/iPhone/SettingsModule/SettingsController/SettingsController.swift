@@ -125,6 +125,7 @@ extension SettingsController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         switch self.points[indexPath.section][indexPath.row] {
             
         case .morningTime:
@@ -152,25 +153,32 @@ extension SettingsController: UITableViewDelegate {
             alert.addAction(UIAlertAction(title: AppLocalizationKeys.back.localized(), style: .cancel))
             self.present(alert, animated: true)
         case .profile:
-            let authController = AuthViewController.loadFromNib()
-            
-            let alert = Alerts.auth.controller
-            let loginAction = UIAlertAction(title: "Войти", style: .default) { [weak self] _ in
-                authController.type = .login
-                self?.present(authController, animated: true)
+            if KeychainManager.UID != nil {
+                let profileVC = ProfileController.loadFromNib()
+                navigationController?.pushViewController(profileVC, animated: true)
+            } else {
+                let authController = AuthViewController.loadFromNib()
+                authController.loginSuccess = { [weak self] in
+                    self?.tableView.reloadData()
+                }
+                let alert = Alerts.auth.controller
+                let loginAction = UIAlertAction(title: "Войти", style: .default) { [weak self] _ in
+                    authController.type = .login
+                    self?.present(authController, animated: true)
+                }
+                
+                let registrationAction = UIAlertAction(title: "Регистрация", style: .default) { [weak self]  _ in
+                    authController.type = .registration
+                    self?.present(authController, animated: true)
+                }
+                
+                let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
+                
+                alert.addAction(loginAction)
+                alert.addAction(registrationAction)
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true)
             }
-            
-            let registrationAction = UIAlertAction(title: "Регистрация", style: .default) { [weak self]  _ in
-                authController.type = .registration
-                self?.present(authController, animated: true)
-            }
-            
-            let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
-            
-            alert.addAction(loginAction)
-            alert.addAction(registrationAction)
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true)
         default: break
         }
     }
