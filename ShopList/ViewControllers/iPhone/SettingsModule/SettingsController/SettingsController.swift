@@ -88,7 +88,7 @@ extension SettingsController: UITableViewDataSource {
         switch point {
         case .profile:
             settingCell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath)
-        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language:
+        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language, .premium:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingCell.self), for: indexPath) as! SettingCell
             
             (settingCell as! SettingCell).setupWith(point)

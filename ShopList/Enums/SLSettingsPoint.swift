@@ -16,9 +16,10 @@ enum SLSettingsPoint: CaseIterable {
     case morningTime
     case language
     case version
+    case premium
     
     static func getMenu() -> [[SLSettingsPoint]] {
-        return [[.profile], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.language, .version]]
+        return [[.profile], [.premium], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.language, .version]]
     }
     
     var text: String {
@@ -37,6 +38,8 @@ enum SLSettingsPoint: CaseIterable {
             return "\(AppLocalizationKeys.language.localized()): \(Languages.getFullLanguageName(code: DefaultsManager.userLanguage))"
         case .profile:
             return ""
+        case .premium:
+            return "Премиум подписка"
         }
     }
     
@@ -51,6 +54,7 @@ enum SLSettingsPoint: CaseIterable {
         case .language:         return UIImage(systemName: "bubble.left.circle")
         case .version:          return UIImage(systemName: "info.circle.fill")
            
+        case .premium:          return UIImage(systemName: "star.square.fill")
 
         default:                return nil
         }
@@ -76,7 +80,7 @@ enum SLSettingsPoint: CaseIterable {
         switch self {
         case .autoDelete:
             return DefaultsManager.autoDelete
-        case .morningTime, .version, .language, .profile:
+        case .morningTime, .version, .language, .profile, .premium:
             return false
         case .useTimePush:
             return DefaultsManager.timeNotification
@@ -87,7 +91,7 @@ enum SLSettingsPoint: CaseIterable {
     
     var indicator: UITableViewCell.AccessoryType {
         switch self {
-        case .profile, .autoDelete, .useTimePush, .version, .separateList:
+        case .profile, .autoDelete, .useTimePush, .version, .separateList, .premium:
             return .none
         
         case .morningTime, .language:

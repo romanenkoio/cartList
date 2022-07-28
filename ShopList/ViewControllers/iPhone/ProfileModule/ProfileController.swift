@@ -9,7 +9,6 @@ import UIKit
 
 
 class ProfileController: UIViewController {
-    var token: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

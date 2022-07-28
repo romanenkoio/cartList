@@ -22,8 +22,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ost-hY-V3A">
                         <rect key="frame" x="10" y="10" width="294" height="35"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZAI-fy-wVU">
-                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZAI-fy-wVU">
+                                <rect key="frame" x="0.0" y="0.5" width="35" height="33.5"/>
                                 <color key="tintColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="CFj-qH-8eV"/>
@@ -80,7 +80,7 @@
     </objects>
     <resources>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
-        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="star.square.fill" catalog="system" width="128" height="114"/>
         <namedColor name="buttonColor">
             <color red="0.99607843137254903" green="0.41176470588235292" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
