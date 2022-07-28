@@ -13,6 +13,7 @@ class Validator {
         case coordinates = "[0-9]{1,4}\\.[0-9]{3,30}\\, [0-9]{1,4}\\.[0-9]{3,30}"
         case phone = "^(\\+375|375)(29|25|44|33)(\\d{3})(\\d{2})(\\d{2})$"
         case password = "[\\S]{6,25}"
+        case name = "[A-zА-ЯЁа-яё ]{2,30}"
         case email = "^[A-z0-9_.+-]+@[A-z0-9-]+(\\.[A-z0-9-]{2,})+$"
         case youtube = "(?<=v(=|/))([-a-zA-Z0-9_]+)|(?<=youtu.be/)([-a-zA-Z0-9_]+)"
     }
