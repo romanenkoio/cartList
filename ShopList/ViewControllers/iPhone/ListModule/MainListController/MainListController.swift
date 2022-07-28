@@ -164,12 +164,14 @@ extension MainListController: UITableViewDelegate {
             let pin = UIAction(title: AppLocalizationKeys.pin.localized(), image: UIImage(systemName: "pin")) { [weak self] _ in
                 guard let self = self else { return }
                 self.lists[indexPath.row].isPinned = true
+                SLFirManager.updateList(self.lists[indexPath.row])
                 self.readLists()
             }
             
             let unPin = UIAction(title: AppLocalizationKeys.unpin.localized(), image: UIImage(systemName: "pin.slash")) { [weak self] _ in
                 guard let self = self else { return }
                 self.lists[indexPath.row].isPinned = false
+                SLFirManager.updateList(self.lists[indexPath.row])
                 self.readLists()
             }
             
@@ -182,8 +184,11 @@ extension MainListController: UITableViewDelegate {
                 let alert = UIAlertController(title: AppLocalizationKeys.confirm.localized(), message: AppLocalizationKeys.deleteEntry.localized(), preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive, handler: { _ in
-//                    прописать логику удаления листа
-                    self.readLists()
+                    SLFirManager.removeList(self.lists[indexPath.row]) { success in
+                        if success {
+                            self.readLists()
+                        }
+                    }
                 }))
                 
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .default))

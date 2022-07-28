@@ -101,29 +101,13 @@ final class SLFirManager {
         }
     }
     
-    static func loadList(_ id: String?, success: (([SLFirebaseProduct]) -> ())?) {
+    static func loadList(_ id: String?, success: ((SLFirebaseList) -> ())?) {
         guard let id = id else { return }
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let database = Database.database().reference()
-        let query = database.child("users/\(uid)/lists/\(id)").queryOrderedByKey()
-        
-        
-        query.observeSingleEvent(of: .value) { snapshot in
-            var products = [SLFirebaseProduct]()
-            
-            
-            if let object = (snapshot.children.allObjects[2] as? DataSnapshot)?.value as? [String: Any] {
-                
-                for productItem in object {
-                    let key = productItem.key
-                    if let values = productItem.value as? [String : Any] {
-                        let product = SLFirebaseProduct(productName: values["productName"] as! String, produckPkg: values["produckPkg"] as! String, productCount: values["productCount"] as! Float, checked: values["checked"] as! Bool, id: key)
-                        products.append(product)
-                    }
-                }
-                success?(products)
+        loadLists { lists in
+            guard let list = lists.filter({ $0.id == id }).first else {
+                return
             }
-            
+            success?(list)
         }
     }
     
@@ -134,10 +118,30 @@ final class SLFirManager {
         listsRef.setValue(["productName" : product.productName, "produckPkg" : product.produckPkg, "productCount" : product.productCount, "checked" : product.checked])
     }
     
+    static func updateList(_ list: SLFirebaseList) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let listsRef = Database.database().reference().child("users/\(uid)/lists/\(list.id!)")
+        listsRef.updateChildValues(["isPinned" : list.isPinned])
+    }
+    
     static func removeProduct(_ product: SLFirebaseProduct, listID: String, success: BoolResultBlock?) {
         guard let uid = Auth.auth().currentUser?.uid else { success?(false); return; }
 
         let listsRef = Database.database().reference().child("users/\(uid)/lists/\(listID)/products/\(product.id!)")
+        listsRef.removeValue { error, result in
+            guard error == nil else {
+                success?(false)
+                return
+            }
+            
+            success?(true)
+        }
+    }
+    
+    static func removeList(_ list: SLFirebaseList, success: BoolResultBlock?) {
+        guard let uid = Auth.auth().currentUser?.uid else { success?(false); return; }
+
+        let listsRef = Database.database().reference().child("users/\(uid)/lists/\(list.id!)")
         listsRef.removeValue { error, result in
             guard error == nil else {
                 success?(false)

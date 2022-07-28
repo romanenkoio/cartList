@@ -81,9 +81,10 @@ class ProductList: UIViewController {
     
     private func readData() {
         SLFirManager.loadList(currentList?.id) { [weak self] list in
-            self?.currentList?.products = list
+            self?.currentList = list
             self?.tableView.reloadData()
             self?.setupNavigationButton()
+            self?.playAnimation()
         }
     }
     
@@ -189,8 +190,11 @@ extension ProductList: UITableViewDataSource {
                     
                 let alert = Alerts.information(text: AppLocalizationKeys.deleteList.localized()).controller
                 let okAction = UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive) { _ in
-                    // delete product action
-                    self.navigationController?.popViewController(animated: true)
+                    SLFirManager.removeList(list) { success in
+                        if success {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
                 }
                 
                 let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
