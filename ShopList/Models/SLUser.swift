@@ -8,11 +8,9 @@
 import Foundation
 
 final class SLUser {
-    var isAnonimus = false
-    var email: String
+    var name: String?
     
-    init(isAnonimus: Bool, email: String) {
-        self.isAnonimus = isAnonimus
-        self.email = email
+    init(name: String? = nil) {
+        self.name = name
     }
 }

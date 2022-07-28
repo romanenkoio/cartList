@@ -18,7 +18,7 @@ class ProfileCell: UITableViewCell {
         
         SLFirManager.getUser { [weak self] user in
             if user != nil {
-                self?.mailLabel.text = user?.email
+                self?.mailLabel.text = user?.name
             } else {
                 self?.mailLabel.text = "Войти в аккаунт"
             }

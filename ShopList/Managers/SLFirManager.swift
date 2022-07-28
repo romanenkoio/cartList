@@ -51,12 +51,18 @@ final class SLFirManager {
     static func getUser(result: ((SLUser?) -> ())?) {
         guard let uid = Auth.auth().currentUser?.uid else { result?(nil); return; }
         
-        let query = Database.database().reference().child("users/\(uid)/email")
+        let query = Database.database().reference().child("users/\(uid)/username")
         
         query.observeSingleEvent(of: .value) { snapshot in
-            guard let email = snapshot.value as? String else { result?(nil); return; }
-            result?(SLUser(isAnonimus: false, email: email))
+            guard let name = snapshot.value as? String else { result?(nil); return; }
+            result?(SLUser(name: name))
         }
+    }
+    
+    static func updateUsername(newName: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let listsRef = Database.database().reference().child("users/\(uid)")
+        listsRef.updateChildValues(["username" : newName])
     }
     
     static func createList(listName: String) {

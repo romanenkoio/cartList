@@ -25,7 +25,6 @@ class ProfileController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Профиль"
-//        navigationController?.navigationBar.prefersLargeTitles = false
         editView.alpha = 0
     }
     
@@ -35,9 +34,6 @@ class ProfileController: UIViewController {
         emailLabel.text = ""
         accountStatusLabel.text = ""
         guard let user = Auth.auth().currentUser else {
-//            let authVC = AuthViewController.loadFromNib()
-//            authVC.type = .registration
-//            present(authVC, animated: true)
             return
         }
         guard let email = user.email else { return }
@@ -99,31 +95,13 @@ class ProfileController: UIViewController {
                 }
                 
                 self.view.layoutIfNeeded()
-//                self.nameInputField.textField.text = ""
-//                self.surnameInputField.textField.text = ""
-//                self.phoneInputField.textField.text = ""
             }
         }
     }
     
     @IBAction func saveChangesAction(_ sender: UIButton) {
-        
-//        Auth.auth().updateCurrentUser(<#T##user: User##User#>)
-//        createUser(withEmail: email, password: password) { (result, error) in
-//            guard let result = result  else {
-//                successBlock?(false)
-//                return
-//            }
-        
-        let user = Auth.auth().currentUser
-        if let user = user {
-            let uid = user.uid
-            let email = user.email
-            let name = user.displayName
-            var multiFactorString = "MultiFactor: "
-            
-            
-        }
+        guard let name = nameField.text, name.count > 0 else { return }
+        SLFirManager.updateUsername(newName: name)
         closingAnimation()
     }
     
@@ -136,12 +114,9 @@ class ProfileController: UIViewController {
         
         openingAnimation()
     }
+    
     @IBAction func logoutAction(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
+            try? Auth.auth().signOut()
             navigationController?.popToRootViewController(animated: true)
-            } catch {
-                print(error.localizedDescription)
-            }
     }
 }
