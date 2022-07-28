@@ -18,7 +18,7 @@ class ImportManager {
             let textData = String(decoding: data, as: UTF8.self)
             
             var textArray = textData.components(separatedBy: "/n")
-            let list = SLRealmList(listName: textArray[0])
+            let list = SLFirebaseList(listName: textArray[0], isPinned: false)
             textArray.remove(at: 0)
             
             textArray = textArray.filter({ !$0.isEmpty || $0 != "/n"})
@@ -26,9 +26,9 @@ class ImportManager {
             for text in textArray {
                 guard !text.isEmpty else { continue }
                 let components = text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: "&")
-                RealmManager.write(object: SLRealmProduct(productName: components[0], produckPkg: components[1], productCount: Double(components[2])!, listID: list.id))
+//                RealmManager.write(object: SLRealmProduct(productName: components[0], produckPkg: components[1], productCount: Double(components[2])!, listID: list.id))
             }
-            RealmManager.write(object: list)
+//            RealmManager.write(object: list)
             NotificationCenter.default.post(name: .listWasImported, object: nil)
         }
         

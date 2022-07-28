@@ -1,7 +1,6 @@
 PODS:
   - Adapty (1.17.6)
   - Alamofire (5.5.0)
-  - EasyTipView (2.1.0)
   - Firebase/Core (8.14.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 8.14.0)
@@ -74,11 +73,6 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMaps (6.1.1):
-    - GoogleMaps/Maps (= 6.1.1)
-  - GoogleMaps/Base (6.1.1)
-  - GoogleMaps/Maps (6.1.1):
-    - GoogleMaps/Base
   - GoogleUserMessagingPlatform (2.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
@@ -113,31 +107,22 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.1.0)
-  - Realm (10.25.0):
-    - Realm/Headers (= 10.25.0)
-  - Realm/Headers (10.25.0)
-  - RealmSwift (10.25.0):
-    - Realm (= 10.25.0)
 
 DEPENDENCIES:
   - Adapty
-  - EasyTipView
   - Firebase/Core
   - FirebaseAuth
   - FirebaseDatabase
   - FirebaseInstallations
   - Google-Mobile-Ads-SDK
-  - GoogleMaps
   - KeychainAccess
   - lottie-ios
   - Moya
-  - RealmSwift
 
 SPEC REPOS:
   trunk:
     - Adapty
     - Alamofire
-    - EasyTipView
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -148,7 +133,6 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
-    - GoogleMaps
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - GTMSessionFetcher
@@ -158,13 +142,10 @@ SPEC REPOS:
     - Moya
     - nanopb
     - PromisesObjC
-    - Realm
-    - RealmSwift
 
 SPEC CHECKSUMS:
   Adapty: c147bc8ce330e6f20dd4f5cdbbce57473fb4c398
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
   Firebase: 7e8fe528c161b9271d365217a74c16aaf834578e
   FirebaseAnalytics: 2fc3876e2eb347673ad2f35e249ae7b15d6c88f5
   FirebaseAuth: c5fde343630090253d3af7e2d35697b414b40202
@@ -175,7 +156,6 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 0badb67224b63f7947428eb07039ba37e47ba405
   GoogleAppMeasurement: 71156240babd3cc6ced03e0d54816f01a880c730
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
-  GoogleMaps: 94e6e0851beece6678af9f508f4918b7a7c61722
   GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GTMSessionFetcher: 4577a4cc914a5a07c40a8a0ad0acc22080418c2d
@@ -185,9 +165,7 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
-  Realm: 22a82aaa0e73f3483e3a6df32549c4c5cd34aa63
-  RealmSwift: c2a635212400923edd3f828b8a37d55d3eb31863
 
-PODFILE CHECKSUM: c027d3e59e364980137b895e548b2e848bdd4d85
+PODFILE CHECKSUM: 044244691fcea3b39c466c1b21d31519c780cafc
 
 COCOAPODS: 1.11.3

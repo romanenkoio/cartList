@@ -13,8 +13,9 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var pkgInfo: UILabel!
     @IBOutlet weak var mainView: UIView!
     
-    private var product: SLRealmProduct?
     private var indexPath: IndexPath?
+    private var currentProduct: SLFirebaseProduct?
+    var listID: String?
     
     var updateBlock: ((IndexPath) -> ())?
     
@@ -26,18 +27,18 @@ class ProductCell: UITableViewCell {
     }
     
     @objc private func changeSelection() {
-        guard let product = product else {
+        guard let currentProduct = currentProduct else {
             return
         }
-      
-        RealmManager.beginWrite()
-        self.product?.checked = !product.checked
-        RealmManager.commitWrite()
+       
+        self.currentProduct?.checked = !currentProduct.checked
+        
+        SLFirManager.updateProduct(currentProduct, listID: listID!)
         updateBlock?(self.indexPath!)
     }
     
-    func setupWith(_ product: SLRealmProduct, _ indexPath: IndexPath) {
-        self.product = product
+    func setupWithFB(_ product: SLFirebaseProduct, _ indexPath: IndexPath) {
+        self.currentProduct = product
         self.indexPath = indexPath
         mainView.borderColor = UIColor.mainOrange.cgColor
         checkImage.image = product.checked ? SLAppImages.radioCheck.image : SLAppImages.radioUnchek.image

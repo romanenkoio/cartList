@@ -24,7 +24,7 @@ final class AddListController: UIViewController {
     var saveAction: VoidBlock?
     private var seletedPkg = SLProductPackage.pieces
     var type: SLAddType = .list
-    var list: SLRealmList?
+    var currentList: SLFirebaseList?
     
     private var count: Float = 1.0 {
         didSet {
@@ -68,6 +68,7 @@ final class AddListController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
     }
 
     @objc func keyboardWillAppear(notification: NSNotification) {
@@ -116,13 +117,15 @@ final class AddListController: UIViewController {
             guard let listName = productInput.text,
                   !listName.isEmpty
             else { return }
-            RealmManager.write(object: SLRealmList(listName: listName))
+            SLFirManager.createList(listName: listName)
         case .product:
             guard let productName = productInput.text,
-                  !productName.isEmpty,
-                  let list = list
+                  !productName.isEmpty
             else { return }
-            RealmManager.write(object: SLRealmProduct(productName: productName, produckPkg: seletedPkg.pkgAbb, productCount: Double(count), listID: list.id))
+            
+            guard let id = currentList?.id else { return }
+            let product = SLFirebaseProduct(productName: productName, produckPkg: seletedPkg.pkgAbb, productCount: Float(count), checked: false)
+            SLFirManager.addProductToList(id, product: product)
         }
         NotificationCenter.default.post(name: .listWasImported, object: nil)
         saveAction?()

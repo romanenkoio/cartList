@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import EasyTipView
-import Alamofire
 import Firebase
 
 class SettingsController: UIViewController {
@@ -15,7 +13,6 @@ class SettingsController: UIViewController {
     
     private var points = SLSettingsPoint.getMenu()
     private var timePicker = UIDatePicker()
-    var tipViews = [EasyTipView]()
     private let languages = Languages.allCases
     
     override func viewDidLoad() {
@@ -25,7 +22,6 @@ class SettingsController: UIViewController {
         setupDatePicker()
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        showTips()
         updateLanguage()
         subscribeToNotification()
     }
@@ -34,33 +30,9 @@ class SettingsController: UIViewController {
         tableView.reloadData()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        for view in tipViews {
-            view.removeFromSuperview()
-        }
-    }
-    
     private func setupDatePicker() {
         timePicker.preferredDatePickerStyle = .wheels
         timePicker.datePickerMode = .time
-    }
-    
-    
-    private func showTips() {
-        if DefaultsManager.isFirstSettingsLaunch {
-            _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
-                guard let self = self else { return }
-
-                let tipView = EasyTipView(text: AppLocalizationKeys.deleteCompletedList.localized(),
-                                          preferences: EasyTipView.globalPreferences,
-                                          delegate: nil)
-                guard let firstCell = self.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) else { return }
-                tipView.show(forView: firstCell)
-                self.tipViews.append(tipView)
-                DefaultsManager.isFirstSettingsLaunch = false
-            }
-        }
     }
     
     @objc  func updateLanguage() {

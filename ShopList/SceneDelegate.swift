@@ -6,10 +6,7 @@
 //
 
 import UIKit
-import GoogleMaps
 import Firebase
-import EasyTipView
-import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -21,9 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
       
         FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
+        
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-        GMSServices.provideAPIKey("AIzaSyAS6qgX2yi3HcDVg_Um0ScpBP4wkp3R5pM")
-        setupEasyTipView()
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .mainOrange
         NotificationManager.requestAuthorisation()
         
@@ -75,17 +72,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         return vc
-    }
-    
-    private func setupEasyTipView() {
-        var preferences = EasyTipView.Preferences()
-        preferences.drawing.foregroundColor = .black
-        preferences.drawing.backgroundColor = .white
-        preferences.drawing.borderColor = .mainOrange
-        preferences.drawing.borderWidth = 1
-        preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.any
-        
-        EasyTipView.globalPreferences = preferences
     }
     
     private func setupNavigationBar() {
