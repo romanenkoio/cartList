@@ -22,26 +22,17 @@ class ProductList: UIViewController {
     @IBOutlet weak var addProductButton: UIButton!
     
     private let imagePicker = UIImagePickerController()
-
-    private var products = [SLFirebaseProduct]() {
+    var database: DatabaseReference!
+    
+    var currentList: SLFirebaseList? {
         didSet {
-            tableView.reloadData()
-            playAnimation()
-            if products.count > 0 {
-                self.navigationItem.rightBarButtonItems = [
-                    UIBarButtonItem(customView: pasteButton),
-                    UIBarButtonItem(customView: refreshListButton)
-                ]
-            } else {
-                self.navigationItem.rightBarButtonItems = [
-                    UIBarButtonItem(customView: pasteButton)
-                ]
+            if self.isViewLoaded {
+                tableView.reloadData()
+                emptyLabel.isHidden = currentList?.products.count == 0
+                animationView.isHidden = currentList?.products.count == 0
             }
         }
     }
-    
-    var currentList: SLFirebaseList?
-    var database: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,39 +44,53 @@ class ProductList: UIViewController {
         tableView.registerCellsWith([ProductCell.self])
         updateLanguage()
         subscribeToNotification()
-        if #available(iOS 15.0, *){
+        if #available(iOS 15.0, *) {
             self.tableView.sectionHeaderTopPadding = 0.0
         }
+        readData()
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        readData()
+        playAnimation()
+    }
+    
+    private func setupNavigationButton() {
+        if currentList?.products.count ?? 0 > 0 {
+            self.navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(customView: pasteButton),
+                UIBarButtonItem(customView: refreshListButton)
+            ]
+        } else {
+            self.navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(customView: pasteButton)
+            ]
+        }
     }
 
     private func playAnimation() {
         animationView.loopMode = .playOnce
         animationView.animationSpeed = 0.5
         animationView.animation = Animation.named("emptyList")
-        products.count > 0 ? animationView.stop() : animationView.play()
-        animationView.isHidden = products.count != 0
-        emptyLabel.isHidden = products.count != 0
+        currentList?.products.count ?? 0 > 0 ? animationView.stop() : animationView.play()
+        animationView.isHidden = currentList?.products.count != 0
+        emptyLabel.isHidden = currentList?.products.count != 0
     }
     
     private func readData() {
-        
+        SLFirManager.loadList(currentList?.id) { [weak self] list in
+            self?.currentList?.products = list
+            self?.tableView.reloadData()
+            self?.setupNavigationButton()
+        }
     }
     
     private func updateCellAt(_ indexPath: IndexPath) {
-        if DefaultsManager.separateProducts {
             tableView.beginUpdates()
-            tableView.reloadSections([0, 1], with: .fade)
+            DefaultsManager.separateProducts ? tableView.reloadSections([0, 1], with: .fade) : tableView.reloadRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
-        } else {
-            tableView.beginUpdates()
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
-        }
     }
     
     @IBAction func addProductAction(_ sender: Any) {
@@ -95,56 +100,20 @@ class ProductList: UIViewController {
         vc.currentList = currentList
         vc.type = .product
         vc.saveAction = { [weak self] in
-            self?.readData()
             self?.dismiss(animated: true)
+            self?.readData()
         }
         self.present(vc, animated: true)
     }
     
 //    MARK: rewrite this function to FB logic
     @IBAction func createFromPasteBoard(_ sender: Any) {
-//        guard let content = UIPasteboard.general.string,
-//              let list = currentList
-//        else { return }
-//
-//        let spliceContent = content.components(separatedBy: "\n")
-//        for item in spliceContent {
-//            if !item.isEmpty, item != "\n" {
-//                RealmManager.write(object: SLRealmProduct(productName: item.capitalizingFirstLetter(), produckPkg: "", productCount: 0, listID: list.id))
-//            }
-//        }
-//        readData()
     }
     
     //    MARK: rewrite this function to FB logic
-//    @IBAction func refreshListAction(_ sender: Any) {
-//        guard let list = currentList else {
-//            return
-//        }
-//
-//        let alert = Alerts.refresh.controller
-//
-//        let refreshAction = UIAlertAction(title: AppLocalizationKeys.clearProgress.localized(), style: .default, handler: { [weak self] _ in
-//            guard let self = self else { return }
-//
-//            self.products = RealmManager.read(type: SLRealmProduct.self).filter({ $0.ownerListID == list.id })
-//            RealmManager.beginWrite()
-//            for item in self.products {
-//                item.checked = false
-//            }
-//            RealmManager.commitWrite()
-//            self.tableView.reloadData()
-//        })
-//        refreshAction.setValue(UIColor.mainOrange, forKeyPath: "titleTextColor")
-//
-//        let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
-//        cancelAction.setValue(UIColor.black, forKeyPath: "titleTextColor")
-//
-//        alert.addAction(cancelAction)
-//        alert.addAction(refreshAction)
-//
-//        self.present(alert, animated: true)
-//    }
+    @IBAction func refreshListAction(_ sender: Any) {
+
+    }
     
     @objc private func updateLanguage() {
         emptyLabel.text = AppLocalizationKeys.emptyLabel.localized()
@@ -169,8 +138,6 @@ extension ProductList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-
-        
         if DefaultsManager.separateProducts {
             if section == 0 {
                 return currentList?.products.filter({ !$0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
@@ -181,10 +148,7 @@ extension ProductList: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if DefaultsManager.separateProducts {
-            return 2
-        }
-        return 1
+        return DefaultsManager.separateProducts ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -201,7 +165,18 @@ extension ProductList: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let productCell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductCell.self), for: indexPath) as! ProductCell
         
-        let item = currentList?.products[indexPath.row]
+        
+        var item: SLFirebaseProduct!
+        
+        if tableView.numberOfSections == 1 {
+            item = currentList?.products[indexPath.row]
+        } else {
+            if indexPath.section == 0 {
+                item = currentList?.products.filter({ !$0.checked })[indexPath.row]
+            } else {
+                item = currentList?.products.filter({ $0.checked })[indexPath.row]
+            }
+        }
         
         productCell.updateBlock = { [weak self] indexPath in
             guard let self = self else { return }
@@ -226,6 +201,7 @@ extension ProductList: UITableViewDataSource {
             
         }
         if let item = item {
+            productCell.listID = currentList?.id
             productCell.setupWithFB(item, indexPath)
         }
         
@@ -242,18 +218,23 @@ extension ProductList: UITableViewDelegate {
                 let alert = UIAlertController(title: AppLocalizationKeys.confirm.localized(), message: AppLocalizationKeys.deleteEntry.localized(), preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive, handler: { _ in
-                    tableView.beginUpdates()
-                                        
-                    if indexPath.section == 0 {
-//                       прописать логику удаления продукта
-                    } else if indexPath.section == 1 {
-                        //                       прописать логику удаления продукта
+                    var item: SLFirebaseProduct!
+                    
+                    if tableView.numberOfSections == 1 {
+                        item = self.currentList?.products[indexPath.row]
+                    } else {
+                        if indexPath.section == 0 {
+                            item = self.currentList?.products.filter({ !$0.checked })[indexPath.row]
+                        } else {
+                            item = self.currentList?.products.filter({ $0.checked })[indexPath.row]
+                        }
                     }
                     
-                    tableView.deleteRows(at: [indexPath], with: .left)
-                    self.readData()
-                    tableView.endUpdates()
-                    
+                    SLFirManager.removeProduct(item, listID: (self.currentList?.id!)!) { success in
+                        if success {
+                            self.readData()
+                        }
+                    }
                 }))
                 
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .default))

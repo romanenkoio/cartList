@@ -15,6 +15,7 @@ class ProductCell: UITableViewCell {
     
     private var indexPath: IndexPath?
     private var currentProduct: SLFirebaseProduct?
+    var listID: String?
     
     var updateBlock: ((IndexPath) -> ())?
     
@@ -29,8 +30,10 @@ class ProductCell: UITableViewCell {
         guard let currentProduct = currentProduct else {
             return
         }
-      
+       
         self.currentProduct?.checked = !currentProduct.checked
+        
+        SLFirManager.updateProduct(currentProduct, listID: listID!)
         updateBlock?(self.indexPath!)
     }
     

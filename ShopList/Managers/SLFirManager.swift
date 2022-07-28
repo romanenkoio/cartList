@@ -100,5 +100,52 @@ final class SLFirManager {
             success?(lists)
         }
     }
+    
+    static func loadList(_ id: String?, success: (([SLFirebaseProduct]) -> ())?) {
+        guard let id = id else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let database = Database.database().reference()
+        let query = database.child("users/\(uid)/lists/\(id)").queryOrderedByKey()
+        
+        
+        query.observeSingleEvent(of: .value) { snapshot in
+            var products = [SLFirebaseProduct]()
+            
+            
+            if let object = (snapshot.children.allObjects[2] as? DataSnapshot)?.value as? [String: Any] {
+                
+                for productItem in object {
+                    let key = productItem.key
+                    if let values = productItem.value as? [String : Any] {
+                        let product = SLFirebaseProduct(productName: values["productName"] as! String, produckPkg: values["produckPkg"] as! String, productCount: values["productCount"] as! Float, checked: values["checked"] as! Bool, id: key)
+                        products.append(product)
+                    }
+                }
+                success?(products)
+            }
+            
+        }
+    }
+    
+    static func updateProduct(_ product: SLFirebaseProduct, listID: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        let listsRef = Database.database().reference().child("users/\(uid)/lists/\(listID)/products/\(product.id!)")
+        listsRef.setValue(["productName" : product.productName, "produckPkg" : product.produckPkg, "productCount" : product.productCount, "checked" : product.checked])
+    }
+    
+    static func removeProduct(_ product: SLFirebaseProduct, listID: String, success: BoolResultBlock?) {
+        guard let uid = Auth.auth().currentUser?.uid else { success?(false); return; }
+
+        let listsRef = Database.database().reference().child("users/\(uid)/lists/\(listID)/products/\(product.id!)")
+        listsRef.removeValue { error, result in
+            guard error == nil else {
+                success?(false)
+                return
+            }
+            
+            success?(true)
+        }
+    }
 }
 
