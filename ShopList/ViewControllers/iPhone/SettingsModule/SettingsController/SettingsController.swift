@@ -7,24 +7,21 @@
 
 import UIKit
 import EasyTipView
+import Alamofire
 
 class SettingsController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private var points = SLSettingsPoint.allCases
+    private var points = SLSettingsPoint.getMenu()
     private var timePicker = UIDatePicker()
-    private var radiusPicker = UIPickerView()
-    private var toolBar = UIToolbar()
     var tipViews = [EasyTipView]()
-    private let radiuses = [100, 200, 300, 500, 1000]
-    private var selectedRadius = 100
     private let languages = Languages.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerCellsWith([SettingCell.self, SettingsHeaderCell.self])
+        tableView.registerCellsWith([SettingCell.self, SettingsHeaderCell.self, ProfileCell.self])
+        tableView.sectionFooterHeight = 20
         setupDatePicker()
-        setupRadiusPicker()
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         showTips()
@@ -48,11 +45,6 @@ class SettingsController: UIViewController {
         timePicker.datePickerMode = .time
     }
     
-    private func setupRadiusPicker() {
-        radiusPicker.delegate = self
-        radiusPicker.dataSource = self
-        radiusPicker.backgroundColor = .white
-    }
     
     private func showTips() {
         if DefaultsManager.isFirstSettingsLaunch {
@@ -70,27 +62,6 @@ class SettingsController: UIViewController {
         }
     }
     
-    @objc func onDoneButtonTapped() {
-        toolBar.removeFromSuperview()
-        radiusPicker.removeFromSuperview()
-        DefaultsManager.baseRadius = selectedRadius
-        NotificationManager.scheduleLocationNotifications()
-        tableView.reloadData()
-    }
-    
-    private func showPicker() {
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        let bottomPoint = (window?.safeAreaInsets.bottom ?? 0) + (self.tabBarController?.tabBar.frame.height ?? 49.0) + 440
-        self.radiusPicker.frame = CGRect(x: 0.0, y: bottomPoint, width: UIScreen.main.bounds.size.width, height: 200)
-        self.view.addSubview(self.radiusPicker)
-        toolBar = UIToolbar(frame: CGRect.init(x: 0.0, y: bottomPoint, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.backgroundColor = .mainOrange
-        let button = UIBarButtonItem(title: AppLocalizationKeys.save.localized(), style: .done, target: self, action: #selector(onDoneButtonTapped))
-        button.tintColor = .black
-        toolBar.items = [button]
-        self.view.addSubview(toolBar)
-    }
-    
     @objc  func updateLanguage() {
         self.title = AppLocalizationKeys.settings.localized()
         tableView.reloadData()
@@ -102,27 +73,30 @@ class SettingsController: UIViewController {
 }
 
 extension SettingsController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return points.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return points[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var settingCell: UITableViewCell
-        
-        switch points[indexPath.row] {
-        case .authHeader,.listHeader, .notificationHeader, .infoHeader:
-            settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsHeaderCell.self), for: indexPath) as! SettingsHeaderCell
-            (settingCell as! SettingsHeaderCell).setupWith(type: points[indexPath.row])
-        case .signing, .registation, .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language:
+  
+        let point = points[indexPath.section][indexPath.row]
+        switch point {
+        case .profile:
+            settingCell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath)
+        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language, .premium:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingCell.self), for: indexPath) as! SettingCell
             
-            (settingCell as! SettingCell).setupWith(points[indexPath.row])
+            (settingCell as! SettingCell).setupWith(point)
             
             (settingCell as! SettingCell).switchAction = { [weak self] isOn in
                 guard let self = self else { return }
                 
-                switch self.points[indexPath.row] {
-                    
+                switch point {
                 case .autoDelete:
                     DefaultsManager.autoDelete = !DefaultsManager.autoDelete
                 case .useTimePush:
@@ -131,19 +105,28 @@ extension SettingsController: UITableViewDataSource {
                 case .separateList:
                     DefaultsManager.separateProducts = !DefaultsManager.separateProducts
                 default: break
-              
+                    
                 }
                 self.tableView.reloadData()
             }
         }
 
+        settingCell.contentView.backgroundColor = .systemGray6
         return settingCell
     }
 }
 
 extension SettingsController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        }
+        return 0
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch self.points[indexPath.row] {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch self.points[indexPath.section][indexPath.row] {
             
         case .morningTime:
             guard DefaultsManager.timeNotification else { return }
@@ -157,12 +140,6 @@ extension SettingsController: UITableViewDelegate {
                 self?.dismiss(animated: true)
             }
             self.present(timeVC, animated: true)
-//        case .mapPoint:
-//            guard DefaultsManager.notificationByLocation else { return }
-//            let mapVC = MapViewController.loadFromNib()
-//            navigationController?.pushViewController(mapVC, animated: true)
-//        case .raduis:
-//            showPicker()
         case .language:
             let alert = UIAlertController(title: "", message: AppLocalizationKeys.chooseLanguage.localized(), preferredStyle: .actionSheet)
             
@@ -175,42 +152,34 @@ extension SettingsController: UITableViewDelegate {
             }
             alert.addAction(UIAlertAction(title: AppLocalizationKeys.back.localized(), style: .cancel))
             self.present(alert, animated: true)
-            
-        case .signing:
-            
-            let signInVC = AuthViewController.loadFromNib()
-            signInVC.type = .login
-            signInVC.modalTransitionStyle = .coverVertical
-            signInVC.modalPresentationStyle = .overFullScreen
-            self.present(signInVC, animated: true)
-            
-        case .registation:
-            
-            let authVC = AuthViewController.loadFromNib()
-            authVC.type = .registration
-            authVC.modalTransitionStyle = .coverVertical
-            authVC.modalPresentationStyle = .overFullScreen
-            self.present(authVC, animated: true)
-            
-            default: break
+        case .profile:
+            if KeychainManager.UID != nil {
+                let profileVC = ProfileController.loadFromNib()
+                navigationController?.pushViewController(profileVC, animated: true)
+            } else {
+                let authController = AuthViewController.loadFromNib()
+                authController.loginSuccess = { [weak self] in
+                    self?.tableView.reloadData()
+                }
+                let alert = Alerts.auth.controller
+                let loginAction = UIAlertAction(title: "Войти", style: .default) { [weak self] _ in
+                    authController.type = .login
+                    self?.present(authController, animated: true)
+                }
+                
+                let registrationAction = UIAlertAction(title: "Регистрация", style: .default) { [weak self]  _ in
+                    authController.type = .registration
+                    self?.present(authController, animated: true)
+                }
+                
+                let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
+                
+                alert.addAction(loginAction)
+                alert.addAction(registrationAction)
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true)
+            }
+        default: break
         }
-    }
-}
-
-extension SettingsController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return radiuses.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRadius = radiuses[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(radiuses[row])"
     }
 }

@@ -9,68 +9,54 @@ import Foundation
 import UIKit
 
 enum SLSettingsPoint: CaseIterable {
-    case authHeader
-    case signing
-    case registation
-    case listHeader
+    case profile
     case separateList
     case autoDelete
-    case notificationHeader
-//    case useLocationPush
-//    case raduis
-//    case mapPoint
     case useTimePush
     case morningTime
-    case infoHeader
     case language
     case version
+    case premium
+    
+    static func getMenu() -> [[SLSettingsPoint]] {
+        return [[.profile], [.premium], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.language, .version]]
+    }
     
     var text: String {
         switch self {
-        case .authHeader:
-            return AppLocalizationKeys.authHeader.localized()
-        case .signing:
-            return AppLocalizationKeys.signIn.localized()
-        case .registation:
-            return AppLocalizationKeys.registration.localized()
-//        case .useLocationPush:
-//            return AppLocalizationKeys.useLocationPush.localized()
         case .useTimePush:
             return AppLocalizationKeys.useTimePush.localized()
         case .autoDelete:
             return AppLocalizationKeys.autoDelete.localized()
-//        case .mapPoint:
-//            return "\(AppLocalizationKeys.mapPoint.localized()): \(RealmManager.read(type: SLRealmCoordinate.self).count)"
         case .morningTime:
             return "\(AppLocalizationKeys.morningTime.localized()): \(DefaultsManager.hours):\(DefaultsManager.minutes < 10 ? "0\(DefaultsManager.minutes)" : "\(DefaultsManager.minutes)")"
-        case .listHeader:
-            return AppLocalizationKeys.listHeader.localized()
-        case .notificationHeader:
-            return AppLocalizationKeys.notificationHeader.localized()
-        case .infoHeader:
-            return AppLocalizationKeys.infoHeader.localized()
         case .version:
             return "\(AppLocalizationKeys.version.localized()): \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? AppLocalizationKeys.versionInfo.localized())"
         case .separateList:
             return AppLocalizationKeys.separateList.localized()
-//        case .raduis:
-//            return "\(AppLocalizationKeys.raduis.localized()): \(DefaultsManager.baseRadius)\(AppLocalizationKeys.radiusUnit.localized())"
         case .language:
             return "\(AppLocalizationKeys.language.localized()): \(Languages.getFullLanguageName(code: DefaultsManager.userLanguage))"
+        case .profile:
+            return ""
+        case .premium:
+            return "Премиум подписка"
         }
     }
     
     var image: UIImage? {
         switch self {
-        case .authHeader:
-            return UIImage(systemName: "person.crop.square.fill")
-        case .listHeader:
-            return UIImage(systemName: "square.text.square.fill")
-        case .notificationHeader:
-            return UIImage(systemName: "bell.square.fill")
-        case .infoHeader:
-            return UIImage(systemName: "info.circle.fill")
-        default: return nil
+        case .separateList:     return UIImage(systemName: "square.line.vertical.square.fill.left")
+        case .autoDelete:       return UIImage(systemName: "trash.square.fill")
+            
+        case .useTimePush:      return UIImage(systemName: "bell.square.fill")
+        case .morningTime:      return UIImage(systemName: "timer.square")
+            
+        case .language:         return UIImage(systemName: "bubble.left.circle")
+        case .version:          return UIImage(systemName: "info.circle.fill")
+           
+        case .premium:          return UIImage(systemName: "star.square.fill")
+
+        default:                return nil
         }
     }
     
@@ -85,10 +71,8 @@ enum SLSettingsPoint: CaseIterable {
     
     var imageHidden: Bool {
         switch self {
-        case .listHeader, .notificationHeader, .infoHeader:
-            return false
-            
-        default: return true
+        case .profile:  return true
+        default:        return false
         }
     }
     
@@ -96,9 +80,7 @@ enum SLSettingsPoint: CaseIterable {
         switch self {
         case .autoDelete:
             return DefaultsManager.autoDelete
-//        case .useLocationPush:
-//            return DefaultsManager.notificationByLocation
-        case .authHeader, .signing, .registation, .morningTime, .listHeader, .notificationHeader, .infoHeader, .version, .language:
+        case .morningTime, .version, .language, .profile, .premium:
             return false
         case .useTimePush:
             return DefaultsManager.timeNotification
@@ -109,29 +91,24 @@ enum SLSettingsPoint: CaseIterable {
     
     var indicator: UITableViewCell.AccessoryType {
         switch self {
-        case .authHeader, .autoDelete, .useTimePush, .listHeader, .notificationHeader, .infoHeader, .version, .separateList:
+        case .profile, .autoDelete, .useTimePush, .version, .separateList, .premium:
             return .none
         
-        case .signing, .registation, .morningTime, .language:
+        case .morningTime, .language:
             return .disclosureIndicator
         }
     }
     
     var isEnabled: Bool {
         switch self {
-//        case .mapPoint:
-//            return DefaultsManager.notificationByLocation
-        case .morningTime:
-            return DefaultsManager.timeNotification
-        default:
-            return true
+        case .morningTime:  return DefaultsManager.timeNotification
+        default:            return true
+            
         }
     }
     
     var buttonsAreHidden: Bool {
         switch self {
-        case .signing, .registation:
-            return false
         default:
             return true
         }
