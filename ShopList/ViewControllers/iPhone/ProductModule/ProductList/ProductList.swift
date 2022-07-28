@@ -46,7 +46,8 @@ class ProductList: UIViewController {
     var list: SLRealmList?
     
     var currentList: SLFirebaseList?
-    private var currentProductList = [SLFirebaseProduct]()
+    var currentProductList = [SLFirebaseProduct]()
+    var database: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,33 @@ class ProductList: UIViewController {
             view.removeFromSuperview()
         }
     }
+    
+//    private func loadProducts() {
+//
+//        guard let uid = Auth.auth().currentUser?.uid, id = currentList?.id else { return }
+//        database = Database.database().reference()
+//        let query = self.database.child("users/\(uid)/lists/\(id)").queryOrderedByKey()
+//
+//        query.observeSingleEvent(of: .value) { snapshot in
+//            self.currentProductList = []
+//
+//            for child in snapshot.children.allObjects {
+//
+//                if let object = child as? DataSnapshot, let value = object.value as? [String : Any] {
+//                    let item = SLFirebaseList(listName: value["listName"] as! String, isPinned: value["isPinned"] as! Bool, id: object.key)
+//                    if let productsDict = value["products"] as? [String : Any] {
+//                        let product = SLFirebaseProduct(productName: productsDict["productName"] as? String ?? "", produckPkg: productsDict["produckPkg"] as? String ?? "", productCount: productsDict["productCount"] as? Float ?? 0.0, checked: productsDict["checked"] as? Bool ?? false)
+//                        item.products.append(product)
+//                    }
+//                    self.listsFB.append(item)
+//                }
+//            }
+//
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
     
 //    private func loadLists() {
 //        
@@ -312,16 +340,8 @@ extension ProductList: UITableViewDataSource {
 //        } else {
 //            productCell.setupWith(products[indexPath.row], indexPath)
 //        }
-
-        if DefaultsManager.separateProducts {
-            if indexPath.section == 0 {
-                productCell.setupWithFB(currentProductList.filter({ !$0.checked})[indexPath.row], indexPath)
-            } else if indexPath.section == 1 {
-                productCell.setupWithFB(currentProductList.filter({ $0.checked})[indexPath.row], indexPath)
-            }
-        } else {
-            productCell.setupWithFB(currentProductList[indexPath.row], indexPath)
-        }
+        
+        productCell.setupWithFB(item, indexPath)
         
         return productCell
     }

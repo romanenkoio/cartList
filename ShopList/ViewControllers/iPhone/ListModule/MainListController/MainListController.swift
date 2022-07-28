@@ -19,7 +19,6 @@ class MainListController: UIViewController {
     @IBOutlet weak var createListButton: UIButton!
     var bannerView: GADBannerView!
     var database: DatabaseReference!
-//    var listsFB = [SLFirebaseList]()
     var produstFB = [SLFirebaseProduct]()
     
     var tipViews = [EasyTipView]()
@@ -71,13 +70,18 @@ class MainListController: UIViewController {
                 if let object = child as? DataSnapshot, let value = object.value as? [String : Any] {
                     let item = SLFirebaseList(listName: value["listName"] as! String, isPinned: value["isPinned"] as! Bool, id: object.key)
                     if let productsDict = value["products"] as? [String : Any] {
-                        let product = SLFirebaseProduct(productName: productsDict["productName"] as? String ?? "", produckPkg: productsDict["produckPkg"] as? String ?? "", productCount: productsDict["productCount"] as? Float ?? 0.0, checked: productsDict["checked"] as? Bool ?? false)
-                        item.products.append(product)
+                        for productItem in productsDict {
+                            // productItem - готовый продукт без ключа
+                            let key = productItem.key
+                            if let values = productItem.value as? [String : Any] {
+                            let product = SLFirebaseProduct(productName: values["productName"] as! String, produckPkg: values["produckPkg"] as! String, productCount: values["productCount"] as! Float, checked: values["checked"] as! Bool, id: key)                            
+                            item.products.append(product)
+                            }
+                        }
                     }
                     self.listsFB.append(item)
                 }
             }
-            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -110,7 +114,11 @@ class MainListController: UIViewController {
         readData()
         playAnimation()
         showTips()
-//        bannerView.load(GADRequest())
+        #if DEBUG
+        print("Реклама отключена")
+        #else
+        bannerView.load(GADRequest())
+        #endif
         NotificationCenter.default.addObserver(self, selector: #selector(readData), name: .listWasImported, object: nil)
         
         loadLists()
@@ -239,7 +247,9 @@ extension MainListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ProductList.loadFromNib()
         vc.list = lists[indexPath.row]
-        vc.currentList = listsFB[indexPath.row]
+        let currentList = listsFB[indexPath.row]
+        vc.currentList = currentList
+        vc.currentProductList = currentList.products
         print(listsFB[indexPath.row].listName)
         navigationController?.pushViewController(vc, animated: true)
     }
