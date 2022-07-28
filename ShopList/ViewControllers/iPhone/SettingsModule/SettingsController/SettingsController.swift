@@ -118,19 +118,6 @@ extension SettingsController: UITableViewDataSource {
             
             (settingCell as! SettingCell).setupWith(points[indexPath.row])
             
-//            (settingCell as! SettingCell).registrationButtonAction = { [weak self] in
-//
-//                guard let self = self else { return }
-//                switch self.points[indexPath.row] {
-//                case .registation:
-//                    let authVC = AuthViewController(nibName: String(describing: AuthViewController.self), bundle: nil)
-//                    authVC.modalTransitionStyle = .coverVertical
-//                    authVC.modalPresentationStyle = .overFullScreen
-//                    self.present(authVC, animated: true)
-//                default: break
-//                }
-//            }
-            
             (settingCell as! SettingCell).switchAction = { [weak self] isOn in
                 guard let self = self else { return }
                 
@@ -138,9 +125,6 @@ extension SettingsController: UITableViewDataSource {
                     
                 case .autoDelete:
                     DefaultsManager.autoDelete = !DefaultsManager.autoDelete
-//                case .useLocationPush:
-//                    DefaultsManager.notificationByLocation = !DefaultsManager.notificationByLocation
-//                    NotificationManager.scheduleLocationNotifications()
                 case .useTimePush:
                     DefaultsManager.timeNotification = !DefaultsManager.timeNotification
                     NotificationManager.scheduleTimeNotifications()
