@@ -19,15 +19,13 @@ class MainListCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func setupWith(_ list: SLRealmList) {
-//        linkedStoreIcon.isHidden = list.linkedShopID == 0
+    func setupWith(_ list: SLFirebaseList) {
         pinImage.isHidden = !list.isPinned
         listNameLabel.text = list.listName
         cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .white
-        let items = RealmManager.read(type: SLRealmProduct.self).filter({ $0.ownerListID == list.id })
-        itemNumberLabel.text = "\(items.filter({ $0.checked }).count)/\(items.count)"
-        if items.count > 0 {
-            listNameLabel.strikeThrough(items.filter({ $0.checked }).count == items.count)
+        itemNumberLabel.text = "\(list.products.count)"
+        if list.products.count > 0 {
+            listNameLabel.strikeThrough(list.products.filter({ $0.checked }).count == list.products.count)
         }
         cellView.layer.borderColor = UIColor.mainOrange.cgColor
     }

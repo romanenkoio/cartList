@@ -22,7 +22,6 @@ final class NotificationManager {
             if success {
                 DispatchQueue.main.async {
                     scheduleTimeNotifications()
-                    scheduleLocationNotifications()
                     getNotifications()
                 }
             } else {
@@ -53,26 +52,6 @@ final class NotificationManager {
         let trigger = UNCalendarNotificationTrigger(dateMatching: componetns, repeats: true)
         scheduleNotification(title: AppLocalizationKeys.timeToCheck.localized(), subtitle: AppLocalizationKeys.youBought.localized(), trigger: trigger, type: .byTime)
         getNotifications()
-    }
-    
-    class func scheduleLocationNotifications() {
-        if !DefaultsManager.notificationByLocation {
-            removeNotifications(type: .location)
-            return
-        }
-        
-        let coordinates = RealmManager.read(type: SLRealmCoordinate.self)
-        removeNotifications(type: .location)
-        for item in coordinates {
-            let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: Double(item.lat)!,
-                                                                         longitude: Double(item.lon)!),
-                                          radius: Double(DefaultsManager.baseRadius),
-                                          identifier: UUID().uuidString)
-            region.notifyOnEntry = true
-            let trigger = UNLocationNotificationTrigger(region: region,
-                                                        repeats: true)
-            scheduleNotification(title: "\(AppLocalizationKeys.youNear.localized()) \(item.marketName)", subtitle: AppLocalizationKeys.checkTheLists.localized(), trigger: trigger, type: .location)
-        }
     }
     
     private class func removeNotifications(type: NotificationID) {

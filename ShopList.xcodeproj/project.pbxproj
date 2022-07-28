@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		16DA4C4B89F8470D0392B50D /* Pods_ShopList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */; };
-		7F40B1A9281AD4B0002DF78E /* MainPadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F40B1A7281AD4B0002DF78E /* MainPadController.swift */; };
-		7F40B1AA281AD4B0002DF78E /* MainPadController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F40B1A8281AD4B0002DF78E /* MainPadController.xib */; };
 		7F6C90382817FBF00048EA1A /* CustomUIAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C90372817FBF00048EA1A /* CustomUIAction.swift */; };
 		7F6C903A281804450048EA1A /* SLAppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C9039281804450048EA1A /* SLAppImages.swift */; };
 		7F6C903C281812830048EA1A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C903B281812830048EA1A /* UILabel+Extensions.swift */; };
@@ -34,7 +32,6 @@
 		7FA1F34828148B32008ABEE1 /* SLSettingsPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F34728148B32008ABEE1 /* SLSettingsPoint.swift */; };
 		7FA1F34C28148CC9008ABEE1 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F34A28148CC9008ABEE1 /* SettingCell.swift */; };
 		7FA1F34D28148CC9008ABEE1 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA1F34B28148CC9008ABEE1 /* SettingCell.xib */; };
-		7FA1F34F28148ED4008ABEE1 /* SLRealmCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F34E28148ED4008ABEE1 /* SLRealmCoordinate.swift */; };
 		7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35128149C4C008ABEE1 /* Typealiases.swift */; };
 		7FA1F35428149CBD008ABEE1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */; };
 		7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */; };
@@ -58,8 +55,6 @@
 		7FCB5892281350C300D3E370 /* MainListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FCB5890281350C300D3E370 /* MainListCell.xib */; };
 		7FCB5894281351B100D3E370 /* UiView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB5893281351B100D3E370 /* UiView+Extensions.swift */; };
 		7FCB5897281353AE00D3E370 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB5896281353AE00D3E370 /* UITableView+Extensions.swift */; };
-		7FCB589A281355E500D3E370 /* SLRealmListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB5899281355E500D3E370 /* SLRealmListItem.swift */; };
-		7FCB589C281358CD00D3E370 /* SLRealmProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB589B281358CD00D3E370 /* SLRealmProduct.swift */; };
 		7FD1D10E28197A7900CA44FE /* SLShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D10D28197A7900CA44FE /* SLShareManager.swift */; };
 		7FD1D1102819A49800CA44FE /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D10F2819A49800CA44FE /* NotificationName+Extension.swift */; };
 		7FD1D1122819AC0800CA44FE /* ImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D1112819AC0800CA44FE /* ImportManager.swift */; };
@@ -74,11 +69,6 @@
 		7FEB9A2528134B51005AA371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2428134B51005AA371 /* SceneDelegate.swift */; };
 		7FEB9A2C28134B54005AA371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2B28134B54005AA371 /* Assets.xcassets */; };
 		7FEB9A2F28134B54005AA371 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2D28134B54005AA371 /* LaunchScreen.storyboard */; };
-		7FF00067281E95610070CB0E /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF00065281E95610070CB0E /* ShopCell.swift */; };
-		7FF00068281E95610070CB0E /* ShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FF00066281E95610070CB0E /* ShopCell.xib */; };
-		7FF0006C281E963E0070CB0E /* ShopListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0006A281E963E0070CB0E /* ShopListController.swift */; };
-		7FF0006D281E963E0070CB0E /* ShopListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FF0006B281E963E0070CB0E /* ShopListController.xib */; };
-		7FFE1846281359D700DE5DD1 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE1845281359D600DE5DD1 /* RealmManager.swift */; };
 		7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE184928135CE000DE5DD1 /* AddListController.swift */; };
 		7FFE184C28135CE000DE5DD1 /* AddListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFE184A28135CE000DE5DD1 /* AddListController.xib */; };
 		8E0F669428905D9F00A5202C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F669328905D9F00A5202C /* GoogleService-Info.plist */; };
@@ -93,8 +83,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7F40B1A7281AD4B0002DF78E /* MainPadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPadController.swift; sourceTree = "<group>"; };
-		7F40B1A8281AD4B0002DF78E /* MainPadController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPadController.xib; sourceTree = "<group>"; };
 		7F6C90372817FBF00048EA1A /* CustomUIAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIAction.swift; sourceTree = "<group>"; };
 		7F6C9039281804450048EA1A /* SLAppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLAppImages.swift; sourceTree = "<group>"; };
 		7F6C903B281812830048EA1A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -119,7 +107,6 @@
 		7FA1F34728148B32008ABEE1 /* SLSettingsPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLSettingsPoint.swift; sourceTree = "<group>"; };
 		7FA1F34A28148CC9008ABEE1 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		7FA1F34B28148CC9008ABEE1 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
-		7FA1F34E28148ED4008ABEE1 /* SLRealmCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLRealmCoordinate.swift; sourceTree = "<group>"; };
 		7FA1F35128149C4C008ABEE1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
@@ -144,8 +131,6 @@
 		7FCB5890281350C300D3E370 /* MainListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListCell.xib; sourceTree = "<group>"; };
 		7FCB5893281351B100D3E370 /* UiView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+Extensions.swift"; sourceTree = "<group>"; };
 		7FCB5896281353AE00D3E370 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
-		7FCB5899281355E500D3E370 /* SLRealmListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLRealmListItem.swift; sourceTree = "<group>"; };
-		7FCB589B281358CD00D3E370 /* SLRealmProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLRealmProduct.swift; sourceTree = "<group>"; };
 		7FD1D10D28197A7900CA44FE /* SLShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLShareManager.swift; sourceTree = "<group>"; };
 		7FD1D10F2819A49800CA44FE /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		7FD1D1112819AC0800CA44FE /* ImportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportManager.swift; sourceTree = "<group>"; };
@@ -162,11 +147,6 @@
 		7FEB9A2B28134B54005AA371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FEB9A2E28134B54005AA371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FEB9A3028134B54005AA371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7FF00065281E95610070CB0E /* ShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
-		7FF00066281E95610070CB0E /* ShopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCell.xib; sourceTree = "<group>"; };
-		7FF0006A281E963E0070CB0E /* ShopListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListController.swift; sourceTree = "<group>"; };
-		7FF0006B281E963E0070CB0E /* ShopListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopListController.xib; sourceTree = "<group>"; };
-		7FFE1845281359D600DE5DD1 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7FFE184928135CE000DE5DD1 /* AddListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListController.swift; sourceTree = "<group>"; };
 		7FFE184A28135CE000DE5DD1 /* AddListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListController.xib; sourceTree = "<group>"; };
 		8E0F669328905D9F00A5202C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ShopList/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -213,7 +193,6 @@
 				7FB6F11F28919FA900A048F0 /* ProfileModule */,
 				8E237F55288EF71600408404 /* AuthViewController */,
 				7FC298B1288173E500F4D082 /* PremiumModule */,
-				7FF00069281E96130070CB0E /* ShopList */,
 				7FA1F33C28147FE8008ABEE1 /* ProductModule */,
 				7FFE184D28135E5100DE5DD1 /* Popups */,
 				7FCB587C28134CEC00D3E370 /* ListModule */,
@@ -221,15 +200,6 @@
 				7FCB587B28134CD800D3E370 /* BaseTabBarController */,
 			);
 			path = iPhone;
-			sourceTree = "<group>";
-		};
-		7F40B1A6281AD476002DF78E /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				7F40B1A7281AD4B0002DF78E /* MainPadController.swift */,
-				7F40B1A8281AD4B0002DF78E /* MainPadController.xib */,
-			);
-			path = iPad;
 			sourceTree = "<group>";
 		};
 		7F6C9043281873170048EA1A /* Resources */ = {
@@ -332,7 +302,6 @@
 		7FCB587928134CC700D3E370 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7F40B1A6281AD476002DF78E /* iPad */,
 				7F40B1A5281AD46A002DF78E /* iPhone */,
 			);
 			path = ViewControllers;
@@ -405,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				7FDA617B289126C5007D8628 /* AccountCell */,
-				7FF00064281E95460070CB0E /* ShopCell */,
 				7FA1F34928148CB6008ABEE1 /* SettingCell */,
 				7FA1F342281480FF008ABEE1 /* ProductCell */,
 				7FCB588E281350A900D3E370 /* MainListCell */,
@@ -426,20 +394,9 @@
 		7FCB5898281355C200D3E370 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7FCB589D2813595C00D3E370 /* RealmModels */,
 				7FB6F1252891DEAF00A048F0 /* SLUser.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		7FCB589D2813595C00D3E370 /* RealmModels */ = {
-			isa = PBXGroup;
-			children = (
-				7FCB5899281355E500D3E370 /* SLRealmListItem.swift */,
-				7FCB589B281358CD00D3E370 /* SLRealmProduct.swift */,
-				7FA1F34E28148ED4008ABEE1 /* SLRealmCoordinate.swift */,
-			);
-			path = RealmModels;
 			sourceTree = "<group>";
 		};
 		7FDA617B289126C5007D8628 /* AccountCell */ = {
@@ -509,28 +466,9 @@
 			path = SettingsHeaderCell;
 			sourceTree = "<group>";
 		};
-		7FF00064281E95460070CB0E /* ShopCell */ = {
-			isa = PBXGroup;
-			children = (
-				7FF00065281E95610070CB0E /* ShopCell.swift */,
-				7FF00066281E95610070CB0E /* ShopCell.xib */,
-			);
-			path = ShopCell;
-			sourceTree = "<group>";
-		};
-		7FF00069281E96130070CB0E /* ShopList */ = {
-			isa = PBXGroup;
-			children = (
-				7FF0006A281E963E0070CB0E /* ShopListController.swift */,
-				7FF0006B281E963E0070CB0E /* ShopListController.xib */,
-			);
-			path = ShopList;
-			sourceTree = "<group>";
-		};
 		7FFE1844281359CA00DE5DD1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				7FFE1845281359D600DE5DD1 /* RealmManager.swift */,
 				7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */,
 				7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */,
 				7FD1D10D28197A7900CA44FE /* SLShareManager.swift */,
@@ -684,12 +622,9 @@
 				7FD1D1172819B4D600CA44FE /* SettingsHeaderCell.xib in Resources */,
 				7F6C904028182D370048EA1A /* TimeSelectPopupController.xib in Resources */,
 				7F6C904928187A640048EA1A /* cartAnimation.json in Resources */,
-				7F40B1AA281AD4B0002DF78E /* MainPadController.xib in Resources */,
-				7FF00068281E95610070CB0E /* ShopCell.xib in Resources */,
 				7FA1F34628148113008ABEE1 /* ProductCell.xib in Resources */,
 				7FFE184C28135CE000DE5DD1 /* AddListController.xib in Resources */,
 				7FEB9A2F28134B54005AA371 /* LaunchScreen.storyboard in Resources */,
-				7FF0006D281E963E0070CB0E /* ShopListController.xib in Resources */,
 				7FA1F34D28148CC9008ABEE1 /* SettingCell.xib in Resources */,
 				8E237F59288EF74700408404 /* AuthViewController.xib in Resources */,
 				8E0F669428905D9F00A5202C /* GoogleService-Info.plist in Resources */,
@@ -781,23 +716,17 @@
 				7F6C903A281804450048EA1A /* SLAppImages.swift in Sources */,
 				7FB6F1262891DEB000A048F0 /* SLUser.swift in Sources */,
 				7F6C903F28182D370048EA1A /* TimeSelectPopupController.swift in Sources */,
-				7FCB589A281355E500D3E370 /* SLRealmListItem.swift in Sources */,
 				7FDA617E289126EF007D8628 /* ProfileCell.swift in Sources */,
-				7F40B1A9281AD4B0002DF78E /* MainPadController.swift in Sources */,
 				7FD1D10E28197A7900CA44FE /* SLShareManager.swift in Sources */,
 				7FA1F35428149CBD008ABEE1 /* NotificationManager.swift in Sources */,
-				7FF0006C281E963E0070CB0E /* ShopListController.swift in Sources */,
-				7FF00067281E95610070CB0E /* ShopCell.swift in Sources */,
 				7FB6F11E2891838600A048F0 /* SLFirManager.swift in Sources */,
 				7FA1F34828148B32008ABEE1 /* SLSettingsPoint.swift in Sources */,
-				7FCB589C281358CD00D3E370 /* SLRealmProduct.swift in Sources */,
 				7F8C624A28520CA3000D3715 /* Languages.swift in Sources */,
 				7FD1D1102819A49800CA44FE /* NotificationName+Extension.swift in Sources */,
 				7FCB588328134D8500D3E370 /* BaseTabBarController.swift in Sources */,
 				8E6A4B37289165D600638F25 /* SLFirebaseList.swift in Sources */,
 				7FCB588728134DD200D3E370 /* SettingsController.swift in Sources */,
 				7FA1F33928146BBE008ABEE1 /* NoActionTextField.swift in Sources */,
-				7FFE1846281359D700DE5DD1 /* RealmManager.swift in Sources */,
 				EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */,
 				7FD1D1122819AC0800CA44FE /* ImportManager.swift in Sources */,
 				7F6C90382817FBF00048EA1A /* CustomUIAction.swift in Sources */,
@@ -816,7 +745,6 @@
 				7F6C903C281812830048EA1A /* UILabel+Extensions.swift in Sources */,
 				7FCB588128134D4900D3E370 /* UIColor+Extensions.swift in Sources */,
 				7FA1F34528148113008ABEE1 /* ProductCell.swift in Sources */,
-				7FA1F34F28148ED4008ABEE1 /* SLRealmCoordinate.swift in Sources */,
 				7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */,
 				7FCB5894281351B100D3E370 /* UiView+Extensions.swift in Sources */,
 				7FDA6178289042A8007D8628 /* Validator.swift in Sources */,

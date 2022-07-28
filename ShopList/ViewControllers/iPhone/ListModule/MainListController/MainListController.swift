@@ -163,17 +163,13 @@ extension MainListController: UITableViewDelegate {
             
             let pin = UIAction(title: AppLocalizationKeys.pin.localized(), image: UIImage(systemName: "pin")) { [weak self] _ in
                 guard let self = self else { return }
-                RealmManager.beginWrite()
                 self.lists[indexPath.row].isPinned = true
-                RealmManager.commitWrite()
                 self.readLists()
             }
             
             let unPin = UIAction(title: AppLocalizationKeys.unpin.localized(), image: UIImage(systemName: "pin.slash")) { [weak self] _ in
                 guard let self = self else { return }
-                RealmManager.beginWrite()
                 self.lists[indexPath.row].isPinned = false
-                RealmManager.commitWrite()
                 self.readLists()
             }
             
