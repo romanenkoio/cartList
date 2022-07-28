@@ -7,7 +7,6 @@
 
 import Foundation
 import Firebase
-import RealmSwift
 
 final class SLFirManager {
     static let authReference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)

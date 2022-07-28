@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 import GoogleMobileAds
 import Adapty
 import FirebaseCore
@@ -15,15 +14,8 @@ import FirebaseCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        migrateRealm()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-//        FirebaseApp.configure()
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.mainOrange
         return true
-    }
-
-    private func migrateRealm() {
-        let config = Realm.Configuration(schemaVersion: 4)
-        Realm.Configuration.defaultConfiguration = config
     }
 }
