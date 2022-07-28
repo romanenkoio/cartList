@@ -59,29 +59,47 @@ final class SLFirManager {
             result?(SLUser(isAnonimus: false, email: email))
         }
     }
+    
+    static func createList(listName: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let listsRef = Database.database().reference().child("users/\(uid)/lists").childByAutoId()
+        listsRef.setValue(["listName" : listName, "isPinned" : false])
+    }
+    
+    static func addProductToList(_ listID: String, product: SLFirebaseProduct) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        let listsRef = Database.database().reference().child("users/\(uid)/lists/\(listID)/products").childByAutoId()
+        listsRef.setValue(["productName" : product.productName, "produckPkg" : product.produckPkg, "productCount" : product.productCount, "checked" : false])
+    }
+    
+    static func loadLists(success: (([SLFirebaseList]) -> ())?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let database = Database.database().reference()
+        let query = database.child("users/\(uid)/lists").queryOrderedByKey()
+
+        var lists = [SLFirebaseList]()
+        query.observeSingleEvent(of: .value) { snapshot in
+            for child in snapshot.children.allObjects {
+                
+                if let object = child as? DataSnapshot, let value = object.value as? [String : Any] {
+                    let item = SLFirebaseList(listName: value["listName"] as! String, isPinned: value["isPinned"] as! Bool, id: object.key)
+                    if let productsDict = value["products"] as? [String : Any] {
+                        
+                        for productItem in productsDict {
+                            let key = productItem.key
+                            if let values = productItem.value as? [String : Any] {
+                            let product = SLFirebaseProduct(productName: values["productName"] as! String, produckPkg: values["produckPkg"] as! String, productCount: values["productCount"] as! Float, checked: values["checked"] as! Bool, id: key)
+                                item.products.append(product)
+                            }
+                        }
+                       
+                    }
+                    lists.append(item)
+                }
+            }
+            success?(lists)
+        }
+    }
 }
-//
-//private func loadLists() {
-//
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-//        self.listsFB = []
-//        database = Database.database().reference()
-//        let query = self.database.child("users/\(uid)/lists").queryOrderedByKey()
-//
-//        query.observeSingleEvent(of: .value) { snapshot in
-//            for child in snapshot.children.allObjects {
-//
-//                if let object = child as? DataSnapshot, let value = object.value as? [String : Any] {
-//                    let item = SLFirebaseList(listName: value["listName"] as! String, isPinned: value["isPinned"] as! Bool, id: object.key)
-//                    if let productsDict = value["products"] as? [String : Any] {
-//                    let product = SLFirebaseProduct(productName: productsDict["productName"] as! String, produckPkg: productsDict["produckPkg"] as! String, productCount: productsDict["productCount"] as! Float, checked: productsDict["checked"] as! Bool)
-//                        item.products.append(product)
-//                    }
-//                    self.listsFB.append(item)
-//                }
-//            }
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
+

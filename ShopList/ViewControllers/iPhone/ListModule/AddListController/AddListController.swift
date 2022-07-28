@@ -24,7 +24,6 @@ final class AddListController: UIViewController {
     var saveAction: VoidBlock?
     private var seletedPkg = SLProductPackage.pieces
     var type: SLAddType = .list
-    var list: SLRealmList?
     var currentList: SLFirebaseList?
     
     private var count: Float = 1.0 {
@@ -32,8 +31,6 @@ final class AddListController: UIViewController {
             countInput.text = "\(count)"
         }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,25 +112,20 @@ final class AddListController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
         switch type {
         case .list:
             guard let listName = productInput.text,
                   !listName.isEmpty
             else { return }
-            let listsRef = Database.database().reference().child("users/\(uid)/lists").childByAutoId()
-            listsRef.setValue(["listName" : listName, "isPinned" : false])
-//            saveAction?()
-            
+            SLFirManager.createList(listName: listName)
         case .product:
             guard let productName = productInput.text,
                   !productName.isEmpty
             else { return }
             
             guard let id = currentList?.id else { return }
-            let listsRef = Database.database().reference().child("users/\(uid)/lists/\(id)/products").childByAutoId()
-            listsRef.setValue(["productName" : productName, "produckPkg" : seletedPkg.pkgAbb, "productCount" : Double(count), "checked" : false])
-            saveAction?()
+            let product = SLFirebaseProduct(productName: productName, produckPkg: seletedPkg.pkgAbb, productCount: Float(count), checked: false)
+            SLFirManager.addProductToList(id, product: product)
         }
         NotificationCenter.default.post(name: .listWasImported, object: nil)
         saveAction?()

@@ -7,7 +7,6 @@
 
 import UIKit
 import Lottie
-import EasyTipView
 import Vision
 import Firebase
 
@@ -24,10 +23,7 @@ class ProductList: UIViewController {
     
     private let imagePicker = UIImagePickerController()
 
-    
-    var tipViews = [EasyTipView]()
-    
-    private var products = [SLRealmProduct]() {
+    private var products = [SLFirebaseProduct]() {
         didSet {
             tableView.reloadData()
             playAnimation()
@@ -43,10 +39,8 @@ class ProductList: UIViewController {
             }
         }
     }
-    var list: SLRealmList?
     
     var currentList: SLFirebaseList?
-    var currentProductList = [SLFirebaseProduct]()
     var database: DatabaseReference!
     
     override func viewDidLoad() {
@@ -57,7 +51,6 @@ class ProductList: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.registerCellsWith([ProductCell.self])
-        showTips()
         updateLanguage()
         subscribeToNotification()
         if #available(iOS 15.0, *){
@@ -68,78 +61,6 @@ class ProductList: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         readData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        for view in tipViews {
-            view.removeFromSuperview()
-        }
-    }
-    
-//    private func loadProducts() {
-//
-//        guard let uid = Auth.auth().currentUser?.uid, id = currentList?.id else { return }
-//        database = Database.database().reference()
-//        let query = self.database.child("users/\(uid)/lists/\(id)").queryOrderedByKey()
-//
-//        query.observeSingleEvent(of: .value) { snapshot in
-//            self.currentProductList = []
-//
-//            for child in snapshot.children.allObjects {
-//
-//                if let object = child as? DataSnapshot, let value = object.value as? [String : Any] {
-//                    let item = SLFirebaseList(listName: value["listName"] as! String, isPinned: value["isPinned"] as! Bool, id: object.key)
-//                    if let productsDict = value["products"] as? [String : Any] {
-//                        let product = SLFirebaseProduct(productName: productsDict["productName"] as? String ?? "", produckPkg: productsDict["produckPkg"] as? String ?? "", productCount: productsDict["productCount"] as? Float ?? 0.0, checked: productsDict["checked"] as? Bool ?? false)
-//                        item.products.append(product)
-//                    }
-//                    self.listsFB.append(item)
-//                }
-//            }
-//
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
-    
-//    private func loadLists() {
-//        
-//        self.currentProductList = []
-//        self.tableView.reloadData()
-//        database = Database.database().reference()
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-//        let query = self.database.child("users/\(uid)/lists").queryOrderedByKey()
-//        query.observeSingleEvent(of: .value) { snapshot in
-//            for child in snapshot.children.allObjects as! [DataSnapshot] {
-//                let value = child.value as? NSDictionary
-//                let listName = value?["listName"] as? String ?? ""
-//                let isPinned = value?["isPinned"] as? Bool ?? false
-//                let products = value?["products"] as? [SLFirebaseProduct]
-//                let item = SLFirebaseList(listName: listName, isPinned: isPinned)
-//                item.products = products
-//                self.listsFB.append(item)
-//                
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
-//    }
-    
-    private func showTips() {
-        if DefaultsManager.isFirstProductLaunch {
-            _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
-                guard let self = self else { return }
-                let tipView = EasyTipView(text: AppLocalizationKeys.addProductsFromClipboards.localized(),
-                                          preferences: EasyTipView.globalPreferences,
-                                          delegate: nil)
-                tipView.show(forView: self.pasteButton)
-                self.tipViews.append(tipView)
-                DefaultsManager.isFirstProductLaunch = false
-            }
-        }
     }
 
     private func playAnimation() {
@@ -173,7 +94,6 @@ class ProductList: UIViewController {
         vc.modalTransitionStyle = .crossDissolve
         vc.currentList = currentList
         vc.type = .product
-        vc.list = list
         vc.saveAction = { [weak self] in
             self?.readData()
             self?.dismiss(animated: true)
@@ -181,50 +101,52 @@ class ProductList: UIViewController {
         self.present(vc, animated: true)
     }
     
+//    MARK: rewrite this function to FB logic
     @IBAction func createFromPasteBoard(_ sender: Any) {
-        guard let content = UIPasteboard.general.string,
-              let list = list
-        else { return }
-        
-        let spliceContent = content.components(separatedBy: "\n")
-        for item in spliceContent {
-            if !item.isEmpty, item != "\n" {
-                RealmManager.write(object: SLRealmProduct(productName: item.capitalizingFirstLetter(), produckPkg: "", productCount: 0, listID: list.id))
-            }
-        }
-        readData()
+//        guard let content = UIPasteboard.general.string,
+//              let list = currentList
+//        else { return }
+//
+//        let spliceContent = content.components(separatedBy: "\n")
+//        for item in spliceContent {
+//            if !item.isEmpty, item != "\n" {
+//                RealmManager.write(object: SLRealmProduct(productName: item.capitalizingFirstLetter(), produckPkg: "", productCount: 0, listID: list.id))
+//            }
+//        }
+//        readData()
     }
     
-    @IBAction func refreshListAction(_ sender: Any) {
-        guard let list = list else {
-            return
-        }
-        
-        let alert = Alerts.refresh.controller
-        
-        let refreshAction = UIAlertAction(title: AppLocalizationKeys.clearProgress.localized(), style: .default, handler: { [weak self] _ in
-            guard let self = self else { return }
-            
-            self.products = RealmManager.read(type: SLRealmProduct.self).filter({ $0.ownerListID == list.id })
-            RealmManager.beginWrite()
-            for item in self.products {
-                item.checked = false
-            }
-            RealmManager.commitWrite()
-            self.tableView.reloadData()
-        })
-        refreshAction.setValue(UIColor.mainOrange, forKeyPath: "titleTextColor")
-        
-        let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
-        cancelAction.setValue(UIColor.black, forKeyPath: "titleTextColor")
-
-        alert.addAction(cancelAction)
-        alert.addAction(refreshAction)
-
-        self.present(alert, animated: true)
-    }
+    //    MARK: rewrite this function to FB logic
+//    @IBAction func refreshListAction(_ sender: Any) {
+//        guard let list = currentList else {
+//            return
+//        }
+//
+//        let alert = Alerts.refresh.controller
+//
+//        let refreshAction = UIAlertAction(title: AppLocalizationKeys.clearProgress.localized(), style: .default, handler: { [weak self] _ in
+//            guard let self = self else { return }
+//
+//            self.products = RealmManager.read(type: SLRealmProduct.self).filter({ $0.ownerListID == list.id })
+//            RealmManager.beginWrite()
+//            for item in self.products {
+//                item.checked = false
+//            }
+//            RealmManager.commitWrite()
+//            self.tableView.reloadData()
+//        })
+//        refreshAction.setValue(UIColor.mainOrange, forKeyPath: "titleTextColor")
+//
+//        let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
+//        cancelAction.setValue(UIColor.black, forKeyPath: "titleTextColor")
+//
+//        alert.addAction(cancelAction)
+//        alert.addAction(refreshAction)
+//
+//        self.present(alert, animated: true)
+//    }
     
-    @objc  func updateLanguage() {
+    @objc private func updateLanguage() {
         emptyLabel.text = AppLocalizationKeys.emptyLabel.localized()
         addProductButton.setTitle(AppLocalizationKeys.addProduct.localized(), for: .normal)
     }
@@ -247,19 +169,13 @@ extension ProductList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if DefaultsManager.separateProducts {
-//            if section == 0 {
-//                return products.filter({ !$0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
-//            }
-//            return products.filter({ $0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
-//        }
-//        return 30
+
         
         if DefaultsManager.separateProducts {
             if section == 0 {
-                return currentProductList.filter({ !$0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
+                return currentList?.products.filter({ !$0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
             }
-            return currentProductList.filter({ $0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
+            return currentList?.products.filter({ $0.checked }).count == 0 ? CGFloat.leastNonzeroMagnitude  : 30
         }
         return 30
     }
@@ -272,49 +188,28 @@ extension ProductList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if DefaultsManager.separateProducts {
-//            if section == 0 {
-//                return products.filter({ !$0.checked}).count
-//            }
-//            return products.filter({ $0.checked}).count
-//        }
-//        return products.count
-        
+
         if DefaultsManager.separateProducts {
             if section == 0 {
-                return currentProductList.filter({ !$0.checked}).count
+                return currentList?.products.filter({ !$0.checked}).count ?? 0
             }
-            return currentProductList.filter({ $0.checked}).count
+            return currentList?.products.filter({ $0.checked}).count ?? 0
         }
-        return currentProductList.count
+        return currentList?.products.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let productCell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductCell.self), for: indexPath) as! ProductCell
         
-        let item = currentProductList[indexPath.row]
+        let item = currentList?.products[indexPath.row]
         
         productCell.updateBlock = { [weak self] indexPath in
             guard let self = self else { return }
             
             self.updateCellAt(indexPath)
+    
             
-//            if self.products.count == self.products.filter({ $0.checked }).count, DefaultsManager.autoDelete {
-//                guard let list = self.list else { return }
-//
-//                let alert = Alerts.information(text: AppLocalizationKeys.deleteList.localized()).controller
-//                let okAction = UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive) { _ in
-//                    RealmManager.removeList(list)
-//                    self.navigationController?.popViewController(animated: true)
-//                }
-//
-//                let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
-//                alert.addAction(cancelAction)
-//                alert.addAction(okAction)
-//                self.present(alert, animated: true)
-//            }
-            
-            if self.currentProductList.count == self.currentProductList.filter({ $0.checked }).count, DefaultsManager.autoDelete {
+            if self.currentList?.products.count == self.currentList?.products.filter({ $0.checked }).count, DefaultsManager.autoDelete {
                 guard let list = self.currentList else { return }
                     
                 let alert = Alerts.information(text: AppLocalizationKeys.deleteList.localized()).controller
@@ -330,18 +225,9 @@ extension ProductList: UITableViewDataSource {
             }
             
         }
-        
-//        if DefaultsManager.separateProducts {
-//            if indexPath.section == 0 {
-//                productCell.setupWith(products.filter({ !$0.checked})[indexPath.row], indexPath)
-//            } else if indexPath.section == 1 {
-//                productCell.setupWith(products.filter({ $0.checked})[indexPath.row], indexPath)
-//            }
-//        } else {
-//            productCell.setupWith(products[indexPath.row], indexPath)
-//        }
-        
-        productCell.setupWithFB(item, indexPath)
+        if let item = item {
+            productCell.setupWithFB(item, indexPath)
+        }
         
         return productCell
     }
@@ -359,9 +245,9 @@ extension ProductList: UITableViewDelegate {
                     tableView.beginUpdates()
                                         
                     if indexPath.section == 0 {
-                        RealmManager.delete(object: self.products.filter({ !$0.checked })[indexPath.row])
+//                       прописать логику удаления продукта
                     } else if indexPath.section == 1 {
-                        RealmManager.delete(object: self.products.filter({ $0.checked })[indexPath.row])
+                        //                       прописать логику удаления продукта
                     }
                     
                     tableView.deleteRows(at: [indexPath], with: .left)

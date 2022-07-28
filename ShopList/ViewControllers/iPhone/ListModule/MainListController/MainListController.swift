@@ -7,9 +7,7 @@
 
 import UIKit
 import Lottie
-import EasyTipView
 import GoogleMobileAds
-import CloudKit
 import Firebase
 
 class MainListController: UIViewController {
@@ -19,24 +17,16 @@ class MainListController: UIViewController {
     @IBOutlet weak var createListButton: UIButton!
     var bannerView: GADBannerView!
     var database: DatabaseReference!
-    var produstFB = [SLFirebaseProduct]()
     
-    var tipViews = [EasyTipView]()
-    
-    private var lists = [SLRealmList]() {
+    var lists = [SLFirebaseList]() {
         didSet {
             tableView.reloadData()
-        }
-    }
-    
-    var listsFB = [SLFirebaseList]() {
-        
-        didSet {
-            tableView.reloadData()
+           
+            animationView.isHidden = lists.count != 0
+            emptyLabel.isHidden = lists.count != 0
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerCellsWith([MainListCell.self])
@@ -49,44 +39,14 @@ class MainListController: UIViewController {
         bannerView.rootViewController = self
         bannerView.adUnitID = "ca-app-pub-4489210776569699/3621152755"
         
+        #if RELEASE
         if DefaultsManager.lainchCount % 2 == 0 {
             let vc = PremiumController.loadFromNib()
             self.present(vc, animated: true)
         }
+        #endif
     }
     
-    private func loadLists() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        database = Database.database().reference()
-        print("TUT BYL 0")
-        let query = self.database.child("users/\(uid)/lists").queryOrderedByKey()
-
-        query.observeSingleEvent(of: .value) { snapshot in
-            self.listsFB = []
-
-            for child in snapshot.children.allObjects {
-                
-                if let object = child as? DataSnapshot, let value = object.value as? [String : Any] {
-                    let item = SLFirebaseList(listName: value["listName"] as! String, isPinned: value["isPinned"] as! Bool, id: object.key)
-                    if let productsDict = value["products"] as? [String : Any] {
-                        for productItem in productsDict {
-                            // productItem - готовый продукт без ключа
-                            let key = productItem.key
-                            if let values = productItem.value as? [String : Any] {
-                            let product = SLFirebaseProduct(productName: values["productName"] as! String, produckPkg: values["produckPkg"] as! String, productCount: values["productCount"] as! Float, checked: values["checked"] as! Bool, id: key)                            
-                            item.products.append(product)
-                            }
-                        }
-                    }
-                    self.listsFB.append(item)
-                }
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
     
     private func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
@@ -111,17 +71,14 @@ class MainListController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        readData()
         playAnimation()
-        showTips()
         #if DEBUG
         print("Реклама отключена")
         #else
         bannerView.load(GADRequest())
         #endif
-        NotificationCenter.default.addObserver(self, selector: #selector(readData), name: .listWasImported, object: nil)
-        
-        loadLists()
+        NotificationCenter.default.addObserver(self, selector: #selector(readLists), name: .listWasImported, object: nil)
+        readLists()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -129,32 +86,9 @@ class MainListController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        for view in tipViews {
-            view.removeFromSuperview()
-        }
-    }
-    
-    @objc private func readData() {
-        lists = RealmManager.read(type: SLRealmList.self).filter({ $0.isPinned})
-        lists += RealmManager.read(type: SLRealmList.self).filter({ !$0.isPinned})
-        playAnimation()
-    }
-    
-    private func showTips() {
-        if DefaultsManager.isFirstListLaunch, lists.count > 0 {
-            _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
-                guard let self = self else { return }
-                
-                let tipView = EasyTipView(text: AppLocalizationKeys.pinchList.localized(),
-                                          preferences: EasyTipView.globalPreferences,
-                                          delegate: nil)
-                guard let firstCell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) else { return }
-                tipView.show(forView: firstCell)
-                self.tipViews.append(tipView)
-                DefaultsManager.isFirstListLaunch = false
-            }
+    @objc private func readLists() {
+        SLFirManager.loadLists { [weak self] lists in
+            self?.lists = lists
         }
     }
     
@@ -175,44 +109,18 @@ class MainListController: UIViewController {
         vc.saveAction = { [weak self] in
             guard let self = self else { return }
             
-            self.readData()
+            self.readLists()
             self.dismiss(animated: true)
             let vc = ProductList.loadFromNib()
-            vc.list = self.lists.last
+            vc.currentList = self.lists.last
             self.navigationController?.pushViewController(vc, animated: true)
         }
         self.present(vc, animated: true)
     }
     
-    private func shareList(list: SLRealmList) {
-        let alert = Alerts.share.controller
-        
-        let asText = UIAlertAction(title: AppLocalizationKeys.text.localized(), style: .default) { [weak self] _ in
-            var text = "\(AppLocalizationKeys.seeMyList.localized()) \(list.listName)\n\n"
-            
-            let products = RealmManager.read(type: SLRealmProduct.self).filter({ $0.ownerListID == list.id})
-            for product in products {
-                text += "\(product.productName), \(product.productCount) \(product.produckPkg)\n"
-            }
-            
-            let textToShare = [text]
-            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self?.view
-            
-            self?.present(activityViewController, animated: true, completion: nil)
-        }
-        
-        let asFile = UIAlertAction(title: AppLocalizationKeys.file.localized(), style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            SLShareManager.shareList(list, from: self)
-        }
-        
-        let cancel = UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .cancel)
-        
-        alert.addAction(asText)
-        alert.addAction(asFile)
-        alert.addAction(cancel)
-        self.present(alert, animated: true)
+    private func shareList(list: SLFirebaseList) {
+        //            прописать новую логику шаринга
+//        SLShareManager.shareList(list, from: self)
     }
     
     @objc  func updateLanguage() {
@@ -228,13 +136,12 @@ class MainListController: UIViewController {
 
 extension MainListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listsFB.count
+        return lists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listCell = tableView.dequeueReusableCell(withIdentifier: String(describing: MainListCell.self), for: indexPath) as! MainListCell
-        let list = listsFB[indexPath.row]
-//        listCell.setupWith(list)
+        let list = lists[indexPath.row]
         listCell.pinImage.isHidden = !list.isPinned
         listCell.listNameLabel.text = list.listName
         listCell.cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .white
@@ -246,11 +153,7 @@ extension MainListController: UITableViewDataSource {
 extension MainListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ProductList.loadFromNib()
-        vc.list = lists[indexPath.row]
-        let currentList = listsFB[indexPath.row]
-        vc.currentList = currentList
-        vc.currentProductList = currentList.products
-        print(listsFB[indexPath.row].listName)
+        vc.currentList = lists[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -263,7 +166,7 @@ extension MainListController: UITableViewDelegate {
                 RealmManager.beginWrite()
                 self.lists[indexPath.row].isPinned = true
                 RealmManager.commitWrite()
-                self.readData()
+                self.readLists()
             }
             
             let unPin = UIAction(title: AppLocalizationKeys.unpin.localized(), image: UIImage(systemName: "pin.slash")) { [weak self] _ in
@@ -271,7 +174,7 @@ extension MainListController: UITableViewDelegate {
                 RealmManager.beginWrite()
                 self.lists[indexPath.row].isPinned = false
                 RealmManager.commitWrite()
-                self.readData()
+                self.readLists()
             }
             
             let share = UIAction(title: AppLocalizationKeys.alertShare.localized(), image: UIImage(systemName: "arrowshape.turn.up.right")) { [weak self] _ in
@@ -283,40 +186,14 @@ extension MainListController: UITableViewDelegate {
                 let alert = UIAlertController(title: AppLocalizationKeys.confirm.localized(), message: AppLocalizationKeys.deleteEntry.localized(), preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive, handler: { _ in
-                    RealmManager.removeList(self.lists[indexPath.row])
-                    self.readData()
+//                    прописать логику удаления листа
+                    self.readLists()
                 }))
                 
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .default))
                 
                 self.present(alert, animated: true)
             }
-            
-            //            let linkShop = UIAction(title: self.lists[indexPath.row].linkedShopID == 0 ? AppLocalizationKeys.specifyStore.localized() : AppLocalizationKeys.untieStore.localized(), image: UIImage(systemName: "mappin.circle")) { [weak self] _ in
-            //
-            //                if self?.lists[indexPath.row].linkedShopID != 0 {
-            //                    RealmManager.beginWrite()
-            //                    self?.lists[indexPath.row].linkedShopID = 0
-            //                    RealmManager.commitWrite()
-            //                    self?.tableView.beginUpdates()
-            //                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-            //                    self?.tableView.endUpdates()
-            //                    return
-            //                }
-            //
-            //                let vc = ShopListController.loadFromNib()
-            //                vc.selectedShopBlock = { [weak self] selectedShop in
-            //                    RealmManager.beginWrite()
-            //                    self?.lists[indexPath.row].linkedShopID = selectedShop.id
-            //                    RealmManager.commitWrite()
-            //
-            //                    self?.tableView.beginUpdates()
-            //                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-            //                    self?.tableView.endUpdates()
-            //                }
-            //
-            //                self?.navigationController?.present(vc, animated: true)
-            //            }
             
             if self.lists[indexPath.row].isPinned {
                 return UIMenu(title: "", children: [unPin, share, delete])
