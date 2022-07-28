@@ -11,7 +11,7 @@ import Firebase
 final class SLFirManager {
     static let authReference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
     
-    static func auth(type: AuthAction, email: String, password: String, successBlock: BoolResultBlock?) {
+    static func auth(type: AuthAction, name: String?, email: String, password: String, successBlock: BoolResultBlock?) {
         switch type {
         case .login:
             Auth.auth().signIn(withEmail: email, password: password) { result, error in
@@ -30,7 +30,7 @@ final class SLFirManager {
                     return
                 }
                 
-                authReference.child(result.user.uid).updateChildValues(["email" : email, "password" : password])
+                authReference.child(result.user.uid).updateChildValues(["name" : name, "email" : email, "password" : password])
                 successBlock?(true)
             }
         case .changePassword:

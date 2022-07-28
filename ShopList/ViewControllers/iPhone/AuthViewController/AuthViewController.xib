@@ -15,7 +15,9 @@
                 <outlet property="backgroundView" destination="qlU-8S-21X" id="2sF-iQ-bnb"/>
                 <outlet property="confirmButton" destination="kHu-Vf-xPL" id="5WU-tE-rqk"/>
                 <outlet property="loginField" destination="C8H-8t-wdt" id="rmk-gx-LLN"/>
+                <outlet property="nameField" destination="zLd-a4-83j" id="oYM-wM-OOf"/>
                 <outlet property="passwordField" destination="q0I-oJ-cL4" id="ew8-Ii-gFJ"/>
+                <outlet property="showPasswordButton" destination="dHV-fe-1dj" id="fp1-oi-7n8"/>
                 <outlet property="spinner" destination="cJi-RX-vsT" id="Wgk-tf-Kmc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,10 +31,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zsz-sf-GkS">
-                    <rect key="frame" x="16" y="379" width="382" height="198"/>
+                    <rect key="frame" x="16" y="379" width="382" height="242"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C8H-8t-wdt" customClass="ValidationTextField" customModule="ShopList" customModuleProvider="target">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zLd-a4-83j" customClass="ValidationTextField" customModule="ShopList" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="yNy-ZD-wqa"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="C8H-8t-wdt" customClass="ValidationTextField" customModule="ShopList" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="44" width="382" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="nWA-su-pxR"/>
                             </constraints>
@@ -40,9 +50,9 @@
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zse-Ua-TgQ">
-                            <rect key="frame" x="0.0" y="44" width="382" height="34"/>
+                            <rect key="frame" x="0.0" y="88" width="382" height="34"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q0I-oJ-cL4" customClass="ValidationTextField" customModule="ShopList" customModuleProvider="target">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q0I-oJ-cL4" customClass="ValidationTextField" customModule="ShopList" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="uGa-oS-LN4"/>
@@ -78,10 +88,10 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-eW-MoF">
-                            <rect key="frame" x="0.0" y="88" width="382" height="50"/>
+                            <rect key="frame" x="0.0" y="132" width="382" height="50"/>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHu-Vf-xPL">
-                            <rect key="frame" x="0.0" y="148" width="382" height="50"/>
+                            <rect key="frame" x="0.0" y="192" width="382" height="50"/>
                             <color key="backgroundColor" name="buttonColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="0Mq-2l-pRO"/>

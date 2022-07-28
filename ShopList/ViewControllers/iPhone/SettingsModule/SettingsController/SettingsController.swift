@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -125,7 +126,8 @@ extension SettingsController: UITableViewDelegate {
             alert.addAction(UIAlertAction(title: AppLocalizationKeys.back.localized(), style: .cancel))
             self.present(alert, animated: true)
         case .profile:
-            if KeychainManager.UID != nil {
+//            if KeychainManager.UID != nil {
+            if Auth.auth().currentUser?.uid != nil {
                 let profileVC = ProfileController.loadFromNib()
                 navigationController?.pushViewController(profileVC, animated: true)
             } else {

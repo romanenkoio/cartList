@@ -16,6 +16,7 @@ enum AuthAction {
 
 class AuthViewController: UIViewController {
 
+    @IBOutlet weak var nameField: ValidationTextField!
     @IBOutlet weak var loginField: ValidationTextField!
     @IBOutlet weak var passwordField: ValidationTextField!
     @IBOutlet weak var confirmButton: UIButton!
@@ -30,6 +31,7 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dismissController()
+        nameField.validationType = .name
         loginField.validationType = .email
         passwordField.validationType = .password
     }
@@ -39,6 +41,7 @@ class AuthViewController: UIViewController {
         switch type {
         case .login:
             confirmButton.setTitle(AppLocalizationKeys.signIn.localized(), for: .normal)
+            nameField.isHidden = true
         case .registration:
             confirmButton.setTitle(AppLocalizationKeys.registration.localized(), for: .normal)
         case .changePassword:
@@ -58,14 +61,15 @@ class AuthViewController: UIViewController {
     }
 
     @IBAction func confirmAction(_ sender: UIButton) {
-        guard let login = loginField.text,
+        guard let name = nameField.text,
+              let login = loginField.text,
               let password = passwordField.text
         else { return }
         spinner.startAnimating()
         
         switch type {
         case .login, .registration:
-            SLFirManager.auth(type: type, email: login, password: password) { [weak self] success in
+            SLFirManager.auth(type: type, name: name, email: login, password: password) { [weak self] success in
                 self?.spinner.stopAnimating()
                 if success {
                     self?.loginSuccess?()
