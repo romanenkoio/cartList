@@ -27,14 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
-        
-//        switch UIDevice.current.userInterfaceIdiom {
-//        case .phone:
-//            window?.rootViewController = BaseTabBarController()
-//        case .pad:
-//            window?.rootViewController = MainPadController.loadFromNib()
-//        @unknown default: break
-//        }
         window?.rootViewController = BaseTabBarController()
         DefaultsManager.lainchCount += 1
 

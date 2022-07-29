@@ -107,13 +107,19 @@ class ProductList: UIViewController {
         self.present(vc, animated: true)
     }
     
-//    MARK: rewrite this function to FB logic
     @IBAction func createFromPasteBoard(_ sender: Any) {
     }
     
-    //    MARK: rewrite this function to FB logic
     @IBAction func refreshListAction(_ sender: Any) {
+        guard let currentList = currentList else {
+            return
+        }
 
+        for product in currentList.products {
+            product.checked = false
+            SLFirManager.updateProduct(product, listID: currentList.id!)
+        }
+        readData()
     }
     
     @objc private func updateLanguage() {

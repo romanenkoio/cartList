@@ -38,6 +38,7 @@ class MainListController: UIViewController {
         bannerView.delegate = self
         bannerView.rootViewController = self
         bannerView.adUnitID = "ca-app-pub-4489210776569699/3621152755"
+        emptyLabel.isHidden = true
         
         #if RELEASE
         if DefaultsManager.lainchCount % 2 == 0 {
@@ -71,7 +72,6 @@ class MainListController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        playAnimation()
         #if DEBUG
         print("Реклама отключена")
         #else
@@ -89,6 +89,7 @@ class MainListController: UIViewController {
     @objc private func readLists() {
         SLFirManager.loadLists { [weak self] lists in
             self?.lists = lists
+            self?.playAnimation()
         }
     }
     
@@ -111,9 +112,6 @@ class MainListController: UIViewController {
             
             self.readLists()
             self.dismiss(animated: true)
-            let vc = ProductList.loadFromNib()
-            vc.currentList = self.lists.last
-            self.navigationController?.pushViewController(vc, animated: true)
         }
         self.present(vc, animated: true)
     }
