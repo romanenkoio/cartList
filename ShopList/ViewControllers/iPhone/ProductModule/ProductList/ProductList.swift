@@ -108,6 +108,18 @@ class ProductList: UIViewController {
     }
     
     @IBAction func createFromPasteBoard(_ sender: Any) {
+        guard let content = UIPasteboard.general.string,
+              let list = currentList
+        else { return }
+        
+        let spliceContent = content.components(separatedBy: "\n")
+        for item in spliceContent {
+            if !item.isEmpty, item != "\n" {
+                let product  = SLFirebaseProduct(productName: item.capitalizingFirstLetter(), produckPkg: "", productCount: 0, checked: false)
+                SLFirManager.addProductToList(list.id!, product: product)
+            }
+        }
+        readData()
     }
     
     @IBAction func refreshListAction(_ sender: Any) {
