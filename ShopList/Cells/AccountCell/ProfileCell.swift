@@ -15,8 +15,6 @@ class ProfileCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        contentView.backgroundColor = .systemGray6
-
         
         self.mailLabel.text = KeychainManager.username ?? "Войти в аккаунт"
     }

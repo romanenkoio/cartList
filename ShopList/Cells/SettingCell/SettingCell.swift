@@ -21,7 +21,6 @@ class SettingCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        contentView.backgroundColor = .systemGray6
     }
     
     func setupWith(_ type: SLSettingsPoint) {

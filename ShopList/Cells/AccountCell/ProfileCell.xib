@@ -44,6 +44,7 @@
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="60"/>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" name="appBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="GAh-h6-MLI" firstAttribute="leading" secondItem="lh3-jb-bVg" secondAttribute="trailing" constant="16" id="GIg-V7-jkg"/>
                     <constraint firstItem="Pa5-mI-UGw" firstAttribute="leading" secondItem="GAh-h6-MLI" secondAttribute="trailing" constant="10" id="Oc6-6I-uvP"/>
@@ -70,8 +71,11 @@
     <resources>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="appBackgroundColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="secondaryColor">
-            <color red="0.18823529411764706" green="0.51372549019607838" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21176470588235294" green="0.52156862745098043" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

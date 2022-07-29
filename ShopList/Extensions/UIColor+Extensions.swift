@@ -12,4 +12,8 @@ extension UIColor {
     open class var mainOrange: UIColor {
          return UIColor(named: "mainColor")!
     }
+    
+    open class var appBackgroundColor: UIColor {
+         return UIColor(named: "appBackgroundColor")!
+    }
 }

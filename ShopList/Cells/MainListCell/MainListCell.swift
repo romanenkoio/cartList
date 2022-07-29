@@ -22,7 +22,7 @@ class MainListCell: UITableViewCell {
     func setupWith(_ list: SLFirebaseList) {
         pinImage.isHidden = !list.isPinned
         listNameLabel.text = list.listName
-        cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .white
+        cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .appBackgroundColor
         cellView.layer.borderColor = UIColor.mainOrange.cgColor
         itemNumberLabel.text = "\(list.products.filter({ $0.checked }).count)/\(list.products.count)"
         if list.products.filter({ $0.checked }).count == list.products.count {
