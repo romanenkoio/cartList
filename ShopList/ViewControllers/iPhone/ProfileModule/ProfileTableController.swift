@@ -71,6 +71,8 @@ class ProfileTableController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(tableView)
         title = "Профиль"
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
         self.view.backgroundColor = .white
     }
 }
