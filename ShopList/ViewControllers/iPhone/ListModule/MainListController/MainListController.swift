@@ -139,10 +139,8 @@ extension MainListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listCell = tableView.dequeueReusableCell(withIdentifier: String(describing: MainListCell.self), for: indexPath) as! MainListCell
         let list = lists[indexPath.row]
-        listCell.pinImage.isHidden = !list.isPinned
-        listCell.listNameLabel.text = list.listName
-        listCell.cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .white
-        listCell.cellView.layer.borderColor = UIColor.mainOrange.cgColor
+        listCell.setupWith(list)
+
         return listCell
     }
 }

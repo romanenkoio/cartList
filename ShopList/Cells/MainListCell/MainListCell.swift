@@ -23,10 +23,12 @@ class MainListCell: UITableViewCell {
         pinImage.isHidden = !list.isPinned
         listNameLabel.text = list.listName
         cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .white
-        itemNumberLabel.text = "\(list.products.count)"
-        if list.products.count > 0 {
-            listNameLabel.strikeThrough(list.products.filter({ $0.checked }).count == list.products.count)
-        }
         cellView.layer.borderColor = UIColor.mainOrange.cgColor
+        itemNumberLabel.text = "\(list.products.filter({ $0.checked }).count)/\(list.products.count)"
+        if list.products.filter({ $0.checked }).count == list.products.count {
+            listNameLabel.strikeThrough()
+        } else {
+            listNameLabel.strikeThrough(false)
+        }
     }
 }
