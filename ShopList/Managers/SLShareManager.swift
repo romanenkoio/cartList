@@ -16,9 +16,23 @@ final class SLShareManager {
     
     private static let fileManager = FileManager.default
     
-//    MARK: rewrite share logic
     class func shareList(_ list: SLFirebaseList, from: UIViewController) {
-       
+        var listText = "\(list.listName)/n"
+        
+        for product in list.products {
+            listText += "\(product.productName)&\(product.produckPkg)&\(product.productCount)/n"
+        }
+        if let listData = listText.data(using: .utf8) {
+            guard let appSupportDir = try? fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else { return }
+            let filePath = appSupportDir.appendingPathComponent(FileExtension.list.rawValue).path
+            if fileManager.createFile(atPath: filePath, contents: listData, attributes: nil) {
+                let fileUrl = URL(fileURLWithPath: filePath)
+                let activityViewController = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = from.view
+                
+                from.present(activityViewController, animated: true, completion: nil)
+            }
+        }
     }
     
     private class func getFileUrl(with fileExtension: FileExtension, content: Data) -> URL? {
