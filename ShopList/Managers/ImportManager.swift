@@ -18,17 +18,22 @@ class ImportManager {
             let textData = String(decoding: data, as: UTF8.self)
             
             var textArray = textData.components(separatedBy: "/n")
-            let list = SLFirebaseList(listName: textArray[0], isPinned: false)
+            SLFirManager.createList(listName: textArray[0])
             textArray.remove(at: 0)
             
             textArray = textArray.filter({ !$0.isEmpty || $0 != "/n"})
           
-            for text in textArray {
-                guard !text.isEmpty else { continue }
-                let components = text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: "&")
-//                RealmManager.write(object: SLRealmProduct(productName: components[0], produckPkg: components[1], productCount: Double(components[2])!, listID: list.id))
+            SLFirManager.loadLists { lists in
+                guard let lastList = lists.last else { return }
+                
+                for text in textArray {
+                    guard !text.isEmpty else { continue }
+                    let components = text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: "&")
+                    let product = SLFirebaseProduct(productName: components[0], produckPkg: components[1], productCount: Float(components[2])!, checked: false)
+                    SLFirManager.addProductToList(lastList.id!, product: product)
+                }
             }
-//            RealmManager.write(object: list)
+            
             NotificationCenter.default.post(name: .listWasImported, object: nil)
         }
         
