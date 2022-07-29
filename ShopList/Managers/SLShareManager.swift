@@ -17,9 +17,9 @@ final class SLShareManager {
     private static let fileManager = FileManager.default
     
 //    MARK: rewrite share logic
-//    class func shareList(_ list: SLRealmList, from: UIViewController) {
-//       
-//    }
+    class func shareList(_ list: SLFirebaseList, from: UIViewController) {
+       
+    }
     
     private class func getFileUrl(with fileExtension: FileExtension, content: Data) -> URL? {
         guard let appSupportDir = try? fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else { return nil }

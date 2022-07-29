@@ -119,8 +119,7 @@ class MainListController: UIViewController {
     }
     
     private func shareList(list: SLFirebaseList) {
-        //            прописать новую логику шаринга
-//        SLShareManager.shareList(list, from: self)
+        SLShareManager.shareList(list, from: self)
     }
     
     @objc  func updateLanguage() {
