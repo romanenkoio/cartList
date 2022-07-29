@@ -48,13 +48,14 @@ final class SLFirManager {
         }
     }
     
-    static func getUser(result: ((SLUser?) -> ())?) {
+    static func getUser(result: ((SLUser?) -> ())? = nil) {
         guard let uid = Auth.auth().currentUser?.uid else { result?(nil); return; }
         
         let query = Database.database().reference().child("users/\(uid)/username")
         
         query.observeSingleEvent(of: .value) { snapshot in
             guard let name = snapshot.value as? String else { result?(nil); return; }
+            KeychainManager.store(value: name, for: .username)
             result?(SLUser(name: name))
         }
     }

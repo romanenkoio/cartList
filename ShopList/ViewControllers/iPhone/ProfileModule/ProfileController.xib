@@ -12,13 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileController" customModule="ShopList" customModuleProvider="target">
             <connections>
                 <outlet property="accountStatusLabel" destination="p81-oC-gOP" id="zax-cd-g3P"/>
+                <outlet property="allListCount" destination="wbd-DS-juf" id="N59-SS-unU"/>
+                <outlet property="allProductCount" destination="Fxx-ki-c7u" id="ZWr-CK-oSJ"/>
                 <outlet property="cancelButton" destination="L7e-sT-shc" id="6ei-M1-iKD"/>
                 <outlet property="editView" destination="IUe-Fr-ZUF" id="RYU-DU-BHp"/>
                 <outlet property="emailLabel" destination="gN4-NU-nTh" id="36a-Aj-D1C"/>
                 <outlet property="fillView" destination="NqT-PP-eIe" id="vB8-Gy-A9c"/>
+                <outlet property="logoutButton" destination="mk9-l4-dNC" id="e0o-je-8vn"/>
                 <outlet property="nameField" destination="brs-0m-h0g" id="D6I-0w-dGQ"/>
                 <outlet property="newViewConstraint" destination="7Nx-7q-BBq" id="epQ-uJ-maB"/>
                 <outlet property="oldViewConstraint" destination="8j9-36-z1y" id="Efp-HH-gW7"/>
+                <outlet property="removeAccountButton" destination="cf5-GZ-yow" id="J3E-7y-PgX"/>
                 <outlet property="saveButton" destination="0aa-ap-2hR" id="CgV-y2-Gz0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,42 +33,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: zamok.tech@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN4-NU-nTh">
-                    <rect key="frame" x="10" y="54" width="394" height="20.5"/>
+                    <rect key="frame" x="16" y="54" width="388" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zov-sf-4eB">
-                    <rect key="frame" x="16" y="792" width="382" height="50"/>
-                    <color key="backgroundColor" name="buttonColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="MVU-4C-e34"/>
-                    </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Редактировать"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="editAction:" destination="-1" eventType="touchUpInside" id="MQk-WV-2Ko"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Статус аккаунта: базовый" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p81-oC-gOP">
-                    <rect key="frame" x="10" y="94.5" width="394" height="20.5"/>
+                    <rect key="frame" x="16" y="94.5" width="388" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mk9-l4-dNC">
-                    <rect key="frame" x="16" y="722" width="382" height="50"/>
-                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <rect key="frame" x="16" y="792" width="382" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="9nh-8j-aAd"/>
                     </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" systemColor="systemRedColor"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Выйти"/>
                     <userDefinedRuntimeAttributes>
@@ -72,7 +58,7 @@
                             <real key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                            <real key="value" value="0.0"/>
+                            <real key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -80,12 +66,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cf5-GZ-yow">
-                    <rect key="frame" x="16" y="652" width="382" height="50"/>
-                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <rect key="frame" x="16" y="722" width="382" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Dwv-FA-dwA"/>
                     </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" systemColor="systemRedColor"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Удалить аккаунт"/>
                     <userDefinedRuntimeAttributes>
@@ -93,7 +79,7 @@
                             <real key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                            <real key="value" value="0.0"/>
+                            <real key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
@@ -194,6 +180,36 @@
                         </mask>
                     </variation>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Всего списков:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbd-DS-juf">
+                    <rect key="frame" x="16" y="135" width="388" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Всего продуктов:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-ki-c7u">
+                    <rect key="frame" x="16" y="175.5" width="388" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zov-sf-4eB">
+                    <rect key="frame" x="16" y="652" width="382" height="50"/>
+                    <color key="backgroundColor" name="buttonColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="MVU-4C-e34"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Редактировать"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="editAction:" destination="-1" eventType="touchUpInside" id="MQk-WV-2Ko"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -203,23 +219,30 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zov-sf-4eB" secondAttribute="trailing" constant="16" id="5m5-7I-4xE"/>
                 <constraint firstItem="p81-oC-gOP" firstAttribute="top" secondItem="gN4-NU-nTh" secondAttribute="bottom" constant="20" id="ARA-8d-VEs"/>
                 <constraint firstItem="E8p-dB-ZsM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="DVs-2e-Xmd"/>
+                <constraint firstItem="wbd-DS-juf" firstAttribute="trailing" secondItem="gN4-NU-nTh" secondAttribute="trailing" id="Fu1-TX-C9B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gN4-NU-nTh" secondAttribute="trailing" constant="10" id="GJR-hS-Ljq"/>
+                <constraint firstItem="Fxx-ki-c7u" firstAttribute="top" secondItem="wbd-DS-juf" secondAttribute="bottom" constant="20" id="Ghc-VL-mhZ"/>
+                <constraint firstItem="Fxx-ki-c7u" firstAttribute="trailing" secondItem="gN4-NU-nTh" secondAttribute="trailing" id="HLl-Fg-sCj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="E8p-dB-ZsM" secondAttribute="trailing" id="N90-J9-dcg"/>
                 <constraint firstItem="NqT-PP-eIe" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Ofl-HX-zPY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mk9-l4-dNC" secondAttribute="bottom" constant="20" id="Oxz-kv-Vkk"/>
                 <constraint firstItem="NqT-PP-eIe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QRP-NE-1Tn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="p81-oC-gOP" secondAttribute="trailing" constant="10" id="TcJ-Rl-vHS"/>
                 <constraint firstItem="cf5-GZ-yow" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="VVz-z6-717"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zov-sf-4eB" secondAttribute="bottom" constant="20" id="YTc-Uq-S8G"/>
                 <constraint firstItem="gN4-NU-nTh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="YrV-TU-9PB"/>
                 <constraint firstItem="zov-sf-4eB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="bjd-5h-L6O"/>
                 <constraint firstItem="E8p-dB-ZsM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cV5-XT-e6U"/>
                 <constraint firstItem="NqT-PP-eIe" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="cdf-ok-cVr"/>
-                <constraint firstItem="zov-sf-4eB" firstAttribute="top" secondItem="mk9-l4-dNC" secondAttribute="bottom" constant="20" id="cgk-MU-Nca"/>
-                <constraint firstItem="gN4-NU-nTh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="gMu-cc-XmV"/>
+                <constraint firstItem="gN4-NU-nTh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="gMu-cc-XmV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cf5-GZ-yow" secondAttribute="trailing" constant="16" id="j4K-u5-bfl"/>
-                <constraint firstItem="p81-oC-gOP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="ksn-HH-asG"/>
+                <constraint firstItem="p81-oC-gOP" firstAttribute="trailing" secondItem="gN4-NU-nTh" secondAttribute="trailing" id="j58-Aa-o7y"/>
+                <constraint firstItem="cf5-GZ-yow" firstAttribute="top" secondItem="zov-sf-4eB" secondAttribute="bottom" constant="20" id="kpP-Rl-yBS"/>
                 <constraint firstItem="mk9-l4-dNC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="nrw-GX-aMp"/>
+                <constraint firstItem="Fxx-ki-c7u" firstAttribute="leading" secondItem="gN4-NU-nTh" secondAttribute="leading" id="o4a-TD-f9R"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mk9-l4-dNC" secondAttribute="trailing" constant="16" id="rWF-6h-yia"/>
+                <constraint firstItem="wbd-DS-juf" firstAttribute="top" secondItem="p81-oC-gOP" secondAttribute="bottom" constant="20" id="sFH-5f-uGx"/>
+                <constraint firstItem="p81-oC-gOP" firstAttribute="leading" secondItem="gN4-NU-nTh" secondAttribute="leading" id="yh4-5m-3nU"/>
+                <constraint firstItem="wbd-DS-juf" firstAttribute="leading" secondItem="gN4-NU-nTh" secondAttribute="leading" id="ynd-qF-Pum"/>
             </constraints>
             <point key="canvasLocation" x="-39.130434782608695" y="-11.383928571428571"/>
         </view>

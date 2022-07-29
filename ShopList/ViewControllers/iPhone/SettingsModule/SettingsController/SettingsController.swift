@@ -84,7 +84,6 @@ extension SettingsController: UITableViewDataSource {
             }
         }
 
-        settingCell.contentView.backgroundColor = .systemGray6
         return settingCell
     }
 }
@@ -128,7 +127,7 @@ extension SettingsController: UITableViewDelegate {
         case .profile:
 //            if KeychainManager.UID != nil {
             if Auth.auth().currentUser?.uid != nil {
-                let profileVC = ProfileController.loadFromNib()
+                let profileVC = ProfileTableController()
                 navigationController?.pushViewController(profileVC, animated: true)
             } else {
                 let authController = AuthViewController.loadFromNib()

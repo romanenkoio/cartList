@@ -19,6 +19,10 @@ class ProfileController: UIViewController {
     @IBOutlet weak var newViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var oldViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var fillView: UIView!
+    @IBOutlet weak var allListCount: UILabel!
+    @IBOutlet weak var allProductCount: UILabel!
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var removeAccountButton: UIButton!
     
     let authReference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
 
@@ -26,6 +30,8 @@ class ProfileController: UIViewController {
         super.viewDidLoad()
         title = "Профиль"
         editView.alpha = 0
+        logoutButton.layer.borderColor = UIColor.red.cgColor
+        removeAccountButton.layer.borderColor = UIColor.red.cgColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,16 +39,16 @@ class ProfileController: UIViewController {
         
         emailLabel.text = ""
         accountStatusLabel.text = ""
-        guard let user = Auth.auth().currentUser else {
-            return
+        
+        SLFirManager.getUser { [weak self] user in
+            guard let user = user,
+            let name = user.name else { return }
+            self?.emailLabel.text = name
+            self?.accountStatusLabel.text = ("Статус аккаунта: базовый")
         }
-        guard let email = user.email else { return }
-        emailLabel.text = ("Email: \(email)")
-        accountStatusLabel.text = ("Статус аккаунта: базовый")
     }
     
     private func openingAnimation() {
-        
         UIView.animate(withDuration: 0.2, delay: 0.0) {
             
             self.editView.alpha = 1
@@ -73,7 +79,6 @@ class ProfileController: UIViewController {
     }
     
     private func closingAnimation() {
-        
         self.oldViewConstraint.isActive = true
         self.newViewConstraint.isActive = false
         
@@ -106,12 +111,10 @@ class ProfileController: UIViewController {
     }
     
     @IBAction func cancelChangesAction(_ sender: UIButton) {
-        
         closingAnimation()
     }
     
     @IBAction func editAction(_ sender: UIButton) {
-        
         openingAnimation()
     }
     

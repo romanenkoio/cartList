@@ -15,13 +15,9 @@ class ProfileCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        contentView.backgroundColor = .systemGray6
+
         
-        SLFirManager.getUser { [weak self] user in
-            if user != nil {
-                self?.mailLabel.text = user?.name
-            } else {
-                self?.mailLabel.text = "Войти в аккаунт"
-            }
-        }
+        self.mailLabel.text = KeychainManager.username ?? "Войти в аккаунт"
     }
 }

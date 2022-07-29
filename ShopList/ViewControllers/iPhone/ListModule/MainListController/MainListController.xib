@@ -33,7 +33,7 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9O5-20-tsS">
                     <rect key="frame" x="16" y="802" width="382" height="50"/>
-                    <color key="backgroundColor" name="buttonColor"/>
+                    <color key="backgroundColor" name="mainColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="HN9-Cr-11h"/>
                     </constraints>
@@ -88,7 +88,7 @@
         <designable name="RTf-fp-Y5d"/>
     </designables>
     <resources>
-        <namedColor name="buttonColor">
+        <namedColor name="mainColor">
             <color red="0.99607843137254903" green="0.41176470588235292" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">

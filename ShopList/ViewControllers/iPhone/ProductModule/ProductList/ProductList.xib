@@ -30,7 +30,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhm-NR-HkF">
                     <rect key="frame" x="16" y="802" width="382" height="50"/>
-                    <color key="backgroundColor" name="buttonColor"/>
+                    <color key="backgroundColor" name="mainColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Hpg-fk-mzu"/>
                     </constraints>
@@ -134,7 +134,7 @@
                 <constraint firstAttribute="width" constant="40" id="27H-Rh-7E4"/>
                 <constraint firstAttribute="height" constant="40" id="kb3-nU-9II"/>
             </constraints>
-            <color key="tintColor" name="buttonColor"/>
+            <color key="tintColor" name="mainColor"/>
             <state key="normal" title="Button"/>
             <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system" title=""/>
             <connections>
@@ -148,7 +148,7 @@
                 <constraint firstAttribute="height" constant="40" id="KlT-1g-dMT"/>
                 <constraint firstAttribute="width" constant="40" id="w5b-mp-bmp"/>
             </constraints>
-            <color key="tintColor" name="buttonColor"/>
+            <color key="tintColor" name="mainColor"/>
             <state key="normal" title="Button"/>
             <buttonConfiguration key="configuration" style="plain" image="arrow.down.doc.fill" catalog="system" title=""/>
             <connections>
@@ -163,8 +163,8 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.down.doc.fill" catalog="system" width="115" height="128"/>
-        <namedColor name="buttonColor">
-            <color red="0.99607843137254903" green="0.41176470588235292" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="mainColor">
+            <color red="0.88627450980392153" green="0.52156862745098043" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

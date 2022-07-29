@@ -13,8 +13,7 @@ class KeychainManager {
     private static var service: String = "romanenko.shopList.com"
     
     enum Keys: String, CaseIterable {
-        case UID
-        case email
+        case username
     }
     
     
@@ -38,15 +37,9 @@ class KeychainManager {
         }
     }
     
-    static var UID: String? {
+    static var username: String? {
         get {
-            return value(for: .UID) as? String
-        }
-    }
-    
-    static var email: String? {
-        get {
-            return value(for: .email) as? String
+            return value(for: .username) as? String
         }
     }
     

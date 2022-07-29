@@ -10,6 +10,6 @@ import UIKit
 
 extension UIColor {
     open class var mainOrange: UIColor {
-         return UIColor(named: "buttonColor")!
+         return UIColor(named: "mainColor")!
     }
 }

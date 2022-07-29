@@ -46,6 +46,8 @@ class MainListController: UIViewController {
             self.present(vc, animated: true)
         }
         #endif
+        
+        SLFirManager.getUser()
     }
     
     
