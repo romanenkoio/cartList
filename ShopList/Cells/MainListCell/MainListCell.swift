@@ -13,22 +13,30 @@ class MainListCell: UITableViewCell {
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var pinImage: UIImageView!
     @IBOutlet weak var linkedStoreIcon: UIImageView!
-    
+     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
     }
     
     func setupWith(_ list: SLFirebaseList) {
-        pinImage.isHidden = !list.isPinned
+        if list.ownerid == nil {
+            pinImage.isHidden = !list.isPinned
+            cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .appBackgroundColor
+        } else {
+            pinImage.isHidden = true
+        }
+        
         listNameLabel.text = list.listName
-        cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .appBackgroundColor
         cellView.layer.borderColor = UIColor.mainOrange.cgColor
         itemNumberLabel.text = "\(list.products.filter({ $0.checked }).count)/\(list.products.count)"
-        if list.products.filter({ $0.checked }).count == list.products.count {
-            listNameLabel.strikeThrough()
-        } else {
-            listNameLabel.strikeThrough(false)
+        if list.products.count != 0 {
+            if list.products.filter({ $0.checked }).count == list.products.count {
+                listNameLabel.strikeThrough()
+            } else {
+                listNameLabel.strikeThrough(false)
+            }
         }
     }
+    
 }

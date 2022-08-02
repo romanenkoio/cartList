@@ -36,6 +36,10 @@
 		7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35128149C4C008ABEE1 /* Typealiases.swift */; };
 		7FA1F35428149CBD008ABEE1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */; };
 		7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */; };
+		7FAA729528940ED90053352E /* SearchUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA729328940ED90053352E /* SearchUserController.swift */; };
+		7FAA729628940ED90053352E /* SearchUserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAA729428940ED90053352E /* SearchUserController.xib */; };
+		7FAA729A28940F680053352E /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA729828940F680053352E /* UserSearchCell.swift */; };
+		7FAA729B28940F680053352E /* UserSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAA729928940F680053352E /* UserSearchCell.xib */; };
 		7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAFA89F28513D3F0089B123 /* Placeholders.swift */; };
 		7FB6F11E2891838600A048F0 /* SLFirManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F11D2891838600A048F0 /* SLFirManager.swift */; };
 		7FB6F12228919FCC00A048F0 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F12028919FCC00A048F0 /* ProfileController.swift */; };
@@ -112,6 +116,10 @@
 		7FA1F35128149C4C008ABEE1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		7FAA729328940ED90053352E /* SearchUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserController.swift; sourceTree = "<group>"; };
+		7FAA729428940ED90053352E /* SearchUserController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchUserController.xib; sourceTree = "<group>"; };
+		7FAA729828940F680053352E /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
+		7FAA729928940F680053352E /* UserSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSearchCell.xib; sourceTree = "<group>"; };
 		7FAFA89F28513D3F0089B123 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
 		7FB6F11D2891838600A048F0 /* SLFirManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirManager.swift; sourceTree = "<group>"; };
 		7FB6F12028919FCC00A048F0 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -192,6 +200,7 @@
 		7F40B1A5281AD46A002DF78E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				7FAA729228940EBC0053352E /* SearchUserController */,
 				7FB6F11F28919FA900A048F0 /* ProfileModule */,
 				8E237F55288EF71600408404 /* AuthViewController */,
 				7FC298B1288173E500F4D082 /* PremiumModule */,
@@ -271,6 +280,24 @@
 				7FDA6177289042A8007D8628 /* Validator.swift */,
 			);
 			path = Utilites;
+			sourceTree = "<group>";
+		};
+		7FAA729228940EBC0053352E /* SearchUserController */ = {
+			isa = PBXGroup;
+			children = (
+				7FAA729328940ED90053352E /* SearchUserController.swift */,
+				7FAA729428940ED90053352E /* SearchUserController.xib */,
+			);
+			path = SearchUserController;
+			sourceTree = "<group>";
+		};
+		7FAA729728940F4A0053352E /* UserSearchCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FAA729828940F680053352E /* UserSearchCell.swift */,
+				7FAA729928940F680053352E /* UserSearchCell.xib */,
+			);
+			path = UserSearchCell;
 			sourceTree = "<group>";
 		};
 		7FAFA89E28513D2B0089B123 /* Global */ = {
@@ -376,6 +403,7 @@
 		7FCB588D281350A300D3E370 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7FAA729728940F4A0053352E /* UserSearchCell */,
 				7FDA617B289126C5007D8628 /* AccountCell */,
 				7FA1F34928148CB6008ABEE1 /* SettingCell */,
 				7FA1F342281480FF008ABEE1 /* ProductCell */,
@@ -616,12 +644,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FCB588C2813508600D3E370 /* MainListController.xib in Resources */,
+				7FAA729628940ED90053352E /* SearchUserController.xib in Resources */,
 				7FB6F12328919FCC00A048F0 /* ProfileController.xib in Resources */,
 				7FC298B5288173FF00F4D082 /* PremiumController.xib in Resources */,
 				7F85A32C2881937D00CE3386 /* premium@2x.png in Resources */,
 				7F6C904D28187D7F0048EA1A /* emptyList.json in Resources */,
 				7F85A32A2881937800CE3386 /* premium@3x.png in Resources */,
 				7FD1D1172819B4D600CA44FE /* SettingsHeaderCell.xib in Resources */,
+				7FAA729B28940F680053352E /* UserSearchCell.xib in Resources */,
 				7F6C904028182D370048EA1A /* TimeSelectPopupController.xib in Resources */,
 				7F6C904928187A640048EA1A /* cartAnimation.json in Resources */,
 				7FA1F34628148113008ABEE1 /* ProductCell.xib in Resources */,
@@ -720,6 +750,7 @@
 				EB96139B28572E59007897CA /* String+Extension.swift in Sources */,
 				7FDA617528904257007D8628 /* ValidationTextField.swift in Sources */,
 				7F6C9042281868490048EA1A /* Alerts.swift in Sources */,
+				7FAA729A28940F680053352E /* UserSearchCell.swift in Sources */,
 				7FA1F34C28148CC9008ABEE1 /* SettingCell.swift in Sources */,
 				7FCB588B2813508600D3E370 /* MainListController.swift in Sources */,
 				7FEB9A2328134B51005AA371 /* AppDelegate.swift in Sources */,
@@ -733,6 +764,7 @@
 				7FA1F34528148113008ABEE1 /* ProductCell.swift in Sources */,
 				7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */,
 				7FCB5894281351B100D3E370 /* UiView+Extensions.swift in Sources */,
+				7FAA729528940ED90053352E /* SearchUserController.swift in Sources */,
 				7FDA6178289042A8007D8628 /* Validator.swift in Sources */,
 				7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */,
 				7FEB9A2528134B51005AA371 /* SceneDelegate.swift in Sources */,

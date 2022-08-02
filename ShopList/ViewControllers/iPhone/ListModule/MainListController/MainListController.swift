@@ -17,11 +17,13 @@ class MainListController: UIViewController {
     @IBOutlet weak var createListButton: UIButton!
     var bannerView: GADBannerView!
     var database: DatabaseReference!
+    var query: DatabaseQuery?
+    
+    private weak var timer: Timer?
     
     var lists = [SLFirebaseList]() {
         didSet {
             tableView.reloadData()
-           
             animationView.isHidden = lists.count != 0
             emptyLabel.isHidden = lists.count != 0
         }
@@ -81,15 +83,31 @@ class MainListController: UIViewController {
         #endif
         NotificationCenter.default.addObserver(self, selector: #selector(readLists), name: .listWasImported, object: nil)
         readLists()
+        
+    }
+    
+    private func scheduledTimer() {
+        timer = nil
+        DispatchQueue.global().async { [weak self] in
+            self?.timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.readLists()
+                }
+            })
+
+            RunLoop.current.run()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        timer = nil
+        query?.removeAllObservers()
     }
     
     @objc private func readLists() {
-        SLFirManager.loadLists { [weak self] lists in
+        self.query = SLFirManager.loadLists { [weak self] lists in
             self?.lists = lists
             self?.playAnimation()
         }
@@ -165,6 +183,15 @@ extension MainListController: UITableViewDelegate {
                 self.readLists()
             }
             
+            let shareToProfile = UIAction(title: "Добавить пользователя", image: UIImage(systemName: "person.circle")) { [weak self] _ in
+                guard let self = self else { return }
+                let vc = SearchUserController.loadFromNib()
+                vc.selectionBlock = { user in
+                    SLFirManager.shareListByEmail(self.lists[indexPath.row], for: user.uid!)
+                }
+                self.present(vc, animated: true)
+            }
+            
             let unPin = UIAction(title: AppLocalizationKeys.unpin.localized(), image: UIImage(systemName: "pin.slash")) { [weak self] _ in
                 guard let self = self else { return }
                 self.lists[indexPath.row].isPinned = false
@@ -194,9 +221,9 @@ extension MainListController: UITableViewDelegate {
             }
             
             if self.lists[indexPath.row].isPinned {
-                return UIMenu(title: "", children: [unPin, share, delete])
+                return UIMenu(title: "", children: [unPin, share, shareToProfile, delete])
             } else if !self.lists[indexPath.row].isPinned, self.lists.filter({ $0.isPinned }).count < 3 {
-                return UIMenu(title: "", children: [pin, share, delete])
+                return UIMenu(title: "", children: [pin, share, shareToProfile, delete])
             }
             return UIMenu(title: "", children: [share, delete])
         }

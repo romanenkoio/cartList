@@ -80,8 +80,12 @@ class ProductList: UIViewController {
     }
     
     private func readData() {
-        SLFirManager.loadList(currentList?.id) { [weak self] list in
-            self?.currentList = list
+        guard let currentList = currentList, let id = currentList.id else {
+            return
+        }
+
+        SLFirManager.loadList(id: id) { [weak self] list in
+            self?.currentList?.products = list
             self?.tableView.reloadData()
             self?.setupNavigationButton()
             self?.playAnimation()
@@ -89,9 +93,9 @@ class ProductList: UIViewController {
     }
     
     private func updateCellAt(_ indexPath: IndexPath) {
-            tableView.beginUpdates()
-            DefaultsManager.separateProducts ? tableView.reloadSections([0, 1], with: .fade) : tableView.reloadRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+        tableView.beginUpdates()
+        DefaultsManager.separateProducts ? tableView.reloadSections([0, 1], with: .fade) : tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
     }
     
     @IBAction func addProductAction(_ sender: Any) {
@@ -102,7 +106,6 @@ class ProductList: UIViewController {
         vc.type = .product
         vc.saveAction = { [weak self] in
             self?.dismiss(animated: true)
-            self?.readData()
         }
         self.present(vc, animated: true)
     }
@@ -119,7 +122,6 @@ class ProductList: UIViewController {
                 SLFirManager.addProductToList(list.id!, product: product)
             }
         }
-        readData()
     }
     
     @IBAction func refreshListAction(_ sender: Any) {
@@ -131,7 +133,6 @@ class ProductList: UIViewController {
             product.checked = false
             SLFirManager.updateProduct(product, listID: currentList.id!)
         }
-        readData()
     }
     
     @objc private func updateLanguage() {
@@ -224,6 +225,7 @@ extension ProductList: UITableViewDataSource {
         }
         if let item = item {
             productCell.listID = currentList?.id
+            productCell.ownerID = currentList?.ownerid
             productCell.setupWithFB(item, indexPath)
         }
         
@@ -252,11 +254,7 @@ extension ProductList: UITableViewDelegate {
                         }
                     }
                     
-                    SLFirManager.removeProduct(item, listID: (self.currentList?.id!)!) { success in
-                        if success {
-                            self.readData()
-                        }
-                    }
+                    SLFirManager.removeProduct(item, listID: (self.currentList?.id!)!)
                 }))
                 
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.cancel.localized(), style: .default))

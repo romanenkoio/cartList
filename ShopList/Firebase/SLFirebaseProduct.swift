@@ -9,9 +9,9 @@ import Foundation
 
 class SLFirebaseProduct {
     
-    var productName: String = ""
-    var produckPkg: String = ""
-    var productCount: Float = 0.0
+    var productName: String?
+    var produckPkg: String?
+    var productCount: Float?
     var checked = false
     var id: String?
     
@@ -22,5 +22,13 @@ class SLFirebaseProduct {
         self.productCount = productCount
         self.checked = checked
         self.id = id
+    }
+    
+    init(dict: [String: Any], key: String) {
+        self.productName = dict["productName"] as? String
+        self.produckPkg = dict["produckPkg"] as? String
+        self.productCount = dict["productCount"] as? Float
+        self.checked = dict["checked"] as? Bool ?? false
+        self.id = key
     }
 }

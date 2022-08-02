@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="UserSearchCell" customModule="ShopList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ofo-oL-UQm">
+                        <rect key="frame" x="16" y="8.5" width="50" height="49"/>
+                        <color key="tintColor" name="secondaryColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="ag3-cf-7HE"/>
+                            <constraint firstAttribute="height" constant="50" id="hBN-0s-Plq"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPc-xU-S2g">
+                        <rect key="frame" x="76" y="22.5" width="234" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="appBackgroundColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="CPc-xU-S2g" secondAttribute="trailing" constant="10" id="JeB-2f-El6"/>
+                    <constraint firstItem="ofo-oL-UQm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="dCJ-Ow-gqL"/>
+                    <constraint firstItem="ofo-oL-UQm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="jTK-ur-v6R"/>
+                    <constraint firstAttribute="bottom" secondItem="ofo-oL-UQm" secondAttribute="bottom" constant="9" id="mW2-2J-IQH"/>
+                    <constraint firstItem="CPc-xU-S2g" firstAttribute="leading" secondItem="ofo-oL-UQm" secondAttribute="trailing" constant="10" id="qce-4w-Hzx"/>
+                    <constraint firstItem="CPc-xU-S2g" firstAttribute="centerY" secondItem="ofo-oL-UQm" secondAttribute="centerY" id="u4J-n9-H6V"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <real key="value" value="16"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="usernameLabel" destination="CPc-xU-S2g" id="BBo-G3-41i"/>
+            </connections>
+            <point key="canvasLocation" x="153.62318840579712" y="123.21428571428571"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="appBackgroundColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryColor">
+            <color red="0.91764705882352937" green="0.29803921568627451" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
