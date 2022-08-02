@@ -108,7 +108,9 @@ class MainListController: UIViewController {
     
     @objc private func readLists() {
         self.query = SLFirManager.loadLists { [weak self] lists in
-            self?.lists = lists
+            let pinnedLists = lists.filter({ DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
+            let clearLists = lists.filter({ !DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
+            self?.lists = pinnedLists + clearLists
             self?.playAnimation()
         }
     }
