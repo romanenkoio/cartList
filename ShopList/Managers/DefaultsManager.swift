@@ -138,4 +138,14 @@ final class DefaultsManager {
             UserDefaults.standard.setValue(newValue, forKey: #function)
         }
     }
+    
+    class var pinnedLists: [String] {
+        get {
+            let pinnedLists = UserDefaults.standard.value(forKey: #function) as? [String]
+            return pinnedLists ?? []
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
 }

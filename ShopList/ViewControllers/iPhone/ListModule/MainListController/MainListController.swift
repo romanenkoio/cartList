@@ -179,8 +179,9 @@ extension MainListController: UITableViewDelegate {
             let pin = UIAction(title: AppLocalizationKeys.pin.localized(), image: UIImage(systemName: "pin")) { [weak self] _ in
                 guard let self = self else { return }
                 self.lists[indexPath.row].isPinned = true
-                SLFirManager.updateList(self.lists[indexPath.row])
-                self.readLists()
+                var pinned = DefaultsManager.pinnedLists
+                pinned.append(self.lists[indexPath.row].id!)
+                DefaultsManager.pinnedLists = pinned
             }
             
             let shareToProfile = UIAction(title: "Добавить пользователя", image: UIImage(systemName: "person.circle")) { [weak self] _ in

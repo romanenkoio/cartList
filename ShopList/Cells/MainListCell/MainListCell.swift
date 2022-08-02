@@ -20,12 +20,10 @@ class MainListCell: UITableViewCell {
     }
     
     func setupWith(_ list: SLFirebaseList) {
-        if list.ownerid == nil {
-            pinImage.isHidden = !list.isPinned
-            cellView.backgroundColor = list.isPinned ? .mainOrange.withAlphaComponent(0.1) : .appBackgroundColor
-        } else {
-            pinImage.isHidden = true
-        }
+     
+        pinImage.isHidden = !DefaultsManager.pinnedLists.contains(list.id!)
+        
+        cellView.backgroundColor = DefaultsManager.pinnedLists.contains(list.id!) ? .mainOrange.withAlphaComponent(0.1) : .appBackgroundColor
         
         listNameLabel.text = list.listName
         cellView.layer.borderColor = UIColor.mainOrange.cgColor
