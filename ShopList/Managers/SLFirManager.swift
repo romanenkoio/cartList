@@ -38,16 +38,6 @@ final class SLFirManager {
         }
     }
     
-    static func authAsAnonimus(successBlock: BoolResultBlock?) {
-        Auth.auth().signInAnonymously { result, error in
-            guard result != nil  else {
-                successBlock?(false)
-                return
-            }
-            successBlock?(true)
-        }
-    }
-    
     static func getUser(result: ((SLUser?) -> ())? = nil) {
         guard let uid = Auth.auth().currentUser?.uid else { result?(nil); return; }
         
@@ -73,7 +63,7 @@ final class SLFirManager {
     }
     
     static func shareListByEmail(_ list: SLFirebaseList, for user: String) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard (Auth.auth().currentUser?.uid) != nil else { return }
 
         let listRef = Database.database().reference().child("lists/\(list.id!)").child("sharedFor").childByAutoId()
         listRef.updateChildValues(["id": user])
@@ -154,16 +144,10 @@ final class SLFirManager {
         listsRef.updateChildValues(["checked": product.checked])
     }
     
-    static func updateList(_ list: SLFirebaseList) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let listsRef = Database.database().reference().child("users/\(uid)/lists/\(list.id!)")
-        listsRef.updateChildValues(["isPinned" : list.isPinned])
-    }
-    
     static func removeProduct(_ product: SLFirebaseProduct, listID: String, success: BoolResultBlock? = nil) {
-        guard let uid = Auth.auth().currentUser?.uid else { success?(false); return; }
+        guard (Auth.auth().currentUser?.uid) != nil else { success?(false); return; }
 
-        let listsRef = Database.database().reference().child("users/\(uid)/lists/\(listID)/products/\(product.id!)")
+        let listsRef = Database.database().reference().child("lists/\(listID)/products/\(product.id!)")
         listsRef.removeValue { error, result in
             guard error == nil else {
                 success?(false)
