@@ -178,12 +178,19 @@ extension MainListController: UITableViewDelegate {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {  [weak self] _ in
             guard let self = self else { return nil }
             
-            let pin = UIAction(title: AppLocalizationKeys.pin.localized(), image: UIImage(systemName: "pin")) { [weak self] _ in
+            let listPinned = DefaultsManager.pinnedLists.contains(self.lists[indexPath.row].id!)
+            let pin = UIAction(title: listPinned ? AppLocalizationKeys.unpin.localized() : AppLocalizationKeys.pin.localized(), image: UIImage(systemName: listPinned ? "pin.slash" : "pin")) { [weak self] _ in
                 guard let self = self else { return }
-                self.lists[indexPath.row].isPinned = true
-                var pinned = DefaultsManager.pinnedLists
-                pinned.append(self.lists[indexPath.row].id!)
-                DefaultsManager.pinnedLists = pinned
+                
+                self.lists[indexPath.row].isPinned = !listPinned
+                if listPinned {
+                    guard let index = DefaultsManager.pinnedLists.firstIndex(of: self.lists[indexPath.row].id!) else { return }
+                    DefaultsManager.pinnedLists.remove(at: index)
+                } else {
+                    DefaultsManager.pinnedLists.append(self.lists[indexPath.row].id!)
+                }
+
+                tableView.reloadData()
             }
             
             let shareToProfile = UIAction(title: "Добавить пользователя", image: UIImage(systemName: "person.circle")) { [weak self] _ in
@@ -193,13 +200,6 @@ extension MainListController: UITableViewDelegate {
                     SLFirManager.shareListByEmail(self.lists[indexPath.row], for: user.uid!)
                 }
                 self.present(vc, animated: true)
-            }
-            
-            let unPin = UIAction(title: AppLocalizationKeys.unpin.localized(), image: UIImage(systemName: "pin.slash")) { [weak self] _ in
-                guard let self = self else { return }
-                self.lists[indexPath.row].isPinned = false
-                SLFirManager.updateList(self.lists[indexPath.row])
-                self.readLists()
             }
             
             let share = UIAction(title: AppLocalizationKeys.alertShare.localized(), image: UIImage(systemName: "arrowshape.turn.up.right")) { [weak self] _ in
@@ -224,7 +224,7 @@ extension MainListController: UITableViewDelegate {
             }
             
             if self.lists[indexPath.row].isPinned {
-                return UIMenu(title: "", children: [unPin, share, shareToProfile, delete])
+                return UIMenu(title: "", children: [pin, share, shareToProfile, delete])
             } else if !self.lists[indexPath.row].isPinned, self.lists.filter({ $0.isPinned }).count < 3 {
                 return UIMenu(title: "", children: [pin, share, shareToProfile, delete])
             }
