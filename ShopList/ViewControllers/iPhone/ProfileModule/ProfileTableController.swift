@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 enum ProfilePoints {
     case name
@@ -96,5 +97,16 @@ extension ProfileTableController: UITableViewDataSource {
 }
 
 extension ProfileTableController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch menu[indexPath.section][indexPath.row] {
+        case .logout:
+            try? Auth.auth().signOut()
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                sceneDelegate.setLoginScreen()
+            }
+        default: break
+        }
+    }
 }

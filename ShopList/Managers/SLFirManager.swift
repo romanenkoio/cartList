@@ -11,39 +11,12 @@ import Firebase
 final class SLFirManager {
     static let authReference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
     
-    static func auth(type: AuthAction, name: String?, email: String, password: String, successBlock: BoolResultBlock?) {
-        switch type {
-        case .login:
-            Auth.auth().signIn(withEmail: email, password: password) { result, error in
-                guard result != nil  else {
-                    successBlock?(false)
-                    return
-                }
-                
-                successBlock?(true)
-            }
-            
-        case .registration:
-            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                guard let result = result  else {
-                    successBlock?(false)
-                    return
-                }
-                
-                authReference.child(result.user.uid).updateChildValues(["name" : name ?? "", "email" : email, "password" : password])
-                successBlock?(true)
-            }
-        case .changePassword:
-            break
-        }
-    }
-    
     static func getUser(result: ((SLUser?) -> ())? = nil) {
         guard let uid = Auth.auth().currentUser?.uid else { result?(nil); return; }
         
         let query = Database.database().reference().child("users/\(uid)/username")
         
-        query.observeSingleEvent(of: .value) { snapshot in
+        query.observe(.value) { snapshot in
             guard let name = snapshot.value as? String else { result?(nil); return; }
             KeychainManager.store(value: name, for: .username)
             result?(SLUser(name: name))

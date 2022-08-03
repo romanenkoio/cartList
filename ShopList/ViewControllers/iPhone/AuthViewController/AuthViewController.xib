@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,13 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="ShopList" customModuleProvider="target">
             <connections>
-                <outlet property="backgroundView" destination="qlU-8S-21X" id="2sF-iQ-bnb"/>
-                <outlet property="confirmButton" destination="kHu-Vf-xPL" id="5WU-tE-rqk"/>
-                <outlet property="loginField" destination="C8H-8t-wdt" id="rmk-gx-LLN"/>
-                <outlet property="nameField" destination="zLd-a4-83j" id="oYM-wM-OOf"/>
-                <outlet property="passwordField" destination="q0I-oJ-cL4" id="ew8-Ii-gFJ"/>
-                <outlet property="showPasswordButton" destination="dHV-fe-1dj" id="fp1-oi-7n8"/>
-                <outlet property="spinner" destination="cJi-RX-vsT" id="Wgk-tf-Kmc"/>
+                <outlet property="loginButton" destination="FXf-Xg-yqj" id="oqv-ZN-aoP"/>
+                <outlet property="stackView" destination="ePg-t7-NHn" id="rfu-ZZ-Wwu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,114 +21,47 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlU-8S-21X">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                </view>
-                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zsz-sf-GkS">
-                    <rect key="frame" x="16" y="379" width="382" height="242"/>
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-t7-NHn">
+                    <rect key="frame" x="16" y="428" width="382" height="50"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zLd-a4-83j" customClass="ValidationTextField" customModule="ShopList" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-Xg-yqj">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                            <color key="backgroundColor" name="mainColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="34" id="yNy-ZD-wqa"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="C8H-8t-wdt" customClass="ValidationTextField" customModule="ShopList" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="44" width="382" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="34" id="nWA-su-pxR"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                        </textField>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zse-Ua-TgQ">
-                            <rect key="frame" x="0.0" y="88" width="382" height="34"/>
-                            <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q0I-oJ-cL4" customClass="ValidationTextField" customModule="ShopList" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="34" id="uGa-oS-LN4"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHV-fe-1dj">
-                                    <rect key="frame" x="348" y="0.0" width="30" height="34"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="gCc-uh-UJY"/>
-                                    </constraints>
-                                    <color key="tintColor" name="buttonColor"/>
-                                    <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain">
-                                        <imageReference key="image" image="eye.slash" catalog="system" symbolScale="default"/>
-                                    </buttonConfiguration>
-                                    <connections>
-                                        <action selector="showPasswordAction:" destination="-1" eventType="touchUpInside" id="O9l-8A-Soz"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="q0I-oJ-cL4" secondAttribute="trailing" id="JAD-wA-ZFZ"/>
-                                <constraint firstItem="q0I-oJ-cL4" firstAttribute="leading" secondItem="Zse-Ua-TgQ" secondAttribute="leading" id="LAc-Fo-QDy"/>
-                                <constraint firstItem="dHV-fe-1dj" firstAttribute="top" secondItem="q0I-oJ-cL4" secondAttribute="top" id="Qa8-fo-b4Y"/>
-                                <constraint firstItem="dHV-fe-1dj" firstAttribute="trailing" secondItem="q0I-oJ-cL4" secondAttribute="trailing" constant="-4" id="Un2-Qv-Tvk"/>
-                                <constraint firstItem="q0I-oJ-cL4" firstAttribute="top" secondItem="Zse-Ua-TgQ" secondAttribute="top" id="Upa-qK-F1N"/>
-                                <constraint firstItem="dHV-fe-1dj" firstAttribute="bottom" secondItem="q0I-oJ-cL4" secondAttribute="bottom" id="ehk-9F-6rm"/>
-                                <constraint firstAttribute="bottom" secondItem="q0I-oJ-cL4" secondAttribute="bottom" id="qSf-4U-Vuf"/>
-                            </constraints>
-                        </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-eW-MoF">
-                            <rect key="frame" x="0.0" y="132" width="382" height="50"/>
-                        </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHu-Vf-xPL">
-                            <rect key="frame" x="0.0" y="192" width="382" height="50"/>
-                            <color key="backgroundColor" name="buttonColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="0Mq-2l-pRO"/>
+                                <constraint firstAttribute="height" constant="50" id="FeA-DX-JST"/>
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="sing in / create an account"/>
+                            <inset key="imageEdgeInsets" minX="-60" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Войти с Apple" image="appleLogo">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="16"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="confirmAction:" destination="-1" eventType="touchUpInside" id="D2a-BW-edQ"/>
+                                <action selector="signInAction:" destination="-1" eventType="touchUpInside" id="wMM-yg-qNf"/>
                             </connections>
                         </button>
                     </subviews>
                 </stackView>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cJi-RX-vsT">
-                    <rect key="frame" x="197" y="438" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="color" name="buttonColor"/>
-                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qlU-8S-21X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1Fv-EL-TJW"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zsz-sf-GkS" secondAttribute="trailing" constant="16" id="4uq-GC-aq5"/>
-                <constraint firstAttribute="trailing" secondItem="qlU-8S-21X" secondAttribute="trailing" id="Tuk-s3-aPa"/>
-                <constraint firstItem="qlU-8S-21X" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WJF-cW-iQb"/>
-                <constraint firstItem="Zsz-sf-GkS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="XIb-of-gqh"/>
-                <constraint firstItem="Zsz-sf-GkS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cpg-C0-1kv"/>
-                <constraint firstAttribute="bottom" secondItem="qlU-8S-21X" secondAttribute="bottom" id="dha-e4-ptb"/>
-                <constraint firstItem="Zsz-sf-GkS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="eVX-f2-gBO"/>
+                <constraint firstItem="ePg-t7-NHn" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="YW1-R7-8IN"/>
+                <constraint firstItem="ePg-t7-NHn" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Yln-dO-Fkh"/>
+                <constraint firstItem="ePg-t7-NHn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="bAT-Vc-PCn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ePg-t7-NHn" secondAttribute="trailing" constant="16" id="lbD-TV-taA"/>
             </constraints>
             <point key="canvasLocation" x="132" y="100"/>
         </view>
     </objects>
     <resources>
-        <image name="eye.slash" catalog="system" width="128" height="86"/>
-        <namedColor name="buttonColor">
-            <color red="0.99607843137254903" green="0.41176470588235292" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="appleLogo" width="22" height="26"/>
+        <namedColor name="mainColor">
+            <color red="0.21176470588235294" green="0.52156862745098043" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

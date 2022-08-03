@@ -26,10 +26,12 @@ class SettingCell: UITableViewCell {
     func setupWith(_ type: SLSettingsPoint) {
         self.indicator.isHidden = type.indicator == .none
         imageLabel.image = type.image
+        imageLabel.tintColor = type.tint
         settingLabel.text = type.text
         switcher.isHidden = type.switcherHidden
         imageLabel.isHidden = type.imageHidden
         switcher.isOn = type.state
+        
         self.contentView.alpha = type.isEnabled ? 1 : 0.5
     }
     

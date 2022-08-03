@@ -16,6 +16,9 @@ class ProfileCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         
-        self.mailLabel.text = KeychainManager.username ?? "Войти в аккаунт"
+        SLFirManager.getUser { [weak self] user in
+            self?.mailLabel.text = user?.name ?? "Имя не указано"
+
+        }
     }
 }

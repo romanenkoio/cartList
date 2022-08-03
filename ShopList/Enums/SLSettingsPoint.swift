@@ -45,7 +45,7 @@ enum SLSettingsPoint: CaseIterable {
     
     var image: UIImage? {
         switch self {
-        case .separateList:     return UIImage(systemName: "square.line.vertical.square.fill.left")
+        case .separateList:     return UIImage(systemName: "square.lefthalf.filled")
         case .autoDelete:       return UIImage(systemName: "trash.square.fill")
             
         case .useTimePush:      return UIImage(systemName: "bell.square.fill")
@@ -57,6 +57,21 @@ enum SLSettingsPoint: CaseIterable {
         case .premium:          return UIImage(systemName: "star.square.fill")
 
         default:                return nil
+        }
+    }
+    
+    var tint: UIColor {
+        switch self {
+        case .profile:
+            return .white
+        case .autoDelete, .separateList:
+            return .systemRed
+        case .useTimePush, .morningTime:
+            return .systemCyan
+        case .language, .version:
+            return .systemGray
+        case .premium:
+            return .systemYellow
         }
     }
     

@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-      
+        
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
         
@@ -27,9 +27,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
+        if (Auth.auth().currentUser?.uid) != nil {
+            setTabBarScreen()
+        } else {
+            setLoginScreen()
+        }
+    }
+    
+    func setLoginScreen() {
+        window?.rootViewController = AuthViewController()
+        window?.makeKeyAndVisible()
+    }
+    
+    func setTabBarScreen() {
         window?.rootViewController = BaseTabBarController()
         DefaultsManager.lainchCount += 1
-
         window?.makeKeyAndVisible()
     }
     
