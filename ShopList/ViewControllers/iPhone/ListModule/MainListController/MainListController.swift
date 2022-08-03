@@ -117,7 +117,7 @@ class MainListController: UIViewController {
     private func playAnimation() {
         animationView.loopMode = .loop
         animationView.animationSpeed = 0.5
-        animationView.animation = Animation.named("cartAnimation")
+        animationView.animation = Animation.named("emptyList")
         lists.count > 0 ? animationView.stop() : animationView.play()
         animationView.isHidden = lists.count != 0
         emptyLabel.isHidden = lists.count != 0
@@ -210,12 +210,11 @@ extension MainListController: UITableViewDelegate {
                 let alert = UIAlertController(title: AppLocalizationKeys.confirm.localized(), message: AppLocalizationKeys.deleteEntry.localized(), preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive, handler: { _ in
+                    if let index = DefaultsManager.pinnedLists.firstIndex(of: self.lists[indexPath.row].id!) {
+                        DefaultsManager.pinnedLists.remove(at: index)
+                    }
                     SLFirManager.removeList(self.lists[indexPath.row]) { success in
                         if success {
-                            if let index = DefaultsManager.pinnedLists.firstIndex(of: self.lists[indexPath.row].id!) {
-                                DefaultsManager.pinnedLists.remove(at: index)
-
-                            }
                             self.readLists()
                         }
                     }
