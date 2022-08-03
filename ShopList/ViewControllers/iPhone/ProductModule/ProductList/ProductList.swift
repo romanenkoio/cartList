@@ -73,7 +73,7 @@ class ProductList: UIViewController {
     private func playAnimation() {
         animationView.loopMode = .playOnce
         animationView.animationSpeed = 0.5
-        animationView.animation = Animation.named("emptyList")
+        animationView.animation = Animation.named("emptySearch")
         currentList?.products.count ?? 0 > 0 ? animationView.stop() : animationView.play()
         animationView.isHidden = currentList?.products.count != 0
         emptyLabel.isHidden = currentList?.products.count != 0

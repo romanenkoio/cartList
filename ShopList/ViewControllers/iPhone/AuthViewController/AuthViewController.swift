@@ -9,23 +9,32 @@ import UIKit
 import Firebase
 import CryptoKit
 import AuthenticationServices
+import Lottie
 
 class AuthViewController: UIViewController {
-
     
+    
+    @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var loginButton: UIButton!
-        
+    
     private var currentNonce: String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        playAnimation()
+    }
+    
+    private func playAnimation() {
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 0.5
+        animationView.animation = Animation.named("login")
+        animationView.play()
     }
     
     @IBAction func signInAction(_ sender: Any) {
         handleAuthorizationAppleID { uid, name, error in
-
+            
         }
     }
     
@@ -69,7 +78,7 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                 if (error != nil) {
                     return
                 }
-          
+                
                 
                 guard let user = Auth.auth().currentUser else { return }
                 SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue).child(user.uid).updateChildValues(["email": user.email ?? "Не указано"])
@@ -98,7 +107,7 @@ extension AuthViewController {
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: [Character] =
-            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
         
