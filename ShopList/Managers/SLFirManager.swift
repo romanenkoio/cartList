@@ -69,6 +69,7 @@ final class SLFirManager {
         listsRef.setValue(["productName" : product.productName!, "produckPkg" : product.produckPkg!, "productCount" : product.productCount!, "checked" : false, "listID": listID])
     }
     
+    @discardableResult
     static func loadLists(success: (([SLFirebaseList]) -> ())?) -> DatabaseQuery? {
         guard let uid = Auth.auth().currentUser?.uid else { return nil }
         let ref = Database.database().reference().child("lists").queryOrdered(byChild: "owner").queryEqual(toValue: uid)

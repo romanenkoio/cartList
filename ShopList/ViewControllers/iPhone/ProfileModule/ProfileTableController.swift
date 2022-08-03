@@ -92,8 +92,6 @@ extension ProfileTableController: UITableViewDataSource {
         settingCell.setupWith(menu[indexPath.section][indexPath.row])
         return settingCell
     }
-    
-    
 }
 
 extension ProfileTableController: UITableViewDelegate {

@@ -42,8 +42,6 @@
 		7FAA729B28940F680053352E /* UserSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAA729928940F680053352E /* UserSearchCell.xib */; };
 		7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAFA89F28513D3F0089B123 /* Placeholders.swift */; };
 		7FB6F11E2891838600A048F0 /* SLFirManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F11D2891838600A048F0 /* SLFirManager.swift */; };
-		7FB6F12228919FCC00A048F0 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F12028919FCC00A048F0 /* ProfileController.swift */; };
-		7FB6F12328919FCC00A048F0 /* ProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB6F12128919FCC00A048F0 /* ProfileController.xib */; };
 		7FB6F1262891DEB000A048F0 /* SLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F1252891DEAF00A048F0 /* SLUser.swift */; };
 		7FBC048F288FEB9E00583C4C /* SLAppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */; };
 		7FBC0492288FF4C300583C4C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC0491288FF4C300583C4C /* KeychainManager.swift */; };
@@ -122,8 +120,6 @@
 		7FAA729928940F680053352E /* UserSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSearchCell.xib; sourceTree = "<group>"; };
 		7FAFA89F28513D3F0089B123 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
 		7FB6F11D2891838600A048F0 /* SLFirManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirManager.swift; sourceTree = "<group>"; };
-		7FB6F12028919FCC00A048F0 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		7FB6F12128919FCC00A048F0 /* ProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileController.xib; sourceTree = "<group>"; };
 		7FB6F1252891DEAF00A048F0 /* SLUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLUser.swift; sourceTree = "<group>"; };
 		7FBC048E288FEB9E00583C4C /* SLAppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLAppEnvironment.swift; sourceTree = "<group>"; };
 		7FBC0491288FF4C300583C4C /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -313,8 +309,6 @@
 		7FB6F11F28919FA900A048F0 /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
-				7FB6F12028919FCC00A048F0 /* ProfileController.swift */,
-				7FB6F12128919FCC00A048F0 /* ProfileController.xib */,
 				7F80E4822893D9A00003BB12 /* ProfileTableController.swift */,
 			);
 			path = ProfileModule;
@@ -645,7 +639,6 @@
 			files = (
 				7FCB588C2813508600D3E370 /* MainListController.xib in Resources */,
 				7FAA729628940ED90053352E /* SearchUserController.xib in Resources */,
-				7FB6F12328919FCC00A048F0 /* ProfileController.xib in Resources */,
 				7FC298B5288173FF00F4D082 /* PremiumController.xib in Resources */,
 				7F85A32C2881937D00CE3386 /* premium@2x.png in Resources */,
 				7F6C904D28187D7F0048EA1A /* emptyList.json in Resources */,
@@ -757,7 +750,6 @@
 				7FCB5891281350C300D3E370 /* MainListCell.swift in Sources */,
 				8E6A4B392891944400638F25 /* SLFirebaseProduct.swift in Sources */,
 				7FA1F33328146054008ABEE1 /* UIViewController+Extensions.swift in Sources */,
-				7FB6F12228919FCC00A048F0 /* ProfileController.swift in Sources */,
 				7FC298B4288173FF00F4D082 /* PremiumController.swift in Sources */,
 				7F6C903C281812830048EA1A /* UILabel+Extensions.swift in Sources */,
 				7FCB588128134D4900D3E370 /* UIColor+Extensions.swift in Sources */,
