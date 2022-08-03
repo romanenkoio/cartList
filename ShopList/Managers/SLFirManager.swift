@@ -77,7 +77,11 @@ final class SLFirManager {
        
         ref.observe(.value) { snapshot in
             var lists = [SLFirebaseList]()
-            guard let listsDict = snapshot.value as? [String : Any] else { return }
+            guard let listsDict = snapshot.value as? [String : Any] else {
+                success?([SLFirebaseList]())
+                return
+            }
+            
             for child in listsDict  {
                 let list = SLFirebaseList(dict: child.value as! [String: Any], key: child.key)
                 lists.append(list)

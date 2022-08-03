@@ -83,7 +83,6 @@ class MainListController: UIViewController {
         #endif
         NotificationCenter.default.addObserver(self, selector: #selector(readLists), name: .listWasImported, object: nil)
         readLists()
-        
     }
     
     private func scheduledTimer() {

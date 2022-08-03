@@ -98,7 +98,7 @@
 "notification.timeToCheck" = "Время проверить ваши списки!";
 "notification.youBought" = "Вы купили всё нужное?";
 "notification.youNear" = "Вы рядом с";
-"notification.checkTheLists" = "Не хотите проверить списки?";
+"notification.checkTheLists" = "Не хотите добавить список?";
 
 "lasagna" = "Лазанья";
 "tortilla" = "Тортилья";
