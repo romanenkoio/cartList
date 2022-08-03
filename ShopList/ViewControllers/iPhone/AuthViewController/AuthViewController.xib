@@ -5,12 +5,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="ShopList" customModuleProvider="target">
             <connections>
+                <outlet property="animationView" destination="8aW-JF-DPE" id="3ve-Qu-kER"/>
                 <outlet property="loginButton" destination="FXf-Xg-yqj" id="oqv-ZN-aoP"/>
                 <outlet property="stackView" destination="ePg-t7-NHn" id="rfu-ZZ-Wwu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,19 +21,26 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-t7-NHn">
-                    <rect key="frame" x="16" y="428" width="382" height="50"/>
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-t7-NHn">
+                    <rect key="frame" x="16" y="293" width="382" height="320"/>
                     <subviews>
-                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-Xg-yqj">
-                            <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
-                            <color key="backgroundColor" name="mainColor"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-JF-DPE" customClass="AnimationView" customModule="Lottie">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="250"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="250" id="MMY-AB-ozc"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-Xg-yqj" customClass="ASAuthorizationAppleIDButton">
+                            <rect key="frame" x="0.0" y="270" width="382" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="FeA-DX-JST"/>
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="-60" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Войти с Apple" image="appleLogo">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -48,7 +55,7 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="mainColor"/>
             <constraints>
                 <constraint firstItem="ePg-t7-NHn" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="YW1-R7-8IN"/>
                 <constraint firstItem="ePg-t7-NHn" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Yln-dO-Fkh"/>
@@ -59,12 +66,8 @@
         </view>
     </objects>
     <resources>
-        <image name="appleLogo" width="22" height="26"/>
         <namedColor name="mainColor">
-            <color red="0.21176470588235294" green="0.52156862745098043" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21176470588235294" green="0.32549019607843138" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
