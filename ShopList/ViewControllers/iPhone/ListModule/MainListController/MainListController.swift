@@ -212,6 +212,10 @@ extension MainListController: UITableViewDelegate {
                 alert.addAction(UIAlertAction(title: AppLocalizationKeys.delete.localized(), style: .destructive, handler: { _ in
                     SLFirManager.removeList(self.lists[indexPath.row]) { success in
                         if success {
+                            if let index = DefaultsManager.pinnedLists.firstIndex(of: self.lists[indexPath.row].id!) {
+                                DefaultsManager.pinnedLists.remove(at: index)
+
+                            }
                             self.readLists()
                         }
                     }
