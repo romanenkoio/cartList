@@ -37,4 +37,8 @@ class MainListCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        listNameLabel.strikeThrough(false)
+    }
 }
