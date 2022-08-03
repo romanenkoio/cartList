@@ -129,6 +129,9 @@ extension SettingsController: UITableViewDelegate {
                 let profileVC = ProfileTableController()
                 navigationController?.pushViewController(profileVC, animated: true)
             }
+        case .premium:
+            let vc = PremiumController.loadFromNib()
+            present(vc, animated: true)
         default: break
         }
     }

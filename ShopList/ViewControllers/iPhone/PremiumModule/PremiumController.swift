@@ -9,31 +9,18 @@ import UIKit
 import Lottie
 
 class PremiumController: UIViewController {
-    @IBOutlet weak var premiumView: AnimationView!
+    @IBOutlet weak var pageController: UIPageControl!
+    @IBOutlet weak var infoLabel: UILabel!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        playAnimation()
-    }
+    private var timer: Timer?
+    private var counter = 0
     
-    private func playAnimation() {
-        premiumView.loopMode = .loop
-        premiumView.animationSpeed = 0.5
-        premiumView.play()
-        premiumView.animation = Animation.named("cartAnimation")
-    }
+    var infoArray = ["Неограниченное количество списков", "Отсутствие рекламы", "Возможность закреплять списки"]
     
-    private func changeIcon(to name: String?) {
-        guard UIApplication.shared.supportsAlternateIcons else {
-            return
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        UIApplication.shared.setAlternateIconName(name) { (error) in
-            if let error = error {
-                print("App icon failed to due to \(error.localizedDescription)")
-            } else {
-                print("App icon changed successfully.")
-            }
-        }
     }
+    
+
 }
