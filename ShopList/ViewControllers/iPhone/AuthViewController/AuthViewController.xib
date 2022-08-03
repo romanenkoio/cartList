@@ -61,7 +61,7 @@
     <resources>
         <image name="appleLogo" width="22" height="26"/>
         <namedColor name="mainColor">
-            <color red="0.21176470588235294" green="0.52156862745098043" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21176470588235294" green="0.32549019607843138" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

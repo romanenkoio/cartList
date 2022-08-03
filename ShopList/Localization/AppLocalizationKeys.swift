@@ -8,10 +8,28 @@
 import Foundation
 
 class AppLocalizationKeys {
+    
+    //Premium Points
+    static let premiumAdvantages = "premium.advantages"
+    static let premiumInfo = "premium.info"
+    static let premiumMonthSub = "premium.monthSub"
+    static let premiumyYearSub = "premium.yearSub"
+    static let premiumForeverSub = "premium.foreverSub"
+    
+    //Profile Points
+    static let profileHeader = "profile.Header"
+    static let accountType = "profile.accountType"
+    static let listsCount = "profile.listsCount"
+    static let editProfile = "profile.edit"
+    static let deleteProfile = "profile.deleteProfile"
+    static let logOut = "profile.logOut"
+    
     //Settings Point
     static let authHeader = "settings.authHeader"
-    static let signIn = "settings.signIn"
-    static let registration = "settings.registration"
+//    static let signIn = "settings.signIn"
+//    static let registration = "settings.registration"
+    static let premium = "settings.premium"
+    static let profileName = "settings.profileName"
     static let listHeader = "settings.listHeader"
     static let separateList = "settings.separateList"
     static let autoDelete = "settings.autoDelete"

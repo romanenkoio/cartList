@@ -11,9 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PremiumController" customModule="ShopList" customModuleProvider="target">
             <connections>
+                <outlet property="foreverSubButton" destination="eS4-d0-NIX" id="dkB-cX-FEl"/>
+                <outlet property="headerLabel" destination="HVP-Ux-Tmd" id="6ad-pL-FaF"/>
                 <outlet property="infoLabel" destination="QMg-mt-o0e" id="bh0-nL-vG1"/>
+                <outlet property="monthSubButton" destination="L6Y-DI-PRp" id="x31-GB-QUj"/>
                 <outlet property="pageController" destination="TJC-rC-tMU" id="gnw-2V-2jy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yearSubButton" destination="rLr-gD-nA1" id="YI6-Oi-Fmy"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

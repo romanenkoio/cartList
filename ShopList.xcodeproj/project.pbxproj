@@ -75,6 +75,7 @@
 		7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE184928135CE000DE5DD1 /* AddListController.swift */; };
 		7FFE184C28135CE000DE5DD1 /* AddListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFE184A28135CE000DE5DD1 /* AddListController.xib */; };
 		8E0F669428905D9F00A5202C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F669328905D9F00A5202C /* GoogleService-Info.plist */; };
+		8E2261CF289B2E5A000C2643 /* SLProfilePoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2261CE289B2E5A000C2643 /* SLProfilePoints.swift */; };
 		8E237F58288EF74700408404 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E237F56288EF74700408404 /* AuthViewController.swift */; };
 		8E237F59288EF74700408404 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F57288EF74700408404 /* AuthViewController.xib */; };
 		8E6A4B37289165D600638F25 /* SLFirebaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A4B36289165D600638F25 /* SLFirebaseList.swift */; };
@@ -156,6 +157,7 @@
 		7FFE184928135CE000DE5DD1 /* AddListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListController.swift; sourceTree = "<group>"; };
 		7FFE184A28135CE000DE5DD1 /* AddListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListController.xib; sourceTree = "<group>"; };
 		8E0F669328905D9F00A5202C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ShopList/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8E2261CE289B2E5A000C2643 /* SLProfilePoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLProfilePoints.swift; sourceTree = "<group>"; };
 		8E237F56288EF74700408404 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8E237F57288EF74700408404 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		8E6A4B36289165D600638F25 /* SLFirebaseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirebaseList.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				7FA1F33A28146EF7008ABEE1 /* SLAddType.swift */,
 				7FA1F34728148B32008ABEE1 /* SLSettingsPoint.swift */,
 				7F6C9039281804450048EA1A /* SLAppImages.swift */,
+				8E2261CE289B2E5A000C2643 /* SLProfilePoints.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */,
 				7FD1D1122819AC0800CA44FE /* ImportManager.swift in Sources */,
 				7F6C90382817FBF00048EA1A /* CustomUIAction.swift in Sources */,
+				8E2261CF289B2E5A000C2643 /* SLProfilePoints.swift in Sources */,
 				7FBC0492288FF4C300583C4C /* KeychainManager.swift in Sources */,
 				EB96139B28572E59007897CA /* String+Extension.swift in Sources */,
 				7FDA617528904257007D8628 /* ValidationTextField.swift in Sources */,

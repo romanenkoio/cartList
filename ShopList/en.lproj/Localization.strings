@@ -6,10 +6,25 @@
   
 */
 
-//Settings Point
-"settings.authHeader" = "Profile";
-"settings.signIn" = "Sign in";
-"settings.registration" = "Registration";
+//Premium Points
+
+//"premium.advantages" = ["Unlimited lists", "No ads", "Ability to pin your pists"];
+"premium.info" = "Subscribe and use the app without limits!";
+"premium.monthSub" = "$0.99 / per month";
+"premium.yearSub" = "$0.99 / per year";
+"premium.foreverSub" = "$0.99 / forever and ever";
+
+//Profile Points
+"profile.Header" = "Profile";
+"profile.accountType" = "Account status:";
+"profile.listsCount" = "Lists:";
+"profile.edit" = "Edit";
+"profile.deleteProfile" = "Delete account";
+"profile.logOut" = "Log Out";
+
+//Settings Points
+"settings.profileName" = "Name not set yet";
+"settings.premium" = "Get premium";
 "settings.listHeader" = "List settings";
 "settings.separateList" = "Separate marked products";
 "settings.autoDelete" = "Delete completed lists";

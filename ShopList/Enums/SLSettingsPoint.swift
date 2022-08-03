@@ -38,8 +38,9 @@ enum SLSettingsPoint: CaseIterable {
             return "\(AppLocalizationKeys.language.localized()): \(Languages.getFullLanguageName(code: DefaultsManager.userLanguage))"
         case .profile:
             return ""
+            // return AppLocalizationKeys.profileName
         case .premium:
-            return "Премиум подписка"
+            return AppLocalizationKeys.premium.localized()
         }
     }
     

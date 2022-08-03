@@ -5,9 +5,26 @@
   Created by Alina Karpovich on 13.06.22.
   
 */
-"settings.authHeader" = "Профиль";
-"settings.signIn" = "Вход";
-"settings.registration" = "Регистрация";
+
+//Premium Points
+
+//"premium.advantages" = ["Неограниченное количество списков", "Отсутствие рекламы", "Возможность закреплять списки"];
+"premium.info" = "Оформите подписку и пользуйтесь приложением без ограничений!";
+"premium.monthSub" = "$0.99 / месяц";
+"premium.yearSub" = "$0.99 / год";
+"premium.foreverSub" = "$0.99 / навсегда";
+
+//Profile Points
+"profile.Header" = "Профиль";
+"profile.accountType" = "Аккаунт:";
+"profile.listsCount" = "Списки:";
+"profile.edit" = "Редактировать";
+"profile.deleteProfile" = "Удалить аккаунт";
+"profile.logOut" = "Выйти";
+
+//Settings Points
+"settings.profileName" = "Имя не указано";
+"settings.premium" = "Премиум подписка";
 "settings.listHeader" = "Настройки списков";
 "settings.separateList" = "Разделять отмеченные продукты";
 "settings.autoDelete" = "Удалять заполненные списки";

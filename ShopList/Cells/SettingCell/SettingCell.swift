@@ -35,7 +35,7 @@ class SettingCell: UITableViewCell {
         self.contentView.alpha = type.isEnabled ? 1 : 0.5
     }
     
-    func setupWith(_ type: ProfilePoints) {
+    func setupWith(_ type: SLProfilePoints) {
         self.indicator.isHidden = true
         imageLabel.image = type.image
         settingLabel.text = type.text

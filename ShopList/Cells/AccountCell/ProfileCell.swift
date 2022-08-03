@@ -17,7 +17,7 @@ class ProfileCell: UITableViewCell {
         self.selectionStyle = .none
         
         SLFirManager.getUser { [weak self] user in
-            self?.mailLabel.text = user?.name ?? "Имя не указано"
+            self?.mailLabel.text = user?.name ?? AppLocalizationKeys.profileName.localized()
 
         }
     }
