@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomLaunchScreen: UIViewController {
+class CustomLaunchScreen: BaseViewController {
 
     @IBOutlet weak var firstImage: UIImageView!
     @IBOutlet weak var secondImage: UIImageView!

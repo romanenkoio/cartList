@@ -82,10 +82,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
         }
     }
-
-func presentLaunchController() {
-    Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(launchTimer(sender:)), userInfo: nil, repeats: false)
-}
+    
+    func presentLaunchController() {
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(launchTimer(sender:)), userInfo: nil, repeats: false)
+    }
     
     @objc func launchTimer(sender: Timer) {
         if (Auth.auth().currentUser?.uid) != nil {
