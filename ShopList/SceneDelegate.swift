@@ -27,11 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
-        if (Auth.auth().currentUser?.uid) != nil {
-            setTabBarScreen()
-        } else {
-            setLoginScreen()
-        }
+        
+        self.window?.rootViewController = CustomLaunchScreen(nibName: String(describing: CustomLaunchScreen.self), bundle: nil)
+        self.window?.makeKeyAndVisible()
+        presentLaunchController()
     }
     
     func setLoginScreen() {
@@ -81,6 +80,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func setupNavigationBar() {
         if #available(iOS 15, *) {
             UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
+        }
+    }
+
+func presentLaunchController() {
+    Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(launchTimer(sender:)), userInfo: nil, repeats: false)
+}
+    
+    @objc func launchTimer(sender: Timer) {
+        if (Auth.auth().currentUser?.uid) != nil {
+            setTabBarScreen()
+        } else {
+            setLoginScreen()
         }
     }
 }
