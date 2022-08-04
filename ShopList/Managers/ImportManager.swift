@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class ImportManager {
     class func importList(fileURL: URL) {
@@ -22,15 +23,16 @@ class ImportManager {
             textArray.remove(at: 0)
             
             textArray = textArray.filter({ !$0.isEmpty || $0 != "/n"})
-          
-            SLFirManager.loadLists { lists in
-                guard let lastList = lists.last else { return }
-                
+            
+     
+            
+            SLFirManager.getLastListKey { key in
                 for text in textArray {
                     guard !text.isEmpty else { continue }
                     let components = text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: "&")
-                    let product = SLFirebaseProduct(productName: components[0], produckPkg: components[1], productCount: Float(components[2])!, checked: false)
-                    SLFirManager.addProductToList(lastList.id!, product: product)
+                    
+                    let product = SLFirebaseProduct(productName: components[0], produckPkg: components[1], productCount: Float(components[2]) ?? 0, checked: false)
+                    SLFirManager.addProductToList(key, product: product)
                 }
             }
             

@@ -17,10 +17,10 @@ final class SLShareManager {
     private static let fileManager = FileManager.default
     
     class func shareList(_ list: SLFirebaseList, from: UIViewController) {
-        var listText = "\(list.listName)/n"
+        var listText = "\(list.listName!)/n"
         
         for product in list.products {
-            listText += "\(product.productName)&\(product.produckPkg)&\(product.productCount)/n"
+            listText += "\(product.productName!)&\(product.produckPkg ?? "")&\(product.productCount ?? 0)/n"
         }
         if let listData = listText.data(using: .utf8) {
             guard let appSupportDir = try? fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else { return }

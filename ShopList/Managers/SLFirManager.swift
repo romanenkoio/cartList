@@ -96,7 +96,18 @@ final class SLFirManager {
             }
             success?(lists)
         }
-        return nil
+        return ref
+    }
+    
+    static func getLastListKey(success: ((String) -> ())?) {
+        Database.database().reference().child("lists").queryLimited(toLast: 1).observeSingleEvent(of: .value) { snapshot in
+            guard let productsDict = snapshot.value as? [String : Any] else { return }
+            
+            productsDict.forEach { key, value in
+                success?(key)
+            }
+          
+        }
     }
     
     static func loadList(id: String, success: (([SLFirebaseProduct]) -> ())?) {
