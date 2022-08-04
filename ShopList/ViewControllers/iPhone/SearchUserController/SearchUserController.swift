@@ -7,9 +7,10 @@
 
 import UIKit
 
-class SearchUserController: UIViewController {
+class SearchUserController: BaseViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var findedUser: SLUser? {
         didSet {
@@ -28,11 +29,17 @@ class SearchUserController: UIViewController {
     }
     
     private func findUser() {
-        guard let text = searchBar.text else { return }
+        spinner.startAnimating()
+        guard let text = searchBar.text else {
+            spinner.stopAnimating()
+            return
+        }
     
         SLFirManager.userByEmail(text.lowercased()) { [weak self] user in
+            self?.spinner.stopAnimating()
             self?.findedUser = user
         } fail: { [weak self] in
+            self?.spinner.stopAnimating()
             self?.findedUser = nil
         }
     }

@@ -45,7 +45,12 @@ extension UIImage {
 }
 
 extension UIImageView {
-    func setImage(url: String)  {
+    func setImage(url: String?)  {
+        guard let url = url else {
+            self.image = UIImage(named: "placeholder")
+            return
+        }
+        
         guard let imageUrl = URL(string: url) else { return }
         self.image = UIImage(named: "placeholder")
         self.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))

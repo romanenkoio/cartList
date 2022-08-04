@@ -17,9 +17,6 @@ class MainListController: BaseViewController {
     @IBOutlet weak var createListButton: UIButton!
     var bannerView: GADBannerView!
     var database: DatabaseReference!
-    var query: DatabaseQuery?
-    
-    private weak var timer: Timer?
     
     var lists = [SLFirebaseList]() {
         didSet {
@@ -82,31 +79,17 @@ class MainListController: BaseViewController {
         bannerView.load(GADRequest())
         #endif
         NotificationCenter.default.addObserver(self, selector: #selector(readLists), name: .listWasImported, object: nil)
+        
         readLists()
-    }
-    
-    private func scheduledTimer() {
-        timer = nil
-        DispatchQueue.global().async { [weak self] in
-            self?.timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { [weak self] _ in
-                DispatchQueue.main.async {
-                    self?.readLists()
-                }
-            })
-
-            RunLoop.current.run()
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
-        timer = nil
-        query?.removeAllObservers()
     }
     
     @objc private func readLists() {
-        self.query = SLFirManager.loadLists { [weak self] lists in
+        SLFirManager.loadLists { [weak self] lists in
             let pinnedLists = lists.filter({ DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
             let clearLists = lists.filter({ !DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
             self?.lists = pinnedLists + clearLists

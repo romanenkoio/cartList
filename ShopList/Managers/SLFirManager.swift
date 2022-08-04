@@ -51,7 +51,7 @@ final class SLFirManager {
     static func shareListByEmail(_ list: SLFirebaseList, for user: String) {
         guard (Auth.auth().currentUser?.uid) != nil else { return }
 
-        let listRef = Database.database().reference().child("lists/\(list.id!)").child("sharedFor").childByAutoId()
+        let listRef = Database.database().reference().child("sharedForUser/\(user)").child(list.id!)
         listRef.updateChildValues(["id": user])
     }
     
@@ -59,15 +59,20 @@ final class SLFirManager {
         guard ((Auth.auth().currentUser?.uid) != nil) else { return }
         let ref = Database.database().reference().child("users").queryOrdered(byChild: "email")
         ref.observeSingleEvent(of: .value) { data in
+            var users = [SLUser]()
+            
             if let dict = data.value as? [String: Any] {
                 for item in dict {
                     if let itemDict = item.value as? [String: Any]  {
                         let user = SLUser(from: itemDict, key: item.key)
-                        if user.email == email {
-                            success?(user)
-                        }
+                        users.append(user)
                     }
                 }
+                guard let user = users.filter({ $0.email == email }).first else {
+                    fail?()
+                    return
+                }
+                success?(user)
             } else {
                 fail?()
             }
@@ -91,7 +96,7 @@ final class SLFirManager {
         ref.observe(.value) { snapshot in
             var lists = [SLFirebaseList]()
             guard let listsDict = snapshot.value as? [String : Any] else {
-                success?([SLFirebaseList]())
+                success?([])
                 return
             }
             
@@ -107,9 +112,55 @@ final class SLFirManager {
                     }
                 }
             }
-            success?(lists)
+            loadSharedLists { sharedLists in
+                success?(lists + sharedLists)
+            }
         }
         return ref
+    }
+    
+    static  func loadSharedLists(success: (([SLFirebaseList]) -> ())?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference().child("sharedForUser/\(uid)")
+        
+        ref.observe(.value) { sharedSnapshot in
+            if let listsDict = sharedSnapshot.value as? [String : Any] {
+                var keys = [String]()
+                
+                listsDict.forEach { key, value in
+                    keys.append(key)
+                }
+                
+                let allLists = Database.database().reference().child("lists")
+                allLists.observe(.value) { allListsSnapshot in
+                    
+                    var lists = [SLFirebaseList]()
+                    guard let listsDict = allListsSnapshot.value as? [String : Any] else {
+                        success?([])
+                        return
+                    }
+                    
+                    for child in listsDict  {
+                        if keys.contains(child.key) {
+                            let list = SLFirebaseList(dict: child.value as! [String: Any], key: child.key)
+                            lists.append(list)
+                            
+                            if let products = child.value as? [String: Any], let dict = products["products"] as? [String: Any] {
+                                dict.forEach { key, value in
+                                    guard let productInfoDict = value as? [String : Any] else { return }
+                                    let product = SLFirebaseProduct(dict: productInfoDict, key: key)
+                                    list.products.append(product)
+                                }
+                            }
+                        }
+                    }
+                    success?(lists)
+                    
+                }
+            } else {
+                success?([])
+            }
+        }
     }
     
     static func getLastListKey(success: ((String) -> ())?) {
