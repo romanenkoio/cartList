@@ -33,6 +33,7 @@
 		7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35128149C4C008ABEE1 /* Typealiases.swift */; };
 		7FA1F35428149CBD008ABEE1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */; };
 		7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */; };
+		7FA27C9A289C1C0200D00906 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA27C99289C1C0200D00906 /* UIImage+Extensions.swift */; };
 		7FAA729528940ED90053352E /* SearchUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA729328940ED90053352E /* SearchUserController.swift */; };
 		7FAA729628940ED90053352E /* SearchUserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAA729428940ED90053352E /* SearchUserController.xib */; };
 		7FAA729A28940F680053352E /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA729828940F680053352E /* UserSearchCell.swift */; };
@@ -114,6 +115,7 @@
 		7FA1F35128149C4C008ABEE1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		7FA1F35328149CBD008ABEE1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7FA1F35528149DB2008ABEE1 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		7FA27C99289C1C0200D00906 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		7FAA729328940ED90053352E /* SearchUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserController.swift; sourceTree = "<group>"; };
 		7FAA729428940ED90053352E /* SearchUserController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchUserController.xib; sourceTree = "<group>"; };
 		7FAA729828940F680053352E /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 				7FD1D10F2819A49800CA44FE /* NotificationName+Extension.swift */,
 				EB96139828572E1E007897CA /* Bundle+Extension.swift */,
 				EB96139A28572E59007897CA /* String+Extension.swift */,
+				7FA27C99289C1C0200D00906 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				7FAA729A28940F680053352E /* UserSearchCell.swift in Sources */,
 				7FA1F34C28148CC9008ABEE1 /* SettingCell.swift in Sources */,
 				7FCB588B2813508600D3E370 /* MainListController.swift in Sources */,
+				7FA27C9A289C1C0200D00906 /* UIImage+Extensions.swift in Sources */,
 				7FEB9A2328134B51005AA371 /* AppDelegate.swift in Sources */,
 				7FCB5891281350C300D3E370 /* MainListCell.swift in Sources */,
 				8E6A4B392891944400638F25 /* SLFirebaseProduct.swift in Sources */,

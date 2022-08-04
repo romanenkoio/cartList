@@ -15,7 +15,7 @@ class ProfileTableController: UIViewController {
     private let menu = SLProfilePoints.getMenu()
     
     private var spinner: UIActivityIndicatorView {
-        let indicator = UIActivityIndicatorView(style: .large)
+        let indicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 40, height: 40))
         indicator.hidesWhenStopped = true
         indicator.tintColor = .systemBlue
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +36,7 @@ class ProfileTableController: UIViewController {
         self.view.addSubview(tableView)
         spinner.center = self.view.center
         self.view.addSubview(spinner)
+        self.view.bringSubviewToFront(spinner)
 
         title = "Профиль"
         navigationItem.largeTitleDisplayMode = .never
@@ -67,7 +68,6 @@ extension ProfileTableController: UITableViewDataSource {
             settingCell = tableView.dequeueReusableCell(withIdentifier: SettingCell.id, for: indexPath)
             (settingCell as! SettingCell).setupWith(menu[indexPath.section][indexPath.row])
         }
-        
        
         return settingCell
     }
@@ -94,9 +94,8 @@ extension ProfileTableController: UITableViewDelegate {
 
 extension ProfileTableController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else {
-            return
-        }
+        guard let image = info[.originalImage] as? UIImage else { return }
+        
         spinner.startAnimating()
         SLFirManager.uploadPhoto(image: image) { [weak self] success in
             if success {

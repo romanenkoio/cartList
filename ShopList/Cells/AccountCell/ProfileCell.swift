@@ -18,14 +18,14 @@ class ProfileCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         setup()
-     
+        
+        SLFirManager.getUser { [weak self] _ in
+            self?.setup()
+        }
     }
     
-    func setup() {
+    @objc func setup() {
         mailLabel.text = DefaultsManager.username
-        
-        guard let url = URL(string: DefaultsManager.photoUrl) else { return }
-        avatarImage.sd_setImage(with: url)
-
+        avatarImage.setImage(url: DefaultsManager.photoUrl)
     }
 }

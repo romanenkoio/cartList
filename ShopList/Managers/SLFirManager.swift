@@ -179,7 +179,7 @@ final class SLFirManager {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let storage = Storage.storage().reference().child("images/\(uid).jpg")
-        guard let imageData = image.jpegData(compressionQuality: 1) else { return }
+        guard let imageData = image.resizeImage(targetSize: CGSize(width: 200, height: 200))?.jpegData(compressionQuality: 1) else { return }
         
         storage.putData(imageData, metadata: nil) { metadata, error in
             storage.downloadURL { url, error in
@@ -190,8 +190,8 @@ final class SLFirManager {
                 let listsRef = Database.database().reference().child("users/\(uid)")
                 listsRef.updateChildValues(["photoUrl" : url.absoluteString])
                 success?(true)
+                NotificationCenter.default.post(name: .imageUpdated, object: nil)
             }
         }
     }
 }
-
