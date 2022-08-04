@@ -7,6 +7,8 @@
 
 import Foundation
 import Firebase
+import UIKit
+import FirebaseStorage
 
 final class SLFirManager {
     static let authReference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
@@ -14,12 +16,23 @@ final class SLFirManager {
     static func getUser(result: ((SLUser?) -> ())? = nil) {
         guard let uid = Auth.auth().currentUser?.uid else { result?(nil); return; }
         
-        let query = Database.database().reference().child("users/\(uid)/username")
+        let query = Database.database().reference().child("users/\(uid)")
         
         query.observe(.value) { snapshot in
-            guard let name = snapshot.value as? String else { result?(nil); return; }
-            KeychainManager.store(value: name, for: .username)
-            result?(SLUser(name: name))
+            guard let userInfo = snapshot.value as? [String : Any] else { result?(nil); return; }
+            
+            let user = SLUser(from: userInfo, key: snapshot.key)
+            if let name = user.name {
+                DefaultsManager.username = name
+            }
+            
+            if let photoURL = user.photoUrl {
+                DefaultsManager.photoUrl = photoURL
+            }
+            
+            DefaultsManager.email = user.email!
+            
+            result?(user)
         }
     }
     
@@ -111,6 +124,7 @@ final class SLFirManager {
     }
     
     static func loadList(id: String, success: (([SLFirebaseProduct]) -> ())?) {
+        guard (Auth.auth().currentUser?.uid) != nil else { return }
         let productRef = Database.database().reference().child("lists/\(id)")
         productRef.observe(.value) { productSnapshot in
             var products = [SLFirebaseProduct]()
@@ -158,6 +172,25 @@ final class SLFirManager {
             }
             
             success?(true)
+        }
+    }
+    
+    static func uploadPhoto(image: UIImage, success: ( (Bool) -> ())? = nil) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let storage = Storage.storage().reference().child("images/\(uid).jpg")
+        guard let imageData = image.jpegData(compressionQuality: 1) else { return }
+        
+        storage.putData(imageData, metadata: nil) { metadata, error in
+            storage.downloadURL { url, error in
+                guard let url = url else {
+                    return
+                }
+                
+                let listsRef = Database.database().reference().child("users/\(uid)")
+                listsRef.updateChildValues(["photoUrl" : url.absoluteString])
+                success?(true)
+            }
         }
     }
 }

@@ -148,4 +148,34 @@ final class DefaultsManager {
             UserDefaults.standard.setValue(newValue, forKey: #function)
         }
     }
+    
+    class var username: String {
+        get {
+            let username = UserDefaults.standard.value(forKey: #function) as? String
+            return username ?? "Не указано"
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
+    
+    class var photoUrl: String {
+        get {
+            let photoUrl = UserDefaults.standard.value(forKey: #function) as? String
+            return photoUrl ?? ""
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
+    
+    class var email: String {
+        get {
+            let email = UserDefaults.standard.value(forKey: #function) as? String
+            return email ?? ""
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
 }

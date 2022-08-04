@@ -222,6 +222,8 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Доступ для загрузки аватара</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>

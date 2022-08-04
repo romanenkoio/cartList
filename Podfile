@@ -12,4 +12,6 @@ target 'ShopList' do
 	pod 'FirebaseAuth'
 	pod 'Firebase/Core'
 	pod 'KeychainAccess'
+	pod ‘FirebaseStorage'
+	pod 'SDWebImage'
 end

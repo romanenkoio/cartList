@@ -41,6 +41,7 @@ class SettingCell: UITableViewCell {
         settingLabel.text = type.text
         switcher.isHidden = true
         settingLabel.textColor = type.color
+        imageLabel.tintColor = type.tint
     }
     
     @IBAction func switchAction(_ sender: UISwitch) {

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="121" id="KGk-i7-Jjw" customClass="AvatarCell" customModule="ShopList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="121"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="121"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1sG-ij-nlW">
+                        <rect key="frame" x="10" y="10.5" width="100" height="99"/>
+                        <color key="backgroundColor" name="appBackgroundColor"/>
+                        <color key="tintColor" name="mainColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="Cr3-Ff-Fay"/>
+                            <constraint firstAttribute="width" constant="100" id="Oem-wD-6bI"/>
+                            <constraint firstAttribute="width" secondItem="1sG-ij-nlW" secondAttribute="height" multiplier="1:1" id="RCh-gb-QhG"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="50"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Илья Романенко" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHZ-iC-hJ6">
+                        <rect key="frame" x="126" y="49.5" width="184" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="appBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="vHZ-iC-hJ6" firstAttribute="leading" secondItem="1sG-ij-nlW" secondAttribute="trailing" constant="16" id="7Pn-Bp-Ykw"/>
+                    <constraint firstItem="1sG-ij-nlW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="BOZ-vu-gQm"/>
+                    <constraint firstItem="vHZ-iC-hJ6" firstAttribute="centerY" secondItem="1sG-ij-nlW" secondAttribute="centerY" id="KUv-Ky-NMd"/>
+                    <constraint firstItem="1sG-ij-nlW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="WEZ-rz-0aj"/>
+                    <constraint firstAttribute="trailing" secondItem="vHZ-iC-hJ6" secondAttribute="trailing" constant="10" id="vXI-v2-F8l"/>
+                    <constraint firstItem="1sG-ij-nlW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yFX-VO-R2A"/>
+                    <constraint firstAttribute="bottom" secondItem="1sG-ij-nlW" secondAttribute="bottom" constant="10" id="yYQ-Hc-jf3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="avatarImage" destination="1sG-ij-nlW" id="DHW-PH-ikf"/>
+                <outlet property="nameLabel" destination="vHZ-iC-hJ6" id="Ul5-Up-FA9"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="111.49553571428571"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="appBackgroundColor">
+            <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mainColor">
+            <color red="0.21176470588235294" green="0.32549019607843138" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

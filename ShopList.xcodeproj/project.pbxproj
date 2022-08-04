@@ -40,6 +40,9 @@
 		7FAC7E2D289B27C2006AFFDD /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 7FAC7E2C289B27C2006AFFDD /* login.json */; };
 		7FAC7E2F289B3067006AFFDD /* emptyList.json in Resources */ = {isa = PBXBuildFile; fileRef = 7FAC7E2E289B3067006AFFDD /* emptyList.json */; };
 		7FAC7E35289B3667006AFFDD /* emptySearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 7FAC7E34289B3667006AFFDD /* emptySearch.json */; };
+		7FAC7E37289BACFB006AFFDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FAC7E36289BACFB006AFFDD /* GoogleService-Info.plist */; };
+		7FAC7E3B289BBA91006AFFDD /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAC7E39289BBA91006AFFDD /* AvatarCell.swift */; };
+		7FAC7E3C289BBA91006AFFDD /* AvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAC7E3A289BBA91006AFFDD /* AvatarCell.xib */; };
 		7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAFA89F28513D3F0089B123 /* Placeholders.swift */; };
 		7FB6F11E2891838600A048F0 /* SLFirManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F11D2891838600A048F0 /* SLFirManager.swift */; };
 		7FB6F1262891DEB000A048F0 /* SLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6F1252891DEAF00A048F0 /* SLUser.swift */; };
@@ -74,7 +77,6 @@
 		7FEB9A2F28134B54005AA371 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB9A2D28134B54005AA371 /* LaunchScreen.storyboard */; };
 		7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE184928135CE000DE5DD1 /* AddListController.swift */; };
 		7FFE184C28135CE000DE5DD1 /* AddListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FFE184A28135CE000DE5DD1 /* AddListController.xib */; };
-		8E0F669428905D9F00A5202C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F669328905D9F00A5202C /* GoogleService-Info.plist */; };
 		8E2261CF289B2E5A000C2643 /* SLProfilePoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2261CE289B2E5A000C2643 /* SLProfilePoints.swift */; };
 		8E237F58288EF74700408404 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E237F56288EF74700408404 /* AuthViewController.swift */; };
 		8E237F59288EF74700408404 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F57288EF74700408404 /* AuthViewController.xib */; };
@@ -119,6 +121,9 @@
 		7FAC7E2C289B27C2006AFFDD /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		7FAC7E2E289B3067006AFFDD /* emptyList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyList.json; sourceTree = "<group>"; };
 		7FAC7E34289B3667006AFFDD /* emptySearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptySearch.json; sourceTree = "<group>"; };
+		7FAC7E36289BACFB006AFFDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7FAC7E39289BBA91006AFFDD /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		7FAC7E3A289BBA91006AFFDD /* AvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCell.xib; sourceTree = "<group>"; };
 		7FAFA89F28513D3F0089B123 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
 		7FB6F11D2891838600A048F0 /* SLFirManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirManager.swift; sourceTree = "<group>"; };
 		7FB6F1252891DEAF00A048F0 /* SLUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLUser.swift; sourceTree = "<group>"; };
@@ -156,7 +161,6 @@
 		7FEB9A3028134B54005AA371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FFE184928135CE000DE5DD1 /* AddListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListController.swift; sourceTree = "<group>"; };
 		7FFE184A28135CE000DE5DD1 /* AddListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListController.xib; sourceTree = "<group>"; };
-		8E0F669328905D9F00A5202C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ShopList/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8E2261CE289B2E5A000C2643 /* SLProfilePoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLProfilePoints.swift; sourceTree = "<group>"; };
 		8E237F56288EF74700408404 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8E237F57288EF74700408404 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
@@ -298,6 +302,15 @@
 			path = UserSearchCell;
 			sourceTree = "<group>";
 		};
+		7FAC7E38289BBA81006AFFDD /* AvatarCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FAC7E39289BBA91006AFFDD /* AvatarCell.swift */,
+				7FAC7E3A289BBA91006AFFDD /* AvatarCell.xib */,
+			);
+			path = AvatarCell;
+			sourceTree = "<group>";
+		};
 		7FAFA89E28513D2B0089B123 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +413,7 @@
 		7FCB588D281350A300D3E370 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7FAC7E38289BBA81006AFFDD /* AvatarCell */,
 				7FAA729728940F4A0053352E /* UserSearchCell */,
 				7FDA617B289126C5007D8628 /* AccountCell */,
 				7FA1F34928148CB6008ABEE1 /* SettingCell */,
@@ -477,7 +491,7 @@
 				7FEB9A2B28134B54005AA371 /* Assets.xcassets */,
 				7FEB9A2D28134B54005AA371 /* LaunchScreen.storyboard */,
 				7FEB9A3028134B54005AA371 /* Info.plist */,
-				8E0F669328905D9F00A5202C /* GoogleService-Info.plist */,
+				7FAC7E36289BACFB006AFFDD /* GoogleService-Info.plist */,
 				7FAC7E34289B3667006AFFDD /* emptySearch.json */,
 				7FAC7E2E289B3067006AFFDD /* emptyList.json */,
 				7FAC7E2C289B27C2006AFFDD /* login.json */,
@@ -656,12 +670,13 @@
 				7FEB9A2F28134B54005AA371 /* LaunchScreen.storyboard in Resources */,
 				7FA1F34D28148CC9008ABEE1 /* SettingCell.xib in Resources */,
 				8E237F59288EF74700408404 /* AuthViewController.xib in Resources */,
-				8E0F669428905D9F00A5202C /* GoogleService-Info.plist in Resources */,
 				EB96139428572D70007897CA /* Localization.strings in Resources */,
 				7FA1F34128148021008ABEE1 /* ProductList.xib in Resources */,
 				7FCB588828134DD200D3E370 /* SettingsController.xib in Resources */,
+				7FAC7E37289BACFB006AFFDD /* GoogleService-Info.plist in Resources */,
 				7FCB5892281350C300D3E370 /* MainListCell.xib in Resources */,
 				7FEB9A2C28134B54005AA371 /* Assets.xcassets in Resources */,
+				7FAC7E3C289BBA91006AFFDD /* AvatarCell.xib in Resources */,
 				7FDA617F289126EF007D8628 /* ProfileCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,6 +752,7 @@
 				7FD1D1102819A49800CA44FE /* NotificationName+Extension.swift in Sources */,
 				7FCB588328134D8500D3E370 /* BaseTabBarController.swift in Sources */,
 				8E6A4B37289165D600638F25 /* SLFirebaseList.swift in Sources */,
+				7FAC7E3B289BBA91006AFFDD /* AvatarCell.swift in Sources */,
 				7FCB588728134DD200D3E370 /* SettingsController.swift in Sources */,
 				7FA1F33928146BBE008ABEE1 /* NoActionTextField.swift in Sources */,
 				EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */,

@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 enum SLProfilePoints {
+    case picture
+    
     case name
     case accountStatus
     case listCounts
@@ -18,12 +20,13 @@ enum SLProfilePoints {
     case logout
     
     static func getMenu() -> [[SLProfilePoints]] {
-        return [[.name, .accountStatus, .listCounts], [.edit, .removeAccount, .logout]]
+        return [[.picture], [.name, .accountStatus], [.edit, .removeAccount, .logout]]
     }
     
     var text: String {
         switch self {
-        case .name:             return KeychainManager.username ?? AppLocalizationKeys.profileName.localized()
+        case .picture:          return ""
+        case .name:             return DefaultsManager.email
         case .accountStatus:    return "\(AppLocalizationKeys.accountType.localized()) базовый"
         case .listCounts:       return "\(AppLocalizationKeys.listsCount.localized()) 2/6"
         case .edit:             return AppLocalizationKeys.editProfile.localized()
@@ -34,12 +37,34 @@ enum SLProfilePoints {
     
     var image: UIImage? {
         switch self {
-        case .name:             return UIImage(systemName: "person.circle.fill")
+        case .picture:          return nil
+        case .name:             return UIImage(systemName: "envelope.circle.fill")
         case .accountStatus:    return UIImage(systemName: "star.circle.fill")
         case .listCounts:       return UIImage(systemName: "list.bullet.circle.fill")
         case .edit:             return UIImage(systemName: "pencil.circle.fill")
         case .removeAccount:    return UIImage(systemName: "trash.circle.fill")
-        case .logout:           return UIImage(systemName: "arrowshape.turn.up.left.circle.fill")
+        case .logout:           return UIImage(systemName: "chevron.backward.circle.fill")
+        }
+    }
+    
+    var tint: UIColor {
+        switch self {
+        case .picture:
+            return .systemGreen
+        case .name:
+            return .systemBlue
+        case .accountStatus:
+            return .systemYellow
+
+        case .listCounts:
+            return .systemGreen
+
+        case .edit:
+            return .systemGreen
+
+        case .removeAccount:    return .red
+        case .logout:           return .red
+
         }
     }
     
