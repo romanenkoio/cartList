@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class ProfileTableController: UIViewController {
+class ProfileTableController: BaseViewController {
     
     private let imagePicker = UIImagePickerController()
     private let menu = SLProfilePoints.getMenu()

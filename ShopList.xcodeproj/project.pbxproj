@@ -52,6 +52,7 @@
 		7FC298B4288173FF00F4D082 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC298B2288173FF00F4D082 /* PremiumController.swift */; };
 		7FC298B5288173FF00F4D082 /* PremiumController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC298B3288173FF00F4D082 /* PremiumController.xib */; };
 		7FC298BA28817B6100F4D082 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC298B928817B6100F4D082 /* CloudKit.framework */; };
+		7FC839F8289C2D5C00181E0B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC839F7289C2D5C00181E0B /* BaseViewController.swift */; };
 		7FCB588128134D4900D3E370 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB588028134D4900D3E370 /* UIColor+Extensions.swift */; };
 		7FCB588328134D8500D3E370 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB588228134D8500D3E370 /* BaseTabBarController.swift */; };
 		7FCB588728134DD200D3E370 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB588528134DD200D3E370 /* SettingsController.swift */; };
@@ -135,6 +136,7 @@
 		7FC298B3288173FF00F4D082 /* PremiumController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumController.xib; sourceTree = "<group>"; };
 		7FC298B828817B5C00F4D082 /* ShopList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShopList.entitlements; sourceTree = "<group>"; };
 		7FC298B928817B6100F4D082 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		7FC839F7289C2D5C00181E0B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7FCB588028134D4900D3E370 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7FCB588228134D8500D3E370 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		7FCB588528134DD200D3E370 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				7FCB587C28134CEC00D3E370 /* ListModule */,
 				7FCB587D28134CFB00D3E370 /* SettingsModule */,
 				7FCB587B28134CD800D3E370 /* BaseTabBarController */,
+				7FC839F7289C2D5C00181E0B /* BaseViewController.swift */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				7FFE184B28135CE000DE5DD1 /* AddListController.swift in Sources */,
 				8E237F58288EF74700408404 /* AuthViewController.swift in Sources */,
 				EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */,
+				7FC839F8289C2D5C00181E0B /* BaseViewController.swift in Sources */,
 				7FBC048F288FEB9E00583C4C /* SLAppEnvironment.swift in Sources */,
 				7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */,
 				7FA1F34028148021008ABEE1 /* ProductList.swift in Sources */,

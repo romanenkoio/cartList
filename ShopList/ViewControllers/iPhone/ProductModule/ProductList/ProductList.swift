@@ -10,7 +10,7 @@ import Lottie
 import Vision
 import Firebase
 
-class ProductList: UIViewController {
+class ProductList: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var refreshListButton: UIButton!
     @IBOutlet var pasteButton: UIButton!

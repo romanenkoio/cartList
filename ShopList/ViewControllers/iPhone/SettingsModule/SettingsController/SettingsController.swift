@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class SettingsController: UIViewController {
+class SettingsController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var points = SLSettingsPoint.getMenu()

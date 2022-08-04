@@ -10,7 +10,7 @@ import Lottie
 import GoogleMobileAds
 import Firebase
 
-class MainListController: UIViewController {
+class MainListController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var emptyLabel: UILabel!
