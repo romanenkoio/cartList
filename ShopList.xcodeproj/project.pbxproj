@@ -84,6 +84,8 @@
 		8E237F59288EF74700408404 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F57288EF74700408404 /* AuthViewController.xib */; };
 		8E6A4B37289165D600638F25 /* SLFirebaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A4B36289165D600638F25 /* SLFirebaseList.swift */; };
 		8E6A4B392891944400638F25 /* SLFirebaseProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A4B382891944400638F25 /* SLFirebaseProduct.swift */; };
+		8EDD7ABE289C423800B7A499 /* CustomLaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD7ABC289C423800B7A499 /* CustomLaunchScreen.swift */; };
+		8EDD7ABF289C423800B7A499 /* CustomLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EDD7ABD289C423800B7A499 /* CustomLaunchScreen.xib */; };
 		EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */; };
 		EB96139428572D70007897CA /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB96139628572D70007897CA /* Localization.strings */; };
 		EB96139928572E1E007897CA /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96139828572E1E007897CA /* Bundle+Extension.swift */; };
@@ -170,6 +172,8 @@
 		8E237F57288EF74700408404 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		8E6A4B36289165D600638F25 /* SLFirebaseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirebaseList.swift; sourceTree = "<group>"; };
 		8E6A4B382891944400638F25 /* SLFirebaseProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirebaseProduct.swift; sourceTree = "<group>"; };
+		8EDD7ABC289C423800B7A499 /* CustomLaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLaunchScreen.swift; sourceTree = "<group>"; };
+		8EDD7ABD289C423800B7A499 /* CustomLaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomLaunchScreen.xib; sourceTree = "<group>"; };
 		95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B192FEFFB24246E2010E80 /* Pods-ShopList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.debug.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.debug.xcconfig"; sourceTree = "<group>"; };
 		D6EB437F6C93DCB19E64A52B /* Pods-ShopList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopList.release.xcconfig"; path = "Target Support Files/Pods-ShopList/Pods-ShopList.release.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 		7F40B1A5281AD46A002DF78E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				8EDD7ABB289C421C00B7A499 /* CustomLaunchScreen */,
 				7FAA729228940EBC0053352E /* SearchUserController */,
 				7FB6F11F28919FA900A048F0 /* ProfileModule */,
 				8E237F55288EF71600408404 /* AuthViewController */,
@@ -580,6 +585,15 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		8EDD7ABB289C421C00B7A499 /* CustomLaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8EDD7ABC289C423800B7A499 /* CustomLaunchScreen.swift */,
+				8EDD7ABD289C423800B7A499 /* CustomLaunchScreen.xib */,
+			);
+			path = CustomLaunchScreen;
+			sourceTree = "<group>";
+		};
 		A00A645EBDCA17F81B4EB3C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,6 +686,7 @@
 				7FAC7E35289B3667006AFFDD /* emptySearch.json in Resources */,
 				7FA1F34628148113008ABEE1 /* ProductCell.xib in Resources */,
 				7FAC7E2D289B27C2006AFFDD /* login.json in Resources */,
+				8EDD7ABF289C423800B7A499 /* CustomLaunchScreen.xib in Resources */,
 				7FFE184C28135CE000DE5DD1 /* AddListController.xib in Resources */,
 				7FEB9A2F28134B54005AA371 /* LaunchScreen.storyboard in Resources */,
 				7FA1F34D28148CC9008ABEE1 /* SettingCell.xib in Resources */,
@@ -745,6 +760,7 @@
 				7FBC048F288FEB9E00583C4C /* SLAppEnvironment.swift in Sources */,
 				7FA1F35228149C4C008ABEE1 /* Typealiases.swift in Sources */,
 				7FA1F34028148021008ABEE1 /* ProductList.swift in Sources */,
+				8EDD7ABE289C423800B7A499 /* CustomLaunchScreen.swift in Sources */,
 				7FD1D1162819B4D600CA44FE /* SettingsHeaderCell.swift in Sources */,
 				7F6C903A281804450048EA1A /* SLAppImages.swift in Sources */,
 				7FB6F1262891DEB000A048F0 /* SLUser.swift in Sources */,

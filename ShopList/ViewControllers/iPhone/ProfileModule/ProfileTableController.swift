@@ -38,7 +38,7 @@ class ProfileTableController: BaseViewController {
         self.view.addSubview(spinner)
         self.view.bringSubviewToFront(spinner)
 
-        title = "Профиль"
+        title = AppLocalizationKeys.profileHeader.localized()
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = false
         self.view.backgroundColor = .white
