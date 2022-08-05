@@ -15,6 +15,7 @@ class SLFirebaseList {
     var id: String?
     var ownerid: String?
     var sharedList: Bool = false
+    var sharedFor = [SLUser]()
     
     init(listName: String, isPinned: Bool, id: String? = nil) {
         self.listName = listName

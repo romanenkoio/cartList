@@ -124,6 +124,48 @@ final class SLFirManager {
         return ref
     }
     
+    static func loadSharedUsersFor(list id: String, success: (([SLUser]) -> ())?) {
+        guard let uid = Auth.auth().currentUser?.uid else {            return
+        }
+        
+        let ref = Database.database().reference().child("sharedForUser")
+        
+        ref.observeSingleEvent(of: .value) { peopleSnapshots in
+            var users = [String]()
+            if let sharedPeopleDict = peopleSnapshots.value as? [String : Any] {
+                sharedPeopleDict.forEach { key, value in
+                    if let sharedListDict = (value as? [String : Any]) {
+                        sharedListDict.forEach { key, value in
+                            if key == id {
+                                if let idDict = value as? [String : Any], let userId = idDict["id"] as? String {
+                                    users.append(userId)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                let ref = Database.database().reference().child("users")
+                ref.observeSingleEvent(of: .value) { data in
+                    var usersForList = [SLUser]()
+                    
+                    if let dict = data.value as? [String: Any] {
+                        for item in dict {
+                            if let itemDict = item.value as? [String: Any]  {
+                                if users.contains(item.key) {
+                                    let user = SLUser(from: itemDict, key: item.key)
+                                    usersForList.append(user)
+                                }
+                            }
+                        }
+                    }
+                    
+                    success?(usersForList)
+                }
+            }
+        }
+    }
+    
     static  func loadSharedLists(success: (([SLFirebaseList]) -> ())?) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference().child("sharedForUser/\(uid)")

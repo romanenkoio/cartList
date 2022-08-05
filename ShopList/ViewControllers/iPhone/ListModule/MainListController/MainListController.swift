@@ -97,8 +97,8 @@ class MainListController: BaseViewController {
     }
     
     private func reoder() {
-        let pinnedLists = lists.filter({ DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
-        let clearLists = lists.filter({ !DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
+        let pinnedLists = lists.filter({ DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! < $1.listName! })
+        let clearLists = lists.filter({ !DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! < $1.listName! })
         self.lists = pinnedLists + clearLists
     }
     
