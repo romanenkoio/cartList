@@ -90,11 +90,16 @@ class MainListController: BaseViewController {
     
     @objc private func readLists() {
         SLFirManager.loadLists { [weak self] lists in
-            let pinnedLists = lists.filter({ DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
-            let clearLists = lists.filter({ !DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
-            self?.lists = pinnedLists + clearLists
+            self?.lists = lists
+            self?.reoder()
             self?.playAnimation()
         }
+    }
+    
+    private func reoder() {
+        let pinnedLists = lists.filter({ DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
+        let clearLists = lists.filter({ !DefaultsManager.pinnedLists.contains($0.id!)}).sorted(by: { $0.listName! > $1.listName! })
+        self.lists = pinnedLists + clearLists
     }
     
     private func playAnimation() {
@@ -174,7 +179,7 @@ extension MainListController: UITableViewDelegate {
                     DefaultsManager.pinnedLists.append(self.lists[indexPath.row].id!)
                 }
 
-                tableView.reloadData()
+                self.reoder()
             }
             productMenu.append(pin)
             
