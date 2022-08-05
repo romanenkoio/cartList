@@ -21,6 +21,8 @@
 "profile.edit" = "Редактировать";
 "profile.deleteProfile" = "Удалить аккаунт";
 "profile.logOut" = "Выйти";
+"profile.save" = "Сохранить";
+"profile.cancel" = "Отмена";
 
 //Settings Points
 "settings.profileName" = "Имя не указано";

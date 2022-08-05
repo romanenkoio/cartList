@@ -21,6 +21,8 @@
 "profile.edit" = "Edit";
 "profile.deleteProfile" = "Delete account";
 "profile.logOut" = "Log Out";
+"profile.save" = "Save changes";
+"profile.cancel" = "Cancel";
 
 //Settings Points
 "settings.profileName" = "Name not set yet";

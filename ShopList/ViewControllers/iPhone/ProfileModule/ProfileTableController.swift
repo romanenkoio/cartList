@@ -66,7 +66,7 @@ extension ProfileTableController: UITableViewDataSource {
             settingCell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath) as! ProfileCell
             (settingCell as! ProfileCell).indicator.isHidden = true
             (settingCell as! ProfileCell).isEdit = isEdit
-            (settingCell as! ProfileCell).changeConstraints()
+            (settingCell as! ProfileCell).changeSettingsMenu()
         default:
             settingCell = tableView.dequeueReusableCell(withIdentifier: SettingCell.id, for: indexPath)
             (settingCell as! SettingCell).setupWith(menu[indexPath.section][indexPath.row])

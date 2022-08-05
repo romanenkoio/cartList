@@ -25,7 +25,7 @@ class ProfileCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         setup()
-        changeConstraints()
+        changeSettingsMenu()
         
         SLFirManager.getUser { [weak self] _ in
             self?.setup()
@@ -34,10 +34,11 @@ class ProfileCell: UITableViewCell {
     
     @objc func setup() {
         mailLabel.text = DefaultsManager.username
+        mailField.text = DefaultsManager.username
         avatarImage.setImage(url: DefaultsManager.photoUrl)
     }
     
-    func changeConstraints() {
+    func changeSettingsMenu() {
         cameraImage.isHidden = !isEdit
         mailField.isHidden = !isEdit
         mailLabel.isHidden = isEdit

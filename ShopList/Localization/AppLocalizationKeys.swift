@@ -23,6 +23,9 @@ class AppLocalizationKeys {
     static let editProfile = "profile.edit"
     static let deleteProfile = "profile.deleteProfile"
     static let logOut = "profile.logOut"
+    static let saveChanges = "profile.save"
+    static let cancelChanges = "profile.cancel"
+
     
     //Settings Point
     static let authHeader = "settings.authHeader"
