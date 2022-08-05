@@ -91,10 +91,6 @@ extension ProfileTableController: UITableViewDelegate {
         case .name:
             UIPasteboard.general.string = DefaultsManager.email
         case .edit:
-            
-//            isEdit = !isEdit
-//            print("edit pressed")
-//            tableView.reloadData()
             menu = SLProfilePoints.getMenu(edit: true)
             tableView.reloadData()
             isEdit = !isEdit
@@ -102,12 +98,6 @@ extension ProfileTableController: UITableViewDelegate {
             menu = SLProfilePoints.getMenu(edit: false)
             tableView.reloadData()
             isEdit = !isEdit
-//            UIView.transition(with: tableView,
-//                              duration: 0.35,
-//                              options: .transitionCrossDissolve,
-//                              animations: {
-//                tableView.reloadData()
-//            })
         case .cancelChanges:
             menu = SLProfilePoints.getMenu(edit: false)
             tableView.reloadData()
@@ -115,12 +105,6 @@ extension ProfileTableController: UITableViewDelegate {
         default: break
         }
     }
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.alpha = 0
-//        UIView.animate(withDuration: 0.5, delay: 0.0, options: []) {
-//            cell.alpha = 1
-//        }
-//    }
 }
 
 extension ProfileTableController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
