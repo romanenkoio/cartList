@@ -47,6 +47,7 @@ class MainListController: BaseViewController {
         #endif
         
         SLFirManager.getUser()
+        subscribeToNotification()
     }
     
     
@@ -78,13 +79,11 @@ class MainListController: BaseViewController {
         #else
         bannerView.load(GADRequest())
         #endif
-        NotificationCenter.default.addObserver(self, selector: #selector(readLists), name: .listWasImported, object: nil)
-        
         readLists()
+        updateLanguage()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -129,7 +128,7 @@ class MainListController: BaseViewController {
         SLShareManager.shareList(list, from: self)
     }
     
-    @objc  func updateLanguage() {
+    @objc func updateLanguage() {
         emptyLabel.text = AppLocalizationKeys.checkTheLists.localized()
         createListButton.setTitle(AppLocalizationKeys.createList.localized(), for: .normal)
         title = AppLocalizationKeys.myLists.localized()
@@ -137,6 +136,7 @@ class MainListController: BaseViewController {
     
     func subscribeToNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(readLists), name: .listWasImported, object: nil)
     }
 }
 
