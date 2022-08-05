@@ -36,7 +36,7 @@ class MainListCell: UITableViewCell {
             }
         }
         
-        SLFirManager.loadSharedUsersFor(list: list.id!) { [weak self] users in
+        SLFirManager.loadSharedUsersFor(list: list) { [weak self] users in
             self?.peopleStack.subviews.forEach({ $0.removeFromSuperview() })
             list.sharedFor = users
             
