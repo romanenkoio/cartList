@@ -20,19 +20,25 @@ class SettingsController: BaseViewController {
         tableView.registerCellsWith([SettingCell.self, SettingsHeaderCell.self, ProfileCell.self])
         tableView.sectionFooterHeight = 20
         setupDatePicker()
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
         updateLanguage()
         subscribeToNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setupDatePicker() {
         timePicker.preferredDatePickerStyle = .wheels
         timePicker.datePickerMode = .time
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     @objc  func updateLanguage() {
