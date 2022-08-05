@@ -12,7 +12,8 @@ import Firebase
 class ProfileTableController: BaseViewController {
     
     private let imagePicker = UIImagePickerController()
-    private let menu = SLProfilePoints.getMenu()
+    private var menu = SLProfilePoints.getMenu(edit: false)
+    private var isEdit = false
     
     private var spinner: UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 40, height: 40))
@@ -64,6 +65,8 @@ extension ProfileTableController: UITableViewDataSource {
         case .picture:
             settingCell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath) as! ProfileCell
             (settingCell as! ProfileCell).indicator.isHidden = true
+            (settingCell as! ProfileCell).isEdit = isEdit
+            (settingCell as! ProfileCell).changeConstraints()
         default:
             settingCell = tableView.dequeueReusableCell(withIdentifier: SettingCell.id, for: indexPath)
             (settingCell as! SettingCell).setupWith(menu[indexPath.section][indexPath.row])
@@ -87,9 +90,37 @@ extension ProfileTableController: UITableViewDelegate {
             present(imagePicker, animated: true, completion: nil)
         case .name:
             UIPasteboard.general.string = DefaultsManager.email
+        case .edit:
+            
+//            isEdit = !isEdit
+//            print("edit pressed")
+//            tableView.reloadData()
+            menu = SLProfilePoints.getMenu(edit: true)
+            tableView.reloadData()
+            isEdit = !isEdit
+        case .saveChanges:
+            menu = SLProfilePoints.getMenu(edit: false)
+            tableView.reloadData()
+            isEdit = !isEdit
+//            UIView.transition(with: tableView,
+//                              duration: 0.35,
+//                              options: .transitionCrossDissolve,
+//                              animations: {
+//                tableView.reloadData()
+//            })
+        case .cancelChanges:
+            menu = SLProfilePoints.getMenu(edit: false)
+            tableView.reloadData()
+            isEdit = !isEdit
         default: break
         }
     }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.alpha = 0
+//        UIView.animate(withDuration: 0.5, delay: 0.0, options: []) {
+//            cell.alpha = 1
+//        }
+//    }
 }
 
 extension ProfileTableController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {

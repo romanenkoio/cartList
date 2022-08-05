@@ -19,8 +19,15 @@ enum SLProfilePoints {
     case removeAccount
     case logout
     
-    static func getMenu() -> [[SLProfilePoints]] {
-        return [[.picture], [.name, .accountStatus], [.edit, .removeAccount, .logout]]
+    case saveChanges
+    case cancelChanges
+    
+    static func getMenu(edit: Bool) -> [[SLProfilePoints]] {
+        if edit {
+            return [[.picture], [.saveChanges, .cancelChanges]]
+        } else {
+            return [[.picture], [.name, .accountStatus], [.edit, .removeAccount, .logout]]
+        }
     }
     
     var text: String {
@@ -32,6 +39,8 @@ enum SLProfilePoints {
         case .edit:             return AppLocalizationKeys.editProfile.localized()
         case .removeAccount:    return AppLocalizationKeys.deleteProfile.localized()
         case .logout:           return AppLocalizationKeys.logOut.localized()
+        case .saveChanges:      return "Save changes"
+        case .cancelChanges:           return "Cancel"
         }
     }
     
@@ -44,6 +53,8 @@ enum SLProfilePoints {
         case .edit:             return UIImage(systemName: "pencil.circle.fill")
         case .removeAccount:    return UIImage(systemName: "trash.circle.fill")
         case .logout:           return UIImage(systemName: "chevron.backward.circle.fill")
+        case .saveChanges:      return UIImage(systemName: "checkmark.circle.fill")
+        case .cancelChanges:           return UIImage(systemName: "x.circle.fill")
         }
     }
     
@@ -56,21 +67,21 @@ enum SLProfilePoints {
         case .accountStatus:
             return .systemYellow
 
-        case .listCounts:
+        case .listCounts, .saveChanges:
             return .systemGreen
 
         case .edit:
             return .systemGreen
 
-        case .removeAccount:    return .red
-        case .logout:           return .red
+        case .removeAccount:                    return .red
+        case .logout, .cancelChanges:           return .red
 
         }
     }
     
     var color: UIColor {
         switch self {
-        case .removeAccount, .logout:
+        case .removeAccount, .logout, .cancelChanges:
             return .red
         
         default:
