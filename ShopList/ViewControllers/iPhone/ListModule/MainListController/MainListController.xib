@@ -51,7 +51,7 @@
                 </button>
                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="RTf-fp-Y5d" customClass="AnimationView" customModule="Lottie">
                     <rect key="frame" x="25" y="271" width="364" height="364"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="RTf-fp-Y5d" secondAttribute="height" multiplier="1:1" id="fpZ-aZ-yzx"/>
                     </constraints>

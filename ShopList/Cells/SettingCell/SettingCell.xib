@@ -22,8 +22,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ost-hY-V3A">
                         <rect key="frame" x="10" y="10" width="294" height="35"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.lefthalf.filled" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZAI-fy-wVU">
-                                <rect key="frame" x="0.0" y="0.5" width="35" height="33.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill.badge.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZAI-fy-wVU">
+                                <rect key="frame" x="-1.5" y="0.0" width="36.5" height="35"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="CFj-qH-8eV"/>
@@ -80,7 +80,7 @@
     </objects>
     <resources>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
-        <image name="square.lefthalf.filled" catalog="system" width="128" height="114"/>
+        <image name="person.crop.circle.fill.badge.xmark" catalog="system" width="128" height="113"/>
         <namedColor name="appBackgroundColor">
             <color red="0.95294117647058818" green="0.95294117647058818" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

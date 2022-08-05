@@ -25,6 +25,7 @@ class SLFirebaseList {
     init(dict: [String: Any], key: String) {
         self.listName = dict["listName"] as? String
         self.isPinned = dict["isPinned"] as? Bool ?? false
+        self.ownerid = dict["owner"] as? String
         self.id = key
 
     }

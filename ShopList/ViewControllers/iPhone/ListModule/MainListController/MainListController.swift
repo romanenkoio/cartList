@@ -160,6 +160,8 @@ extension MainListController: UITableViewDelegate {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {  [weak self] _ in
             guard let self = self else { return nil }
             
+            var productMenu = [UIMenuElement]()
+            
             let listPinned = DefaultsManager.pinnedLists.contains(self.lists[indexPath.row].id!)
             let pin = UIAction(title: listPinned ? AppLocalizationKeys.unpin.localized() : AppLocalizationKeys.pin.localized(), image: UIImage(systemName: listPinned ? "pin.slash" : "pin")) { [weak self] _ in
                 guard let self = self else { return }
@@ -174,6 +176,7 @@ extension MainListController: UITableViewDelegate {
 
                 tableView.reloadData()
             }
+            productMenu.append(pin)
             
             let shareToProfile = UIAction(title: "Добавить пользователя", image: UIImage(systemName: "person.circle")) { [weak self] _ in
                 guard let self = self else { return }
@@ -184,9 +187,17 @@ extension MainListController: UITableViewDelegate {
                 self.present(vc, animated: true)
             }
             
+            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid {
+                productMenu.append(shareToProfile)
+            }
+
             let share = UIAction(title: AppLocalizationKeys.alertShare.localized(), image: UIImage(systemName: "arrowshape.turn.up.right")) { [weak self] _ in
                 guard let self = self else { return }
                 self.shareList(list: self.lists[indexPath.row])
+            }
+            
+            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid {
+                productMenu.append(share)
             }
             
             let delete = UIAction(title: AppLocalizationKeys.delete.localized(), image: UIImage(systemName: "trash"), attributes: UIMenuElement.Attributes.destructive) { _ in
@@ -208,12 +219,20 @@ extension MainListController: UITableViewDelegate {
                 self.present(alert, animated: true)
             }
             
-            if self.lists[indexPath.row].isPinned {
-                return UIMenu(title: "", children: [pin, share, shareToProfile, delete])
-            } else if !self.lists[indexPath.row].isPinned, self.lists.filter({ $0.isPinned }).count < 3 {
-                return UIMenu(title: "", children: [pin, share, shareToProfile, delete])
+            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid {
+                productMenu.append(delete)
             }
-            return UIMenu(title: "", children: [share, delete])
+            
+            let unsubscribe = UIAction(title: "Отписаться от списка", image: UIImage(systemName: "person.crop.circle.fill.badge.xmark")) { _ in
+                guard let listID = self.lists[indexPath.row].id else { return }
+                SLFirManager.unsubscribeFromList(listID: listID)
+            }
+            
+            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid != uid {
+                productMenu.append(unsubscribe)
+            }
+            
+            return UIMenu(title: "", children: productMenu)
         }
         return configuration
     }

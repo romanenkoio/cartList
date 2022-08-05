@@ -55,6 +55,11 @@ final class SLFirManager {
         listRef.updateChildValues(["id": user])
     }
     
+    static func unsubscribeFromList(listID: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("sharedForUser/\(uid)/\(listID)").removeValue()
+    }
+    
     static func userByEmail(_ email: String, success: ((SLUser) -> ())?, fail: VoidBlock?) {
         guard ((Auth.auth().currentUser?.uid) != nil) else { return }
         let ref = Database.database().reference().child("users").queryOrdered(byChild: "email")
