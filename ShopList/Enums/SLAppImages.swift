@@ -11,7 +11,6 @@ import UIKit
 enum SLAppImages {
     case radioCheck
     case radioUnchek
-    case storeIcon
     
     var image: UIImage {
         switch self {
@@ -19,8 +18,6 @@ enum SLAppImages {
             return UIImage(named: "selected")!
         case .radioUnchek:
             return UIImage(named: "unselected")!
-        case .storeIcon:
-            return UIImage(named: "store")!
         }
     }
 }
