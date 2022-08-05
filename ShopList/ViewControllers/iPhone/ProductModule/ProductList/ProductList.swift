@@ -203,7 +203,8 @@ extension ProductList: UITableViewDataSource {
             
             self.updateCellAt(indexPath)
     
-            
+            guard let uid = Auth.auth().currentUser?.uid, uid == self.currentList?.ownerid else { return }
+
             if self.currentList?.products.count == self.currentList?.products.filter({ $0.checked }).count, DefaultsManager.autoDelete {
                 guard let list = self.currentList else { return }
                     

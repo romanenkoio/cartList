@@ -27,6 +27,5 @@ class SLFirebaseList {
         self.isPinned = dict["isPinned"] as? Bool ?? false
         self.ownerid = dict["owner"] as? String
         self.id = key
-
     }
 }
