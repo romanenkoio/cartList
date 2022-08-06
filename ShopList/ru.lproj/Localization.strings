@@ -112,7 +112,8 @@
 "mainListVC.untieStore" = "Отвязать магазин";
 "mainListVC.emptyLists" = "У вас нет ни одного списка. Создайте первый список и не забывайте про важные покупки!";
 "mainListVC.createList" = "Создать новый список";
-"mainListVC.addUser" = "Добавить пользователя в список";
+"mainListVC.addUser" = "Добавить пользователя";
+"mainListVC.manageUsers" = "Управление доступом";
 
 "importManager.importLists" = "Импортировать список?";
 "importManager.yes" = "Да";

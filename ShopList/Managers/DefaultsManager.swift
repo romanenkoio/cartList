@@ -178,4 +178,14 @@ final class DefaultsManager {
             UserDefaults.standard.setValue(newValue, forKey: #function)
         }
     }
+    
+    class var recentUsersId: [String] {
+        get {
+            let recentUsersId = UserDefaults.standard.value(forKey: #function) as? [String]
+            return recentUsersId ?? []
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
 }

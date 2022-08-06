@@ -13,10 +13,10 @@ import FirebaseStorage
 final class SLFirManager {
     static let authReference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
     
-    static func getUser(result: ((SLUser?) -> ())? = nil) {
-        guard let uid = Auth.auth().currentUser?.uid else { result?(nil); return; }
+    static func getUser(id: String? = nil, result: ((SLUser?) -> ())? = nil) {
+        guard let mYuid = Auth.auth().currentUser?.uid else { result?(nil); return; }
         
-        let query = Database.database().reference().child("users/\(uid)")
+        let query = Database.database().reference().child("users/\(id == nil  ? mYuid : id!)")
         
         query.observe(.value) { snapshot in
             guard let userInfo = snapshot.value as? [String : Any] else { result?(nil); return; }
@@ -291,6 +291,20 @@ final class SLFirManager {
                 success?(true)
                 NotificationCenter.default.post(name: .imageUpdated, object: nil)
             }
+        }
+    }
+    
+    static func removeUserFromList(listID: String, userID: String, success: BoolResultBlock?) {
+        guard (Auth.auth().currentUser?.uid) != nil else { success?(false); return; }
+
+        let listsRef = Database.database().reference().child("sharedForUser/\(userID)/\(listID)")
+        listsRef.removeValue { error, result in
+            guard error == nil else {
+                success?(false)
+                return
+            }
+            
+            success?(true)
         }
     }
 }

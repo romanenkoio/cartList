@@ -113,6 +113,7 @@
 "mainListVC.emptyLists" = "You don't have any list.  Create your first list and don't forget important purchases!";
 "mainListVC.createList" = "Create a new list";
 "mainListVC.addUser" = "Add user to list";
+"mainListVC.manageUsers" = "Manage users";
 
 "importManager.importLists" = "Import lists?";
 "importManager.yes" = "Yes";

@@ -119,6 +119,7 @@ class AppLocalizationKeys {
     static let untieStore = "mainListVC.untieStore"
     static let emptyLists = "mainListVC.emptyLists"
     static let createList = "mainListVC.createList"
+    static let manageUsers = "mainListVC.manageUsers"
 
     static let importLists = "importManager.importLists"
     static let yes = "importManager.yes"
