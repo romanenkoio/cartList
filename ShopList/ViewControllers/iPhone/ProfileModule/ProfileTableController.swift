@@ -56,7 +56,14 @@ class ProfileTableController: BaseViewController {
             self.present(self.imagePicker, animated: true, completion: nil)
         })
         let deleteAction = UIAlertAction(title: "Delete your photo", style: .destructive) { _ in
-            SLFirManager.removePhoto()
+            let alert = Alerts.deleteAvatar.controller
+            let deleteAction = UIAlertAction(title: "Да", style: .destructive) { _ in
+                SLFirManager.removePhoto()
+            }
+            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(selectAction)

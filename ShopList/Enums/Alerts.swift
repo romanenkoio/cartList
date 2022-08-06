@@ -17,12 +17,14 @@ enum Alerts {
     case deleteConfirmation
     case confirmation
     case auth
+    case deleteAvatar
     
     private var title: String? {
         switch self {
         case .refresh:              return AppLocalizationKeys.refreshTitle.localized()
         case .share:                return AppLocalizationKeys.alertShare.localized()
         case .deleteConfirmation:   return "Удалить аккаунт?"
+        case .deleteAvatar:         return "Удалить фото?"
         default:                    return nil
         }
     }
@@ -45,12 +47,14 @@ enum Alerts {
             return "Действительно выйти?"
         case .auth:
             return nil
+        case .deleteAvatar:
+            return "Действительно удалить фото профиля?"
         }
     }
     
     private var style: UIAlertController.Style {
         switch self {
-        case .refresh, .information, .saveCoordinate, .deleteConfirmation, .confirmation:
+        case .refresh, .information, .saveCoordinate, .deleteConfirmation, .confirmation, .deleteAvatar:
             return .alert
         case .mapType, .share, .auth:
             return .actionSheet
