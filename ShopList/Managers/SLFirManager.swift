@@ -293,4 +293,8 @@ final class SLFirManager {
             }
         }
     }
+    
+    static func removePhoto(image: UIImage, success: ( (Bool) -> ())? = nil) {
+        
+    }
 }
