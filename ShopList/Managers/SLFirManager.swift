@@ -294,7 +294,23 @@ final class SLFirManager {
         }
     }
     
-    static func removePhoto(image: UIImage, success: ( (Bool) -> ())? = nil) {
+    static func removePhoto() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         
+        let storage = Storage.storage().reference().child("images/\(uid).jpg")
+        
+        storage.delete { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                // File deleted successfully
+            }
+        }
+        
+        Database.database().reference().child("users/\(uid)/photoUrl").removeValue(completionBlock: { error, success  in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        })
     }
 }

@@ -56,7 +56,7 @@ class ProfileTableController: BaseViewController {
             self.present(self.imagePicker, animated: true, completion: nil)
         })
         let deleteAction = UIAlertAction(title: "Delete your photo", style: .destructive) { _ in
-//            SLFirManager.removePhoto(image: <#T##UIImage#>)
+            SLFirManager.removePhoto()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(selectAction)
@@ -83,7 +83,7 @@ extension ProfileTableController: UITableViewDataSource {
             settingCell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath) as! ProfileCell
             (settingCell as! ProfileCell).indicator.isHidden = true
             (settingCell as! ProfileCell).isEdit = isEdit
-            (settingCell as! ProfileCell).changeConstraints()
+            (settingCell as! ProfileCell).setupEditingStatus()
             let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoGalleryAction(sender:)))
             (settingCell as! ProfileCell).cameraImage.addGestureRecognizer(tap)
             oldProfileImage = (settingCell as! ProfileCell).avatarImage.image
@@ -118,12 +118,11 @@ extension ProfileTableController: UITableViewDelegate {
             isEdit.toggle()
         case .cancelChanges:
             menu = SLProfilePoints.getMenu(edit: false)
+            self.isEdit.toggle()
             tableView.reloadData()
             guard let image = oldProfileImage else { return }
             SLFirManager.uploadPhoto(image: image) { success in
-                if success {
-                    self.isEdit.toggle()
-                }
+                if success { }
             }
         default: break
         }
