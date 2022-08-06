@@ -46,6 +46,7 @@
 "settingsVC.chooseLanguage" = "Выберите язык";
 "settingsVC.setLanguage" = "Установлен язык";
 "settingsVC.back" = "Назад";
+"settingsVC.feedback" = "Обратная связь";
 
 "addType.list" = "Название списка";
 "addType.product" = "Название продукта";
@@ -94,6 +95,7 @@
 "allVC.unit" = "Единица";
 "allVC.delete" = "Удалить";
 "allVC.cancel" = "Отмена";
+"allVC.unsubscribe" = "Отписаться от листа";
 "allVC.save" = "Сохранить";
 
 "tabBarVC.myLists" = "Мои списки";
@@ -110,6 +112,7 @@
 "mainListVC.untieStore" = "Отвязать магазин";
 "mainListVC.emptyLists" = "У вас нет ни одного списка. Создайте первый список и не забывайте про важные покупки!";
 "mainListVC.createList" = "Создать новый список";
+"mainListVC.addUser" = "Добавить пользователя в список";
 
 "importManager.importLists" = "Импортировать список?";
 "importManager.yes" = "Да";

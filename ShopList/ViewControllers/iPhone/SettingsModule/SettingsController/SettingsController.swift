@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import MessageUI
 
 class SettingsController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -49,6 +50,19 @@ class SettingsController: BaseViewController {
     func subscribeToNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: .languageChange, object: nil)
     }
+    
+    private func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["zamok.tech@gmail.com"])
+            mail.setMessageBody("Слыш, что за хуйню вместо приложения вы написали, а?", isHTML: false)
+            
+            present(mail, animated: true)
+        } else {
+            print("Почта не настроена")
+        }
+    }
 }
 
 extension SettingsController: UITableViewDataSource {
@@ -67,7 +81,7 @@ extension SettingsController: UITableViewDataSource {
         switch point {
         case .profile:
             settingCell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath)
-        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language, .premium:
+        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language, .premium, .feedback:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingCell.self), for: indexPath) as! SettingCell
             
             (settingCell as! SettingCell).setupWith(point)
@@ -138,7 +152,15 @@ extension SettingsController: UITableViewDelegate {
         case .premium:
             let vc = PremiumController.loadFromNib()
             present(vc, animated: true)
+        case .feedback:
+            sendEmail()
         default: break
         }
+    }
+}
+
+extension SettingsController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

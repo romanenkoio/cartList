@@ -15,11 +15,12 @@ enum SLSettingsPoint: CaseIterable {
     case useTimePush
     case morningTime
     case language
+    case feedback
     case version
     case premium
     
     static func getMenu() -> [[SLSettingsPoint]] {
-        return [[.profile], [.premium], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.language, .version]]
+        return [[.profile], [.premium], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.feedback, .language, .version]]
     }
     
     var text: String {
@@ -41,6 +42,8 @@ enum SLSettingsPoint: CaseIterable {
             // return AppLocalizationKeys.profileName
         case .premium:
             return AppLocalizationKeys.premium.localized()
+        case .feedback:
+            return AppLocalizationKeys.feedback.localized()
         }
     }
     
@@ -52,6 +55,7 @@ enum SLSettingsPoint: CaseIterable {
         case .useTimePush:      return UIImage(systemName: "bell.square.fill")
         case .morningTime:      return UIImage(systemName: "timer.square")
             
+        case .feedback:         return UIImage(systemName: "envelope.circle.fill")
         case .language:         return UIImage(systemName: "bubble.left.circle")
         case .version:          return UIImage(systemName: "info.circle.fill")
            
@@ -73,6 +77,8 @@ enum SLSettingsPoint: CaseIterable {
             return .systemGray
         case .premium:
             return .systemYellow
+        case .feedback:
+            return .systemBlue
         }
     }
     
@@ -96,22 +102,21 @@ enum SLSettingsPoint: CaseIterable {
         switch self {
         case .autoDelete:
             return DefaultsManager.autoDelete
-        case .morningTime, .version, .language, .profile, .premium:
-            return false
         case .useTimePush:
             return DefaultsManager.timeNotification
         case .separateList:
             return DefaultsManager.separateProducts
+        default:
+            return false
         }
     }
     
     var indicator: UITableViewCell.AccessoryType {
         switch self {
-        case .profile, .autoDelete, .useTimePush, .version, .separateList, .premium:
-            return .none
-        
         case .morningTime, .language:
             return .disclosureIndicator
+        default:
+            return .none
         }
     }
     

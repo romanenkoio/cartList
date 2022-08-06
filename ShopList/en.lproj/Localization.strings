@@ -46,6 +46,7 @@
 "settingsVC.chooseLanguage" = "Choose language";
 "settingsVC.setLanguage" = "Language set to";
 "settingsVC.back" = "Back";
+"settingsVC.feedback" = "Send feedback";
 
 "addType.list" = "List name";
 "addType.product" = "Product name";
@@ -94,6 +95,7 @@
 "allVC.unit" = "Unit";
 "allVC.delete" = "Delete";
 "allVC.cancel" = "Cancel";
+"allVC.unsubscribe" = "Unsubscribe from list";
 "allVC.save" = "Save";
 
 "tabBarVC.myLists" = "My lists";
@@ -110,6 +112,7 @@
 "mainListVC.untieStore" = "Untie store";
 "mainListVC.emptyLists" = "You don't have any list.  Create your first list and don't forget important purchases!";
 "mainListVC.createList" = "Create a new list";
+"mainListVC.addUser" = "Add user to list";
 
 "importManager.importLists" = "Import lists?";
 "importManager.yes" = "Yes";

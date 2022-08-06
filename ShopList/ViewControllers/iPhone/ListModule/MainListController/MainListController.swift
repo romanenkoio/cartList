@@ -183,7 +183,7 @@ extension MainListController: UITableViewDelegate {
             }
             productMenu.append(pin)
             
-            let shareToProfile = UIAction(title: "Добавить пользователя", image: UIImage(systemName: "person.circle")) { [weak self] _ in
+            let shareToProfile = UIAction(title: AppLocalizationKeys.addUser.localized(), image: UIImage(systemName: "person.circle")) { [weak self] _ in
                 guard let self = self else { return }
                 let vc = SearchUserController.loadFromNib()
                 vc.selectionBlock = { user in
@@ -228,7 +228,7 @@ extension MainListController: UITableViewDelegate {
                 productMenu.append(delete)
             }
             
-            let unsubscribe = UIAction(title: "Отписаться от списка", image: UIImage(systemName: "person.crop.circle.fill.badge.xmark")) { _ in
+            let unsubscribe = UIAction(title: AppLocalizationKeys.unsubscribeFromList.localized(), image: UIImage(systemName: "person.crop.circle.fill.badge.xmark")) { _ in
                 guard let listID = self.lists[indexPath.row].id else { return }
                 SLFirManager.unsubscribeFromList(listID: listID)
             }
