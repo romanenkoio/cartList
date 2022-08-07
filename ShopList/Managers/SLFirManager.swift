@@ -297,6 +297,24 @@ final class SLFirManager {
         }
     }
     
+    static func removePhoto() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let storage = Storage.storage().reference().child("images/\(uid).jpg")
+        
+        Database.database().reference().child("users/\(uid)/photoUrl").removeValue(completionBlock: { error, success  in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            storage.delete { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    print("File deleted successfully")
+                }
+            }
+        })
+
     static func removeUserFromList(listID: String, userID: String, success: BoolResultBlock?) {
         guard (Auth.auth().currentUser?.uid) != nil else { success?(false); return; }
 
@@ -309,5 +327,6 @@ final class SLFirManager {
             
             success?(true)
         }
+
     }
 }

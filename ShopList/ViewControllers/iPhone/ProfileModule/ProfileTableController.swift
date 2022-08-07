@@ -14,6 +14,8 @@ class ProfileTableController: BaseViewController {
     private let imagePicker = UIImagePickerController()
     private var menu = SLProfilePoints.getMenu(edit: false)
     private var isEdit = false
+    private var oldProfileImage: UIImage?
+    private var newUsername: String?
     
     private var spinner: UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 40, height: 40))
@@ -25,6 +27,7 @@ class ProfileTableController: BaseViewController {
     
     var tableView: UITableView {
         let table = UITableView(frame: self.view.frame, style: .insetGrouped)
+        table.bounces = false
         table.dataSource = self
         table.delegate = self
         table.registerCellsWith([SettingCell.self, ProfileCell.self])
@@ -45,7 +48,29 @@ class ProfileTableController: BaseViewController {
         self.view.backgroundColor = .white
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
+    }
+    
+    @objc private func showPhotoGalleryAction(sender: UITapGestureRecognizer) {
+        let alert = Alerts.changeAvatar.controller
+        let selectAction = UIAlertAction(title: "Выбрать фото из галереи", style: .default, handler: { _ in
+            self.present(self.imagePicker, animated: true, completion: nil)
+        })
+        let deleteAction = UIAlertAction(title: "Удилить фото", style: .destructive) { _ in
+            let alert = Alerts.deleteAvatar.controller
+            let deleteAction = UIAlertAction(title: "Да", style: .destructive) { _ in
+                SLFirManager.removePhoto()
+            }
+            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(selectAction)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
 }
 
@@ -66,7 +91,14 @@ extension ProfileTableController: UITableViewDataSource {
             settingCell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath) as! ProfileCell
             (settingCell as! ProfileCell).indicator.isHidden = true
             (settingCell as! ProfileCell).isEdit = isEdit
-            (settingCell as! ProfileCell).changeSettingsMenu()
+            (settingCell as! ProfileCell).setupEditingStatus()
+            let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoGalleryAction(sender:)))
+            (settingCell as! ProfileCell).cameraImage.addGestureRecognizer(tap)
+            oldProfileImage = (settingCell as! ProfileCell).avatarImage.image
+            (settingCell as! ProfileCell).postNewUsername = {
+                self.newUsername = (settingCell as! ProfileCell).usernameField.text
+            }
+
         default:
             settingCell = tableView.dequeueReusableCell(withIdentifier: SettingCell.id, for: indexPath)
             (settingCell as! SettingCell).setupWith(menu[indexPath.section][indexPath.row])
@@ -86,23 +118,29 @@ extension ProfileTableController: UITableViewDelegate {
             if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                 sceneDelegate.setLoginScreen()
             }
-        case .picture:
-            present(imagePicker, animated: true, completion: nil)
         case .name:
             UIPasteboard.general.string = DefaultsManager.email
             PopupView(title: "Скопированно").show()
         case .edit:
             menu = SLProfilePoints.getMenu(edit: true)
             tableView.reloadData()
-            isEdit = !isEdit
+            isEdit.toggle()
         case .saveChanges:
             menu = SLProfilePoints.getMenu(edit: false)
             tableView.reloadData()
-            isEdit = !isEdit
+            isEdit.toggle()
+            guard let text = newUsername else { return }
+            SLFirManager.updateUsername(newName: text)
         case .cancelChanges:
             menu = SLProfilePoints.getMenu(edit: false)
+            self.isEdit.toggle()
             tableView.reloadData()
-            isEdit = !isEdit
+            guard let image = oldProfileImage else { return }
+            SLFirManager.uploadPhoto(image: image) { success in
+                if success { }
+            }
+            newUsername = nil
+            oldProfileImage = nil
         default: break
         }
     }
@@ -110,7 +148,7 @@ extension ProfileTableController: UITableViewDelegate {
 
 extension ProfileTableController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage else { return }
         
         spinner.startAnimating()
         SLFirManager.uploadPhoto(image: image) { [weak self] success in
@@ -118,6 +156,12 @@ extension ProfileTableController: UIImagePickerControllerDelegate & UINavigation
                 self?.spinner.stopAnimating()
             }
         }
+        
+        self.dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
         self.dismiss(animated: true)
     }
 }
