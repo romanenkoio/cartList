@@ -57,7 +57,7 @@ final class SLFirManager {
         Database.database().reference().child("sharedForUser/\(uid)/\(listID)").removeValue()
     }
     
-    static func userByEmail(_ email: String, success: ((SLUser) -> ())?, fail: VoidBlock?) {
+    static func userByEmail(_ email: String, isSearch: Bool = true, success: ((SLUser) -> ())?, fail: VoidBlock? = nil) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference().child("users").queryOrdered(byChild: "email")
         ref.observeSingleEvent(of: .value) { data in
@@ -74,7 +74,7 @@ final class SLFirManager {
                     fail?()
                     return
                 }
-                if user.uid == uid {
+                if user.uid == uid, isSearch {
                     fail?()
                 } else {
                     success?(user)

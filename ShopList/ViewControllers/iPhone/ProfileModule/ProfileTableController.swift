@@ -120,12 +120,13 @@ extension ProfileTableController: UITableViewDelegate {
         
         switch menu[indexPath.section][indexPath.row] {
         case .logout:
-            
+
             let alert = Alerts.logoutConfirmation.controller
             let logoutAction = UIAlertAction(title: AppLocalizationKeys.confirmLogout.localized(), style: .destructive) { _ in
                 try? Auth.auth().signOut()
                 if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                     sceneDelegate.setLoginScreen()
+                    DefaultsManager.isFirstLaunch = true
                 }
             }
             let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancelProfileDelete.localized(), style: .cancel)

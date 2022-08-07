@@ -4,7 +4,6 @@ target 'ShopList' do
   use_frameworks!
 
 	pod 'lottie-ios'
-	pod 'Moya'
 	pod 'Google-Mobile-Ads-SDK'
 	pod 'Adapty'
 	pod 'FirebaseInstallations'
@@ -15,4 +14,5 @@ target 'ShopList' do
 	pod ‘FirebaseStorage'
 	pod 'SDWebImage'
 	pod "SkeletonView"
+	pod 'DeviceKit', '~> 4.0'
 end

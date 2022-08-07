@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import DeviceKit
 
 enum SLSettingsPoint: CaseIterable {
     case profile
@@ -18,9 +19,10 @@ enum SLSettingsPoint: CaseIterable {
     case feedback
     case version
     case premium
+    case biometry
     
     static func getMenu() -> [[SLSettingsPoint]] {
-        return [[.profile], [.premium], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.feedback, .language, .version]]
+        return [[.profile], [.premium], [.biometry], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.feedback, .language, .version]]
     }
     
     var text: String {
@@ -44,6 +46,8 @@ enum SLSettingsPoint: CaseIterable {
             return AppLocalizationKeys.premium.localized()
         case .feedback:
             return AppLocalizationKeys.feedback.localized()
+        case .biometry:
+            return "Использовать FaceID"
         }
     }
     
@@ -61,6 +65,7 @@ enum SLSettingsPoint: CaseIterable {
            
         case .premium:          return UIImage(systemName: "star.square.fill")
 
+        case .biometry:         return UIImage(systemName: "lock.circle.fill")
         default:                return nil
         }
     }
@@ -77,14 +82,14 @@ enum SLSettingsPoint: CaseIterable {
             return .systemGray
         case .premium:
             return .systemYellow
-        case .feedback:
+        case .feedback, .biometry:
             return .systemBlue
         }
     }
     
     var switcherHidden: Bool {
         switch self {
-        case .useTimePush, .autoDelete, .separateList:
+        case .useTimePush, .autoDelete, .separateList, .biometry:
             return false
         default:
             return true
@@ -106,6 +111,8 @@ enum SLSettingsPoint: CaseIterable {
             return DefaultsManager.timeNotification
         case .separateList:
             return DefaultsManager.separateProducts
+        case .biometry:
+            return DefaultsManager.useBiometry
         default:
             return false
         }
@@ -123,6 +130,7 @@ enum SLSettingsPoint: CaseIterable {
     var isEnabled: Bool {
         switch self {
         case .morningTime:  return DefaultsManager.timeNotification
+        case .biometry:     return Device.current.hasBiometricSensor
         default:            return true
             
         }

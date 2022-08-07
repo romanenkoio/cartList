@@ -69,50 +69,10 @@ final class DefaultsManager {
         }
     }
     
-    class var isFirstProductLaunch: Bool {
-        get {
-            let isFirstProductLaunch = UserDefaults.standard.value(forKey: #function) as? Bool
-            return isFirstProductLaunch ?? true
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: #function)
-        }
-    }
-    
-    class var isFirstSettingsLaunch: Bool {
+    class var isFirstLaunch: Bool {
         get {
             let isFirstListLaunch = UserDefaults.standard.value(forKey: #function) as? Bool
             return isFirstListLaunch ?? true
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: #function)
-        }
-    }
-    
-    class var isFirstListLaunch: Bool {
-        get {
-            let isFirstListLaunch = UserDefaults.standard.value(forKey: #function) as? Bool
-            return isFirstListLaunch ?? true
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: #function)
-        }
-    }
-    
-    class var isMapListLaunch: Bool {
-        get {
-            let isMapListLaunch = UserDefaults.standard.value(forKey: #function) as? Bool
-            return isMapListLaunch ?? true
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: #function)
-        }
-    }
-    
-    class var baseRadius: Int {
-        get {
-            let baseRadius = UserDefaults.standard.value(forKey: #function) as? Int
-            return baseRadius ?? 100
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: #function)
@@ -183,6 +143,16 @@ final class DefaultsManager {
         get {
             let recentUsersId = UserDefaults.standard.value(forKey: #function) as? [String]
             return recentUsersId ?? []
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
+    
+    class var useBiometry: Bool {
+        get {
+            let useBiometry = UserDefaults.standard.value(forKey: #function) as? Bool
+            return useBiometry ?? false
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: #function)

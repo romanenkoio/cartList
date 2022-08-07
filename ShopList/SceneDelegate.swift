@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = CustomLaunchScreen(nibName: String(describing: CustomLaunchScreen.self), bundle: nil)
         self.window?.makeKeyAndVisible()
         presentLaunchController()
+        DefaultsManager.isFirstLaunch = false
     }
     
     func setLoginScreen() {
@@ -88,7 +89,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     @objc func launchTimer(sender: Timer) {
-        if (Auth.auth().currentUser?.uid) != nil {
+        if (Auth.auth().currentUser?.uid) != nil, !DefaultsManager.isFirstLaunch {
             setTabBarScreen()
         } else {
             setLoginScreen()

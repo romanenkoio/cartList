@@ -74,20 +74,23 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                                                       idToken: idTokenString,
                                                       rawNonce: nonce)
             
-            Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
+            Auth.auth().signIn(with: credential) { (authResult, error) in
                 if (error != nil) {
                     return
                 }
                 
-                
                 guard let user = Auth.auth().currentUser else { return }
-                SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue).child(user.uid).updateChildValues(["email": user.email ?? "Не указано"])
-                
+                SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue).child(user.uid).updateChildValues(["email": user.email!])
+                SLFirManager.userByEmail(user.email!, isSearch: false) { currentUser in
+                    if currentUser.name == nil {
+                        SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue).child(currentUser.uid!).updateChildValues(["username": "User#\(Int.random(in: 1...5000))"])
+                    }
+                }
+
                 if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                     sceneDelegate.setTabBarScreen()
                 }
             }
-            
         }
     }
     

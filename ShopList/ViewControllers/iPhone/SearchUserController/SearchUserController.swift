@@ -89,7 +89,11 @@ extension SearchUserController: UITableViewDataSource {
                 cell.removeBlock = { [weak self] userID  in
                     guard let index = self?.users.firstIndex(where: { $0.uid == userID }) else { return }
                     self?.users.remove(at: index)
+                    if self?.users.count == 0 {
+                        self?.navigationController?.popViewController(animated: true)
+                    }
                     self?.tableView.reloadData()
+                    PopupView(title: "Пользователь удалён").show()
                 }
                 cell.listID = litsID
                 cell.userID = users[indexPath.row].uid
