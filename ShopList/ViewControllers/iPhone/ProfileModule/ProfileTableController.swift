@@ -117,6 +117,7 @@ extension ProfileTableController: UITableViewDelegate {
         switch menu[indexPath.section][indexPath.row] {
         case .logout:
             try? Auth.auth().signOut()
+            DefaultsManager.isFirstLaunch = true
             if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                 sceneDelegate.setLoginScreen()
             }

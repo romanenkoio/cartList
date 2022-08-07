@@ -69,27 +69,7 @@ final class DefaultsManager {
         }
     }
     
-    class var isFirstProductLaunch: Bool {
-        get {
-            let isFirstProductLaunch = UserDefaults.standard.value(forKey: #function) as? Bool
-            return isFirstProductLaunch ?? true
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: #function)
-        }
-    }
-    
-    class var isFirstSettingsLaunch: Bool {
-        get {
-            let isFirstListLaunch = UserDefaults.standard.value(forKey: #function) as? Bool
-            return isFirstListLaunch ?? true
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: #function)
-        }
-    }
-    
-    class var isFirstListLaunch: Bool {
+    class var isFirstLaunch: Bool {
         get {
             let isFirstListLaunch = UserDefaults.standard.value(forKey: #function) as? Bool
             return isFirstListLaunch ?? true

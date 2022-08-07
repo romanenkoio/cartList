@@ -91,7 +91,6 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                     sceneDelegate.setTabBarScreen()
                 }
             }
-            
         }
     }
     
