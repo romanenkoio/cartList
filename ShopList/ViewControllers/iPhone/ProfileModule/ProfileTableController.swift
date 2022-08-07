@@ -15,6 +15,7 @@ class ProfileTableController: BaseViewController {
     private var menu = SLProfilePoints.getMenu(edit: false)
     private var isEdit = false
     private var oldProfileImage: UIImage?
+    private var oldProfileImageUrl: String?
     private var newUsername: String?
     
     private var spinner: UIActivityIndicatorView {
@@ -53,24 +54,26 @@ class ProfileTableController: BaseViewController {
     
     @objc private func showPhotoGalleryAction(sender: UITapGestureRecognizer) {
         let alert = Alerts.changeAvatar.controller
-        let selectAction = UIAlertAction(title: "Выбрать фото из галереи", style: .default, handler: { _ in
+        let selectAction = UIAlertAction(title: AppLocalizationKeys.selectPhoto.localized(), style: .default, handler: { _ in
             self.present(self.imagePicker, animated: true, completion: nil)
         })
-        let deleteAction = UIAlertAction(title: "Удилить фото", style: .destructive) { _ in
+        let deleteAction = UIAlertAction(title: AppLocalizationKeys.deletePhoto.localized(), style: .destructive) { _ in
             let alert = Alerts.deleteAvatar.controller
-            let deleteAction = UIAlertAction(title: "Да", style: .destructive) { [weak self] _ in
+            let deleteAction = UIAlertAction(title: AppLocalizationKeys.confirmPhotoDelete.localized(), style: .destructive) { [weak self] _ in
                 SLFirManager.removePhoto {
                     self?.tableView.reloadData()
                 }
             }
-            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+            let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancelPhotoDelete.localized(), style: .cancel)
             alert.addAction(deleteAction)
             alert.addAction(cancelAction)
             self.present(alert, animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancelPhotoDelete.localized(), style: .cancel)
         alert.addAction(selectAction)
-        alert.addAction(deleteAction)
+        if DefaultsManager.photoUrl != "" {
+            alert.addAction(deleteAction)
+        }
         alert.addAction(cancelAction)
         present(alert, animated: true)
     }
@@ -97,6 +100,7 @@ extension ProfileTableController: UITableViewDataSource {
             let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoGalleryAction(sender:)))
             (settingCell as! ProfileCell).cameraImage.addGestureRecognizer(tap)
             oldProfileImage = (settingCell as! ProfileCell).avatarImage.image
+            oldProfileImageUrl = DefaultsManager.photoUrl
             (settingCell as! ProfileCell).postNewUsername = {
                 self.newUsername = (settingCell as! ProfileCell).usernameField.text
             }
@@ -116,11 +120,19 @@ extension ProfileTableController: UITableViewDelegate {
         
         switch menu[indexPath.section][indexPath.row] {
         case .logout:
-            try? Auth.auth().signOut()
-            DefaultsManager.isFirstLaunch = true
-            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-                sceneDelegate.setLoginScreen()
+
+            let alert = Alerts.logoutConfirmation.controller
+            let logoutAction = UIAlertAction(title: AppLocalizationKeys.confirmLogout.localized(), style: .destructive) { _ in
+                try? Auth.auth().signOut()
+                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                    sceneDelegate.setLoginScreen()
+                    DefaultsManager.isFirstLaunch = true
+                }
             }
+            let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancelProfileDelete.localized(), style: .cancel)
+            alert.addAction(logoutAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
         case .name:
             UIPasteboard.general.string = DefaultsManager.email
             PopupView(title: "Скопированно").show()
@@ -138,12 +150,21 @@ extension ProfileTableController: UITableViewDelegate {
             menu = SLProfilePoints.getMenu(edit: false)
             self.isEdit.toggle()
             tableView.reloadData()
-            guard let image = oldProfileImage else { return }
-            SLFirManager.uploadPhoto(image: image) { success in
-                if success { }
-            }
+            guard let image = oldProfileImage, let imUrl = oldProfileImageUrl else { return }
+            DefaultsManager.photoUrl = imUrl
+            SLFirManager.uploadPhoto(image: image)
             newUsername = nil
             oldProfileImage = nil
+            oldProfileImageUrl = nil
+        case .removeAccount:
+            let alert = Alerts.deleteConfirmation.controller
+            let deleteAction = UIAlertAction(title: AppLocalizationKeys.confirmProfileDelete.localized(), style: .destructive) { _ in
+                //delete account
+            }
+            let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancelProfileDelete.localized(), style: .cancel)
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
         default: break
         }
     }
@@ -159,7 +180,6 @@ extension ProfileTableController: UIImagePickerControllerDelegate & UINavigation
                 self?.spinner.stopAnimating()
             }
         }
-        
         self.dismiss(animated: true)
     }
     
