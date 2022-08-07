@@ -147,8 +147,7 @@ extension MainListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listCell = tableView.dequeueReusableCell(withIdentifier: String(describing: MainListCell.self), for: indexPath) as! MainListCell
-        let list = lists[indexPath.row]
-        listCell.setupWith(list)
+        listCell.setupWith(lists[indexPath.row])
 
         return listCell
     }
@@ -183,11 +182,13 @@ extension MainListController: UITableViewDelegate {
             }
             productMenu.append(pin)
             
-            let shareToProfile = UIAction(title: "Добавить пользователя", image: UIImage(systemName: "person.circle")) { [weak self] _ in
+            let shareToProfile = UIAction(title: AppLocalizationKeys.addUser.localized(), image: UIImage(systemName: "person.circle")) { [weak self] _ in
                 guard let self = self else { return }
                 let vc = SearchUserController.loadFromNib()
-                vc.selectionBlock = { user in
-                    SLFirManager.shareListByEmail(self.lists[indexPath.row], for: user.uid!)
+                vc.selectionBlock = { userID in
+                    SLFirManager.shareListByEmail(self.lists[indexPath.row], for: userID)
+                    self.tableView.reloadData()
+                    PopupView(title: "Пользователь добавлен").show()
                 }
                 self.present(vc, animated: true)
             }
@@ -195,6 +196,21 @@ extension MainListController: UITableViewDelegate {
             if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid {
                 productMenu.append(shareToProfile)
             }
+            
+            let manageUsers = UIAction(title: AppLocalizationKeys.manageUsers.localized(), image: UIImage(systemName: "gear")) { [weak self] _ in
+                guard let self = self else { return }
+                let vc = SearchUserController.loadFromNib()
+                vc.isManage = true
+                vc.litsID = self.lists[indexPath.row].id
+                vc.users = self.lists[indexPath.row].sharedFor
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid, self.lists[indexPath.row].sharedFor.count > 0 {
+                productMenu.append(manageUsers)
+            }
+            
+          
 
             let share = UIAction(title: AppLocalizationKeys.alertShare.localized(), image: UIImage(systemName: "arrowshape.turn.up.right")) { [weak self] _ in
                 guard let self = self else { return }
@@ -228,7 +244,7 @@ extension MainListController: UITableViewDelegate {
                 productMenu.append(delete)
             }
             
-            let unsubscribe = UIAction(title: "Отписаться от списка", image: UIImage(systemName: "person.crop.circle.fill.badge.xmark")) { _ in
+            let unsubscribe = UIAction(title: AppLocalizationKeys.unsubscribeFromList.localized(), image: UIImage(systemName: "person.crop.circle.fill.badge.xmark")) { _ in
                 guard let listID = self.lists[indexPath.row].id else { return }
                 SLFirManager.unsubscribeFromList(listID: listID)
             }

@@ -39,8 +39,8 @@ enum SLProfilePoints {
         case .edit:             return AppLocalizationKeys.editProfile.localized()
         case .removeAccount:    return AppLocalizationKeys.deleteProfile.localized()
         case .logout:           return AppLocalizationKeys.logOut.localized()
-        case .saveChanges:      return "Save changes"
-        case .cancelChanges:           return "Cancel"
+        case .saveChanges:      return AppLocalizationKeys.saveChanges.localized()
+        case .cancelChanges:    return AppLocalizationKeys.cancelChanges.localized()
         }
     }
     
@@ -54,7 +54,7 @@ enum SLProfilePoints {
         case .removeAccount:    return UIImage(systemName: "trash.circle.fill")
         case .logout:           return UIImage(systemName: "chevron.backward.circle.fill")
         case .saveChanges:      return UIImage(systemName: "checkmark.circle.fill")
-        case .cancelChanges:           return UIImage(systemName: "x.circle.fill")
+        case .cancelChanges:    return UIImage(systemName: "x.circle.fill")
         }
     }
     

@@ -14,4 +14,5 @@ target 'ShopList' do
 	pod 'KeychainAccess'
 	pod ‘FirebaseStorage'
 	pod 'SDWebImage'
+	pod "SkeletonView"
 end

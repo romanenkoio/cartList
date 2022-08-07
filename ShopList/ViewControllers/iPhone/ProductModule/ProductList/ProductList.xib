@@ -102,7 +102,7 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaB-HT-HJO" customClass="AnimationView" customModule="Lottie">
                     <rect key="frame" x="40" y="246" width="334" height="334"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="SaB-HT-HJO" secondAttribute="height" multiplier="1:1" id="4vl-F6-Llq"/>
                     </constraints>

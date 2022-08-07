@@ -22,10 +22,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" placeholder="Введите email пользователя" translatesAutoresizingMaskIntoConstraints="NO" id="ZPo-lF-jIT">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qCF-Tn-5de">
                     <rect key="frame" x="0.0" y="44" width="414" height="51"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
+                    <subviews>
+                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Введите email пользователя" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZPo-lF-jIT">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                        </searchBar>
+                    </subviews>
+                </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JXu-dz-EhN">
                     <rect key="frame" x="0.0" y="95" width="414" height="767"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,14 +49,14 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="jxW-1T-Pr5" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="309-pC-ky0"/>
+                <constraint firstItem="qCF-Tn-5de" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6fM-Aw-9AN"/>
+                <constraint firstItem="JXu-dz-EhN" firstAttribute="top" secondItem="qCF-Tn-5de" secondAttribute="bottom" id="9AX-ww-m8Y"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JXu-dz-EhN" secondAttribute="bottom" id="Hh4-zP-NYe"/>
-                <constraint firstItem="ZPo-lF-jIT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="IO3-d5-jOr"/>
                 <constraint firstItem="JXu-dz-EhN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Nft-wW-5fd"/>
-                <constraint firstItem="ZPo-lF-jIT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="R70-Tv-2R5"/>
-                <constraint firstItem="ZPo-lF-jIT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WOl-SP-3Gy"/>
-                <constraint firstItem="JXu-dz-EhN" firstAttribute="top" secondItem="ZPo-lF-jIT" secondAttribute="bottom" id="fwX-sj-Dlh"/>
+                <constraint firstItem="qCF-Tn-5de" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cfw-Ag-LYJ"/>
                 <constraint firstItem="jxW-1T-Pr5" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="mai-lI-VrB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JXu-dz-EhN" secondAttribute="trailing" id="nqV-Oo-Ryt"/>
+                <constraint firstItem="qCF-Tn-5de" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oLL-lU-AzS"/>
             </constraints>
             <point key="canvasLocation" x="-39" y="-11"/>
         </view>

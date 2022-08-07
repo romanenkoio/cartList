@@ -39,10 +39,8 @@ class MainListCell: UITableViewCell {
         SLFirManager.loadSharedUsersFor(list: list) { [weak self] users in
             self?.peopleStack.subviews.forEach({ $0.removeFromSuperview() })
             list.sharedFor = users
-            
+          
             var counter = 0
-
-            
             
             for user in users.sorted(by: { $0.name ?? "" < $1.name ?? "" }) {
                 if counter == 3 {
@@ -83,5 +81,6 @@ class MainListCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         listNameLabel.strikeThrough(false)
+        peopleStack.subviews.forEach({ $0.removeFromSuperview() })
     }
 }

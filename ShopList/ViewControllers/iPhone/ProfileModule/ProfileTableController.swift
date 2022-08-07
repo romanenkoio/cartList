@@ -97,7 +97,6 @@ extension ProfileTableController: UITableViewDataSource {
             oldProfileImage = (settingCell as! ProfileCell).avatarImage.image
             (settingCell as! ProfileCell).postNewUsername = {
                 self.newUsername = (settingCell as! ProfileCell).usernameField.text
-//                print(text)
             }
 
         default:
@@ -121,6 +120,7 @@ extension ProfileTableController: UITableViewDelegate {
             }
         case .name:
             UIPasteboard.general.string = DefaultsManager.email
+            PopupView(title: "Скопированно").show()
         case .edit:
             menu = SLProfilePoints.getMenu(edit: true)
             tableView.reloadData()
@@ -144,12 +144,6 @@ extension ProfileTableController: UITableViewDelegate {
         default: break
         }
     }
-    
-//    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-//        var settingCell = UITableViewCell()
-//        newUsername = (settingCell as! ProfileCell).mailField.text
-//        print((settingCell as! ProfileCell).mailField.text)
-//    }
 }
 
 extension ProfileTableController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -162,8 +156,7 @@ extension ProfileTableController: UIImagePickerControllerDelegate & UINavigation
                 self?.spinner.stopAnimating()
             }
         }
-//        newProfileImage?.image = image
-//        self.tableView.reloadData()
+        
         self.dismiss(animated: true)
     }
     

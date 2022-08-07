@@ -113,6 +113,7 @@ PODS:
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
+  - SkeletonView (1.29.2)
 
 DEPENDENCIES:
   - Adapty
@@ -126,6 +127,7 @@ DEPENDENCIES:
   - lottie-ios
   - Moya
   - SDWebImage
+  - SkeletonView
 
 SPEC REPOS:
   trunk:
@@ -152,6 +154,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SDWebImage
+    - SkeletonView
 
 SPEC CHECKSUMS:
   Adapty: c147bc8ce330e6f20dd4f5cdbbce57473fb4c398
@@ -177,7 +180,8 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SkeletonView: 915a80ecc2b6421ab7ac0f0212321c0cc1406472
 
-PODFILE CHECKSUM: 1e4c72d8cfe362833141d79afb1434d4a54a2239
+PODFILE CHECKSUM: 23dbcc97c355fce7efd07df5f97add9fabaf263b
 
 COCOAPODS: 1.11.3

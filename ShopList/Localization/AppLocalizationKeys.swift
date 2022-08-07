@@ -23,6 +23,9 @@ class AppLocalizationKeys {
     static let editProfile = "profile.edit"
     static let deleteProfile = "profile.deleteProfile"
     static let logOut = "profile.logOut"
+    static let saveChanges = "profile.save"
+    static let cancelChanges = "profile.cancel"
+
     
     //Settings Point
     static let authHeader = "settings.authHeader"
@@ -49,6 +52,7 @@ class AppLocalizationKeys {
     static let chooseLanguage = "settingsVC.chooseLanguage"
     static let setLanguage = "settingsVC.setLanguage"
     static let back = "settingsVC.back"
+    static let feedback = "settingsVC.feedback"
     
     static let list = "addType.list"
     static let product = "addType.product"
@@ -98,6 +102,7 @@ class AppLocalizationKeys {
     static let delete = "allVC.delete"
     static let cancel = "allVC.cancel"
     static let save = "allVC.save"
+    static let unsubscribeFromList = "allVC.unsubscribe"
     
     static let myLists = "tabBarVC.myLists"
     static let shops = "tabBarVC.shops"
@@ -108,11 +113,13 @@ class AppLocalizationKeys {
     static let file = "mainListVC.file"
     static let pin = "mainListVC.pin"
     static let unpin = "mainListVC.unpin"
+    static let addUser = "mainListVC.addUser"
     static let alertShare = "mainListVC.share"
     static let specifyStore = "mainListVC.specifyStore"
     static let untieStore = "mainListVC.untieStore"
     static let emptyLists = "mainListVC.emptyLists"
     static let createList = "mainListVC.createList"
+    static let manageUsers = "mainListVC.manageUsers"
 
     static let importLists = "importManager.importLists"
     static let yes = "importManager.yes"

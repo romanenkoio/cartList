@@ -13,10 +13,10 @@ import FirebaseStorage
 final class SLFirManager {
     static let authReference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
     
-    static func getUser(result: ((SLUser?) -> ())? = nil) {
-        guard let uid = Auth.auth().currentUser?.uid else { result?(nil); return; }
+    static func getUser(id: String? = nil, result: ((SLUser?) -> ())? = nil) {
+        guard let mYuid = Auth.auth().currentUser?.uid else { result?(nil); return; }
         
-        let query = Database.database().reference().child("users/\(uid)")
+        let query = Database.database().reference().child("users/\(id == nil  ? mYuid : id!)")
         
         query.observe(.value) { snapshot in
             guard let userInfo = snapshot.value as? [String : Any] else { result?(nil); return; }
@@ -61,7 +61,7 @@ final class SLFirManager {
     }
     
     static func userByEmail(_ email: String, success: ((SLUser) -> ())?, fail: VoidBlock?) {
-        guard ((Auth.auth().currentUser?.uid) != nil) else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference().child("users").queryOrdered(byChild: "email")
         ref.observeSingleEvent(of: .value) { data in
             var users = [SLUser]()
@@ -77,7 +77,11 @@ final class SLFirManager {
                     fail?()
                     return
                 }
-                success?(user)
+                if user.uid == uid {
+                    fail?()
+                } else {
+                    success?(user)
+                }
             } else {
                 fail?()
             }
@@ -97,25 +101,24 @@ final class SLFirManager {
         guard let uid = Auth.auth().currentUser?.uid else { return nil }
         let ref = Database.database().reference().child("lists").queryOrdered(byChild: "owner").queryEqual(toValue: uid)
         
-       
+        
         ref.observe(.value) { snapshot in
             var lists = [SLFirebaseList]()
-            guard let listsDict = snapshot.value as? [String : Any] else {
-                success?([])
-                return
-            }
-            
-            for child in listsDict  {
-                let list = SLFirebaseList(dict: child.value as! [String: Any], key: child.key)
-                lists.append(list)
+            if let listsDict = snapshot.value as? [String : Any]  {
                 
-                if let products = child.value as? [String: Any], let dict = products["products"] as? [String: Any] {
-                    dict.forEach { key, value in
-                        guard let productInfoDict = value as? [String : Any] else { return }
-                        let product = SLFirebaseProduct(dict: productInfoDict, key: key)
-                        list.products.append(product)
+                for child in listsDict  {
+                    let list = SLFirebaseList(dict: child.value as! [String: Any], key: child.key)
+                    lists.append(list)
+                    
+                    if let products = child.value as? [String: Any], let dict = products["products"] as? [String: Any] {
+                        dict.forEach { key, value in
+                            guard let productInfoDict = value as? [String : Any] else { return }
+                            let product = SLFirebaseProduct(dict: productInfoDict, key: key)
+                            list.products.append(product)
+                        }
                     }
                 }
+                
             }
             loadSharedLists { sharedLists in
                 success?(lists + sharedLists)
@@ -311,5 +314,19 @@ final class SLFirManager {
                 }
             }
         })
+
+    static func removeUserFromList(listID: String, userID: String, success: BoolResultBlock?) {
+        guard (Auth.auth().currentUser?.uid) != nil else { success?(false); return; }
+
+        let listsRef = Database.database().reference().child("sharedForUser/\(userID)/\(listID)")
+        listsRef.removeValue { error, result in
+            guard error == nil else {
+                success?(false)
+                return
+            }
+            
+            success?(true)
+        }
+
     }
 }

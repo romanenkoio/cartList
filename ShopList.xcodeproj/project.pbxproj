@@ -63,6 +63,7 @@
 		7FCB5892281350C300D3E370 /* MainListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FCB5890281350C300D3E370 /* MainListCell.xib */; };
 		7FCB5894281351B100D3E370 /* UiView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB5893281351B100D3E370 /* UiView+Extensions.swift */; };
 		7FCB5897281353AE00D3E370 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB5896281353AE00D3E370 /* UITableView+Extensions.swift */; };
+		7FCBB763289F9D9E0010D673 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCBB762289F9D9E0010D673 /* PopupView.swift */; };
 		7FD1D10E28197A7900CA44FE /* SLShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D10D28197A7900CA44FE /* SLShareManager.swift */; };
 		7FD1D1102819A49800CA44FE /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D10F2819A49800CA44FE /* NotificationName+Extension.swift */; };
 		7FD1D1122819AC0800CA44FE /* ImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1D1112819AC0800CA44FE /* ImportManager.swift */; };
@@ -149,6 +150,7 @@
 		7FCB5890281350C300D3E370 /* MainListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListCell.xib; sourceTree = "<group>"; };
 		7FCB5893281351B100D3E370 /* UiView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+Extensions.swift"; sourceTree = "<group>"; };
 		7FCB5896281353AE00D3E370 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		7FCBB762289F9D9E0010D673 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		7FD1D10D28197A7900CA44FE /* SLShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLShareManager.swift; sourceTree = "<group>"; };
 		7FD1D10F2819A49800CA44FE /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		7FD1D1112819AC0800CA44FE /* ImportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportManager.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			children = (
 				7FA1F33828146BBE008ABEE1 /* NoActionTextField.swift */,
 				7FDA617428904257007D8628 /* ValidationTextField.swift */,
+				7FCBB762289F9D9E0010D673 /* PopupView.swift */,
 			);
 			path = CustomVIew;
 			sourceTree = "<group>";
@@ -800,6 +803,7 @@
 				7FA1F34528148113008ABEE1 /* ProductCell.swift in Sources */,
 				7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */,
 				7FCB5894281351B100D3E370 /* UiView+Extensions.swift in Sources */,
+				7FCBB763289F9D9E0010D673 /* PopupView.swift in Sources */,
 				7FAA729528940ED90053352E /* SearchUserController.swift in Sources */,
 				7FDA6178289042A8007D8628 /* Validator.swift in Sources */,
 				7FA1F35628149DB2008ABEE1 /* DefaultsManager.swift in Sources */,

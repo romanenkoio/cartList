@@ -24,6 +24,7 @@ class ProfileCell: UITableViewCell {
         self.selectionStyle = .none
         setup()
         setupEditingStatus()
+
         
         SLFirManager.getUser { [weak self] _ in
             self?.setup()
@@ -34,6 +35,8 @@ class ProfileCell: UITableViewCell {
     
     @objc func setup() {
         usernameLabel.text = DefaultsManager.username
+         mailLabel.text = DefaultsManager.username
+        mailField.text = DefaultsManager.username
         avatarImage.setImage(url: DefaultsManager.photoUrl)
     }
     

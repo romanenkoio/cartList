@@ -83,11 +83,11 @@ class ProductList: BaseViewController {
         guard let currentList = currentList, let id = currentList.id else {
             return
         }
+        setupNavigationButton()
 
         SLFirManager.loadList(id: id) { [weak self] list in
             self?.currentList?.products = list
             self?.tableView.reloadData()
-            self?.setupNavigationButton()
             self?.playAnimation()
         }
     }
