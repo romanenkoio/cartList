@@ -13,9 +13,10 @@
             <connections>
                 <outlet property="foreverSubButton" destination="eS4-d0-NIX" id="dkB-cX-FEl"/>
                 <outlet property="headerLabel" destination="58d-yJ-aWa" id="OmC-Hk-7LK"/>
-                <outlet property="infoLabel" destination="QMg-mt-o0e" id="bh0-nL-vG1"/>
+                <outlet property="infoCollection" destination="8CJ-yD-JBh" id="9D7-Rh-yjh"/>
                 <outlet property="monthSubButton" destination="L6Y-DI-PRp" id="x31-GB-QUj"/>
                 <outlet property="pageController" destination="TJC-rC-tMU" id="gnw-2V-2jy"/>
+                <outlet property="scrollView" destination="bWx-zg-kvc" id="9SC-ij-sxe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearSubButton" destination="rLr-gD-nA1" id="YI6-Oi-Fmy"/>
             </connections>
@@ -54,12 +55,6 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неограниченное количество списков" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMg-mt-o0e">
-                                    <rect key="frame" x="16" y="347.5" width="382" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TJC-rC-tMU">
                                     <rect key="frame" x="16" y="388" width="382" height="26"/>
                                 </pageControl>
@@ -114,14 +109,27 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </button>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-yD-JBh">
+                                    <rect key="frame" x="0.0" y="338" width="414" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="IeT-I4-ymw"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gNX-A7-D5q">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="KcT-sT-jKl" firstAttribute="top" secondItem="vTh-Y7-Kdx" secondAttribute="top" id="15A-bz-uOe"/>
                                 <constraint firstItem="KcT-sT-jKl" firstAttribute="bottom" secondItem="TJC-rC-tMU" secondAttribute="bottom" id="1LR-Oo-kfb"/>
+                                <constraint firstItem="TJC-rC-tMU" firstAttribute="top" secondItem="8CJ-yD-JBh" secondAttribute="bottom" id="8OB-UZ-jCZ"/>
                                 <constraint firstAttribute="trailing" secondItem="KcT-sT-jKl" secondAttribute="trailing" id="91G-qo-cf4"/>
+                                <constraint firstItem="8CJ-yD-JBh" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="EPI-21-4QE"/>
                                 <constraint firstItem="q3t-8b-CWu" firstAttribute="top" secondItem="vTh-Y7-Kdx" secondAttribute="top" id="F42-2l-zgm"/>
-                                <constraint firstAttribute="trailing" secondItem="QMg-mt-o0e" secondAttribute="trailing" constant="16" id="GXE-nk-g42"/>
                                 <constraint firstItem="rLr-gD-nA1" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="KAD-I2-TQS"/>
                                 <constraint firstItem="q3t-8b-CWu" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="LZS-9k-iUK"/>
                                 <constraint firstAttribute="trailing" secondItem="TJC-rC-tMU" secondAttribute="trailing" constant="16" id="MAO-KV-M5f"/>
@@ -132,15 +140,14 @@
                                 <constraint firstItem="rLr-gD-nA1" firstAttribute="top" secondItem="L6Y-DI-PRp" secondAttribute="bottom" constant="10" id="V77-EK-hDb"/>
                                 <constraint firstAttribute="trailing" secondItem="L6Y-DI-PRp" secondAttribute="trailing" constant="16" id="Vco-J4-dG3"/>
                                 <constraint firstItem="58d-yJ-aWa" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="Wx2-xI-cCK"/>
-                                <constraint firstItem="TJC-rC-tMU" firstAttribute="top" secondItem="QMg-mt-o0e" secondAttribute="bottom" constant="20" id="ZQ8-61-u5o"/>
                                 <constraint firstItem="L6Y-DI-PRp" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="ZRW-Vv-pPi"/>
                                 <constraint firstItem="L6Y-DI-PRp" firstAttribute="top" secondItem="58d-yJ-aWa" secondAttribute="bottom" constant="20" id="aJb-jz-9Oc"/>
-                                <constraint firstItem="QMg-mt-o0e" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="cSc-ko-7Qf"/>
                                 <constraint firstAttribute="trailing" secondItem="q3t-8b-CWu" secondAttribute="trailing" id="hEn-ZW-sRz"/>
                                 <constraint firstItem="KcT-sT-jKl" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="jj0-YF-Um6"/>
                                 <constraint firstAttribute="trailing" secondItem="58d-yJ-aWa" secondAttribute="trailing" constant="16" id="kmP-4I-Xsh"/>
                                 <constraint firstItem="eS4-d0-NIX" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="m1k-Cq-Luc"/>
                                 <constraint firstItem="TJC-rC-tMU" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="nUW-Hv-DEJ"/>
+                                <constraint firstAttribute="trailing" secondItem="8CJ-yD-JBh" secondAttribute="trailing" id="rjy-Nu-Wvz"/>
                                 <constraint firstItem="q3t-8b-CWu" firstAttribute="top" secondItem="vTh-Y7-Kdx" secondAttribute="top" id="uO9-Df-ZcE"/>
                                 <constraint firstItem="58d-yJ-aWa" firstAttribute="top" secondItem="KcT-sT-jKl" secondAttribute="bottom" constant="15" id="usD-9P-mik"/>
                             </constraints>

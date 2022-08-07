@@ -85,6 +85,8 @@
 		8E237F59288EF74700408404 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E237F57288EF74700408404 /* AuthViewController.xib */; };
 		8E6A4B37289165D600638F25 /* SLFirebaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A4B36289165D600638F25 /* SLFirebaseList.swift */; };
 		8E6A4B392891944400638F25 /* SLFirebaseProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A4B382891944400638F25 /* SLFirebaseProduct.swift */; };
+		8ED26A2E28A06B3900D5349B /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED26A2C28A06B3900D5349B /* InfoCell.swift */; };
+		8ED26A2F28A06B3900D5349B /* InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED26A2D28A06B3900D5349B /* InfoCell.xib */; };
 		8EDD7ABE289C423800B7A499 /* CustomLaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD7ABC289C423800B7A499 /* CustomLaunchScreen.swift */; };
 		8EDD7ABF289C423800B7A499 /* CustomLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EDD7ABD289C423800B7A499 /* CustomLaunchScreen.xib */; };
 		EB96139028572D1B007897CA /* AppLocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96138F28572D1B007897CA /* AppLocalizationKeys.swift */; };
@@ -174,6 +176,8 @@
 		8E237F57288EF74700408404 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		8E6A4B36289165D600638F25 /* SLFirebaseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirebaseList.swift; sourceTree = "<group>"; };
 		8E6A4B382891944400638F25 /* SLFirebaseProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLFirebaseProduct.swift; sourceTree = "<group>"; };
+		8ED26A2C28A06B3900D5349B /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		8ED26A2D28A06B3900D5349B /* InfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCell.xib; sourceTree = "<group>"; };
 		8EDD7ABC289C423800B7A499 /* CustomLaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLaunchScreen.swift; sourceTree = "<group>"; };
 		8EDD7ABD289C423800B7A499 /* CustomLaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomLaunchScreen.xib; sourceTree = "<group>"; };
 		95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +431,7 @@
 		7FCB588D281350A300D3E370 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				8ED26A2B28A06B0900D5349B /* InfoCell */,
 				7FAC7E38289BBA81006AFFDD /* AvatarCell */,
 				7FAA729728940F4A0053352E /* UserSearchCell */,
 				7FDA617B289126C5007D8628 /* AccountCell */,
@@ -588,6 +593,15 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		8ED26A2B28A06B0900D5349B /* InfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				8ED26A2C28A06B3900D5349B /* InfoCell.swift */,
+				8ED26A2D28A06B3900D5349B /* InfoCell.xib */,
+			);
+			path = InfoCell;
+			sourceTree = "<group>";
+		};
 		8EDD7ABB289C421C00B7A499 /* CustomLaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,6 +714,7 @@
 				7FAC7E37289BACFB006AFFDD /* GoogleService-Info.plist in Resources */,
 				7FCB5892281350C300D3E370 /* MainListCell.xib in Resources */,
 				7FEB9A2C28134B54005AA371 /* Assets.xcassets in Resources */,
+				8ED26A2F28A06B3900D5349B /* InfoCell.xib in Resources */,
 				7FAC7E3C289BBA91006AFFDD /* AvatarCell.xib in Resources */,
 				7FDA617F289126EF007D8628 /* ProfileCell.xib in Resources */,
 			);
@@ -801,6 +816,7 @@
 				7F6C903C281812830048EA1A /* UILabel+Extensions.swift in Sources */,
 				7FCB588128134D4900D3E370 /* UIColor+Extensions.swift in Sources */,
 				7FA1F34528148113008ABEE1 /* ProductCell.swift in Sources */,
+				8ED26A2E28A06B3900D5349B /* InfoCell.swift in Sources */,
 				7FAFA8A028513D3F0089B123 /* Placeholders.swift in Sources */,
 				7FCB5894281351B100D3E370 /* UiView+Extensions.swift in Sources */,
 				7FCBB763289F9D9E0010D673 /* PopupView.swift in Sources */,
