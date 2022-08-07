@@ -31,6 +31,7 @@ class ProfileCell: UITableViewCell {
         }
         
         usernameField.addTarget(self, action: #selector(textDidChange), for: .allEvents)
+        NotificationCenter.default.addObserver(self, selector: #selector(setup), name: .imageRemoved, object: nil)
     }
     
     @objc func setup() {
@@ -59,5 +60,10 @@ class ProfileCell: UITableViewCell {
             self.usernameField.alpha = self.isEdit ? 1 : 0
             self.usernameLabel.alpha = self.isEdit ? 0 : 1
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        NotificationCenter.default.removeObserver(self, name: .imageRemoved, object: nil)
     }
 }

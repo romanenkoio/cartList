@@ -51,7 +51,10 @@ extension UIImageView {
             return
         }
         
-        guard let imageUrl = URL(string: url) else { return }
+        guard let imageUrl = URL(string: url) else {
+            self.image = UIImage(named: "placeholder")
+            return
+        }
         self.image = UIImage(named: "placeholder")
         self.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))
     }

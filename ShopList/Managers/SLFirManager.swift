@@ -26,10 +26,7 @@ final class SLFirManager {
                 DefaultsManager.username = name
             }
             
-            if let photoURL = user.photoUrl {
-                DefaultsManager.photoUrl = photoURL
-            }
-            
+            DefaultsManager.photoUrl = user.photoUrl ?? ""
             DefaultsManager.email = user.email!
             
             result?(user)
@@ -297,20 +294,23 @@ final class SLFirManager {
         }
     }
     
-    static func removePhoto() {
+    static func removePhoto(successBlock: VoidBlock? = nil) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let storage = Storage.storage().reference().child("images/\(uid).jpg")
+        DefaultsManager.photoUrl = ""
         
         Database.database().reference().child("users/\(uid)/photoUrl").removeValue(completionBlock: { error, success  in
             if let error = error {
                 print(error.localizedDescription)
-            }
-            storage.delete { error in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    print("File deleted successfully")
+            } else {
+                storage.delete { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        NotificationCenter.default.post(name: .imageRemoved, object: nil)
+                        successBlock?()
+                    }
                 }
             }
         })

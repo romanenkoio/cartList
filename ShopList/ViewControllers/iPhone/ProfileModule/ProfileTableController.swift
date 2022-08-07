@@ -58,8 +58,10 @@ class ProfileTableController: BaseViewController {
         })
         let deleteAction = UIAlertAction(title: "Удилить фото", style: .destructive) { _ in
             let alert = Alerts.deleteAvatar.controller
-            let deleteAction = UIAlertAction(title: "Да", style: .destructive) { _ in
-                SLFirManager.removePhoto()
+            let deleteAction = UIAlertAction(title: "Да", style: .destructive) { [weak self] _ in
+                SLFirManager.removePhoto {
+                    self?.tableView.reloadData()
+                }
             }
             let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
             alert.addAction(deleteAction)
