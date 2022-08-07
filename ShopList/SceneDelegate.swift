@@ -89,7 +89,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     @objc func launchTimer(sender: Timer) {
-        if (Auth.auth().currentUser?.uid) != nil, DefaultsManager.isFirstLaunch {
+        if (Auth.auth().currentUser?.uid) != nil, !DefaultsManager.isFirstLaunch {
             setTabBarScreen()
         } else {
             setLoginScreen()

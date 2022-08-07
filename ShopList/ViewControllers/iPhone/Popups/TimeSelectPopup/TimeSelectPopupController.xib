@@ -24,16 +24,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qff-0m-3HL">
-                    <rect key="frame" x="16" y="260" width="382" height="376"/>
+                    <rect key="frame" x="16" y="300" width="382" height="296"/>
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="3Sp-aT-fQ9">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="216"/>
                         </datePicker>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNm-zZ-D2d">
-                            <rect key="frame" x="16" y="236" width="350" height="50"/>
+                            <rect key="frame" x="194" y="236" width="172" height="40"/>
                             <color key="backgroundColor" name="mainColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="NMB-UJ-qd7"/>
+                                <constraint firstAttribute="height" constant="40" id="NMB-UJ-qd7"/>
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
@@ -48,9 +48,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlC-XQ-7iP">
-                            <rect key="frame" x="16" y="306" width="350" height="50"/>
+                            <rect key="frame" x="16" y="236" width="162" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="NAX-pI-dIl"/>
+                                <constraint firstAttribute="height" constant="40" id="NAX-pI-dIl"/>
                             </constraints>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
@@ -70,14 +70,15 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="JNm-zZ-D2d" firstAttribute="leading" secondItem="NlC-XQ-7iP" secondAttribute="trailing" constant="16" id="1HG-jg-6WX"/>
                         <constraint firstItem="3Sp-aT-fQ9" firstAttribute="leading" secondItem="qff-0m-3HL" secondAttribute="leading" id="3IN-qc-TbE"/>
-                        <constraint firstAttribute="trailing" secondItem="NlC-XQ-7iP" secondAttribute="trailing" constant="16" id="Qbo-Ga-KQe"/>
+                        <constraint firstItem="NlC-XQ-7iP" firstAttribute="width" secondItem="JNm-zZ-D2d" secondAttribute="width" multiplier="0.943005" id="Awj-H1-47H"/>
+                        <constraint firstItem="NlC-XQ-7iP" firstAttribute="leading" secondItem="qff-0m-3HL" secondAttribute="leading" constant="16" id="QTe-27-3If"/>
                         <constraint firstItem="JNm-zZ-D2d" firstAttribute="top" secondItem="3Sp-aT-fQ9" secondAttribute="bottom" constant="20" id="bvN-Or-aWG"/>
                         <constraint firstAttribute="trailing" secondItem="JNm-zZ-D2d" secondAttribute="trailing" constant="16" id="fBn-PI-KQc"/>
-                        <constraint firstItem="JNm-zZ-D2d" firstAttribute="leading" secondItem="qff-0m-3HL" secondAttribute="leading" constant="16" id="fgs-E7-aY8"/>
-                        <constraint firstItem="NlC-XQ-7iP" firstAttribute="top" secondItem="JNm-zZ-D2d" secondAttribute="bottom" constant="20" id="gb7-oi-hqI"/>
+                        <constraint firstItem="NlC-XQ-7iP" firstAttribute="bottom" secondItem="JNm-zZ-D2d" secondAttribute="bottom" id="fqY-kA-I4N"/>
+                        <constraint firstItem="NlC-XQ-7iP" firstAttribute="top" secondItem="JNm-zZ-D2d" secondAttribute="top" id="nr8-sE-9yu"/>
                         <constraint firstAttribute="trailing" secondItem="3Sp-aT-fQ9" secondAttribute="trailing" id="ugd-Nc-J2F"/>
-                        <constraint firstItem="NlC-XQ-7iP" firstAttribute="leading" secondItem="qff-0m-3HL" secondAttribute="leading" constant="16" id="v3q-RE-LdY"/>
                         <constraint firstItem="3Sp-aT-fQ9" firstAttribute="top" secondItem="qff-0m-3HL" secondAttribute="top" id="vEA-Tv-uCf"/>
                         <constraint firstAttribute="bottom" secondItem="NlC-XQ-7iP" secondAttribute="bottom" constant="20" id="vNb-oc-OfH"/>
                     </constraints>

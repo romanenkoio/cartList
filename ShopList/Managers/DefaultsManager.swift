@@ -79,26 +79,6 @@ final class DefaultsManager {
         }
     }
     
-    class var isMapListLaunch: Bool {
-        get {
-            let isMapListLaunch = UserDefaults.standard.value(forKey: #function) as? Bool
-            return isMapListLaunch ?? true
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: #function)
-        }
-    }
-    
-    class var baseRadius: Int {
-        get {
-            let baseRadius = UserDefaults.standard.value(forKey: #function) as? Int
-            return baseRadius ?? 100
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: #function)
-        }
-    }
-    
     class var userLanguage: String {
         get {
             let userLanguage = UserDefaults.standard.value(forKey: #function) as? String
@@ -163,6 +143,16 @@ final class DefaultsManager {
         get {
             let recentUsersId = UserDefaults.standard.value(forKey: #function) as? [String]
             return recentUsersId ?? []
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
+    
+    class var useBiometry: Bool {
+        get {
+            let useBiometry = UserDefaults.standard.value(forKey: #function) as? Bool
+            return useBiometry ?? false
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: #function)

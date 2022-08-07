@@ -56,7 +56,7 @@ class SettingsController: BaseViewController {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["zamok.tech@gmail.com"])
-            mail.setMessageBody("Слыш, что за хуйню вместо приложения вы написали, а?", isHTML: false)
+            mail.setMessageBody("Change text to version, UID", isHTML: false)
             
             present(mail, animated: true)
         } else {
@@ -81,7 +81,7 @@ extension SettingsController: UITableViewDataSource {
         switch point {
         case .profile:
             settingCell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.id, for: indexPath)
-        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language, .premium, .feedback:
+        case .autoDelete, .useTimePush, .morningTime, .version, .separateList, .language, .premium, .feedback, .biometry:
             settingCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingCell.self), for: indexPath) as! SettingCell
             
             (settingCell as! SettingCell).setupWith(point)
@@ -97,6 +97,9 @@ extension SettingsController: UITableViewDataSource {
                     NotificationManager.scheduleTimeNotifications()
                 case .separateList:
                     DefaultsManager.separateProducts = !DefaultsManager.separateProducts
+                case .biometry:
+                    DefaultsManager.useBiometry = !DefaultsManager.useBiometry
+
                 default: break
                     
                 }
