@@ -314,6 +314,7 @@ final class SLFirManager {
                 }
             }
         })
+    }
 
     static func removeUserFromList(listID: String, userID: String, success: BoolResultBlock?) {
         guard (Auth.auth().currentUser?.uid) != nil else { success?(false); return; }

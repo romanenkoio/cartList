@@ -35,8 +35,7 @@ class ProfileCell: UITableViewCell {
     
     @objc func setup() {
         usernameLabel.text = DefaultsManager.username
-         mailLabel.text = DefaultsManager.username
-        mailField.text = DefaultsManager.username
+        usernameField.text = DefaultsManager.username
         avatarImage.setImage(url: DefaultsManager.photoUrl)
     }
     
