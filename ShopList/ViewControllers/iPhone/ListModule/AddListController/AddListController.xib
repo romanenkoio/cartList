@@ -31,7 +31,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-XR-ZH8">
-                    <rect key="frame" x="25" y="275.5" width="364" height="355"/>
+                    <rect key="frame" x="25" y="310.5" width="364" height="285"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Продукт:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cS-vT-Lii">
                             <rect key="frame" x="16" y="20" width="332" height="18"/>
@@ -116,28 +116,10 @@
                                 </view>
                             </subviews>
                         </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9h-0O-L1x">
-                            <rect key="frame" x="16" y="225" width="332" height="50"/>
-                            <color key="backgroundColor" name="mainColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="WSq-ns-Jh3"/>
-                            </constraints>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Сохранить"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="16"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="saveAction:" destination="-1" eventType="touchUpInside" id="0v4-B7-5eo"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PhP-Hp-71u">
-                            <rect key="frame" x="16" y="285" width="332" height="50"/>
+                            <rect key="frame" x="16" y="225" width="158" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="exd-uU-zdE"/>
+                                <constraint firstAttribute="height" constant="40" id="exd-uU-zdE"/>
                             </constraints>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
@@ -155,25 +137,44 @@
                                 <action selector="saveAction:" destination="-1" eventType="touchUpInside" id="ZUW-dc-geQ"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9h-0O-L1x">
+                            <rect key="frame" x="190" y="225" width="158" height="40"/>
+                            <color key="backgroundColor" name="mainColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="WSq-ns-Jh3"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Сохранить"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="saveAction:" destination="-1" eventType="touchUpInside" id="0v4-B7-5eo"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="PhP-Hp-71u" firstAttribute="leading" secondItem="Y9h-0O-L1x" secondAttribute="leading" id="4FD-Ti-Vge"/>
-                        <constraint firstItem="Y9h-0O-L1x" firstAttribute="leading" secondItem="bYa-XR-ZH8" secondAttribute="leading" constant="16" id="8FA-zF-Icp"/>
-                        <constraint firstItem="Y9h-0O-L1x" firstAttribute="top" secondItem="RYu-dC-Kk2" secondAttribute="bottom" constant="20" id="AL6-jt-46C"/>
-                        <constraint firstItem="PhP-Hp-71u" firstAttribute="trailing" secondItem="Y9h-0O-L1x" secondAttribute="trailing" id="Dzv-oJ-ww2"/>
-                        <constraint firstAttribute="trailing" secondItem="Y9h-0O-L1x" secondAttribute="trailing" constant="16" id="EPh-KI-sE3"/>
+                        <constraint firstItem="PhP-Hp-71u" firstAttribute="width" secondItem="Y9h-0O-L1x" secondAttribute="width" id="Bkr-dP-X0s"/>
+                        <constraint firstAttribute="trailing" secondItem="Y9h-0O-L1x" secondAttribute="trailing" constant="16" id="KcI-B2-85A"/>
                         <constraint firstItem="6cS-vT-Lii" firstAttribute="leading" secondItem="bYa-XR-ZH8" secondAttribute="leading" constant="16" id="Oes-zT-w2k"/>
-                        <constraint firstAttribute="bottom" secondItem="PhP-Hp-71u" secondAttribute="bottom" constant="20" id="QCf-4x-fJJ"/>
                         <constraint firstAttribute="trailing" secondItem="kmN-SN-mpd" secondAttribute="trailing" constant="16" id="RcB-kZ-AMS"/>
                         <constraint firstItem="kmN-SN-mpd" firstAttribute="top" secondItem="6cS-vT-Lii" secondAttribute="bottom" constant="3" id="TJe-E9-yNi"/>
                         <constraint firstItem="RYu-dC-Kk2" firstAttribute="top" secondItem="kmN-SN-mpd" secondAttribute="bottom" constant="10" id="U9p-uM-eYj"/>
                         <constraint firstAttribute="trailing" secondItem="6cS-vT-Lii" secondAttribute="trailing" constant="16" id="XGq-96-SmJ"/>
                         <constraint firstItem="kmN-SN-mpd" firstAttribute="leading" secondItem="bYa-XR-ZH8" secondAttribute="leading" constant="16" id="Yuc-kR-Ll8"/>
+                        <constraint firstItem="PhP-Hp-71u" firstAttribute="top" secondItem="RYu-dC-Kk2" secondAttribute="bottom" constant="20" id="Zl1-8h-HsJ"/>
+                        <constraint firstAttribute="bottom" secondItem="PhP-Hp-71u" secondAttribute="bottom" constant="20" id="a9B-4X-yGw"/>
                         <constraint firstItem="RYu-dC-Kk2" firstAttribute="leading" secondItem="bYa-XR-ZH8" secondAttribute="leading" constant="16" id="cFL-T2-W2j"/>
                         <constraint firstAttribute="trailing" secondItem="RYu-dC-Kk2" secondAttribute="trailing" constant="16" id="hx6-QQ-Ecx"/>
-                        <constraint firstItem="PhP-Hp-71u" firstAttribute="top" secondItem="Y9h-0O-L1x" secondAttribute="bottom" constant="10" id="pMa-Lx-nY2"/>
+                        <constraint firstItem="Y9h-0O-L1x" firstAttribute="leading" secondItem="PhP-Hp-71u" secondAttribute="trailing" constant="16" id="llm-jo-fys"/>
                         <constraint firstItem="6cS-vT-Lii" firstAttribute="top" secondItem="bYa-XR-ZH8" secondAttribute="top" constant="20" id="poM-4V-AVc"/>
+                        <constraint firstItem="Y9h-0O-L1x" firstAttribute="bottom" secondItem="PhP-Hp-71u" secondAttribute="bottom" id="s7q-K7-oEt"/>
+                        <constraint firstItem="PhP-Hp-71u" firstAttribute="leading" secondItem="bYa-XR-ZH8" secondAttribute="leading" constant="16" id="wbB-Aa-uMC"/>
+                        <constraint firstItem="Y9h-0O-L1x" firstAttribute="top" secondItem="PhP-Hp-71u" secondAttribute="top" id="yhi-u5-LrU"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -206,7 +207,7 @@
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="mainColor">
-            <color red="0.99607843137254903" green="0.41176470588235292" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21176470588235294" green="0.32549019607843138" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

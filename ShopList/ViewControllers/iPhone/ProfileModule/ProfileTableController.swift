@@ -90,6 +90,7 @@ extension ProfileTableController: UITableViewDelegate {
             present(imagePicker, animated: true, completion: nil)
         case .name:
             UIPasteboard.general.string = DefaultsManager.email
+            PopupView(title: "Скопированно").show()
         case .edit:
             menu = SLProfilePoints.getMenu(edit: true)
             tableView.reloadData()

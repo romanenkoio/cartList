@@ -41,6 +41,7 @@ final class AddListController: UIViewController {
         typeLabel.text = type.localizedValue.localized()
         productInput.placeholder = type.placeholder.localized()
         mainView.layer.borderColor = UIColor.mainOrange.withAlphaComponent(0.8).cgColor
+        mainView.layer.borderWidth = 0.5
         
         pkgButton.menu = UIMenu(children: [
             CustomUIAction(title: SLProductPackage.pieces.pkg, state: .on, handler: { _ in

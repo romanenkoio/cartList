@@ -188,6 +188,7 @@ extension MainListController: UITableViewDelegate {
                 vc.selectionBlock = { userID in
                     SLFirManager.shareListByEmail(self.lists[indexPath.row], for: userID)
                     self.tableView.reloadData()
+                    PopupView(title: "Пользователь добавлен").show()
                 }
                 self.present(vc, animated: true)
             }
