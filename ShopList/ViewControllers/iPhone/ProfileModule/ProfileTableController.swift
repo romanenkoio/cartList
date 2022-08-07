@@ -31,7 +31,7 @@ class ProfileTableController: BaseViewController {
         table.dataSource = self
         table.delegate = self
         table.registerCellsWith([SettingCell.self, ProfileCell.self])
-        table.backgroundColor = .systemRed
+        table.backgroundColor = .clear
         return table
     }
     

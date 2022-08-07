@@ -299,17 +299,16 @@ final class SLFirManager {
         
         let storage = Storage.storage().reference().child("images/\(uid).jpg")
         
-        storage.delete { error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                // File deleted successfully
-            }
-        }
-        
         Database.database().reference().child("users/\(uid)/photoUrl").removeValue(completionBlock: { error, success  in
             if let error = error {
                 print(error.localizedDescription)
+            }
+            storage.delete { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    print("File deleted successfully")
+                }
             }
         })
     }
