@@ -143,8 +143,7 @@ extension SearchUserController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.findedUser = []
-        self.tableView.reloadData()
+        self.dismiss(animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
