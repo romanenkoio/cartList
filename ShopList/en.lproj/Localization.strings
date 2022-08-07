@@ -24,6 +24,27 @@
 "profile.save" = "Save changes";
 "profile.cancel" = "Cancel";
 
+//Avatar Points
+"avatar.selectActionHeader" = "Select an action";
+"avatar.selectPhoto" = "Select a photo from gallery";
+"avatar.deletePhoto" = "Delete your photo";
+"avatar.photoDeleteHeader" = "Want to delete a photo?";
+"avatar.photoDeleteText" = "Are you sure you want to delete the photo?";
+"avatar.cancelPhotoDelete" = "Cancel";
+"avatar.confirmPhotoDelete" = "Yes";
+
+//ProfileDelete Points
+"profileDelete.profileDeleteHeader" = "Want to delete your account?";
+"profileDelete.profileDeleteText" = "Are you sure you want to delete your account?";
+"profileDelete.cancelProfileDelete" = "Cancel";
+"profileDelete.confirmProfileDelete" = "Yes";
+
+//Logout Points
+"logout.logoutHeader" = "Want to log out your account?";
+"logout.logoutText" = "Are you sure you want to log out your account?";
+"logout.cancelLogout" = "Cancel";
+"logout.confirmLogout" = "Yes";
+
 //Settings Points
 "settings.profileName" = "Name not set yet";
 "settings.premium" = "Get premium";

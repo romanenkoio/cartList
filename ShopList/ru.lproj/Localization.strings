@@ -24,6 +24,27 @@
 "profile.save" = "Сохранить";
 "profile.cancel" = "Отмена";
 
+//Avatar Points
+"avatar.selectActionHeader" = "Выберите действие";
+"avatar.selectPhoto" = "Выбрать фото из галереи";
+"avatar.deletePhoto" = "Удалить фото";
+"avatar.photoDeleteHeader" = "Удалить фото?";
+"avatar.photoDeleteText" = "Действительно хотите удалить фото профиля?";
+"avatar.cancelPhotoDelete" = "Отмена";
+"avatar.confirmPhotoDelete" = "Да";
+
+//ProfileDelete Points
+"profileDelete.profileDeleteHeader" = "Удалить аккаунт?";
+"profileDelete.profileDeleteText" = "Действительно удалить аккаунт? Вы потяреяете все свои списки. Это действие необратимо.";
+"profileDelete.cancelProfileDelete" = "Отмена";
+"profileDelete.confirmProfileDelete" = "Да";
+
+//Logout Points
+"logout.logoutHeader" = "Выйти?";
+"logout.logoutText" = "Действительно хотите выйти?";
+"logout.cancelLogout" = "Отмена";
+"logout.confirmLogout" = "Да";
+
 //Settings Points
 "settings.profileName" = "Имя не указано";
 "settings.premium" = "Премиум подписка";

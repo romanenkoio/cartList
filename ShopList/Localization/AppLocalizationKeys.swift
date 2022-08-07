@@ -26,6 +26,26 @@ class AppLocalizationKeys {
     static let saveChanges = "profile.save"
     static let cancelChanges = "profile.cancel"
 
+    //Avatar Points
+    static let selectActionHeader = "avatar.selectActionHeader"
+    static let selectPhoto = "avatar.selectPhoto"
+    static let deletePhoto = "avatar.deletePhoto"
+    static let photoDeleteHeader = "avatar.photoDeleteHeader"
+    static let photoDeleteText = "avatar.photoDeleteText"
+    static let cancelPhotoDelete = "avatar.cancelPhotoDelete"
+    static let confirmPhotoDelete = "avatar.confirmPhotoDelete"
+    
+    //ProfileDelete Points
+    static let profileDeleteHeader = "profileDelete.profileDeleteHeader"
+    static let profileDeleteText = "profileDelete.profileDeleteText"
+    static let cancelProfileDelete = "profileDelete.cancelProfileDelete"
+    static let confirmProfileDelete = "profileDelete.confirmProfileDelete"
+    
+    //Logout Points
+    static let logoutHeader = "logout.logoutHeader"
+    static let logoutText = "logout.logoutText"
+    static let cancelLogout = "logout.cancelLogout"
+    static let confirmLogout = "logout.confirmLogout"
     
     //Settings Point
     static let authHeader = "settings.authHeader"
