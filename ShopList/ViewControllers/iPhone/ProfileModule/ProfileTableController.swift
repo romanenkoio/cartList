@@ -15,6 +15,7 @@ class ProfileTableController: BaseViewController {
     private var menu = SLProfilePoints.getMenu(edit: false)
     private var isEdit = false
     private var oldProfileImage: UIImage?
+    private var newUsername: String?
     
     private var spinner: UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x, y: view.center.y, width: 40, height: 40))
@@ -26,10 +27,11 @@ class ProfileTableController: BaseViewController {
     
     var tableView: UITableView {
         let table = UITableView(frame: self.view.frame, style: .insetGrouped)
+        table.bounces = false
         table.dataSource = self
         table.delegate = self
         table.registerCellsWith([SettingCell.self, ProfileCell.self])
-        table.backgroundColor = .clear
+        table.backgroundColor = .systemRed
         return table
     }
     
@@ -50,12 +52,11 @@ class ProfileTableController: BaseViewController {
     }
     
     @objc private func showPhotoGalleryAction(sender: UITapGestureRecognizer) {
-        
-        let alert = UIAlertController(title: "Choose option", message: nil, preferredStyle: .actionSheet)
-        let selectAction = UIAlertAction(title: "Select a photo from gallery", style: .default, handler: { _ in
+        let alert = Alerts.changeAvatar.controller
+        let selectAction = UIAlertAction(title: "Выбрать фото из галереи", style: .default, handler: { _ in
             self.present(self.imagePicker, animated: true, completion: nil)
         })
-        let deleteAction = UIAlertAction(title: "Delete your photo", style: .destructive) { _ in
+        let deleteAction = UIAlertAction(title: "Удилить фото", style: .destructive) { _ in
             let alert = Alerts.deleteAvatar.controller
             let deleteAction = UIAlertAction(title: "Да", style: .destructive) { _ in
                 SLFirManager.removePhoto()
@@ -65,7 +66,7 @@ class ProfileTableController: BaseViewController {
             alert.addAction(cancelAction)
             self.present(alert, animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addAction(selectAction)
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)
@@ -94,6 +95,11 @@ extension ProfileTableController: UITableViewDataSource {
             let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoGalleryAction(sender:)))
             (settingCell as! ProfileCell).cameraImage.addGestureRecognizer(tap)
             oldProfileImage = (settingCell as! ProfileCell).avatarImage.image
+            (settingCell as! ProfileCell).postNewUsername = {
+                self.newUsername = (settingCell as! ProfileCell).usernameField.text
+//                print(text)
+            }
+
         default:
             settingCell = tableView.dequeueReusableCell(withIdentifier: SettingCell.id, for: indexPath)
             (settingCell as! SettingCell).setupWith(menu[indexPath.section][indexPath.row])
@@ -123,6 +129,8 @@ extension ProfileTableController: UITableViewDelegate {
             menu = SLProfilePoints.getMenu(edit: false)
             tableView.reloadData()
             isEdit.toggle()
+            guard let text = newUsername else { return }
+            SLFirManager.updateUsername(newName: text)
         case .cancelChanges:
             menu = SLProfilePoints.getMenu(edit: false)
             self.isEdit.toggle()
@@ -131,9 +139,17 @@ extension ProfileTableController: UITableViewDelegate {
             SLFirManager.uploadPhoto(image: image) { success in
                 if success { }
             }
+            newUsername = nil
+            oldProfileImage = nil
         default: break
         }
     }
+    
+//    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+//        var settingCell = UITableViewCell()
+//        newUsername = (settingCell as! ProfileCell).mailField.text
+//        print((settingCell as! ProfileCell).mailField.text)
+//    }
 }
 
 extension ProfileTableController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
