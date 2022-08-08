@@ -7,12 +7,14 @@
 */
 
 //Premium Points
-
 //"premium.advantages" = ["Unlimited lists", "No ads", "Ability to pin your pists"];
 "premium.info" = "Subscribe and use the app without limits!";
 "premium.monthSub" = "$0.99 / per month";
 "premium.yearSub" = "$0.99 / per year";
 "premium.foreverSub" = "$0.99 / forever and ever";
+"premium.restorePurchases" = "Restore purchases";
+"premium.terms" = "Terms";
+"premium.privacy" = "Privacy";
 
 //Profile Points
 "profile.Header" = "Profile";

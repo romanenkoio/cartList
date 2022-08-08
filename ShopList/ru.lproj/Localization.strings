@@ -7,12 +7,14 @@
 */
 
 //Premium Points
-
 //"premium.advantages" = ["Неограниченное количество списков", "Отсутствие рекламы", "Возможность закреплять списки"];
 "premium.info" = "Оформите подписку и пользуйтесь приложением без ограничений!";
 "premium.monthSub" = "$0.99 / месяц";
 "premium.yearSub" = "$0.99 / год";
 "premium.foreverSub" = "$0.99 / навсегда";
+"premium.restorePurchases" = "Восстановить покупки";
+"premium.terms" = "Условия";
+"premium.privacy" = "Конфиденциальность";
 
 //Profile Points
 "profile.Header" = "Профиль";

@@ -15,6 +15,9 @@ class AppLocalizationKeys {
     static let premiumMonthSub = "premium.monthSub"
     static let premiumyYearSub = "premium.yearSub"
     static let premiumForeverSub = "premium.foreverSub"
+    static let restorePurchases = "premium.restorePurchases"
+    static let premiumTerms = "premium.terms"
+    static let premiumPrivacy = "premium.privacy"
     
     //Profile Points
     static let profileHeader = "profile.Header"

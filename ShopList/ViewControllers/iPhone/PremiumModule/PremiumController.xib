@@ -16,7 +16,7 @@
                 <outlet property="infoCollection" destination="8CJ-yD-JBh" id="9D7-Rh-yjh"/>
                 <outlet property="monthSubButton" destination="L6Y-DI-PRp" id="x31-GB-QUj"/>
                 <outlet property="pageController" destination="TJC-rC-tMU" id="gnw-2V-2jy"/>
-                <outlet property="scrollView" destination="bWx-zg-kvc" id="9SC-ij-sxe"/>
+                <outlet property="restorePurchasesButton" destination="8nB-xH-KYb" id="l8f-gD-6S2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearSubButton" destination="rLr-gD-nA1" id="YI6-Oi-Fmy"/>
             </connections>
@@ -27,10 +27,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWx-zg-kvc">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTh-Y7-Kdx">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="757.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="916.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clearBackground" translatesAutoresizingMaskIntoConstraints="NO" id="KcT-sT-jKl">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
@@ -109,7 +109,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </button>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-yD-JBh">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-yD-JBh">
                                     <rect key="frame" x="0.0" y="338" width="414" height="50"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -122,18 +122,45 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nB-xH-KYb">
+                                    <rect key="frame" x="16" y="667.5" width="382" height="50"/>
+                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="DDg-Fq-dkb"/>
+                                    </constraints>
+                                    <color key="tintColor" name="mainColor"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Restore purchases"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJE-sh-U6V">
+                                    <rect key="frame" x="16" y="737.5" width="382" height="129"/>
+                                    <mutableString key="text">• Оплата будет произведена через аккаунт iTunes пользователя сразу после подтверждения;
+• Подписка продлевается автоматически, пока не будет отменена Вами минимум за 24 часа до следующего списания;
+• Средства будут списаны с учётной записи пользователя за 24 часа до окончания оплаченного периода;
+• Управление подпиской и отключение автопродления осуществляется пользователем в настройках учётной записи iTunes.</mutableString>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="KcT-sT-jKl" firstAttribute="top" secondItem="vTh-Y7-Kdx" secondAttribute="top" id="15A-bz-uOe"/>
                                 <constraint firstItem="KcT-sT-jKl" firstAttribute="bottom" secondItem="TJC-rC-tMU" secondAttribute="bottom" id="1LR-Oo-kfb"/>
+                                <constraint firstAttribute="trailing" secondItem="8nB-xH-KYb" secondAttribute="trailing" constant="16" id="2xS-ni-GH3"/>
+                                <constraint firstItem="8nB-xH-KYb" firstAttribute="top" secondItem="eS4-d0-NIX" secondAttribute="bottom" constant="10" id="4gY-eh-Joo"/>
                                 <constraint firstItem="TJC-rC-tMU" firstAttribute="top" secondItem="8CJ-yD-JBh" secondAttribute="bottom" id="8OB-UZ-jCZ"/>
                                 <constraint firstAttribute="trailing" secondItem="KcT-sT-jKl" secondAttribute="trailing" id="91G-qo-cf4"/>
                                 <constraint firstItem="8CJ-yD-JBh" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="EPI-21-4QE"/>
                                 <constraint firstItem="q3t-8b-CWu" firstAttribute="top" secondItem="vTh-Y7-Kdx" secondAttribute="top" id="F42-2l-zgm"/>
+                                <constraint firstAttribute="trailing" secondItem="LJE-sh-U6V" secondAttribute="trailing" constant="16" id="Gar-dK-d6a"/>
                                 <constraint firstItem="rLr-gD-nA1" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="KAD-I2-TQS"/>
                                 <constraint firstItem="q3t-8b-CWu" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="LZS-9k-iUK"/>
                                 <constraint firstAttribute="trailing" secondItem="TJC-rC-tMU" secondAttribute="trailing" constant="16" id="MAO-KV-M5f"/>
-                                <constraint firstAttribute="bottom" secondItem="eS4-d0-NIX" secondAttribute="bottom" constant="100" id="PUI-pq-DX5"/>
                                 <constraint firstItem="eS4-d0-NIX" firstAttribute="top" secondItem="rLr-gD-nA1" secondAttribute="bottom" constant="10" id="Qd2-Or-n9g"/>
                                 <constraint firstAttribute="trailing" secondItem="rLr-gD-nA1" secondAttribute="trailing" constant="16" id="SLU-4l-57i"/>
                                 <constraint firstAttribute="trailing" secondItem="eS4-d0-NIX" secondAttribute="trailing" constant="16" id="Ted-ZD-gCz"/>
@@ -142,10 +169,14 @@
                                 <constraint firstItem="58d-yJ-aWa" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="Wx2-xI-cCK"/>
                                 <constraint firstItem="L6Y-DI-PRp" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="ZRW-Vv-pPi"/>
                                 <constraint firstItem="L6Y-DI-PRp" firstAttribute="top" secondItem="58d-yJ-aWa" secondAttribute="bottom" constant="20" id="aJb-jz-9Oc"/>
+                                <constraint firstItem="LJE-sh-U6V" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="dka-bL-cxD"/>
                                 <constraint firstAttribute="trailing" secondItem="q3t-8b-CWu" secondAttribute="trailing" id="hEn-ZW-sRz"/>
                                 <constraint firstItem="KcT-sT-jKl" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="jj0-YF-Um6"/>
+                                <constraint firstItem="LJE-sh-U6V" firstAttribute="top" secondItem="8nB-xH-KYb" secondAttribute="bottom" constant="20" id="kER-rm-s4n"/>
                                 <constraint firstAttribute="trailing" secondItem="58d-yJ-aWa" secondAttribute="trailing" constant="16" id="kmP-4I-Xsh"/>
+                                <constraint firstAttribute="bottom" secondItem="LJE-sh-U6V" secondAttribute="bottom" constant="50" id="ku0-xW-xNk"/>
                                 <constraint firstItem="eS4-d0-NIX" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="m1k-Cq-Luc"/>
+                                <constraint firstItem="8nB-xH-KYb" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="nNW-Cr-4yL"/>
                                 <constraint firstItem="TJC-rC-tMU" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="nUW-Hv-DEJ"/>
                                 <constraint firstAttribute="trailing" secondItem="8CJ-yD-JBh" secondAttribute="trailing" id="rjy-Nu-Wvz"/>
                                 <constraint firstItem="q3t-8b-CWu" firstAttribute="top" secondItem="vTh-Y7-Kdx" secondAttribute="top" id="uO9-Df-ZcE"/>
@@ -168,7 +199,7 @@
                 <constraint firstItem="bWx-zg-kvc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2Ch-P7-PtK"/>
                 <constraint firstItem="bWx-zg-kvc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gWu-Qv-eeV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bWx-zg-kvc" secondAttribute="trailing" id="hZK-Rt-h6b"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="bWx-zg-kvc" secondAttribute="bottom" id="z0j-Sl-rTD"/>
+                <constraint firstAttribute="bottom" secondItem="bWx-zg-kvc" secondAttribute="bottom" id="z0j-Sl-rTD"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
         </view>
@@ -181,6 +212,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

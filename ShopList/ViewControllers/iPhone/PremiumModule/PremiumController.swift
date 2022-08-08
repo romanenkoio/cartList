@@ -15,8 +15,8 @@ class PremiumController: UIViewController {
     @IBOutlet weak var monthSubButton: UIButton!
     @IBOutlet weak var yearSubButton: UIButton!
     @IBOutlet weak var foreverSubButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
+    @IBOutlet weak var restorePurchasesButton: UIButton!
+        
     private var timer: Timer?
     private var counter = 0
     
@@ -60,19 +60,26 @@ class PremiumController: UIViewController {
         if counter < infoArray.count - 1 {
             counter += 1
             let x = CGFloat(counter) * view.frame.width
-            infoCollection.setContentOffset(CGPoint(x:x, y:0), animated: true)
+            UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseInOut]) {
+                self.infoCollection.setContentOffset(CGPoint(x:x, y:0), animated: false)
+                self.view.layoutIfNeeded()
+            }
         } else {
             counter = 0
             let x = CGFloat(counter) * view.frame.width
-            infoCollection.setContentOffset(CGPoint(x:x, y:0), animated: true)
+            UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseInOut]) {
+                self.infoCollection.setContentOffset(CGPoint(x:x, y:0), animated: false)
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
-    @objc  func updateLanguage() {
+    @objc func updateLanguage() {
         headerLabel.text = AppLocalizationKeys.premiumInfo.localized()
         monthSubButton.setTitle(AppLocalizationKeys.premiumMonthSub.localized(), for: .normal)
         yearSubButton.setTitle(AppLocalizationKeys.premiumyYearSub.localized(), for: .normal)
         foreverSubButton.setTitle(AppLocalizationKeys.premiumyYearSub.localized(), for: .normal)
+        restorePurchasesButton.setTitle(AppLocalizationKeys.restorePurchases.localized(), for: .normal)
 //        infoArray = AppLocalizationKeys.premiumAdvantages.localized()
     }
     
