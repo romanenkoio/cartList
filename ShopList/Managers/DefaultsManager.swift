@@ -158,4 +158,14 @@ final class DefaultsManager {
             UserDefaults.standard.setValue(newValue, forKey: #function)
         }
     }
+    
+    class var isPremium: Bool {
+        get {
+            let isPremium = UserDefaults.standard.value(forKey: #function) as? Bool
+            return isPremium ?? false
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
 }

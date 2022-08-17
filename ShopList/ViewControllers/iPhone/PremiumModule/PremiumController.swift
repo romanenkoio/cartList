@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import Adapty
 
 class PremiumController: UIViewController {
     @IBOutlet weak var pageController: UIPageControl!
@@ -17,6 +18,7 @@ class PremiumController: UIViewController {
     @IBOutlet weak var foreverSubButton: UIButton!
     @IBOutlet weak var restorePurchasesButton: UIButton!
         
+    private var paywall: PaywallModel?
     private var timer: Timer?
     private var counter = 0
     
@@ -24,17 +26,20 @@ class PremiumController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Adapty.getPaywalls { [weak self] paywals, productModel, error in
+            if let error = error {
+                self?.dismiss(animated: true)
+                return
+            }
+            self?.paywall = paywals?.first
+            self?.configureButtons()
+        }
         updateLanguage()
         subscribeToNotification()
         setupCollection()
         pageController.hidesForSinglePage = true
         pageController.numberOfPages = infoArray.count
         setTimer()
-    }
-    
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +49,58 @@ class PremiumController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func configureButtons() {
+        guard let paywal = paywall else {
+            return
+        }
+
+        paywal.products.forEach { product in
+            switch product.subscriptionPeriod?.unit {
+            case .month:
+                monthSubButton.setTitle("\(product.localizedPrice!) / month", for: .normal)
+            case .year:
+                yearSubButton.setTitle("\(product.localizedPrice!) / year", for: .normal)
+            case .none:
+                foreverSubButton.setTitle("\(product.localizedPrice!) / lifetime", for: .normal)
+            default: break
+            }
+        }
+    }
+    
+    @IBAction func makePurchase(_ sender: UIButton) {
+        var product: ProductModel?
+        
+        switch sender.tag {
+        case 1000:
+            product = paywall?.products.filter({ $0.subscriptionPeriod?.unit == .month }).first
+        case 1001:
+            product = paywall?.products.filter({ $0.subscriptionPeriod?.unit == .year }).first
+        case 1002:
+            product = paywall?.products.filter({ $0.subscriptionPeriod?.unit == .none }).first
+        default: break
+        }
+        
+        guard let product = product else {
+            return
+        }
+        Adapty.logShowPaywall(paywall!)
+        Adapty.makePurchase(product: product) { purchaserInfo, receipt, appleValidationResult, product, error in
+            if error == nil {
+                if purchaserInfo != nil {
+                    DefaultsManager.isPremium = true
+                }
+            }
+        }
+    }
+    
+    @IBAction func restoreAction(_ sender: Any) {
+        Adapty.restorePurchases { purchaserInfo, receipt, appleValidationResult, error in
+            if purchaserInfo != nil {
+                DefaultsManager.isPremium = true
+            }
+        }
     }
     
     private func setupCollection() {

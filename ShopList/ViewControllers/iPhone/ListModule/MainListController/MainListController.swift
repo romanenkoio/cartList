@@ -40,7 +40,7 @@ class MainListController: BaseViewController {
         emptyLabel.isHidden = true
         
         #if RELEASE
-        if DefaultsManager.lainchCount % 2 == 0 {
+        if DefaultsManager.lainchCount % 2 == 0, !DefaultsManager.isPremium {
             let vc = PremiumController.loadFromNib()
             self.present(vc, animated: true)
         }
@@ -77,7 +77,9 @@ class MainListController: BaseViewController {
         #if DEBUG
         print("Реклама отключена")
         #else
-        bannerView.load(GADRequest())
+        if !DefaultsManager.isPremium {
+            bannerView.load(GADRequest())
+        }
         #endif
         readLists()
         updateLanguage()
@@ -92,6 +94,15 @@ class MainListController: BaseViewController {
             self?.lists = lists
             self?.reoder()
             self?.playAnimation()
+            self?.checkCount()
+        }
+    }
+    
+    private func checkCount() {
+        if lists.count >= 3, !DefaultsManager.isPremium {
+            createListButton.setTitle("Достигнут лимит списков", for: .normal)
+        } else {
+            createListButton.setTitle(AppLocalizationKeys.createList.localized(), for: .normal)
         }
     }
     
@@ -111,6 +122,12 @@ class MainListController: BaseViewController {
     }
     
     @IBAction func addListAction(_ sender: Any) {
+        if !DefaultsManager.isPremium, lists.count >= 3 {
+            let vc = PremiumController.loadFromNib()
+            self.present(vc, animated: true)
+            return
+        }
+        
         let vc = AddListController.loadFromNib()
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
@@ -180,7 +197,10 @@ extension MainListController: UITableViewDelegate {
 
                 self.reoder()
             }
-            productMenu.append(pin)
+        
+            if DefaultsManager.isPremium {
+                productMenu.append(pin)
+            }
             
             let shareToProfile = UIAction(title: AppLocalizationKeys.addUser.localized(), image: UIImage(systemName: "person.circle")) { [weak self] _ in
                 guard let self = self else { return }
@@ -193,7 +213,7 @@ extension MainListController: UITableViewDelegate {
                 self.present(vc, animated: true)
             }
             
-            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid {
+            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid, DefaultsManager.isPremium {
                 productMenu.append(shareToProfile)
             }
             
@@ -206,7 +226,7 @@ extension MainListController: UITableViewDelegate {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
-            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid, self.lists[indexPath.row].sharedFor.count > 0 {
+            if let uid = Auth.auth().currentUser?.uid, self.lists[indexPath.row].ownerid == uid, self.lists[indexPath.row].sharedFor.count > 0, DefaultsManager.isPremium {
                 productMenu.append(manageUsers)
             }
             

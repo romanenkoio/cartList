@@ -16,6 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.mainOrange
+        Adapty.activate("public_live_TwxxgWmn.BnBfseyXvFQRj04pH2fO")
+        Adapty.getPurchaserInfo { info, error in
+            if error == nil {
+                if info?.accessLevels["premium"]?.isActive == true {
+                    DefaultsManager.isPremium = true
+                } else {
+                    DefaultsManager.isPremium = false
+                }
+            } else {
+                DefaultsManager.isPremium = false
+            }
+        }
         return true
     }
 }

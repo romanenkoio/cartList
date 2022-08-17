@@ -34,7 +34,7 @@ enum SLProfilePoints {
         switch self {
         case .picture:          return ""
         case .name:             return DefaultsManager.email
-        case .accountStatus:    return "\(AppLocalizationKeys.accountType.localized()) базовый"
+        case .accountStatus:    return "\(AppLocalizationKeys.accountType.localized()) \(DefaultsManager.isPremium ? "premium" : "basic")"
         case .listCounts:       return "\(AppLocalizationKeys.listsCount.localized()) 2/6"
         case .edit:             return AppLocalizationKeys.editProfile.localized()
         case .removeAccount:    return AppLocalizationKeys.deleteProfile.localized()

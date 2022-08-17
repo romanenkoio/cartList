@@ -26,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWx-zg-kvc">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWx-zg-kvc">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTh-Y7-Kdx">
@@ -64,7 +64,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6Y-DI-PRp">
+                                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6Y-DI-PRp">
                                     <rect key="frame" x="16" y="487.5" width="382" height="50"/>
                                     <color key="backgroundColor" name="mainColor"/>
                                     <constraints>
@@ -78,8 +78,11 @@
                                             <real key="value" value="16"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="makePurchase:" destination="-1" eventType="touchUpInside" id="AHy-Mi-FDa"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLr-gD-nA1">
+                                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLr-gD-nA1">
                                     <rect key="frame" x="16" y="547.5" width="382" height="50"/>
                                     <color key="backgroundColor" name="mainColor"/>
                                     <constraints>
@@ -93,8 +96,11 @@
                                             <real key="value" value="16"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="makePurchase:" destination="-1" eventType="touchUpInside" id="psi-SV-AYZ"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eS4-d0-NIX">
+                                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eS4-d0-NIX">
                                     <rect key="frame" x="16" y="607.5" width="382" height="50"/>
                                     <color key="backgroundColor" name="mainColor"/>
                                     <constraints>
@@ -108,6 +114,9 @@
                                             <real key="value" value="16"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="makePurchase:" destination="-1" eventType="touchUpInside" id="1Ny-37-SgZ"/>
+                                    </connections>
                                 </button>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-yD-JBh">
                                     <rect key="frame" x="0.0" y="338" width="414" height="50"/>
@@ -136,13 +145,16 @@
                                             <real key="value" value="16"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="restoreAction:" destination="-1" eventType="touchUpInside" id="fLH-ds-wbG"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJE-sh-U6V">
                                     <rect key="frame" x="16" y="737.5" width="382" height="129"/>
-                                    <mutableString key="text">• Оплата будет произведена через аккаунт iTunes пользователя сразу после подтверждения;
+                                    <string key="text">• Оплата будет произведена через аккаунт iTunes пользователя сразу после подтверждения;
 • Подписка продлевается автоматически, пока не будет отменена Вами минимум за 24 часа до следующего списания;
 • Средства будут списаны с учётной записи пользователя за 24 часа до окончания оплаченного периода;
-• Управление подпиской и отключение автопродления осуществляется пользователем в настройках учётной записи iTunes.</mutableString>
+• Управление подпиской и отключение автопродления осуществляется пользователем в настройках учётной записи iTunes.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
