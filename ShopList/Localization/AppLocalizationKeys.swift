@@ -18,6 +18,7 @@ class AppLocalizationKeys {
     static let restorePurchases = "premium.restorePurchases"
     static let premiumTerms = "premium.terms"
     static let premiumPrivacy = "premium.privacy"
+    static let premiumAmpersand = "premium.ampersand"
     
     //Profile Points
     static let profileHeader = "profile.Header"

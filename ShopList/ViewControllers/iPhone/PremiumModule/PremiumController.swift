@@ -12,15 +12,23 @@ class PremiumController: UIViewController {
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var infoCollection: UICollectionView!
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var ampersandLabel: UILabel!
     @IBOutlet weak var monthSubButton: UIButton!
     @IBOutlet weak var yearSubButton: UIButton!
     @IBOutlet weak var foreverSubButton: UIButton!
     @IBOutlet weak var restorePurchasesButton: UIButton!
+    @IBOutlet weak var termsButton: UIButton!
+    @IBOutlet weak var privacyButton: UIButton!
+
         
     private var timer: Timer?
     private var counter = 0
     
     var infoArray = ["Неограниченное количество списков", "Отсутствие рекламы", "Возможность закреплять списки"]
+    
+    let attrs = [ NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
+    var attributedTermsTitle = NSMutableAttributedString(string:"")
+    var attributedPrivacyTitle = NSMutableAttributedString(string:"")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +38,13 @@ class PremiumController: UIViewController {
         pageController.hidesForSinglePage = true
         pageController.numberOfPages = infoArray.count
         setTimer()
+        
+        let termsTitleStr = NSMutableAttributedString(string: AppLocalizationKeys.premiumTerms.localized(), attributes:attrs)
+        attributedTermsTitle.append(termsTitleStr)
+        termsButton.setAttributedTitle(attributedTermsTitle, for: .normal)
+        let privacyTitleStr = NSMutableAttributedString(string: AppLocalizationKeys.premiumPrivacy.localized(), attributes:attrs)
+        attributedPrivacyTitle.append(privacyTitleStr)
+        privacyButton.setAttributedTitle(attributedPrivacyTitle, for: .normal)
     }
     
     override class func awakeFromNib() {
@@ -76,10 +91,13 @@ class PremiumController: UIViewController {
     
     @objc func updateLanguage() {
         headerLabel.text = AppLocalizationKeys.premiumInfo.localized()
+        ampersandLabel.text = AppLocalizationKeys.premiumAmpersand.localized()
         monthSubButton.setTitle(AppLocalizationKeys.premiumMonthSub.localized(), for: .normal)
         yearSubButton.setTitle(AppLocalizationKeys.premiumyYearSub.localized(), for: .normal)
         foreverSubButton.setTitle(AppLocalizationKeys.premiumyYearSub.localized(), for: .normal)
         restorePurchasesButton.setTitle(AppLocalizationKeys.restorePurchases.localized(), for: .normal)
+        termsButton.setTitle(AppLocalizationKeys.premiumTerms.localized(), for: .normal)
+        privacyButton.setTitle(AppLocalizationKeys.premiumPrivacy.localized(), for: .normal)
 //        infoArray = AppLocalizationKeys.premiumAdvantages.localized()
     }
     

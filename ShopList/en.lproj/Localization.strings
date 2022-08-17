@@ -15,6 +15,7 @@
 "premium.restorePurchases" = "Restore purchases";
 "premium.terms" = "Terms";
 "premium.privacy" = "Privacy";
+"premium.ampersand" = "&";
 
 //Profile Points
 "profile.Header" = "Profile";

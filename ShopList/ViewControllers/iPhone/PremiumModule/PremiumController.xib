@@ -11,26 +11,29 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PremiumController" customModule="ShopList" customModuleProvider="target">
             <connections>
+                <outlet property="ampersandLabel" destination="CMa-3u-8WT" id="8kp-y7-JlI"/>
                 <outlet property="foreverSubButton" destination="eS4-d0-NIX" id="dkB-cX-FEl"/>
                 <outlet property="headerLabel" destination="58d-yJ-aWa" id="OmC-Hk-7LK"/>
                 <outlet property="infoCollection" destination="8CJ-yD-JBh" id="9D7-Rh-yjh"/>
                 <outlet property="monthSubButton" destination="L6Y-DI-PRp" id="x31-GB-QUj"/>
                 <outlet property="pageController" destination="TJC-rC-tMU" id="gnw-2V-2jy"/>
+                <outlet property="privacyButton" destination="Ui3-PH-y8M" id="Gjk-Hr-UTk"/>
                 <outlet property="restorePurchasesButton" destination="8nB-xH-KYb" id="l8f-gD-6S2"/>
+                <outlet property="termsButton" destination="FLd-Il-9s7" id="4Z7-FV-7Fe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearSubButton" destination="rLr-gD-nA1" id="YI6-Oi-Fmy"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWx-zg-kvc">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTh-Y7-Kdx">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="916.5"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTh-Y7-Kdx">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="986.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clearBackground" translatesAutoresizingMaskIntoConstraints="NO" id="KcT-sT-jKl">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
@@ -139,14 +142,61 @@
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJE-sh-U6V">
                                     <rect key="frame" x="16" y="737.5" width="382" height="129"/>
-                                    <mutableString key="text">• Оплата будет произведена через аккаунт iTunes пользователя сразу после подтверждения;
+                                    <string key="text">• Оплата будет произведена через аккаунт iTunes пользователя сразу после подтверждения;
 • Подписка продлевается автоматически, пока не будет отменена Вами минимум за 24 часа до следующего списания;
 • Средства будут списаны с учётной записи пользователя за 24 часа до окончания оплаченного периода;
-• Управление подпиской и отключение автопродления осуществляется пользователем в настройках учётной записи iTunes.</mutableString>
+• Управление подпиской и отключение автопродления осуществляется пользователем в настройках учётной записи iTunes.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDh-NV-eCC">
+                                    <rect key="frame" x="71.5" y="886.5" width="271" height="50"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLd-Il-9s7">
+                                            <rect key="frame" x="0.0" y="0.0" width="83" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="yjD-tb-Ymv"/>
+                                            </constraints>
+                                            <color key="tintColor" name="mainColor"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Условия">
+                                                <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="и" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMa-3u-8WT">
+                                            <rect key="frame" x="83" y="0.0" width="9" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="wkl-Lc-uXt"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" name="mainColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui3-PH-y8M">
+                                            <rect key="frame" x="92" y="0.0" width="179" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="qpi-dg-7dn"/>
+                                            </constraints>
+                                            <color key="tintColor" name="mainColor"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Конфиденциальность">
+                                                <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="CMa-3u-8WT" secondAttribute="bottom" id="1jP-b2-s1G"/>
+                                        <constraint firstItem="CMa-3u-8WT" firstAttribute="leading" secondItem="FLd-Il-9s7" secondAttribute="trailing" id="6X9-sr-5D1"/>
+                                        <constraint firstItem="Ui3-PH-y8M" firstAttribute="leading" secondItem="CMa-3u-8WT" secondAttribute="trailing" id="7RR-uJ-7ZT"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ui3-PH-y8M" secondAttribute="bottom" id="IQn-QB-zck"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ui3-PH-y8M" secondAttribute="trailing" id="jG2-ah-qvA"/>
+                                        <constraint firstItem="FLd-Il-9s7" firstAttribute="top" secondItem="IDh-NV-eCC" secondAttribute="top" id="pTJ-YJ-TfF"/>
+                                        <constraint firstItem="CMa-3u-8WT" firstAttribute="top" secondItem="IDh-NV-eCC" secondAttribute="top" id="t0n-Gn-8M5"/>
+                                        <constraint firstItem="FLd-Il-9s7" firstAttribute="leading" secondItem="IDh-NV-eCC" secondAttribute="leading" id="tCN-5A-No8"/>
+                                        <constraint firstItem="Ui3-PH-y8M" firstAttribute="top" secondItem="IDh-NV-eCC" secondAttribute="top" id="yDs-72-h1v"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="KcT-sT-jKl" firstAttribute="top" secondItem="vTh-Y7-Kdx" secondAttribute="top" id="15A-bz-uOe"/>
@@ -155,10 +205,12 @@
                                 <constraint firstItem="8nB-xH-KYb" firstAttribute="top" secondItem="eS4-d0-NIX" secondAttribute="bottom" constant="10" id="4gY-eh-Joo"/>
                                 <constraint firstItem="TJC-rC-tMU" firstAttribute="top" secondItem="8CJ-yD-JBh" secondAttribute="bottom" id="8OB-UZ-jCZ"/>
                                 <constraint firstAttribute="trailing" secondItem="KcT-sT-jKl" secondAttribute="trailing" id="91G-qo-cf4"/>
+                                <constraint firstItem="IDh-NV-eCC" firstAttribute="top" secondItem="LJE-sh-U6V" secondAttribute="bottom" constant="20" id="CQI-aa-IhF"/>
                                 <constraint firstItem="8CJ-yD-JBh" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="EPI-21-4QE"/>
                                 <constraint firstItem="q3t-8b-CWu" firstAttribute="top" secondItem="vTh-Y7-Kdx" secondAttribute="top" id="F42-2l-zgm"/>
                                 <constraint firstAttribute="trailing" secondItem="LJE-sh-U6V" secondAttribute="trailing" constant="16" id="Gar-dK-d6a"/>
                                 <constraint firstItem="rLr-gD-nA1" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="KAD-I2-TQS"/>
+                                <constraint firstItem="IDh-NV-eCC" firstAttribute="centerX" secondItem="vTh-Y7-Kdx" secondAttribute="centerX" id="KdL-59-jBf"/>
                                 <constraint firstItem="q3t-8b-CWu" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="LZS-9k-iUK"/>
                                 <constraint firstAttribute="trailing" secondItem="TJC-rC-tMU" secondAttribute="trailing" constant="16" id="MAO-KV-M5f"/>
                                 <constraint firstItem="eS4-d0-NIX" firstAttribute="top" secondItem="rLr-gD-nA1" secondAttribute="bottom" constant="10" id="Qd2-Or-n9g"/>
@@ -170,11 +222,11 @@
                                 <constraint firstItem="L6Y-DI-PRp" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="ZRW-Vv-pPi"/>
                                 <constraint firstItem="L6Y-DI-PRp" firstAttribute="top" secondItem="58d-yJ-aWa" secondAttribute="bottom" constant="20" id="aJb-jz-9Oc"/>
                                 <constraint firstItem="LJE-sh-U6V" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="dka-bL-cxD"/>
+                                <constraint firstAttribute="bottom" secondItem="IDh-NV-eCC" secondAttribute="bottom" constant="50" id="eEx-GM-u5m"/>
                                 <constraint firstAttribute="trailing" secondItem="q3t-8b-CWu" secondAttribute="trailing" id="hEn-ZW-sRz"/>
                                 <constraint firstItem="KcT-sT-jKl" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" id="jj0-YF-Um6"/>
                                 <constraint firstItem="LJE-sh-U6V" firstAttribute="top" secondItem="8nB-xH-KYb" secondAttribute="bottom" constant="20" id="kER-rm-s4n"/>
                                 <constraint firstAttribute="trailing" secondItem="58d-yJ-aWa" secondAttribute="trailing" constant="16" id="kmP-4I-Xsh"/>
-                                <constraint firstAttribute="bottom" secondItem="LJE-sh-U6V" secondAttribute="bottom" constant="50" id="ku0-xW-xNk"/>
                                 <constraint firstItem="eS4-d0-NIX" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="m1k-Cq-Luc"/>
                                 <constraint firstItem="8nB-xH-KYb" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="nNW-Cr-4yL"/>
                                 <constraint firstItem="TJC-rC-tMU" firstAttribute="leading" secondItem="vTh-Y7-Kdx" secondAttribute="leading" constant="16" id="nUW-Hv-DEJ"/>

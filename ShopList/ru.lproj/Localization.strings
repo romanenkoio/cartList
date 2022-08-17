@@ -15,6 +15,7 @@
 "premium.restorePurchases" = "Восстановить покупки";
 "premium.terms" = "Условия";
 "premium.privacy" = "Конфиденциальность";
+"premium.ampersand" = "и";
 
 //Profile Points
 "profile.Header" = "Профиль";
