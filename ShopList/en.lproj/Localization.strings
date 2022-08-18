@@ -179,3 +179,8 @@
 "popup.userRemoved" = "User was removed";
 "popup.userAdded" = "User was added";
 "popup.copied" = "Copied!";
+
+"premium.listCount" = "Unlimited list count";
+"premium.ads" = "No ads";
+"premium.pin" = "Pin your favourite lists";
+"premium.sharing" = "Share your lists with friends online";

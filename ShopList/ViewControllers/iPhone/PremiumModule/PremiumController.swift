@@ -17,17 +17,15 @@ class PremiumController: UIViewController {
     @IBOutlet weak var yearSubButton: UIButton!
     @IBOutlet weak var foreverSubButton: UIButton!
     @IBOutlet weak var restorePurchasesButton: UIButton!
-        
+    
     private var paywall: PaywallModel?
     private var timer: Timer?
     private var counter = 0
     
-    var infoArray = ["Неограниченное количество списков", "Отсутствие рекламы", "Возможность закреплять списки"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         Adapty.getPaywalls { [weak self] paywals, productModel, error in
-            if let error = error {
+            if error != nil {
                 self?.dismiss(animated: true)
                 return
             }
@@ -38,7 +36,7 @@ class PremiumController: UIViewController {
         subscribeToNotification()
         setupCollection()
         pageController.hidesForSinglePage = true
-        pageController.numberOfPages = infoArray.count
+        pageController.numberOfPages = AppLocalizationKeys.premiumFeatures.count
         setTimer()
     }
     
@@ -70,6 +68,7 @@ class PremiumController: UIViewController {
     }
     
     @IBAction func makePurchase(_ sender: UIButton) {
+        spinner.startAnimating()
         var product: ProductModel?
         
         switch sender.tag {
@@ -86,6 +85,7 @@ class PremiumController: UIViewController {
             return
         }
         Adapty.logShowPaywall(paywall!)
+        
         Adapty.makePurchase(product: product) { purchaserInfo, receipt, appleValidationResult, product, error in
             if error == nil {
                 if purchaserInfo != nil {
@@ -110,11 +110,11 @@ class PremiumController: UIViewController {
     }
     
     func setTimer() {
-        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(updateCollection(sender:)), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(updateCollection(sender:)), userInfo: nil, repeats: true)
     }
     
     @objc func updateCollection(sender: Timer) {
-        if counter < infoArray.count - 1 {
+        if counter < AppLocalizationKeys.premiumFeatures.count - 1 {
             counter += 1
             let x = CGFloat(counter) * view.frame.width
             UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseInOut]) {
@@ -149,7 +149,7 @@ class PremiumController: UIViewController {
 extension PremiumController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return infoArray.count
+        return AppLocalizationKeys.premiumFeatures.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -159,7 +159,7 @@ extension PremiumController: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: InfoCell.self), for: indexPath)
         guard let infoCell = cell as? InfoCell else { return cell }
-        infoCell.infoLabel.text = infoArray[counter]
+        infoCell.infoLabel.text = AppLocalizationKeys.premiumFeatures[counter].localized()
         return infoCell
     }
 

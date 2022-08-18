@@ -185,4 +185,9 @@ class AppLocalizationKeys {
                                       NSLocalizedString("rice", comment: ""),
                                       NSLocalizedString("buckwheat", comment: ""),
                                       NSLocalizedString("bulgur", comment: "")]
+    
+    static let premiumFeatures = [NSLocalizedString("premium.listCount", comment: ""),
+                                      NSLocalizedString("premium.ads", comment: ""),
+                                      NSLocalizedString("premium.pin", comment: ""),
+                                      NSLocalizedString("premium.sharing", comment: "")]
 }

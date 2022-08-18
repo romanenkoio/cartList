@@ -17,9 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="164" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n06-Sc-3yb">
-                        <rect key="frame" x="0.0" y="0.0" width="164" height="50"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n06-Sc-3yb">
+                        <rect key="frame" x="16" y="0.0" width="132" height="50"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="highlightedColor" name="appBackgroundColor"/>
                     </label>
@@ -27,8 +27,8 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="n06-Sc-3yb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="QfJ-bs-445"/>
-                <constraint firstAttribute="trailing" secondItem="n06-Sc-3yb" secondAttribute="trailing" id="Tiy-rS-a1h"/>
+                <constraint firstItem="n06-Sc-3yb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="QfJ-bs-445"/>
+                <constraint firstAttribute="trailing" secondItem="n06-Sc-3yb" secondAttribute="trailing" constant="16" id="Tiy-rS-a1h"/>
                 <constraint firstAttribute="bottom" secondItem="n06-Sc-3yb" secondAttribute="bottom" id="vUR-bb-o7P"/>
                 <constraint firstItem="n06-Sc-3yb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ykl-Lr-1Sz"/>
             </constraints>
