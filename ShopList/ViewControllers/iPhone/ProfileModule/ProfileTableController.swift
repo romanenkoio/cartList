@@ -159,7 +159,7 @@ extension ProfileTableController: UITableViewDelegate {
         case .removeAccount:
             let alert = Alerts.deleteConfirmation.controller
             let deleteAction = UIAlertAction(title: AppLocalizationKeys.confirmProfileDelete.localized(), style: .destructive) { _ in
-                //delete account
+                SLFirManager.removeAccount()
             }
             let cancelAction = UIAlertAction(title: AppLocalizationKeys.cancelProfileDelete.localized(), style: .cancel)
             alert.addAction(deleteAction)

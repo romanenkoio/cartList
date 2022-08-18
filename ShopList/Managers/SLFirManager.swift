@@ -13,6 +13,24 @@ import FirebaseStorage
 final class SLFirManager {
     static let authReference = SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue)
     
+    static func removeAccount() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let listsRef = Database.database().reference().child("users/\(uid)")
+        loadLists { lists in
+            lists.forEach { list in
+                removeList(list)
+            }
+            
+            listsRef.removeValue { error, ref in
+                if error == nil {
+                    if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                        sceneDelegate.setLoginScreen()
+                    }
+                }
+            }
+        }
+    }
+    
     static func getUser(id: String? = nil, result: ((SLUser?) -> ())? = nil) {
         guard let mYuid = Auth.auth().currentUser?.uid else { result?(nil); return; }
         
@@ -260,7 +278,7 @@ final class SLFirManager {
         }
     }
     
-    static func removeList(_ list: SLFirebaseList, success: BoolResultBlock?) {
+    static func removeList(_ list: SLFirebaseList, success: BoolResultBlock? = nil) {
         guard (Auth.auth().currentUser?.uid) != nil else { success?(false); return; }
 
         let listsRef = Database.database().reference().child("lists/\(list.id!)")

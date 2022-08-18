@@ -12,8 +12,7 @@ import AuthenticationServices
 import Lottie
 
 class AuthViewController: UIViewController {
-    
-    
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var loginButton: UIButton!
@@ -33,6 +32,7 @@ class AuthViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
+        indicator.startAnimating()
         handleAuthorizationAppleID { uid, name, error in
             
         }
@@ -59,14 +59,19 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             
-            guard let nonce = currentNonce else { return }
+            guard let nonce = currentNonce else {
+                indicator.stopAnimating()
+                return
+            }
             
             guard let appleIDToken = appleIDCredential.identityToken else {
+                indicator.stopAnimating()
                 return
             }
             
             
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                indicator.stopAnimating()
                 return
             }
             
@@ -74,12 +79,16 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                                                       idToken: idTokenString,
                                                       rawNonce: nonce)
             
-            Auth.auth().signIn(with: credential) { (authResult, error) in
+            Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
                 if (error != nil) {
+                    self?.indicator.stopAnimating()
                     return
                 }
                 
-                guard let user = Auth.auth().currentUser else { return }
+                guard let user = Auth.auth().currentUser else {
+                    self?.indicator.stopAnimating()
+                    return
+                }
                 SLAppEnvironment.reference.child(SLAppEnvironment.DataBaseChilds.users.rawValue).child(user.uid).updateChildValues(["email": user.email!])
                 SLFirManager.userByEmail(user.email!, isSearch: false) { currentUser in
                     if currentUser.name == nil {

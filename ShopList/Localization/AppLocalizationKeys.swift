@@ -12,12 +12,14 @@ class AppLocalizationKeys {
     //Premium Points
     static let premiumAdvantages = "premium.advantages"
     static let premiumInfo = "premium.info"
-    static let premiumMonthSub = "premium.monthSub"
-    static let premiumyYearSub = "premium.yearSub"
-    static let premiumForeverSub = "premium.foreverSub"
     static let restorePurchases = "premium.restorePurchases"
     static let premiumTerms = "premium.terms"
     static let premiumPrivacy = "premium.privacy"
+    static let premiumMonth = "premium.month"
+    static let premiumYear = "premium.year"
+    static let premiumLifetime = "premium.lifetime"
+
+    
     
     //Profile Points
     static let profileHeader = "profile.Header"
@@ -28,6 +30,7 @@ class AppLocalizationKeys {
     static let logOut = "profile.logOut"
     static let saveChanges = "profile.save"
     static let cancelChanges = "profile.cancel"
+    static let accountStatus = DefaultsManager.isPremium ? "profile.premium" : "profile.basic"
 
     //Avatar Points
     static let selectActionHeader = "avatar.selectActionHeader"

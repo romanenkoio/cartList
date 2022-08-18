@@ -59,11 +59,11 @@ class PremiumController: UIViewController {
         paywal.products.forEach { product in
             switch product.subscriptionPeriod?.unit {
             case .month:
-                monthSubButton.setTitle("\(product.localizedPrice!) / month", for: .normal)
+                monthSubButton.setTitle("\(product.localizedPrice!) / \(AppLocalizationKeys.premiumMonth.localized())", for: .normal)
             case .year:
-                yearSubButton.setTitle("\(product.localizedPrice!) / year", for: .normal)
+                yearSubButton.setTitle("\(product.localizedPrice!) / \(AppLocalizationKeys.premiumYear.localized())", for: .normal)
             case .none:
-                foreverSubButton.setTitle("\(product.localizedPrice!) / lifetime", for: .normal)
+                foreverSubButton.setTitle("\(product.localizedPrice!) / \(AppLocalizationKeys.premiumLifetime.localized())", for: .normal)
             default: break
             }
         }
@@ -133,9 +133,9 @@ class PremiumController: UIViewController {
     
     @objc func updateLanguage() {
         headerLabel.text = AppLocalizationKeys.premiumInfo.localized()
-        monthSubButton.setTitle(AppLocalizationKeys.premiumMonthSub.localized(), for: .normal)
-        yearSubButton.setTitle(AppLocalizationKeys.premiumyYearSub.localized(), for: .normal)
-        foreverSubButton.setTitle(AppLocalizationKeys.premiumyYearSub.localized(), for: .normal)
+//        monthSubButton.setTitle(AppLocalizationKeys.premiumMonthSub.localized(), for: .normal)
+//        yearSubButton.setTitle(AppLocalizationKeys.premiumyYearSub.localized(), for: .normal)
+//        foreverSubButton.setTitle(AppLocalizationKeys.premiumyYearSub.localized(), for: .normal)
         restorePurchasesButton.setTitle(AppLocalizationKeys.restorePurchases.localized(), for: .normal)
 //        infoArray = AppLocalizationKeys.premiumAdvantages.localized()
     }

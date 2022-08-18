@@ -15,4 +15,5 @@ target 'ShopList' do
 	pod 'SDWebImage'
 	pod "SkeletonView"
 	pod 'DeviceKit', '~> 4.0'
+	pod 'GoogleSignIn'
 end

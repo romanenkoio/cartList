@@ -5,12 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="ShopList" customModuleProvider="target">
             <connections>
                 <outlet property="animationView" destination="8aW-JF-DPE" id="3ve-Qu-kER"/>
+                <outlet property="indicator" destination="lxr-ZF-EWD" id="2zN-Q5-8n5"/>
                 <outlet property="loginButton" destination="FXf-Xg-yqj" id="oqv-ZN-aoP"/>
                 <outlet property="stackView" destination="ePg-t7-NHn" id="rfu-ZZ-Wwu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,7 +27,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-t7-NHn">
-                    <rect key="frame" x="16" y="293" width="382" height="320"/>
+                    <rect key="frame" x="16" y="328" width="382" height="250"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-JF-DPE" customClass="AnimationView" customModule="Lottie">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="250"/>
@@ -34,36 +36,46 @@
                                 <constraint firstAttribute="height" constant="250" id="MMY-AB-ozc"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-Xg-yqj" customClass="ASAuthorizationAppleIDButton">
-                            <rect key="frame" x="0.0" y="270" width="382" height="50"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="FeA-DX-JST"/>
-                            </constraints>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <inset key="imageEdgeInsets" minX="-60" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="16"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="signInAction:" destination="-1" eventType="touchUpInside" id="wMM-yg-qNf"/>
-                            </connections>
-                        </button>
                     </subviews>
                 </stackView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-Xg-yqj" customClass="ASAuthorizationAppleIDButton">
+                    <rect key="frame" x="16" y="792" width="382" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="FeA-DX-JST"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="-60" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="signInAction:" destination="-1" eventType="touchUpInside" id="wMM-yg-qNf"/>
+                    </connections>
+                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="lxr-ZF-EWD">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                    <color key="tintColor" name="secondaryColor"/>
+                    <color key="color" systemColor="systemGreenColor"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="mainColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FXf-Xg-yqj" secondAttribute="trailing" constant="16" id="6G9-ec-Hlt"/>
+                <constraint firstItem="FXf-Xg-yqj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="7A3-vv-cBC"/>
+                <constraint firstItem="lxr-ZF-EWD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="C6M-is-AZV"/>
                 <constraint firstItem="8OK-jk-Pb4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CIb-mN-qhn"/>
                 <constraint firstItem="8OK-jk-Pb4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Edr-LB-xCE"/>
                 <constraint firstAttribute="trailing" secondItem="8OK-jk-Pb4" secondAttribute="trailing" id="FdC-8X-C9N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FXf-Xg-yqj" secondAttribute="bottom" constant="20" id="Gip-lH-kby"/>
                 <constraint firstAttribute="bottom" secondItem="8OK-jk-Pb4" secondAttribute="bottom" id="PEr-fA-ByT"/>
+                <constraint firstItem="lxr-ZF-EWD" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Rzw-HZ-xf9"/>
                 <constraint firstItem="ePg-t7-NHn" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="YW1-R7-8IN"/>
                 <constraint firstItem="ePg-t7-NHn" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Yln-dO-Fkh"/>
                 <constraint firstItem="ePg-t7-NHn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="bAT-Vc-PCn"/>
@@ -80,5 +92,11 @@
         <namedColor name="mainColor">
             <color red="0.21176470588235294" green="0.32549019607843138" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="secondaryColor">
+            <color red="0.91764705882352937" green="0.29803921568627451" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

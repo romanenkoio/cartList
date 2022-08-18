@@ -1,5 +1,11 @@
 PODS:
   - Adapty (1.17.6)
+  - AppAuth (1.5.0):
+    - AppAuth/Core (= 1.5.0)
+    - AppAuth/ExternalUserAgent (= 1.5.0)
+  - AppAuth/Core (1.5.0)
+  - AppAuth/ExternalUserAgent (1.5.0):
+    - AppAuth/Core
   - DeviceKit (4.6.0)
   - Firebase/Core (8.14.0):
     - Firebase/CoreOnly
@@ -76,6 +82,10 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleSignIn (6.1.0):
+    - AppAuth (~> 1.4)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUserMessagingPlatform (2.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
@@ -96,6 +106,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
+  - GTMAppAuth (1.2.3):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.1)
   - KeychainAccess (4.2.2)
   - leveldb-library (1.22.1)
@@ -120,6 +133,7 @@ DEPENDENCIES:
   - FirebaseInstallations
   - FirebaseStorage
   - Google-Mobile-Ads-SDK
+  - GoogleSignIn
   - KeychainAccess
   - lottie-ios
   - SDWebImage
@@ -128,6 +142,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Adapty
+    - AppAuth
     - DeviceKit
     - Firebase
     - FirebaseAnalytics
@@ -140,8 +155,10 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleSignIn
     - GoogleUserMessagingPlatform
     - GoogleUtilities
+    - GTMAppAuth
     - GTMSessionFetcher
     - KeychainAccess
     - leveldb-library
@@ -153,6 +170,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Adapty: c147bc8ce330e6f20dd4f5cdbbce57473fb4c398
+  AppAuth: 80317d99ac7ff2801a2f18ff86b48cd315ed465d
   DeviceKit: 834dd8aa1be53cd85364d8f49aa5d98bfac397c4
   Firebase: 7e8fe528c161b9271d365217a74c16aaf834578e
   FirebaseAnalytics: 2fc3876e2eb347673ad2f35e249ae7b15d6c88f5
@@ -165,8 +183,10 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 0badb67224b63f7947428eb07039ba37e47ba405
   GoogleAppMeasurement: 71156240babd3cc6ced03e0d54816f01a880c730
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
+  GoogleSignIn: c90b5bec45e780f54c6a8e1e3c182a86e3dda69d
   GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
+  GTMAppAuth: 987526d41b07efb1bedda5e936fe0cb718a03113
   GTMSessionFetcher: 4577a4cc914a5a07c40a8a0ad0acc22080418c2d
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
@@ -176,6 +196,6 @@ SPEC CHECKSUMS:
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SkeletonView: 915a80ecc2b6421ab7ac0f0212321c0cc1406472
 
-PODFILE CHECKSUM: c8562583b06588baf9116010e97cd5f29f74ef7a
+PODFILE CHECKSUM: 57b267f501fb9feb77bf5da08bb5e1983da365bf
 
 COCOAPODS: 1.11.2

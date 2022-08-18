@@ -9,12 +9,12 @@
 //Premium Points
 //"premium.advantages" = ["Неограниченное количество списков", "Отсутствие рекламы", "Возможность закреплять списки"];
 "premium.info" = "Оформите подписку и пользуйтесь приложением без ограничений!";
-"premium.monthSub" = "$0.99 / месяц";
-"premium.yearSub" = "$0.99 / год";
-"premium.foreverSub" = "$0.99 / навсегда";
 "premium.restorePurchases" = "Восстановить покупки";
 "premium.terms" = "Условия";
 "premium.privacy" = "Конфиденциальность";
+"premium.month" = "месяц";
+"premium.year" = "год";
+"premium.lifetime" = "пожизненно";
 
 //Profile Points
 "profile.Header" = "Профиль";
@@ -25,6 +25,8 @@
 "profile.logOut" = "Выйти";
 "profile.save" = "Сохранить";
 "profile.cancel" = "Отмена";
+"profile.basic" = "Базовый";
+"profile.premium" = "Премиальный";
 
 //Avatar Points
 "avatar.selectActionHeader" = "Выберите действие";
