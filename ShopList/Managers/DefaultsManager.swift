@@ -168,4 +168,14 @@ final class DefaultsManager {
             UserDefaults.standard.setValue(newValue, forKey: #function)
         }
     }
+    
+    class var isOnboarding: Bool {
+        get {
+            let isOnboarding = UserDefaults.standard.value(forKey: #function) as? Bool
+            return isOnboarding ?? true
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: #function)
+        }
+    }
 }

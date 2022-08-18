@@ -80,7 +80,6 @@ class AppLocalizationKeys {
     static let back = "settingsVC.back"
     static let feedback = "settingsVC.feedback"
     static let mailText = "settingsVC.mailText"
-
     
     static let list = "addType.list"
     static let product = "addType.product"
@@ -148,6 +147,7 @@ class AppLocalizationKeys {
     static let emptyLists = "mainListVC.emptyLists"
     static let createList = "mainListVC.createList"
     static let manageUsers = "mainListVC.manageUsers"
+    static let listLimit = "mainListVC.listLimit"
 
     static let importLists = "importManager.importLists"
     static let yes = "importManager.yes"
@@ -190,4 +190,15 @@ class AppLocalizationKeys {
                                       NSLocalizedString("premium.ads", comment: ""),
                                       NSLocalizedString("premium.pin", comment: ""),
                                       NSLocalizedString("premium.sharing", comment: "")]
+    
+    static let onboarding = [NSLocalizedString("onboarding.1", comment: ""),
+                             NSLocalizedString("onboarding.2", comment: ""),
+                             NSLocalizedString("onboarding.3", comment: ""),
+                             NSLocalizedString("onboarding.4", comment: "")]
+
+    static let onboardingСlose = "onboarding.close"
+    static let onboardingNext = "onboarding.next"
+    static let onboardingBack = "onboarding.back"
+
 }
+

@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Adapty.getPurchaserInfo { info, error in
             if error == nil {
                 if info?.accessLevels["premium"]?.isActive == true {
+                    print(info?.accessLevels["premium"])
+                    print(Date())
                     DefaultsManager.isPremium = true
                 } else {
                     DefaultsManager.isPremium = false

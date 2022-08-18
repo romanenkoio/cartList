@@ -141,6 +141,7 @@
 "mainListVC.createList" = "Create a new list";
 "mainListVC.addUser" = "Add user to list";
 "mainListVC.manageUsers" = "Manage users";
+"mainListVC.listLimit" = "List limit reached";
 
 "importManager.importLists" = "Import lists?";
 "importManager.yes" = "Yes";
@@ -184,3 +185,13 @@
 "premium.ads" = "No ads";
 "premium.pin" = "Pin your favourite lists";
 "premium.sharing" = "Share your lists with friends online";
+
+"onboarding.1" = "Add product from pasteboard, use paste putton at top of screen";
+"onboarding.2" = "Hold on list for additional options";
+"onboarding.3" = "Tap on product for changin it state";
+"onboarding.4" = "Hold on product for removing";
+
+"onboarding.close" = "Close";
+"onboarding.next" = "Next";
+"onboarding.back" = "Back";
+

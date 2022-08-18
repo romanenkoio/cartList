@@ -15,8 +15,8 @@ class MainListController: BaseViewController {
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var createListButton: UIButton!
-    var bannerView: GADBannerView!
-    var database: DatabaseReference!
+    private var bannerView: GADBannerView!
+    private var database: DatabaseReference!
     
     var lists = [SLFirebaseList]() {
         didSet {
@@ -36,7 +36,9 @@ class MainListController: BaseViewController {
         bannerView.rootViewController = self
         bannerView.adUnitID = "ca-app-pub-4489210776569699/3621152755"
         emptyLabel.isHidden = true
-        
+        if DefaultsManager.isOnboarding {
+            self.present(OnboardingController.loadFromNib(), animated: true)
+        }
         #if RELEASE
         if DefaultsManager.lainchCount % 2 == 0, !DefaultsManager.isPremium {
             let vc = PremiumController.loadFromNib()
@@ -72,13 +74,13 @@ class MainListController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        #if DEBUG
-        print("Реклама отключена")
-        #else
+//        #if DEBUG
+//        print("Реклама отключена")
+//        #else
         if !DefaultsManager.isPremium {
             bannerView.load(GADRequest())
         }
-        #endif
+//        #endif
         readLists()
         updateLanguage()
         navigationItem.largeTitleDisplayMode = .always
@@ -106,7 +108,7 @@ class MainListController: BaseViewController {
     
     private func checkCount() {
         if lists.count >= 3, !DefaultsManager.isPremium {
-            createListButton.setTitle("Достигнут лимит списков", for: .normal)
+            createListButton.setTitle(AppLocalizationKeys.listLimit.localized(), for: .normal)
         } else {
             createListButton.setTitle(AppLocalizationKeys.createList.localized(), for: .normal)
         }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		16DA4C4B89F8470D0392B50D /* Pods_ShopList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED9EB50CD53B3A088274AC /* Pods_ShopList.framework */; };
+		7F3AA10828AE99FC00018C2F /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AA10628AE99FC00018C2F /* OnboardingController.swift */; };
+		7F3AA10928AE99FC00018C2F /* OnboardingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F3AA10728AE99FC00018C2F /* OnboardingController.xib */; };
 		7F6C90382817FBF00048EA1A /* CustomUIAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C90372817FBF00048EA1A /* CustomUIAction.swift */; };
 		7F6C903A281804450048EA1A /* SLAppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C9039281804450048EA1A /* SLAppImages.swift */; };
 		7F6C903C281812830048EA1A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6C903B281812830048EA1A /* UILabel+Extensions.swift */; };
@@ -96,6 +98,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F3AA10628AE99FC00018C2F /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
+		7F3AA10728AE99FC00018C2F /* OnboardingController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingController.xib; sourceTree = "<group>"; };
 		7F6C90372817FBF00048EA1A /* CustomUIAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIAction.swift; sourceTree = "<group>"; };
 		7F6C9039281804450048EA1A /* SLAppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLAppImages.swift; sourceTree = "<group>"; };
 		7F6C903B281812830048EA1A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -213,9 +217,19 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		7F3AA10528AE99E100018C2F /* OnboardingController */ = {
+			isa = PBXGroup;
+			children = (
+				7F3AA10628AE99FC00018C2F /* OnboardingController.swift */,
+				7F3AA10728AE99FC00018C2F /* OnboardingController.xib */,
+			);
+			path = OnboardingController;
+			sourceTree = "<group>";
+		};
 		7F40B1A5281AD46A002DF78E /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				7F3AA10528AE99E100018C2F /* OnboardingController */,
 				8EDD7ABB289C421C00B7A499 /* CustomLaunchScreen */,
 				7FAA729228940EBC0053352E /* SearchUserController */,
 				7FB6F11F28919FA900A048F0 /* ProfileModule */,
@@ -698,6 +712,7 @@
 				7F85A32C2881937D00CE3386 /* premium@2x.png in Resources */,
 				7F85A32A2881937800CE3386 /* premium@3x.png in Resources */,
 				7FD1D1172819B4D600CA44FE /* SettingsHeaderCell.xib in Resources */,
+				7F3AA10928AE99FC00018C2F /* OnboardingController.xib in Resources */,
 				7FAA729B28940F680053352E /* UserSearchCell.xib in Resources */,
 				7F6C904028182D370048EA1A /* TimeSelectPopupController.xib in Resources */,
 				7FAC7E35289B3667006AFFDD /* emptySearch.json in Resources */,
@@ -809,6 +824,7 @@
 				7FCB588B2813508600D3E370 /* MainListController.swift in Sources */,
 				7FA27C9A289C1C0200D00906 /* UIImage+Extensions.swift in Sources */,
 				7FEB9A2328134B51005AA371 /* AppDelegate.swift in Sources */,
+				7F3AA10828AE99FC00018C2F /* OnboardingController.swift in Sources */,
 				7FCB5891281350C300D3E370 /* MainListCell.swift in Sources */,
 				8E6A4B392891944400638F25 /* SLFirebaseProduct.swift in Sources */,
 				7FA1F33328146054008ABEE1 /* UIViewController+Extensions.swift in Sources */,

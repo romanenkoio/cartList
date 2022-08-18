@@ -9,6 +9,7 @@ import UIKit
 import Lottie
 import Vision
 import Firebase
+import GoogleMobileAds
 
 class ProductList: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +22,8 @@ class ProductList: BaseViewController {
     @IBOutlet weak var shopLabel: UILabel!
     @IBOutlet weak var addProductButton: UIButton!
     
+    private var bannerView: GADBannerView!
+
     private let imagePicker = UIImagePickerController()
     var database: DatabaseReference!
     
@@ -48,11 +51,48 @@ class ProductList: BaseViewController {
             self.tableView.sectionHeaderTopPadding = 0.0
         }
         readData()
+        setupAds()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         playAnimation()
+//#if DEBUG
+//        print("Реклама отключена")
+//#else
+        if !DefaultsManager.isPremium {
+            bannerView.load(GADRequest())
+        }
+//#endif
+    }
+    
+    private func setupAds() {
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.delegate = self
+        bannerView.rootViewController = self
+        bannerView.adUnitID = "ca-app-pub-4489210776569699/3621152755"
+        emptyLabel.isHidden = true
+    }
+    
+    private func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: addProductButton,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: -10),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
     
     private func setupNavigationButton() {
@@ -263,5 +303,32 @@ extension ProductList: UITableViewDelegate {
             return UIMenu(title: "", children: [delete])
         }
         return configuration
+    }
+}
+
+extension ProductList: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("bannerViewDidReceiveAd")
+        addBannerViewToView(bannerView)
+    }
+    
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+        print("bannerViewDidRecordImpression")
+    }
+    
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("bannerViewWillPresentScreen")
+    }
+    
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("bannerViewWillDIsmissScreen")
+    }
+    
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("bannerViewDidDismissScreen")
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 import Lottie
 import Adapty
 
+
 class PremiumController: UIViewController {
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var infoCollection: UICollectionView!
@@ -89,6 +90,7 @@ class PremiumController: UIViewController {
             if error == nil {
                 if purchaserInfo != nil {
                     DefaultsManager.isPremium = true
+                    self.dismiss(animated: true)
                 }
             }
         }
