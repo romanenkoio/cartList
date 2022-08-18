@@ -68,7 +68,6 @@ class PremiumController: UIViewController {
     }
     
     @IBAction func makePurchase(_ sender: UIButton) {
-        spinner.startAnimating()
         var product: ProductModel?
         
         switch sender.tag {

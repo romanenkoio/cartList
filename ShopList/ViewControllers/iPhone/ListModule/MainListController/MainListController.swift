@@ -29,8 +29,6 @@ class MainListController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerCellsWith([MainListCell.self])
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
         updateLanguage()
         subscribeToNotification()
         bannerView = GADBannerView(adSize: GADAdSizeBanner)
@@ -83,6 +81,14 @@ class MainListController: BaseViewController {
         #endif
         readLists()
         updateLanguage()
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     deinit {

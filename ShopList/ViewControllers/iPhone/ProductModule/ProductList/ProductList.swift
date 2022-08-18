@@ -48,8 +48,6 @@ class ProductList: BaseViewController {
             self.tableView.sectionHeaderTopPadding = 0.0
         }
         readData()
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
