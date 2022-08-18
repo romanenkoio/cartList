@@ -22,7 +22,7 @@ enum SLSettingsPoint: CaseIterable {
     case biometry
     
     static func getMenu() -> [[SLSettingsPoint]] {
-        return [[.profile], [.premium], [.biometry], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.feedback, .language, .version]]
+        return [[.profile], [.premium], [.separateList, .autoDelete], [.useTimePush, .morningTime], [.feedback, .language, .version]]
     }
     
     var text: String {

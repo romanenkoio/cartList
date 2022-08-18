@@ -73,6 +73,7 @@
 "settingsVC.setLanguage" = "Language set to";
 "settingsVC.back" = "Back";
 "settingsVC.feedback" = "Send feedback";
+"settingsVC.mailText" = "Please, don't remove text above.";
 
 "addType.list" = "List name";
 "addType.product" = "Product name";

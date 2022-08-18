@@ -56,11 +56,14 @@ class SettingsController: BaseViewController {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["zamok.tech@gmail.com"])
-            mail.setMessageBody("Change text to version, UID", isHTML: false)
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let version = "\(AppLocalizationKeys.version.localized()): \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? AppLocalizationKeys.versionInfo.localized())"
+            let mailString = "UserID: \(uid)\n \(version)\n\(AppLocalizationKeys.mailText.localized())"
+            mail.setMessageBody(mailString, isHTML: false)
             
             present(mail, animated: true)
         } else {
-            print("Почта не настроена")
+            PopupView(title: "Пожалуйста, настройте приложение почты").show()
         }
     }
 }

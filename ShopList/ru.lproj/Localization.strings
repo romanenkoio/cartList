@@ -72,6 +72,8 @@
 "settingsVC.setLanguage" = "Установлен язык";
 "settingsVC.back" = "Назад";
 "settingsVC.feedback" = "Обратная связь";
+"settingsVC.mailText" = "Пожалуйста, не удаляйте текст выше.";
+
 
 "addType.list" = "Название списка";
 "addType.product" = "Название продукта";

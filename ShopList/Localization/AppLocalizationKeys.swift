@@ -79,6 +79,8 @@ class AppLocalizationKeys {
     static let setLanguage = "settingsVC.setLanguage"
     static let back = "settingsVC.back"
     static let feedback = "settingsVC.feedback"
+    static let mailText = "settingsVC.mailText"
+
     
     static let list = "addType.list"
     static let product = "addType.product"
