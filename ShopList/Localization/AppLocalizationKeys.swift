@@ -156,6 +156,11 @@ class AppLocalizationKeys {
     static let youBought = "notification.youBought"
     static let youNear = "notification.youNear"
     static let checkTheLists = "notification.checkTheLists"
+    
+    static let mailSettings = "popup.mailText"
+    static let userRemoved = "popup.userRemoved"
+    static let userAdded = "popup.userAdded"
+    static let copied = "popup.copied"
 
     static let listPlaceholders = [NSLocalizedString("lasagna", comment: ""),
                                    NSLocalizedString("tortilla", comment: ""),
@@ -181,4 +186,3 @@ class AppLocalizationKeys {
                                       NSLocalizedString("buckwheat", comment: ""),
                                       NSLocalizedString("bulgur", comment: "")]
 }
-

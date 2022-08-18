@@ -63,7 +63,7 @@ class SettingsController: BaseViewController {
             
             present(mail, animated: true)
         } else {
-            PopupView(title: "Пожалуйста, настройте приложение почты").show()
+            PopupView(title: AppLocalizationKeys.mailSettings).show()
         }
     }
 }

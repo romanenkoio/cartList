@@ -173,3 +173,9 @@
 "rice" = "Rice";
 "buckwheat" = "Buckwheat";
 "bulgur" = "Bulgur";
+
+
+"popup.mailSettings" = "Please, setup mail application";
+"popup.userRemoved" = "User was removed";
+"popup.userAdded" = "User was added";
+"popup.copied" = "Copied!";

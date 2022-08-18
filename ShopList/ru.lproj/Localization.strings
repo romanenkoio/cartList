@@ -173,3 +173,8 @@
 "rice" = "Рис";
 "buckwheat" = "Гречка";
 "bulgur" = "Булгур";
+
+"popup.mailSettings" = "Пожалуйста, настройте приложение почты";
+"popup.userRemoved" = "Пользователь удалён";
+"popup.userAdded" = "Пользователь добавлен";
+"popup.copied" = "Скопированно";

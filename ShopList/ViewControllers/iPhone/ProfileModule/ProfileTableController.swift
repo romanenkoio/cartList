@@ -135,7 +135,7 @@ extension ProfileTableController: UITableViewDelegate {
             present(alert, animated: true)
         case .name:
             UIPasteboard.general.string = DefaultsManager.email
-            PopupView(title: "Скопированно").show()
+            PopupView(title: AppLocalizationKeys.copied.localized()).show()
         case .edit:
             menu = SLProfilePoints.getMenu(edit: true)
             tableView.reloadData()

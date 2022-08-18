@@ -93,7 +93,7 @@ extension SearchUserController: UITableViewDataSource {
                         self?.navigationController?.popViewController(animated: true)
                     }
                     self?.tableView.reloadData()
-                    PopupView(title: "Пользователь удалён").show()
+                    PopupView(title: AppLocalizationKeys.userRemoved.localized()).show()
                 }
                 cell.listID = litsID
                 cell.userID = users[indexPath.row].uid
